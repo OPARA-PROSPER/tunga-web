@@ -6,6 +6,11 @@ import JumpToTop from "./JumpToTop/JumpToTop";
 
 
 class PageScroll extends Component {
+    // time needed to finish scrolling or scrolling animation to a page or section in ms
+    static scrollAnimationDelay = 800;
+    // time lapse needed before handling new scrolling event in ms
+    static scrollEventDelay = 500;
+
     constructor(props) {
         super(props);
 
@@ -236,7 +241,7 @@ class PageScroll extends Component {
 
         window.setTimeout(() => {
             this.isWheeling = false;
-        }, 1400);
+        }, PageScroll.scrollEventDelay);
 
         this.isWheeling = true;
         const direction = this.findScrollDirection(e);
@@ -257,7 +262,7 @@ class PageScroll extends Component {
 
         window.setTimeout(() => {
             this.isScolling = false;
-        }, 850);
+        }, PageScroll.scrollEventDelay);
 
         this.isScolling = true;
         const direction = this.findKeyDirection(event);
@@ -327,7 +332,7 @@ class PageScroll extends Component {
 
         return (
             <div>
-                <div style={{ transition: 'transform 800ms', height: '100vh' }} ref={self.containerRef}
+                <div style={{ transition: `transform ${PageScroll.scrollAnimationDelay}ms`, height: '100vh' }} ref={self.containerRef}
                      onWheel={self.onWheel}>
                     {sections}
                 </div>
