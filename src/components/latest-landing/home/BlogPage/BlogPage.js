@@ -30,7 +30,7 @@ class BlogPage extends Component {
 
           </p>
 
-          <img src={Blog1} alt="Blog Image" className="img-fluid w-100"/>
+          <img src={Blog1} srcSet={Blog1.srcSet} alt="Blog Image" className="img-fluid w-100"/>
 
           <p className="content mt-5">
             My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you

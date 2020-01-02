@@ -8,7 +8,7 @@ import Button from "../../../../core/Button";
 const Badge = ({ imgUrl, title }) => {
     return (
         <div className="Badge">
-            <img src={imgUrl} className="Badge__img"/>
+            <img src={imgUrl} srcSet={imgUrl.srcSet} className="Badge__img"/>
             <div className="Badge__title">
                 {title}
             </div>

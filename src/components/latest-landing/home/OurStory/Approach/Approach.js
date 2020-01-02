@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ApproachLeft from "../../../assets/img/our-story/approach-left.png";
-import ApproachRight from "../../../assets/img/our-story/approach-right.png";
+import ApproachLeft from "../../../assets/img/our-story/approach-left.png?size=800";
+import ApproachRight from "../../../assets/img/our-story/approach-right.png?size=800";
 
 
 class Approach extends Component {

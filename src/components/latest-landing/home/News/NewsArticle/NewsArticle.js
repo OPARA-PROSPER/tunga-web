@@ -3,7 +3,7 @@ import Carousel from "../../../shared/Carousel/Carousel";
 import Button from "../../../../core/Button";
 
 class NewsArticle extends Component {
-    
+
     getDataPerPage() {
         return [
             {
@@ -66,7 +66,7 @@ class NewsArticle extends Component {
                                                 </Button>
                                             </div>
                                             <div className="NewsArticle__logo-holder">
-                                                <img src={article.logo} className="NewsArticle__logo"/>
+                                                <img src={article.logo} srcSet={article.logo.srcSet} className="NewsArticle__logo"/>
                                             </div>
                                         </div>
                                         <div className="NewsArticle__bg-mask"></div>

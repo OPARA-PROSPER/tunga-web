@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Button from "../../../../core/Button";
-import ImpactSourcingBg from "../../../assets/img/our-story/impact-sourcing.png";
+import ImpactSourcingBg from "../../../assets/img/our-story/impact-sourcing.png?size=800";
 
 
 class ImpactSourcing extends Component {

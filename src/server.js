@@ -7,14 +7,12 @@ import ejs from 'ejs';
 import path from 'path';
 import { HelmetProvider } from 'react-helmet-async';
 import striptags from 'striptags';
-import axios from 'axios';
 
 import App from './components/App';
 import Guide from './components/guide/Guide';
 
 import store from './store.js';
-import {getMediumPosts} from './actions/UtilityActions';
-import {GET_MEDIUM_POSTS_SUCCESS, GET_MEDIUM_POSTS_FAILED} from './actions/UtilityActions';
+import {retrieveCachedBlogs, retrieveCachedVlogs} from './utils/ssr';
 
 const app = express();
 
@@ -31,48 +29,28 @@ app.set('view engine', 'ejs');
 
 const port = 3000;
 
-const getPreloadedState = async (req) => {
+const getPreloadedState =  async (req) => {
     let defaultState = store.getState();
 
-    return new Promise((resolve, reject) => {
-        // Get medium blog posts
-        getMediumPosts()((data) => {
-            switch(data.type) {
-                case GET_MEDIUM_POSTS_SUCCESS:
-                case GET_MEDIUM_POSTS_FAILED:
-                    if(data.type === GET_MEDIUM_POSTS_SUCCESS && data.posts && Array.isArray(data.posts)) {
-                        defaultState.app.Utility.posts = data.posts;
-                        defaultState.app.blogs.blogs.is = {fetching: false, ok: true, error: false};
-                        defaultState.app.blogs.blogs.blogList = data.posts;
-                    }
+    // Get Medium blog posts
+    const blogs = await retrieveCachedBlogs().catch(e => {}) || [];
+    if(blogs && Array.isArray(blogs)) {
+        defaultState.app.Utility.posts = blogs;
+        defaultState.app.blogs.blogs.is = {fetching: false, ok: true, error: false};
+        defaultState.app.blogs.blogs.blogList = blogs;
+    }
 
-                    const returnState = () => {
-                        resolve(JSON.stringify(defaultState));
-                    };
+    // Get Youtube vlogs for news page
+    if(req.url === '/news') {
+        const vlogs = await retrieveCachedVlogs().catch(e => {}) || [];
+        if(vlogs && Array.isArray(vlogs)) {
+            defaultState.app.vlogs.vlogs.is = {fetching: false, ok: true, error: false};
+            defaultState.app.vlogs.vlogs.list = vlogs;
+        }
+    }
 
-                    // Get vlogs for news page
-                    if(req.url === '/news') {
-                        axios.get(
-                            'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAuIXqeLrUkyZhsau0WpAVzWlyuv_P9YE8&channelId=UC_Pl6wmR-t9Zv9z7_s1aWNg&part=snippet,id&order=date&maxResults=20',
-                            {headers: {referer: `https://${__PRODUCTION__?'':'sandbox.'}tunga.io${req.url}`}}
-                        ).then(res => {   
-                            if(res && res.data && res.data.items && Array.isArray(res.data.items)) {
-                                defaultState.app.vlogs.vlogs.is = {fetching: false, ok: true, error: false};
-                                defaultState.app.vlogs.vlogs.list = res.data.items;
-                            } 
-                            returnState();
-                        }).catch(e => {
-                            returnState();
-                        });
-                    } else {
-                        returnState();
-                    }
-                    break;
-                default:
-                    break;
-            }
-        });
-    });
+    // Return stringified state
+    return JSON.stringify(defaultState);
 };
 
 app.use(async (req, res) => {
@@ -118,19 +96,6 @@ app.use(async (req, res) => {
     }
 });
 
-var server = app.listen(port, () => {
-    console.log(`Server is running on port ${port}…`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port} …`);
 });
-
-
-/*
-process.on('SIGTERM', () => {
-    console.log("SIGTERM received");
-    server.close();
-});
-
-process.on('SIGHUP', () => {
-    console.log("SIGHUP received");
-    server.close();
-});
-*/

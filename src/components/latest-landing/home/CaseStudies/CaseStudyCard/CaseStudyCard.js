@@ -20,7 +20,7 @@ class CaseStudyCard extends Component {
             <div className="CaseStudyCard w-100">
                 <Card className="border-0 pt-0 w-100">
                     <CardBody className="pt-0 p-0">
-                        <img src={caseStudy.icon} alt={caseStudy.title} className="rounded"/>
+                        <img src={caseStudy.icon} srcSet={caseStudy.icon.srcSet} alt={caseStudy.title} className="rounded"/>
                         <CardTitle className="text-blue size-18 mt-3 font-weight-bold">
                             {caseStudy.title}
                         </CardTitle>
@@ -59,6 +59,7 @@ class CaseStudyCard extends Component {
                                 <Media
                                     object
                                     src={caseStudy.user.pic}
+                                    srcSet={caseStudy.user.pic.srcSet}
                                     className="img-fluid rounded-circle round"
                                     alt="Generic placeholder image"
                                 />

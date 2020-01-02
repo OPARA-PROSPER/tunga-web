@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 
 import Button from "../Header/Header";
-import Logo from "../../assets/img/common/logo.png";
+import Logo from "../../assets/img/common/logo.png?size=50";
 import { openCalendlyWidget } from "../../../utils/calendly";
 import { authenticate } from "../../../../actions/AuthActions";
 import { connect } from "react-redux";
@@ -53,7 +53,7 @@ class Nav extends Component {
                             className="font-weight-bold text-white text-uppercase navbar-brand"
                             to="/"
                         >
-                            <img className="Nav__logo" src={Logo} alt="Tunga logo"/>
+                            <img className="Nav__logo" src={Logo} srcSet={Logo.srcSet} alt="Tunga logo"/>
                         </NavLink>
                         <NavbarToggler
                             onClick={this.toggle}

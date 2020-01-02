@@ -11,20 +11,33 @@ npm install
 2. Install [ImageMagick](https://www.imagemagick.org/script/download.php)
 
 # Development
-1. run this command from project root
+A development environment can be started by running any of the following commands from project root
 
-To connect to the test/sandbox API at http://sandbox.tunga.io/api/
+## Client-side only
+
+To connect to the sandbox API at http://sandbox.tunga.io/api/
 ```
 npm run watch
 ```
 
 To connect to a local version of the API running on your machine at http://localhost:8000/
 ```
-npm run watch:local
+npm run watch:dev
 ```
 
-2. A new browser tab with automatically open at http://127.0.0.1:8080/
+> A new browser tab with automatically open at http://localhost:8080/
 (The browser will auto reload when changes are made to the code)
+
+## Server-side rendering
+To connect to the sandbox API at http://sandbox.tunga.io/api/
+```
+npm run watch:ssr
+```
+
+To connect to a local version of the API running on your machine at http://localhost:8000/
+```
+npm run watch:ssr:dev
+```
 
 # Debugging
 
@@ -42,6 +55,7 @@ Contributions that don't follow recommendations in our contribution guide may no
 # Deployment
 
 ## Automated
+Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) 
 
 ### Sandbox
 1. Push changes to `develop` branch

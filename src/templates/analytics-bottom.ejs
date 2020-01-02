@@ -1,4 +1,87 @@
 <% if (htmlWebpackPlugin.options.site.enable_tracking) { %>
+
+<!-- Twitter universal website tag code -->
+<script>
+    !function (e, n, u, a) {
+    e.twq || (a = e.twq = function () {
+        a.exe ? a.exe.apply(a, arguments) :
+        a.queue.push(arguments);
+    }, a.version = '1', a.queue = [], t = n.createElement(u),
+        t.async = !0, t.src = '//static.ads-twitter.com/uwt.js', s = n.getElementsByTagName(u)[0],
+        s.parentNode.insertBefore(t, s))
+    }(window, document, 'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init', 'nvcop');
+</script>
+<!-- End Twitter universal website tag code -->
+
+<!-- Twitter single-event website tag code -->
+<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+<!-- End Twitter single-event website tag code -->
+    
+    
+<!-- Mailchimp -->
+<script type="text/javascript">
+    var $mcGoal = {'settings': {'uuid': '4a29a04cabf8436cbb3d7ea7d', 'dc': 'us11'}};
+    (function () {
+    var sp = document.createElement('script');
+    sp.type = 'text/javascript';
+    sp.async = true;
+    sp.defer = true;
+    sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(sp, s);
+    })();
+</script>
+<!-- End Mailchimp -->
+    
+<!-- LinkedIn -->
+<script type="text/javascript">
+    _linkedin_data_partner_id = "51505";
+</script>
+<script type="text/javascript">
+    (function () {
+    var s = document.getElementsByTagName("script")[0];
+    var b = document.createElement("script");
+    b.type = "text/javascript";
+    b.async = true;
+    b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+    s.parentNode.insertBefore(b, s);
+    })();
+</script>
+<noscript>
+    <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=51505&fmt=gif"/>
+</noscript>
+<!-- End LinkedIn -->
+    
+<!-- Hotjar Tracking Code for www.tunga.io -->
+<script>
+    (function (h, o, t, j, a, r) {
+    h.hj = h.hj || function () {
+        (h.hj.q = h.hj.q || []).push(arguments)
+    };
+    h._hjSettings = {hjid: 507779, hjsv: 5};
+    a = o.getElementsByTagName('head')[0];
+    r = o.createElement('script');
+    r.async = 1;
+    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+    a.appendChild(r);
+    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+</script>
+<!-- Hotjar Tracking Code -->
+    
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2715021.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+<!-- Start of Lead Forensics  -->
+<!--
+<script type="text/javascript" src="https://secure.leadforensics.com/js/140134.js"></script>
+<noscript><img alt="" src="https://secure.leadforensics.com/140134.png" style="display:none;"/></noscript>
+-->
+
+<!-- End of Lead Forensics  -->
+
 <script type="text/javascript">var _paq = _paq || [];
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
@@ -16,4 +99,13 @@
     })(); </script>
 <noscript><p><img src="//tracker.leadexpress.nl?idsite=1019" style="border:0;" alt=""/></p>
 </noscript> <!-- End LeadExpress Code -->
+    
+<% } %>
+
+<% if (htmlWebpackPlugin.options.site.optimizely_id) { %>
+
+<!-- Optimizely -->
+<script src="https://cdn.optimizely.com/js/<%= htmlWebpackPlugin.options.site.optimizely_id %>.js"></script>
+<!-- End of Optimizely -->
+
 <% } %>

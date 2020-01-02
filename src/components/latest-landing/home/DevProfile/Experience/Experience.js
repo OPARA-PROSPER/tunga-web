@@ -9,7 +9,7 @@ import Carousel from "../../../shared/Carousel/Carousel";
 const Header = ({ title, icon }) => {
     return (
         <div className="Experience__header">
-            <img src={icon} className="Experience__header-icon"/>
+            <img src={icon} srcSet={icon.srcSet} className="Experience__header-icon"/>
             <div className="Experience__header-title">{title}</div>
         </div>
     );

@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import Nav from "../../layout/Nav/Nav";
 
-import TelegraafPicture from "../../assets/img/news/telegraaf-picture.jpg";
-import TelegraafLogo from "../../assets/img/news/telegraaf-logo.png";
-import SproutPicture from "../../assets/img/news/sprout-picture.jpg";
-import SproutLogo from "../../assets/img/news/sprout-logo.png";
-import AfricanTechRoundupPicture from "../../assets/img/news/african-tech-roundup-picture.jpg";
-import AfricanTechRoundupLogo from "../../assets/img/news/african-tech-roundup-logo.jpg";
-import BnrPicture from "../../assets/img/news/bnr-picture.jpg";
-import BnrLogo from "../../assets/img/news/bnr-logo.png";
-import RadobankPicture from "../../assets/img/news/rabobank-picture.jpg";
-import RadobankLogo from "../../assets/img/news/rabobank-logo.jpg";
-import AdPicture from "../../assets/img/news/ad-picture.jpg";
-import AdLogo from "../../assets/img/news/ad-logo.png";
+import TelegraafPicture from "../../assets/img/news/telegraaf-picture.jpg?size=800";
+import TelegraafLogo from "../../assets/img/news/telegraaf-logo.png?sizes[]=50&sizes[]=100";
+import SproutPicture from "../../assets/img/news/sprout-picture.jpg?size=800";
+import SproutLogo from "../../assets/img/news/sprout-logo.png?sizes[]=50&sizes[]=100";
+import AfricanTechRoundupPicture from "../../assets/img/news/african-tech-roundup-picture.jpg?size=800";
+import AfricanTechRoundupLogo from "../../assets/img/news/african-tech-roundup-logo.jpg?sizes[]=50&sizes[]=100";
+import BnrPicture from "../../assets/img/news/bnr-picture.jpg?size=800?size=800";
+import BnrLogo from "../../assets/img/news/bnr-logo.png?sizes[]=50&sizes[]=100";
+import RadobankPicture from "../../assets/img/news/rabobank-picture.jpg?size=800";
+import RadobankLogo from "../../assets/img/news/rabobank-logo.jpg?sizes[]=50&sizes[]=100";
+import AdPicture from "../../assets/img/news/ad-picture.jpg?size=800";
+import AdLogo from "../../assets/img/news/ad-logo.png?sizes[]=50&sizes[]=100";
 
 import blogArticles from './content/blogs';
 

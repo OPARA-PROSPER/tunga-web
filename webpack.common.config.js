@@ -4,6 +4,8 @@ const webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     { CleanWebpackPlugin } = require('clean-webpack-plugin'),
     MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+    ImageminPlugin = require("imagemin-webpack"),
+    ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin"),
     unixTimestamp = Date.now(),
     isProductionEnv = process.env.NODE_ENV === 'production',
     isDevelopmentAnalyticsEnv = process.env.ANALYTICS_ENV === "development";
@@ -20,6 +22,7 @@ let siteSettings = {
     env: process.env.NODE_ENV || 'development',
     hash: true,
     timestamp: unixTimestamp,
+    minify: isProductionEnv,
     site: {
         title: ssrAwareMetaContent('title', "Tunga | Unleashing Africa's Tech Talent"),
         description: ssrAwareMetaContent('description', "Small and large businesses from all over the world use Tunga for hiring African software engineers to address their most pressing software development needs."),
@@ -70,6 +73,42 @@ module.exports = {
             dry: false
         }),
         miniCssExtractPlugin: new MiniCssExtractPlugin(),
+        imageminPlugin: new ImageminPlugin({
+            test: /.(jpe?g|png|gif|svg)$/i,
+            bail: false,
+            cache: true,
+            imageminOptions: {
+              plugins: [
+                ["gifsicle", { interlaced: true }],
+                ["mozjpeg"/*"jpegtran"*/, { progressive: true, quality: 80 }],
+                ["pngquant"/*"optipng"*/, { optimizationLevel: 5, quality: [0.6, 0.8] }],
+                [
+                  "svgo",
+                  {
+                    plugins: [
+                      {
+                        removeViewBox: false
+                      }
+                    ]
+                  }
+                ]
+              ]
+            },
+            // Disable `loader`
+            loader: false
+        }),
+        webpPlugin: new ImageminWebpWebpackPlugin({
+            config: [{
+              test: /\.(jpe?g|png)/,
+              options: {
+                quality:  75
+              }
+            }],
+            overrideExtension: true,
+            detailedLogs: false,
+            silent: false,
+            strict: true
+        })
     },
     hash: unixTimestamp
 };

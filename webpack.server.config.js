@@ -4,7 +4,7 @@ var webpack = require("webpack"),
     path = require('path'),
     srcPath = path.join(__dirname, 'src'),
     config = require("./webpack.config"),
-    common_config = require("./webpack.common.config"),
+    commonConfig = require("./webpack.common.config"),
     isProductionEnv = process.env.NODE_ENV === 'production';
 
 config.target = 'node';
@@ -27,7 +27,7 @@ config.optimization = {
 
 
 config.plugins = [
-    common_config.plugins.magicGlobalsPlugin({
+    commonConfig.plugins.magicGlobalsPlugin({
         "process.env": {
             NODE_ENV: JSON.stringify(isProductionEnv?'production':'development')
         },
