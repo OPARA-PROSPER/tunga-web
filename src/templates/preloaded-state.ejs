@@ -1,0 +1,5 @@
+<% if (htmlWebpackPlugin.options.site.enable_ssr) { %>
+<script>
+    window.__PRELOADED_STATE__ = <%%- locals.preloadedState %>;
+</script>
+<% } %>
