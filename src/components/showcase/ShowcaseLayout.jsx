@@ -41,7 +41,7 @@ export default class ShowcaseLayout extends React.Component {
         const {user, logout, match, isLargeDevice} = this.props,
             isAgreementPage = /^\/(privacy|agreement|code-of-conduct)(\/|$)/ig.test(window.location.pathname);
 
-        const urlPrefix = match.url === '/tunga'?'/tunga':'';
+        const urlPrefix = match && match.url === '/tunga'?'/tunga':'';
         const wrapPath = (path) => {
             return `${urlPrefix}${path}`;
         };

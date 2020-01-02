@@ -71,7 +71,6 @@ export function authenticate(credentials) {
                 return response.data;
             })
             .catch(function(error) {
-                console.log("error", error);
                 dispatch(
                     authFailed(error.response ? error.response.data : null)
                 );
@@ -80,7 +79,6 @@ export function authenticate(credentials) {
 }
 
 export function authStart(credentials) {
-    console.log(credentials);
     return {
         type: LOGIN_START,
         credentials,
@@ -148,9 +146,7 @@ export function authEmailVisitorFailed(error) {
 }
 
 export function verify() {
-    console.log("verify")
     return dispatch => {
-        console.log("verify inner", dispatch)
         dispatch(verifyStart());
         axios
             .get(ENDPOINT_VERIFY)
@@ -256,7 +252,6 @@ export function logoutSuccess() {
 }
 
 export function logoutFailed(error) {
-    console.log('logoutFailed: ', error);
     return {
         type: LOGOUT_FAILED,
         error,

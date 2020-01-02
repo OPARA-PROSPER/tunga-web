@@ -8,7 +8,7 @@ import MetaTags from "../MetaTags";
 import Icon from "../core/Icon";
 import OverlayTooltip from "../core/OverlayTooltip";
 
-import {nl_to_br} from "../../legacy/utils/html";
+import {nl_to_br} from "../utils/helpers";
 
 const L10N_RESOURCES = {
     en: {
@@ -108,12 +108,12 @@ export default class Friends extends React.Component {
                 <div className="flags">
                     <img
                         className="en"
-                        src={require('../../assets/images/flags/English.png')}
+                        src={require('../../assets/images/flags/English.png').default}
                         onClick={this.onSelectLanguage.bind(this, 'en')}
                     />
                     <img
                         className="nl"
-                        src={require('../../assets/images/flags/Dutch.png')}
+                        src={require('../../assets/images/flags/Dutch.png').default}
                         onClick={this.onSelectLanguage.bind(this, 'nl')}
                     />
                 </div>

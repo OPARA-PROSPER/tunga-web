@@ -4,8 +4,7 @@ import has from 'lodash/has';
 import * as actions from './actions';
 import * as types from './constants';
 
-function* fetchVlogs(action) {
-    console.log(action);
+export function* fetchVlogs(action) {
     try {
         const response = yield call(api, {
             method: 'get',

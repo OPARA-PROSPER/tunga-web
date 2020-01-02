@@ -39,9 +39,7 @@ export default class Team extends React.Component {
 
                 ProjectActions.updateProject(project.id, reqData);
             }
-        }, error => {
-            console.log('error: ', error);
-        });
+        }, error => {});
     }
 
     onDeleteUser(user, type, participation){

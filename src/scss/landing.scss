@@ -1,0 +1,93 @@
+.PageScroller {
+    scroll-behavior: smooth; // smooth scrolling
+    height: 100vh;
+    overflow-y: hidden;//scroll;
+
+}
+
+//// >sidenav
+@import "../components/sidenav/sidenav";
+
+//// >assets>scss
+@import "../components/latest-landing/assets/scss/variable";
+@import "../components/latest-landing/assets/scss/_util";
+@import "../components/latest-landing/assets/scss/landing";
+
+//// >home
+//@import "../latest-landing/home/_AboutUs/_AboutUs";
+//@import "../latest-landing/home/_CaseStudies/_CaseStudyCard/_CaseStudyCard";
+//@import "../latest-landing/home/_CaseStudies/_CaseStudies";
+//@import "../latest-landing/home/_OurService/_ServiceCard/_ServiceCard";
+//@import "../latest-landing/home/_OurService/_OurService";
+@import "../components/latest-landing/home/AboutUs/AboutUs";
+@import "../components/latest-landing/home/BlogPage/BlogPage";
+@import "../components/latest-landing/home/CaseStudies/CaseStudyCard/CaseStudyCard";
+@import "../components/latest-landing/home/CaseStudies/CaseStudies";
+@import "../components/latest-landing/home/CodeOfConduct/CodeOfConduct";
+@import "../components/latest-landing/home/DevProfile/Badges/Badges";
+@import "../components/latest-landing/home/DevProfile/Experience/Experience";
+@import "../components/latest-landing/home/DevProfile/Info/Info";
+@import "../components/latest-landing/home/DevProfile/Interest/Interest";
+@import "../components/latest-landing/home/DevProfile/Map/Map";
+@import "../components/latest-landing/home/DevProfile/Profile/Profile";
+@import "../components/latest-landing/home/DevProfile/Ratings/Ratings";
+@import "../components/latest-landing/home/DevProfile/SearchForm/SearchForm";
+@import "../components/latest-landing/home/DevProfile/SkillSet/SkillSet";
+@import "../components/latest-landing/home/DevProfile/DevProfile";
+@import "../components/latest-landing/home/Join/Join";
+//@import "../latest-landing/home/Login/LoginForm/LoginForm";
+//@import "../latest-landing/home/Login/Login";
+@import "../components/latest-landing/home/News/Blog/Blog";
+@import "../components/latest-landing/home/News/NewsArticle/NewsArticle";
+@import "../components/latest-landing/home/News/Publications/PublicationDownload/PublicationDownload";
+@import "../components/latest-landing/home/News/Publications/Publications";
+@import "../components/latest-landing/home/News/Vlog/VlogVideo/VlogVideo";
+@import "../components/latest-landing/home/News/Vlog/Vlog";
+@import "../components/latest-landing/home/News/News";
+@import "../components/latest-landing/home/OurService/ServiceCard/ServiceCard";
+@import "../components/latest-landing/home/OurService/ServiceDetail/ServiceDetail";
+@import "../components/latest-landing/home/OurService/UseCase/UseCase";
+@import "../components/latest-landing/home/OurService/OurService";
+@import "../components/latest-landing/home/OurStory/Africa/Africa";
+@import "../components/latest-landing/home/OurStory/Approach/Approach";
+@import "../components/latest-landing/home/OurStory/Hero/Hero";
+@import "../components/latest-landing/home/OurStory/ImageBox/ImageBox";
+@import "../components/latest-landing/home/OurStory/ImpactSourcing/ImpactSourcing";
+@import "../components/latest-landing/home/OurStory/OurDream/OurDream";
+@import "../components/latest-landing/home/OurStory/OurMission/OurMission";
+@import "../components/latest-landing/home/OurStory/OurSolution/OurSolution";
+@import "../components/latest-landing/home/OurStory/TheProblem/TheProblem";
+@import "../components/latest-landing/home/OurStory/OurStory";
+@import "../components/latest-landing/home/OurTeam/CoreTeam/CoreMember/CoreMember";
+@import "../components/latest-landing/home/OurTeam/CoreTeam/CoreTeam";
+@import "../components/latest-landing/home/OurTeam/TalentPool/Talent/Talent";
+@import "../components/latest-landing/home/OurTeam/TalentPool/TalentSearch/TalentSearch";
+@import "../components/latest-landing/home/OurTeam/TalentPool/TalentPool";
+@import "../components/latest-landing/home/OurTeam/OurTeam";
+@import "../components/latest-landing/home/Privacy/Privacy";
+@import "../components/latest-landing/home/ScheduleCall/ScheduleCall";
+@import "../components/latest-landing/home/UserAgreement/UserAgreement";
+//@import "../latest-landing/home/Home";
+
+//// >layout
+@import "../components/latest-landing/layout/BlogHeader/BlogHeader";
+@import "../components/latest-landing/layout/Default/Default";
+//@import "../latest-landing/layout/Footer/slick/slick/slick";
+//@import "../latest-landing/layout/Footer/slick/slick/slick-theme";
+@import "../components/latest-landing/layout/Footer/Footer";
+@import "../components/latest-landing/layout/Header/Header";
+@import "../components/latest-landing/layout/Nav/Nav";
+
+//// >shared
+@import "../components/latest-landing/shared/Alert/Alert";
+@import "../components/latest-landing/shared/AuthPage/AuthForm/AuthForm";
+@import "../components/latest-landing/shared/AuthPage/AuthPage";
+@import "../components/latest-landing/shared/Carousel/Carousel";
+//@import "../latest-landing/shared/ChatWidget/ChatWidget";
+@import "../components/latest-landing/shared/Form/Form";
+@import "../components/latest-landing/shared/Loader/Loader";
+@import "../components/latest-landing/shared/PageScroll/JumpToTop/JumpToTop";
+@import "../components/latest-landing/shared/PaginateArrow/PaginateArrow";
+
+
+

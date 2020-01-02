@@ -1,26 +1,23 @@
 "use strict";
 
 var webpack = require("webpack"),
-  config = require("./webpack.config"),
-  common_config = require("./webpack.common.config");
+    config = require("./webpack.config"),
+    common_config = require("./webpack.common.config");
 
-config.debug = false;
-config.devtool = "source-map";
+config.mode = 'production';
+delete config.devtool;
+
 config.plugins = [
-  common_config.plugins.CleanWebpackPlugin,
-  new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify("production")
-    }
-  }),
-  new webpack.optimize.DedupePlugin(),
-  new webpack.optimize.UglifyJsPlugin({ minimize: true }),
-  common_config.plugins.chunkVendorPlugin,
-  common_config.plugins.HTMLInjectPlugin,
-  //common_config.plugins.LegacyHTMLInjectPlugin,
-  common_config.plugins.StyleGuideInjectPlugin,
-  common_config.plugins.noErrorsPlugin,
-  common_config.plugins.magicGlobalsPlugin
+    //common_config.plugins.cleanBuildFolderPlugin,
+    common_config.plugins.appInjectPlugin,
+    common_config.plugins.styleGuideInjectPlugin,
+    common_config.plugins.magicGlobalsPlugin({
+        "process.env": {
+            NODE_ENV: JSON.stringify("production")
+        },
+        __SSR__: true,
+    }),
+    common_config.plugins.miniCssExtractPlugin,
 ];
 
 module.exports = config;

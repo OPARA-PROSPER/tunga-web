@@ -8,11 +8,8 @@ import connect from '../connectors/AuthConnector';
 import store from '../store';
 
 import DashboardLayout from './dashboard/DashboardLayout';
-//import ChatWidget from "./chat/ChatWidget";
-//import LegacyRedirect from './showcase/LegacyRedirect';
 import BootLogo from "./core/BootLogo";
-//import ShowcaseLayout from "./showcase/ShowcaseLayout";
-import NewShowcaseLayout from "../latest-landing/App";
+import NewShowcaseLayout from "./latest-landing/App";
 import Button from "./core/Button";
 
 import {
@@ -32,8 +29,9 @@ class App extends React.Component {
 
         this.state = {
             hasVerified: user && user.id,
-            showProgress: !user || !user.id, // Used to prevent flickering
-            showConsentAlert: !getCookieConsentCloseAt() && !getCookieConsent()
+            showProgress: !__SSR__ && (!user || !user.id), // Used to prevent flickering
+            showConsentAlert: !getCookieConsentCloseAt() && !getCookieConsent(),
+            key: null // SSR breaks some frontend things (e.g infinite slider), so we'll use key to rerender from browser
         };
     }
 
@@ -41,6 +39,11 @@ class App extends React.Component {
         const {Auth} = this.props;
         if (!this.state.hasVerified && !Auth.isVerifying) {
             this.props.AuthActions.verify();
+        }
+
+        if(__SSR__) {
+            console.log('Forcing app re-render');
+            this.setState({key: 'ssr-re-render'}); // trigger rerender for SSR
         }
 
         if (this.state.showProgress) {
@@ -90,10 +93,10 @@ class App extends React.Component {
             isStillLoading = !this.state.hasVerified || this.state.showProgress;
 
         return (
-            isAuthAwarePage && isStillLoading ? (
+            isAuthAwarePage && isStillLoading && !__SSR__? (
                 <BootLogo/>
             ) : (
-                <Media query="(min-width: 992px)">
+                <Media query="(min-width: 992px)" defaultMatches={false}>
                     {isLargeDevice => (
                         <div>
                             <Switch>
@@ -132,7 +135,6 @@ class App extends React.Component {
                                                                isLargeDevice={isLargeDevice}/>}/>
                                     );
                                 })}
-                                {/*<Route path="/legacy" component={LegacyRedirect} />*/}
                                 {['/tunga', '*'].map(path => {
                                     return (
                                         <Route key={`app-path--${path}`}
@@ -147,15 +149,6 @@ class App extends React.Component {
 
                             {isStillLoading ? null : (
                                 <React.Fragment>
-                                    {/*user && (user.is_admin || user.is_project_manager)?null:(
-                                        <Switch>
-                                            <Route exact path='/customer/help/:channelId' render={props =>
-                                                <ChatWidget channelId={props.match.params.channelId} autoOpen={true}/>}/>
-                                            <Route path="/join" render={props => {return null}} />
-                                            <Route path="*" component={ChatWidget} />
-                                        </Switch>
-                                    )*/}
-
                                     {this.state.showConsentAlert ? (
                                         <div id="cookie-consent"
                                              className="clearfix">

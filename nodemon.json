@@ -6,18 +6,17 @@
     },
     "ignore": [
         "node_modules",
-        "build",
-        "src/images"
+        "src",
+        "scripts",
+        ".ansible",
+        ".github"
     ],
-    "events": {
-        "restart": "npm run prettier"
-    },
     "watch": [
-        "src"
+        "build"
     ],
     "env": {
         "NODE_ENV": "development"
     },
-    "ext": "js jsx json less",
-    "exec": "npm run prettier"
+    "ext": "js jsx json less scss",
+    "exec": "npm run server"
 }

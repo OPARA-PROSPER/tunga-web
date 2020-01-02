@@ -12,3 +12,10 @@ export function displayExpectedReturn(value) {
     }
     return displayValue;
 }
+
+export function nl_to_br(str) {
+    if (str) {
+        return str.replace(/\n/gi, '<br />');
+    }
+    return str;
+}

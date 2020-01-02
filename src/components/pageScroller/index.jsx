@@ -18,7 +18,7 @@ class PageScroller extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize)
-      }
+    }
 
 
     goToPage = (pageNumber) => {
@@ -29,13 +29,12 @@ class PageScroller extends React.Component {
 
     handleResize = () => this.setState({
         screenWidth: window.innerWidth
-      });
+    });
 
 
     render() {
         const screen = this.state.screenWidth;
-        console.log(screen);
-        const { goToPage, onPageScrolled } = this.props;
+        const {goToPage, onPageScrolled} = this.props;
 
         if (typeof goToPage !== 'undefined' && goToPage !== false) {
             this.goToPage(goToPage);
@@ -53,7 +52,8 @@ class PageScroller extends React.Component {
                             >
                                 {this.props.children}
                             </ ReactPageScroller>
-                            <SideNav pages={this.props.pages} goToPage={this.goToPage}/>
+                            <SideNav pages={this.props.pages}
+                                     goToPage={this.goToPage}/>
                         </div>
                     ) : (
                         <div>

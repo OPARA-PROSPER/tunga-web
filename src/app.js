@@ -1,10 +1,14 @@
 import 'babel-polyfill'; // Add Promises polyfill to global environment
 
+import smoothscroll from 'smoothscroll-polyfill';
+// kick off the polyfill!
+smoothscroll.polyfill();
+
 //Import local css
 import 'react-widgets/lib/less/react-widgets.less';
 import './scss/tunga.scss';
-import './latest-landing/assets/fonts/fonts.css';
-import './latest-landing/assets/scss/landing.scss'; // added by Kazeem
+import './components/latest-landing/assets/fonts/fonts.css';
+import './scss/landing.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -25,6 +29,7 @@ import App from "./latest-landing/App";
 
 import App from './components/App';
 import * as Sentry from "@sentry/browser";
+import { HelmetProvider } from 'react-helmet-async';
 
 
 if (__PRODUCTION__) {
@@ -33,10 +38,12 @@ if (__PRODUCTION__) {
 }
 
 
-ReactDOM.render(
+ReactDOM.hydrate(
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+            <HelmetProvider>
+                <App />
+            </HelmetProvider>
         </BrowserRouter>
     </Provider>,
     document.getElementById('app-root'),

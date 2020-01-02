@@ -54,7 +54,7 @@ export default () => {
                         </div>
                         <div className="dot-connector">
                             <img
-                                src={require('../../assets/images/icons/dot_curve1.png')}
+                                src={require('../../assets/images/icons/dot_curve1.png').default}
                                 alt=""
                             />
                         </div>
@@ -81,7 +81,7 @@ export default () => {
                         </div>
                         <div className="dot-connector">
                             <img
-                                src={require('../../assets/images/icons/dot_curve2.png')}
+                                src={require('../../assets/images/icons/dot_curve2.png').default}
                                 alt=""
                             />
                         </div>
@@ -107,7 +107,7 @@ export default () => {
                         </div>
                         <div className="dot-connector">
                             <img
-                                src={require('../../assets/images/icons/dot_curve1.png')}
+                                src={require('../../assets/images/icons/dot_curve1.png').default}
                                 alt=""
                             />
                         </div>

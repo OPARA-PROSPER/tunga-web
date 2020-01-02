@@ -3,3 +3,4 @@ branch: master
 install_command: npm install
 build_command: npm run build
 server_root: /srv/tunga/web/
+server_process: tunga_web

@@ -20,12 +20,20 @@ export default class Button extends React.Component {
     };
 
     render() {
-        return (
-            <button type={this.props.type}
-                    className={`btn ${this.props.variant?`btn-${this.props.variant}`:''} ${this.props.className || ''} ${this.props.block?'btn-block':''} ${this.props.size ?`btn-${this.props.size}`:''}`}
+        const {children, type, className, href, variant, block, size, ...otherProps} = this.props, 
+            buttonEvents = addEventListeners(BUTTON_EVENTS, this.props), 
+            outputClassName = `btn ${variant?`btn-${variant}`:''} ${className || ''} ${block?'btn-block':''} ${size ?`btn-${size}`:''}`;
+        
+        return href?(
+            <a {...otherProps} href={href} className={outputClassName} {...buttonEvents}>
+                {children}
+            </a>
+        ):(
+            <button type={type}
+                    className={outputClassName}
                     {...filterButtonProps(this.props)}
-                    {...addEventListeners(BUTTON_EVENTS, this.props)}>
-                {this.props.children}
+                    {...buttonEvents}>
+                {children}
             </button>
         );
     }

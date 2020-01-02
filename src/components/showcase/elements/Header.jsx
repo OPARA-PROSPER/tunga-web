@@ -18,7 +18,7 @@ export default ({title, description, className, showCTA=true, ctaText='Schedule 
                         loop
                         muted>
                         <source
-                            src={require('../../../assets/videos/BG.mp4')}
+                            src={require('../../../assets/videos/BG.mp4').default}
                             type="video/mp4"
                         />
                     </video>

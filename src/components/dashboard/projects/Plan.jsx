@@ -81,9 +81,7 @@ export default class Plan extends React.Component {
                     ProjectActions.createProject(data);
                 }
             }
-        }, error => {
-            console.log('error: ', error);
-        });
+        }, error => {});
     }
 
     onManageMilestone(milestone) {
@@ -116,9 +114,7 @@ export default class Plan extends React.Component {
                     ProjectActions.createProgressEvent(data);
                 }
             }
-        }, error => {
-            console.log('error: ', error);
-        });
+        }, error => {});
     }
 
     onManagePlan(plan) {
@@ -155,9 +151,7 @@ export default class Plan extends React.Component {
                     ProjectActions.createDocument(data);
                 }
             }
-        }, error => {
-            console.log('error: ', error);
-        });
+        }, error => {});
     }
 
     render() {

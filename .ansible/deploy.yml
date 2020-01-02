@@ -22,5 +22,9 @@
       shell: 'rsync -av -R * {{ server_root }}'
       args:
         chdir: '{{ checkout_path }}build/'
+    - name: restart server process
+      supervisorctl:
+        name: '{{ server_process }}'
+        state: restarted
     - name: reload nginx
       service: name=nginx state=reloaded

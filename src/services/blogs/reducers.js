@@ -31,7 +31,7 @@ const blogsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is: isProps,
-                blogList: action.data,
+                blogList: Array.isArray(action.data)?action.data: [],
             };
 
         case types.FETCH_BLOGS_FAILURE:

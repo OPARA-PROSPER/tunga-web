@@ -27,6 +27,12 @@
 	width: 60px;
 	display: list-item;
     text-align: -webkit-match-parent;
+
+    &:hover, &:focus {
+        .side-bar-label-hidden {
+            opacity: 1;
+        }
+    }
 }
 
 .side-bar-tab {
