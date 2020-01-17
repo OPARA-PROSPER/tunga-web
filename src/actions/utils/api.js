@@ -238,6 +238,7 @@ export const PROGRESS_EVENT_TYPE_MILESTONE = 'milestone';
 export const PROGRESS_EVENT_TYPE_DEVELOPER = 'developer';
 export const PROGRESS_EVENT_TYPE_PM = 'pm';
 export const PROGRESS_EVENT_TYPE_CLIENT = 'client';
+export const PROGRESS_EVENT_TYPE_CLIENT_DEVELOPER_RATING = 'developer_rating';
 export const PROGRESS_EVENT_TYPE_MILESTONE_INTERNAL = 'internal';
 export const PROGRESS_EVENT_TYPE_CLIENT_MID_SPRINT = 9;
 
