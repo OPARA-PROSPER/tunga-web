@@ -366,7 +366,7 @@ export default class ActivityList extends React.Component {
                 if (
                     isClient() &&
                     !isAdmin() &&
-                    ([PROGRESS_EVENT_TYPE_PM, PROGRESS_EVENT_TYPE_MILESTONE_INTERNAL].includes(activity.event.type) ||
+                    ([PROGRESS_EVENT_TYPE_PM, PROGRESS_EVENT_TYPE_MILESTONE_INTERNAL,PROGRESS_EVENT_TYPE_CLIENT_DEVELOPER_RATING].includes(activity.event.type) ||
                         (PROGRESS_EVENT_TYPE_MILESTONE === activity.event.type && activity.user.is_project_manager))
                 ) {
                     break;
@@ -387,7 +387,7 @@ export default class ActivityList extends React.Component {
                             <p>
                                 <Icon name="newspaper-o" />{' '}
                                 {[
-                                    PROGRESS_EVENT_TYPE_CLIENT,
+                                    PROGRESS_EVENT_TYPE_CLIENT,PROGRESS_EVENT_TYPE_CLIENT_DEVELOPER_RATING
                                 ].includes(activity.event.type) ||
                                 (PROGRESS_EVENT_TYPE_MILESTONE === activity.event.type && activity.user.is_project_owner)
                                     ? 'Progress survey'
@@ -398,7 +398,7 @@ export default class ActivityList extends React.Component {
                                     activity.event.id
                                 }/`}>
                                 {[
-                                    PROGRESS_EVENT_TYPE_CLIENT,
+                                    PROGRESS_EVENT_TYPE_CLIENT,PROGRESS_EVENT_TYPE_CLIENT_DEVELOPER_RATING
                                 ].includes(activity.event.type) ||
                                 (PROGRESS_EVENT_TYPE_MILESTONE === activity.event.type && activity.user.is_project_owner)
                                     ? 'Progress survey'
@@ -406,7 +406,7 @@ export default class ActivityList extends React.Component {
                                       'Scheduled Update'}
                             </Link>
                             {[
-                                PROGRESS_EVENT_TYPE_CLIENT,
+                                PROGRESS_EVENT_TYPE_CLIENT,PROGRESS_EVENT_TYPE_CLIENT_DEVELOPER_RATING
                             ].includes(activity.event.type) ||
                             (PROGRESS_EVENT_TYPE_MILESTONE === activity.event.type && activity.user.is_project_owner) ? null : (
                                 <div>
