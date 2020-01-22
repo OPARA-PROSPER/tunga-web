@@ -1,29 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
-import { Row, Col } from 'reactstrap';
 
-import IconButton from '../../core/IconButton';
-import Icon from '../../core/Icon';
-import MilestoneForm from "./modals/MilestoneForm";
-import PlanningForm from "./modals/PlanningForm";
-import ProjectDateForm from "./modals/ProjectDateForm";
-
-
-import { openModal } from '../../core/utils/modals';
-import { isAdmin, isAdminOrPMOrClient, isDevOrClient } from '../../utils/auth';
-
-import Smiley_1 from '../../../assets/images/icons/1_5_smiley.svg';
-import Smiley_2 from '../../../assets/images/icons/2_5_smiley.svg';
-import Smiley_3 from '../../../assets/images/icons/3_5_smiley.svg';
-import Smiley_4 from '../../../assets/images/icons/4_5_smiley.svg';
-import Smiley_5 from '../../../assets/images/icons/5_5_smiley.svg';
-import CaseStudyCard from "../../../latest-landing/home/CaseStudies/CaseStudyCard/CaseStudyCard";
 import Button from "../../core/Button";
 import SurveyIcon from "./common/SurveyIcon";
+import { submitDeveloperRating, resetDeveloperRating, retrieveProject } from "../../../actions/ProjectActions";
+import { retrieveProgressEvent } from "../../../actions/ProgressEventActions";
+import { connect } from "react-redux";
 
 
-export default class Survey extends React.Component {
+class Survey extends React.Component {
     static propTypes = {
         project: PropTypes.object,
         ProjectActions: PropTypes.object,
@@ -38,47 +24,114 @@ export default class Survey extends React.Component {
             icons: [
                 {
                     rating: 1,
-                    img: Smiley_1,
                 },
                 {
                     rating: 2,
-                    img: Smiley_2,
                 },
                 {
                     rating: 3,
-                    img: Smiley_3,
                 },
                 {
                     rating: 4,
-                    img: Smiley_4,
                 },
                 {
                     rating: 5,
-                    img: Smiley_5,
                 },
-            ]
+            ],
+            ratings: {},
+            incompleteRatings: false
+        };
+
+        this.onDeveloperRating = this.onDeveloperRating.bind(this);
+        this.submitDeveloperRating = this.submitDeveloperRating.bind(this);
+    }
+
+
+    componentWillUnmount() {
+        this.props.resetDeveloperRating();
+        // this.props.retrieveProgressEvent(this.props.event.id);
+    }
+
+
+    submitDeveloperRating(e) {
+        e.preventDefault();
+
+        if (
+            (this.props.project.category !== 'dedicated' && this.state.ratings.length === 1)
+            && Object.keys(this.state.ratings).length !== this.getDevelopers().length
+        ) {
+            this.setState({ incompleteRatings: true });
+            return;
         }
+
+        this.setState({ incompleteRatings: false });
+        Object.keys(this.state.ratings).forEach((memberId) => {
+            const payload = {
+                event: {
+                    id: this.props.event.id,
+                },
+            };
+
+            if (this.props.project.category === 'dedicated') {
+                payload.rating = this.state.ratings[memberId];
+                payload.user = memberId;
+                payload.created_by = this.props.auth.user.id;
+            } else {
+                payload.rate_communication = this.state.ratings[memberId];
+                payload.user = {
+                    id: this.props.auth.user.id
+                };
+            }
+
+            this.props.submitDeveloperRating(payload);
+        });
+    }
+
+
+    onDeveloperRating({ rating, member }) {
+        const ratings = this.state.ratings;
+        ratings[member.id] = rating.rating;
+        this.setState({ rating });
+    }
+
+
+    getDevelopers() {
+        return this.props.project.participation
+            .filter(({ user }) => user.is_developer)
+            .map(({ user }) => ({ name: user.display_name, id: user.id }))
+    }
+
+
+    getExistingRating(event) {
+        const ratings = event.developer_ratings.length ? event.developer_ratings : event.progress_reports;
+        return ratings
+            .map(({ user, rate_communication, rating }) => ({
+                name: user.display_name,
+                id: user.id,
+                rating: rating || rate_communication
+            }))
     }
 
 
     render() {
-        const { project, location } = this.props;
-        const splitPaths = location.pathname.split('/');
-        const type = splitPaths[splitPaths.length - 1];
-        const developers = project.participation
-            .filter(({ user }) => user.is_developer)
-            .map(({ user }) => ({ name: user.display_name }));
+        const { project, projectStore, event } = this.props;
+        const isSaved = projectStore['isSaved']['developerRating'];
+        const isSaving = projectStore['isSaving']['developerRating'];
+        const hasRating = event.developer_ratings.length || event.progress_reports.length;
+        const developers = hasRating ? this.getExistingRating(event) : this.getDevelopers();
 
         const types = {
-            developers,
-            team: [
+            developer_rating: developers,
+            team: hasRating ? developers : [
                 {
                     name: 'Tunga'
                 }
             ]
         };
 
-        const members = types[type] || [];
+        const showSubmission = !hasRating;
+        event.type = project.category === 'dedicated' ? event.type : 'team';
+        const members = types[event.type] || [];
 
         return (
             <div className="survey">
@@ -87,25 +140,77 @@ export default class Survey extends React.Component {
                         Client survey
                     </div>
                     <div>
-                        Due date: {moment.utc(project.deadline).local().format('lll')}
+                        Due date: {moment.utc(this.props.event.due_at).local().format('lll')}
                     </div>
                 </div>
+
                 {
-                    members.map((member, i) => (
-                        <div className="survey__block" key={i}>
-                            <div className="survey__cta">
-                                How would you rate the collaboration with {member.name} for {project.description}?
-                            </div>
-                            <SurveyIcon/>
-                        </div>
-                    ))
+                    isSaving
+                    &&
+                    <div className="text-warning">
+                        <em>
+                            Submitting ratings
+                        </em>
+                    </div>
                 }
-                <div className="survey__btn-wrapper">
-                    <Button>
-                        Submit Report
-                    </Button>
-                </div>
+
+                {
+                    !isSaved
+                        ?
+                        <div>
+                            {
+                                members.map((member, i) => (
+                                    <div className="survey__block" key={i}>
+                                        <div className="survey__cta">
+                                            How would you rate the collaboration with {member.name} for {project.title}?
+                                        </div>
+                                        <SurveyIcon
+                                            rating={member.rating}
+                                            onRating={(rating) => {
+                                                this.onDeveloperRating({ rating, member })
+                                            }}/>
+                                    </div>
+                                ))
+                            }
+                            {
+                                this.state.incompleteRatings &&
+                                <div className="text-danger p-1 pb-3">
+                                    Please complete all ratings
+                                </div>
+                            }
+
+                            {
+                                showSubmission
+                                &&
+                                <div className="survey__btn-wrapper">
+                                    <Button disabled={isSaving} onClick={this.submitDeveloperRating}>
+                                        {isSaving ? 'Submitting ratings' : 'Submit Ratings'}
+                                    </Button>
+                                </div>
+                            }
+                        </div>
+                        :
+                        <div className="text-success">
+                            Ratings have been submitted successful
+                        </div>
+                }
             </div>
         );
     }
 }
+
+
+const mapStateToProps = store => ({
+    projectStore: store.app.Project,
+    auth: store.app.Auth
+});
+
+const mapDispatchToProps = dispatch => {
+    return {
+        submitDeveloperRating: (event) => dispatch(submitDeveloperRating(event)),
+        resetDeveloperRating: (event) => dispatch(resetDeveloperRating()),
+        retrieveProgressEvent: (id) => dispatch(retrieveProgressEvent(id)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Survey);

@@ -94,6 +94,8 @@ export const ENDPOINT_MIGRATE = getEndpointUrl('migrate/');
 export const ENDPOINT_NOTIFICATION_LOG = getEndpointUrl('notification-log/');
 export const ENDPOINT_LOG_SEARCH = getEndpointUrl('log/search/');
 export const ENDPOINT_VISITORS = getEndpointUrl('visitors/');
+export const ENDPOINT_DEVELOPER_RATING = getEndpointUrl('developer-rating/');
+export const ENDPOINT_GENERAL_RATING = getEndpointUrl('progress-reports/');
 
 export function flattenJson(jsonData, key) {
     let flattenedData = {};
@@ -236,6 +238,7 @@ export const PROGRESS_EVENT_TYPE_MILESTONE = 'milestone';
 export const PROGRESS_EVENT_TYPE_DEVELOPER = 'developer';
 export const PROGRESS_EVENT_TYPE_PM = 'pm';
 export const PROGRESS_EVENT_TYPE_CLIENT = 'client';
+export const PROGRESS_EVENT_TYPE_CLIENT_DEVELOPER_RATING = 'developer_rating';
 export const PROGRESS_EVENT_TYPE_MILESTONE_INTERNAL = 'internal';
 export const PROGRESS_EVENT_TYPE_CLIENT_MID_SPRINT = 9;
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {composeFormData, ENDPOINT_PROJECTS} from './utils/api';
+import { composeFormData, ENDPOINT_PROJECTS, ENDPOINT_DEVELOPER_RATING, ENDPOINT_GENERAL_RATING } from './utils/api';
+import { retrieveProgressEvent } from "./ProgressEventActions";
 
 export const CREATE_PROJECT_START = 'CREATE_PROJECT_START';
 export const CREATE_PROJECT_SUCCESS = 'CREATE_PROJECT_SUCCESS';
@@ -22,6 +23,10 @@ export const DELETE_PROJECT_FAILED = 'DELETE_PROJECT_FAILED';
 export const SEND_REMINDER_START = 'SEND_REMINDER_START';
 export const SEND_REMINDER_SUCCESS = 'SEND_REMINDER_SUCCESS';
 export const SEND_REMINDER_FAILED = 'SEND_REMINDER_FAILED';
+export const SUBMIT_DEVELOPER_RATING_START = 'SUBMIT_DEVELOPER_RATING_START';
+export const SUBMIT_DEVELOPER_RATING_SUCCESS = 'SUBMIT_DEVELOPER_RATING_SUCCESS';
+export const SUBMIT_DEVELOPER_RATING_FAILED = 'SUBMIT_DEVELOPER_RATING_FAILED';
+export const RESET_DEVELOPER_RATING = 'RESET_DEVELOPER_RATING';
 
 export function createProject(project, target) {
     return dispatch => {
@@ -36,11 +41,11 @@ export function createProject(project, target) {
         }
 
         axios
-            .post(ENDPOINT_PROJECTS, data, {headers})
-            .then(function(response) {
+            .post(ENDPOINT_PROJECTS, data, { headers })
+            .then(function (response) {
                 dispatch(createProjectSuccess(response.data, target));
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 dispatch(
                     createProjectFailed(
                         (error.response ? error.response.data : null), project, target
@@ -79,11 +84,11 @@ export function listProjects(filter, selection, prev_selection) {
     return dispatch => {
         dispatch(listProjectsStart(filter, selection, prev_selection));
         axios
-            .get(ENDPOINT_PROJECTS, {params: filter})
-            .then(function(response) {
+            .get(ENDPOINT_PROJECTS, { params: filter })
+            .then(function (response) {
                 dispatch(listProjectsSuccess(response.data, filter, selection));
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 dispatch(
                     listProjectsFailed(
                         error.response ? error.response.data : null,
@@ -127,10 +132,10 @@ export function retrieveProject(id) {
         dispatch(retrieveProjectStart(id));
         axios
             .get(ENDPOINT_PROJECTS + id + '/')
-            .then(function(response) {
+            .then(function (response) {
                 dispatch(retrieveProjectSuccess(response.data, id));
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 dispatch(
                     retrieveProjectFailed(
                         error.response ? error.response.data : null, id
@@ -176,12 +181,12 @@ export function updateProject(id, project) {
 
         axios
             .patch(`${ENDPOINT_PROJECTS}${id}/`, data, {
-                headers: {...headers},
+                headers: { ...headers },
             })
-            .then(function(response) {
+            .then(function (response) {
                 dispatch(updateProjectSuccess(response.data, id));
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 dispatch(
                     updateProjectFailed(
                         (error.response ? error.response.data : null), project, id
@@ -222,10 +227,10 @@ export function listMoreProjects(url, selection) {
         dispatch(listMoreProjectsStart(url, selection));
         axios
             .get(url)
-            .then(function(response) {
+            .then(function (response) {
                 dispatch(listMoreProjectsSuccess(response.data, selection));
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 dispatch(
                     listMoreProjectsFailed(
                         error.response ? error.response.data : null,
@@ -302,10 +307,10 @@ export function sendReminder(id, target) {
 
         axios
             .post(`${ENDPOINT_PROJECTS}${id}/remind/`, {})
-            .then(function(response) {
+            .then(function (response) {
                 dispatch(sendReminderSuccess(response.data, id, target));
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 dispatch(
                     sendReminderFailed(
                         (error.response ? error.response.data : null), id, target
@@ -338,5 +343,57 @@ export function sendReminderFailed(error, id, target) {
         error,
         id,
         target
+    };
+}
+
+export function submitDeveloperRating(event, target) {
+    return dispatch => {
+        const url = event.rate_communication ? ENDPOINT_GENERAL_RATING : ENDPOINT_DEVELOPER_RATING;
+        dispatch(submitDeveloperRatingStart(event));
+
+        axios
+            .post(url, event)
+            .then(function (response) {
+                dispatch(submitDeveloperRatingSuccess(response.data, event));
+                dispatch(retrieveProgressEvent(event.event.id));
+            })
+            .catch(function (error) {
+                dispatch(
+                    submitDeveloperRatingFailed(
+                        (error.response ? error.response.data : null), event, target
+                    ),
+                );
+            });
+    };
+}
+
+export function resetDeveloperRating() {
+    return dispatch => {
+        dispatch({
+            type: RESET_DEVELOPER_RATING,
+        });
+    };
+}
+
+
+export function submitDeveloperRatingStart(event) {
+    return {
+        type: SUBMIT_DEVELOPER_RATING_START,
+        event,
+    };
+}
+
+export function submitDeveloperRatingSuccess(event) {
+    return {
+        type: SUBMIT_DEVELOPER_RATING_SUCCESS,
+        event,
+    };
+}
+
+export function submitDeveloperRatingFailed(error, event) {
+    return {
+        type: SUBMIT_DEVELOPER_RATING_FAILED,
+        error,
+        event,
     };
 }
