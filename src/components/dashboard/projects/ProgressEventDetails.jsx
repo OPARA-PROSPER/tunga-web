@@ -44,9 +44,8 @@ export default class ProgressEventDetails extends React.Component {
     render() {
         const {match, project, progress_event, ProgressEventActions, Report, errors} = this.props;
         if (progress_event.type === 'developer_rating') {
-            return <Survey event={progress_event} project={project}/>
+            return <Survey event={progress_event} project={project} />
         }
-
 
         const {progress_reports} = progress_event,
             myReport = this.getMyReport();

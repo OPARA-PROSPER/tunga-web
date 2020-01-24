@@ -148,9 +148,7 @@ export function authEmailVisitorFailed(error) {
 }
 
 export function verify() {
-    console.log("verify")
     return dispatch => {
-        console.log("verify inner", dispatch)
         dispatch(verifyStart());
         axios
             .get(ENDPOINT_VERIFY)

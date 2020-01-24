@@ -620,7 +620,7 @@ export default class ProgressReportForm extends React.Component {
                                 </label>
                                 <SurveyIcon
                                     onRating={(rating) => {
-                                        this.onChangeValue('team_appraisal', rating.rating);
+                                        this.onChangeValue('team_appraisal', rating);
                                     }}/>
                             </div>
                         </div>

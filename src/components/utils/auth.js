@@ -107,14 +107,13 @@ export function hasProjectAccess(project) {
 }
 
 export function isProjectClient(project) {
-    let allowedUserIds = [];
     const userId = getUser().id;
     if(project.owner && project.owner.id === userId) {
         return true;
     }
 
     if(project.user) {
-        return (project.user.id === userId) && (!project.owner || !isAdmin())
+        return (project.user.id === userId) && (!project.owner || !isAdmin());
     }
     return false;
 }
