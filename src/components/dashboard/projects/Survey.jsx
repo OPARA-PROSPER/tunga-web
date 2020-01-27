@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
+import _ from 'lodash';
 
 import Button from "../../core/Button";
 import SurveyIcon from "./common/SurveyIcon";
-import { submitDeveloperRating, resetDeveloperRating, retrieveProject } from "../../../actions/ProjectActions";
-import { retrieveProgressEvent } from "../../../actions/ProgressEventActions";
-import { connect } from "react-redux";
+import {
+    submitDeveloperRating,
+    resetDeveloperRating,
+    retrieveProject
+} from "../../../actions/ProjectActions";
+import {retrieveProgressEvent} from "../../../actions/ProgressEventActions";
+import {connect} from "react-redux";
+import {getUser, isProjectClient} from "../../utils/auth";
 
 
 class Survey extends React.Component {
@@ -17,121 +23,120 @@ class Survey extends React.Component {
         isSaved: PropTypes.object,
     };
 
-
     constructor(props) {
-        super();
+        super(props);
+
+        let ratingsMap = {};
+        _.filter(this.parseRatings(props), item => item.authorId === getUser().id && item.value).forEach(rating => {
+            ratingsMap[rating.userId] = rating;
+        });
+
         this.state = {
-            icons: [
-                {
-                    rating: 1,
-                },
-                {
-                    rating: 2,
-                },
-                {
-                    rating: 3,
-                },
-                {
-                    rating: 4,
-                },
-                {
-                    rating: 5,
-                },
-            ],
-            ratings: {},
-            incompleteRatings: false
+            ratings: ratingsMap,
+            incompleteRatings: false,
         };
-
-        this.onDeveloperRating = this.onDeveloperRating.bind(this);
-        this.submitDeveloperRating = this.submitDeveloperRating.bind(this);
     }
-
 
     componentWillUnmount() {
         this.props.resetDeveloperRating();
-        // this.props.retrieveProgressEvent(this.props.event.id);
     }
 
+    onRatingChange = (value, details) => {
+        const ratings = this.state.ratings;
+        ratings[details.userId] = {...details, value};
+        this.setState({ratings});
+    };
 
-    submitDeveloperRating(e) {
+    parseRatings = (props) => {
+        const {project: {participation}, event: {developer_ratings, progress_reports}} = props;
+        if (this.props.project.category === 'dedicated') {
+            let existingDevRatingsMap = {};
+            (developer_ratings || [])
+                .filter(({created_by}) => created_by.id === getUser().id)
+                .forEach(({user, rating, created_by, ...otherProps}) => {
+                    existingDevRatingsMap[user.id] = {
+                        rating,
+                        user,
+                        created_by, ...otherProps
+                    };
+                });
+
+            return participation
+                .filter(({user, status}) => user.is_developer && status === 'accepted')
+                .map(({user}) => {
+                    const rating = existingDevRatingsMap[user.id] || {};
+                    return {
+                        id: rating.id || null,
+                        userId: user.id,
+                        authorId: rating.created_by && rating.created_by.id || getUser().id,
+                        name: user.display_name,
+                        value: rating.rating || null,
+                    };
+                });
+        } else {
+            let ratings = progress_reports
+                .filter(({user}) => user.id === getUser().id)
+                .map(({id, user, rate_communication}) => ({
+                    id: id,
+                    userId: user.id,
+                    authorId: user.id,
+                    name: 'Tunga',
+                    value: rate_communication
+                }));
+
+            if (!ratings.length) {
+                ratings = [{
+                    id: null,
+                    userId: getUser().id,
+                    authorId: getUser().id,
+                    name: 'Tunga',
+                    value: null
+                }];
+            }
+            return _.uniqBy(ratings, 'authorId');
+        }
+    };
+
+    onSave = (e) => {
         e.preventDefault();
 
-        if (
-            (this.props.project.category !== 'dedicated' && this.state.ratings.length === 1)
-            && Object.keys(this.state.ratings).length !== this.getDevelopers().length
-        ) {
-            this.setState({ incompleteRatings: true });
+        if (Object.keys(this.state.ratings).length !== this.parseRatings(this.props).length) {
+            this.setState({incompleteRatings: true});
             return;
         }
 
-        this.setState({ incompleteRatings: false });
-        Object.keys(this.state.ratings).forEach((memberId) => {
+        this.setState({incompleteRatings: false});
+        Object.keys(this.state.ratings).forEach((userId) => {
             const payload = {
                 event: {
                     id: this.props.event.id,
                 },
-            };
+            }, rating = this.state.ratings[userId];
 
             if (this.props.project.category === 'dedicated') {
-                payload.rating = this.state.ratings[memberId];
-                payload.user = memberId;
-                payload.created_by = this.props.auth.user.id;
+                payload.rating = rating.value;
+                payload.user = rating.userId;// {id: rating.userId};
+
             } else {
-                payload.rate_communication = this.state.ratings[memberId];
-                payload.user = {
-                    id: this.props.auth.user.id
-                };
+                payload.rate_communication = rating.value;
+                payload.user = {id: rating.userId};
             }
 
-            this.props.submitDeveloperRating(payload);
+            this.props.submitDeveloperRating({
+                ...payload,
+                id: rating.id || null
+            });
         });
-    }
-
-
-    onDeveloperRating({ rating, member }) {
-        const ratings = this.state.ratings;
-        ratings[member.id] = rating.rating;
-        this.setState({ rating });
-    }
-
-
-    getDevelopers() {
-        return this.props.project.participation
-            .filter(({ user }) => user.is_developer)
-            .map(({ user }) => ({ name: user.display_name, id: user.id }))
-    }
-
-
-    getExistingRating(event) {
-        const ratings = event.developer_ratings.length ? event.developer_ratings : event.progress_reports;
-        return ratings
-            .map(({ user, rate_communication, rating }) => ({
-                name: user.display_name,
-                id: user.id,
-                rating: rating || rate_communication
-            }))
-    }
+    };
 
 
     render() {
-        const { project, projectStore, event } = this.props;
-        const isSaved = projectStore['isSaved']['developerRating'];
-        const isSaving = projectStore['isSaving']['developerRating'];
-        const hasRating = event.developer_ratings.length || event.progress_reports.length;
-        const developers = hasRating ? this.getExistingRating(event) : this.getDevelopers();
+        const {project, projectStore} = this.props,
+            isSaved = projectStore['isSaved']['developerRating'],
+            isSaving = projectStore['isSaving']['developerRating'],
+            parsedRatings = this.parseRatings(this.props);
 
-        const types = {
-            developer_rating: developers,
-            team: hasRating ? developers : [
-                {
-                    name: 'Tunga'
-                }
-            ]
-        };
-
-        const showSubmission = !hasRating;
-        event.type = project.category === 'dedicated' ? event.type : 'team';
-        const members = types[event.type] || [];
+        const canSave = parsedRatings.length && isProjectClient(project);
 
         return (
             <div className="survey">
@@ -140,7 +145,8 @@ class Survey extends React.Component {
                         Client survey
                     </div>
                     <div>
-                        Due date: {moment.utc(this.props.event.due_at).local().format('lll')}
+                        Due
+                        date: {moment.utc(this.props.event.due_at).local().format('lll')}
                     </div>
                 </div>
 
@@ -154,46 +160,51 @@ class Survey extends React.Component {
                     </div>
                 }
 
-                {
-                    !isSaved
-                        ?
-                        <div>
-                            {
-                                members.map((member, i) => (
-                                    <div className="survey__block" key={i}>
-                                        <div className="survey__cta">
-                                            How would you rate the collaboration with {member.name} for {project.title}?
-                                        </div>
-                                        <SurveyIcon
-                                            rating={member.rating}
-                                            onRating={(rating) => {
-                                                this.onDeveloperRating({ rating, member })
-                                            }}/>
-                                    </div>
-                                ))
-                            }
-                            {
-                                this.state.incompleteRatings &&
-                                <div className="text-danger p-1 pb-3">
-                                    Please complete all ratings
-                                </div>
-                            }
+                {isSaved && (
+                    <div className="text-success">
+                        Ratings have been saved successfully
+                    </div>
+                )}
 
-                            {
-                                showSubmission
-                                &&
-                                <div className="survey__btn-wrapper">
-                                    <Button disabled={isSaving} onClick={this.submitDeveloperRating}>
-                                        {isSaving ? 'Submitting ratings' : 'Submit Ratings'}
-                                    </Button>
+                <div>
+                    {parsedRatings.length ? (
+                        parsedRatings.map((rating, i) => (
+                            <div className="survey__block" key={i}>
+                                <div className="survey__cta">
+                                    How would you rate the collaboration
+                                    with {rating.name} for {project.title}?
                                 </div>
-                            }
+                                <SurveyIcon
+                                    rating={rating.value}
+                                    readOnly={!canSave || rating.authorId !== getUser().id}
+                                    onRating={(value) => {
+                                        this.onRatingChange(value, rating);
+                                    }}/>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="survey__block">
+                            <div>The project currently has no developers attached to it for you to rate. Please ask a PM to enable this.</div>
                         </div>
-                        :
-                        <div className="text-success">
-                            Ratings have been submitted successful
+                    )
+                    }
+                    {
+                        this.state.incompleteRatings &&
+                        <div className="text-danger p-1 pb-3">
+                            Please complete all ratings
                         </div>
-                }
+                    }
+
+                    {
+                        canSave
+                        &&
+                        <div className="survey__btn-wrapper">
+                            <Button disabled={isSaving} onClick={this.onSave}>
+                                {isSaving ? 'Submitting ratings' : 'Submit Ratings'}
+                            </Button>
+                        </div>
+                    }
+                </div>
             </div>
         );
     }

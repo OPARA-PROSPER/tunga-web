@@ -27,59 +27,38 @@ const IconSvg = ({ rating, active }) => {
 
 export default class SurveyIcon extends React.Component {
     constructor(props) {
-        super();
-        this.state = {
-            icons: [
-                {
-                    rating: 5,
-                },
-                {
-                    rating: 4,
-                },
-                {
-                    rating: 3,
-                },
-                {
-                    rating: 2,
-                },
-                {
-                    rating: 1,
-                },
-            ]
-        };
-        this.onIconClick = this.onIconClick.bind(this);
+        super(props);
+        this.state = {currentRating: props.rating || null};
     }
 
-
-    onIconClick(icon) {
-        const icons = this.state.icons.map((stateIcon) => {
-            const active = stateIcon === icon;
-            return {
-                ...stateIcon,
-                active,
-            };
-        });
-
-        this.setState({ icons });
-        this.props.onRating({ rating: icon.rating });
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.rating !== this.props.rating && this.props.rating !== this.state.currentRating) {
+            this.setState({currentRating: this.props.rating});
+        }
     }
+
+    onIconClick = (newRating) => {
+        this.setState({ currentRating: newRating });
+        const { onRating } = this.props;
+        if(onRating) onRating(newRating);
+    };
 
 
     render() {
-        const { rating } = this.props;
+        const { rating, readOnly } = this.props, { currentRating } = this.state;
 
         return (
             <div className="survey-icon">
                 <ul className="survey-icon__list">
                     {
-                        this.state.icons.map((icon, i) => (
+                        [5, 4, 3, 2, 1].map((value, idx) => (
                             <li
-                                key={i}
+                                key={idx}
                                 className="survey-icon__item"
                             >
-                                <a className={`survey-icon__btn survey-icon__btn--${icon.active || icon.rating === rating ? 'active' : ''}`}
-                                   onClick={() => !rating && this.onIconClick(icon)}>
-                                    <IconSvg rating={icon.rating}/>
+                                <a className={`survey-icon__btn survey-icon__btn--${value === currentRating ? 'active' : ''}`}
+                                   onClick={() => !readOnly && this.onIconClick(value)}>
+                                    <IconSvg rating={value}/>
                                 </a>
                             </li>
                         ))

@@ -10,7 +10,6 @@ import Activity from './Activity';
 import Docs from './Docs';
 import Team from './Team';
 import Plan from './Plan';
-import Survey from './Survey';
 import PayContainer from './PayContainer';
 import Settings from './Settings';
 import ProgressEventsContainer from './ProgressEventsContainer';
@@ -18,7 +17,6 @@ import Warning from "../../core/Warning";
 
 import {openConfirm} from "../../core/utils/modals";
 import {getMyParticipation, hasProjectAccess, isDev, isPendingProjectParticipant} from "../../utils/auth";
-import Info from "../../core/Info";
 
 export default class ProjectManagement extends React.Component {
 

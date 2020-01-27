@@ -346,13 +346,12 @@ export function sendReminderFailed(error, id, target) {
     };
 }
 
-export function submitDeveloperRating(event, target) {
+export function submitDeveloperRating({id, ...event}, target) {
     return dispatch => {
         const url = event.rate_communication ? ENDPOINT_GENERAL_RATING : ENDPOINT_DEVELOPER_RATING;
         dispatch(submitDeveloperRatingStart(event));
 
-        axios
-            .post(url, event)
+        axios[id?'patch':'post'](`${url}${id?`${id}/`:''}`, event)
             .then(function (response) {
                 dispatch(submitDeveloperRatingSuccess(response.data, event));
                 dispatch(retrieveProgressEvent(event.event.id));
