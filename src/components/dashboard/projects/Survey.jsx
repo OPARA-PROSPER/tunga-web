@@ -5,9 +5,13 @@ import _ from 'lodash';
 
 import Button from "../../core/Button";
 import SurveyIcon from "./common/SurveyIcon";
-import { submitDeveloperRating, resetDeveloperRating, retrieveProject } from "../../../actions/ProjectActions";
-import { retrieveProgressEvent } from "../../../actions/ProgressEventActions";
-import { connect } from "react-redux";
+import {
+    submitDeveloperRating,
+    resetDeveloperRating,
+    retrieveProject
+} from "../../../actions/ProjectActions";
+import {retrieveProgressEvent} from "../../../actions/ProgressEventActions";
+import {connect} from "react-redux";
 import {getUser, isProjectClient} from "../../utils/auth";
 
 
@@ -40,22 +44,26 @@ class Survey extends React.Component {
     onRatingChange = (value, details) => {
         const ratings = this.state.ratings;
         ratings[details.userId] = {...details, value};
-        this.setState({ ratings });
+        this.setState({ratings});
     };
 
     parseRatings = (props) => {
-        const { project: { participation }, event: { developer_ratings, progress_reports } } = props;
+        const {project: {participation}, event: {developer_ratings, progress_reports}} = props;
         if (this.props.project.category === 'dedicated') {
             let existingDevRatingsMap = {};
             (developer_ratings || [])
-                .filter(({ created_by }) => created_by.id === getUser().id)
-                .forEach(({ user, rating, created_by, ...otherProps }) => {
-                    existingDevRatingsMap[user.id] = {rating, user, created_by, ...otherProps};
+                .filter(({created_by}) => created_by.id === getUser().id)
+                .forEach(({user, rating, created_by, ...otherProps}) => {
+                    existingDevRatingsMap[user.id] = {
+                        rating,
+                        user,
+                        created_by, ...otherProps
+                    };
                 });
 
             return participation
-                .filter(({ user, status }) => user.is_developer && status === 'accepted')
-                .map(({ user }) => {
+                .filter(({user, status}) => user.is_developer && status === 'accepted')
+                .map(({user}) => {
                     const rating = existingDevRatingsMap[user.id] || {};
                     return {
                         id: rating.id || null,
@@ -67,8 +75,8 @@ class Survey extends React.Component {
                 });
         } else {
             let ratings = progress_reports
-                .filter(({ user }) => user.id === getUser().id)
-                .map(({ id, user, rate_communication }) => ({
+                .filter(({user}) => user.id === getUser().id)
+                .map(({id, user, rate_communication}) => ({
                     id: id,
                     userId: user.id,
                     authorId: user.id,
@@ -76,7 +84,7 @@ class Survey extends React.Component {
                     value: rate_communication
                 }));
 
-            if(!ratings.length) {
+            if (!ratings.length) {
                 ratings = [{
                     id: null,
                     userId: getUser().id,
@@ -93,11 +101,11 @@ class Survey extends React.Component {
         e.preventDefault();
 
         if (Object.keys(this.state.ratings).length !== this.parseRatings(this.props).length) {
-            this.setState({ incompleteRatings: true });
+            this.setState({incompleteRatings: true});
             return;
         }
 
-        this.setState({ incompleteRatings: false });
+        this.setState({incompleteRatings: false});
         Object.keys(this.state.ratings).forEach((userId) => {
             const payload = {
                 event: {
@@ -114,13 +122,16 @@ class Survey extends React.Component {
                 payload.user = {id: rating.userId};
             }
 
-            this.props.submitDeveloperRating({...payload, id: rating.id || null});
+            this.props.submitDeveloperRating({
+                ...payload,
+                id: rating.id || null
+            });
         });
     };
 
 
     render() {
-        const { project, projectStore } = this.props,
+        const {project, projectStore} = this.props,
             isSaved = projectStore['isSaved']['developerRating'],
             isSaving = projectStore['isSaving']['developerRating'],
             parsedRatings = this.parseRatings(this.props);
@@ -134,7 +145,8 @@ class Survey extends React.Component {
                         Client survey
                     </div>
                     <div>
-                        Due date: {moment.utc(this.props.event.due_at).local().format('lll')}
+                        Due
+                        date: {moment.utc(this.props.event.due_at).local().format('lll')}
                     </div>
                 </div>
 
@@ -155,20 +167,26 @@ class Survey extends React.Component {
                 )}
 
                 <div>
-                    {
+                    {parsedRatings.length ? (
                         parsedRatings.map((rating, i) => (
                             <div className="survey__block" key={i}>
                                 <div className="survey__cta">
-                                    How would you rate the collaboration with {rating.name} for {project.title}?
+                                    How would you rate the collaboration
+                                    with {rating.name} for {project.title}?
                                 </div>
                                 <SurveyIcon
                                     rating={rating.value}
                                     readOnly={!canSave || rating.authorId !== getUser().id}
                                     onRating={(value) => {
-                                        this.onRatingChange(value, rating)
+                                        this.onRatingChange(value, rating);
                                     }}/>
                             </div>
                         ))
+                    ) : (
+                        <div className="survey__block">
+                            <div>The project currently has no developers attached to it for you to rate. Please ask a PM to enable this.</div>
+                        </div>
+                    )
                     }
                     {
                         this.state.incompleteRatings &&
