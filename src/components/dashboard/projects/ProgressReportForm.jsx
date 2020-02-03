@@ -20,7 +20,7 @@ import {
     PROGRESS_EVENT_TYPE_PM,
     PROGRESS_EVENT_TYPE_CLIENT_MID_SPRINT,
     REPORT_STUCK_REASONS, PROGRESS_EVENT_TYPE_MILESTONE,
-    PROGRESS_EVENT_TYPE_MILESTONE_INTERNAL,
+    PROGRESS_EVENT_TYPE_MILESTONE_INTERNAL
 } from '../../../actions/utils/api';
 import {getUser, isClient, isDev, isPM} from "../../utils/auth";
 import {openConfirm} from "../../core/utils/modals";
@@ -133,8 +133,20 @@ export default class ProgressReportForm extends React.Component {
         }
     };
 
+    getDevelopers(){
+        const {project: {participation} } = this.props
+        let projectDevs = []
+        for(var i in participation){
+            if(participation[i].user.is_developer === true){
+                projectDevs.push(participation[i].user.display_name) 
+            }
+        }
+        return projectDevs
+    }
+
     render() {
         const {progress_report, isSaved, isSaving, errors} = this.props;
+        const developersOnProject = this.getDevelopers()
 
         if (isSaved) {
             return (
@@ -182,7 +194,7 @@ export default class ProgressReportForm extends React.Component {
                                 <div>
                                     {/* check status if stuck and is developer for this */}
 
-                                    {errors &&
+                                    {/* {errors &&
                                     errors.stuck_reason ? (
                                         <FieldError
                                             message={
@@ -197,7 +209,7 @@ export default class ProgressReportForm extends React.Component {
                                         <Select options={REPORT_STUCK_REASONS}
                                                 selected={this.state.report.stuck_reason}
                                                 onChange={value => this.onChangeValue('stuck_reason', value)}/>
-                                    </div>
+                                    </div> */}
 
                                     {errors &&
                                     errors.stuck_details ? (
@@ -209,8 +221,7 @@ export default class ProgressReportForm extends React.Component {
                                     ) : null}
                                     <div className="form-group">
                                         <label className="control-label">
-                                            Explain Further why you are stuck/what
-                                            should be done.
+                                            What obstacles are impeding your progress?
                                         </label>
                                         <TextArea
                                             placeholder="More details"
@@ -224,7 +235,7 @@ export default class ProgressReportForm extends React.Component {
                         </div>
                     ) : null}
 
-                    {this.isDevReport() ? (
+                    {/* {this.isDevReport() ? (
                         <div>
                             <div>
                                 <div className="form-group">
@@ -241,7 +252,7 @@ export default class ProgressReportForm extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    ) : null}
+                    ) : null} */}
 
                     {this.isPMReport() || this.isClientReport()? (
                         <div>
@@ -416,7 +427,54 @@ export default class ProgressReportForm extends React.Component {
                         </div>
                     ) : null}
 
-                    {this.isDevReport() || this.isClientReport() ? (
+                    {this.isDevReport() && 
+                        <div>
+                            <div>
+                                {errors &&
+                                errors.rate_deliverables ? (
+                                    <FieldError
+                                        message={
+                                            errors.rate_deliverables
+                                        }
+                                    />
+                                ) : null}
+                                <div className="form-group">
+                                    <label className="control-label">
+                                        How do you rate your latest deliverable?
+                                    </label>
+                                    <div>
+                                        <SurveyIcon
+                                            onRating={(rating) => {
+                                                this.onChangeValue('rate_deliverables', rating);
+                                            }}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    {
+                    this.state.report.rate_deliverables &&
+                    this.state.report.rate_deliverables < 4 &&
+                        <div className="form-group">
+                            <label className="control-label">
+                                What can be done to increase the quality of the deliverables?
+                            </label>
+                            <TextArea
+                                placeholder="Any suggestions to help"
+                                className="form-control"
+                                onChange={this.onInputChange.bind(
+                                    this,
+                                    'rate_deliverables_improvements',
+                                )}
+                            >
+                                {this.state.report.rate_deliverables_improvements}
+                            </TextArea>
+                        </div>
+                    }
+
+
+                    {this.isClientReport() ? (
                         <div>
                             {errors &&
                             errors.rate_deliverables ? (
@@ -428,7 +486,7 @@ export default class ProgressReportForm extends React.Component {
                             ) : null}
                             <div className="form-group">
                                 <label className="control-label">
-                                    {this.isDevReport()?'How do you rate your latest deliverable?*':'How would you rate the deliverables on a scale from 1 to 5? *'}
+                                    How would you rate the deliverables on a scale from 1 to 5? *
                                 </label>
                                 <div>
                                     <ChoiceGroup choices={this.getRatingsMap(6)}
@@ -496,7 +554,11 @@ export default class ProgressReportForm extends React.Component {
                                     time={false}
                                 />
                             </div>
+                        </div>
+                    ) : null}
 
+                    {this.isDevReport() &&
+                        <div>
                             <div>
                                 {errors &&
                                 errors.next_deadline_meet ? (
@@ -531,8 +593,7 @@ export default class ProgressReportForm extends React.Component {
                                         ) : null}
                                         <div className="form-group">
                                             <label className="control-label">
-                                                Why won't you be able to make
-                                                the next deadline?
+                                                What is preventing you from meeting the next deadline?
                                             </label>
                                             <TextArea
                                                 placeholder="Reasons why you won't be able to make the next deadline"
@@ -546,35 +607,62 @@ export default class ProgressReportForm extends React.Component {
                                                 }
                                             </TextArea>
                                         </div>
+                                        <div>
+                                            {errors &&
+                                            errors.remarks ? (
+                                                <FieldError
+                                                    message={
+                                                        errors.remarks
+                                                    }
+                                                />
+                                            ) : null}
+                                            <div className="form-group">
+                                                <label className="control-label">
+                                                    What can be done to make sure the next deadline is met?
+                                                </label>
+                                                <TextArea
+                                                    placeholder="What can be done to make sure the next deadline is met"
+                                                    className="form-control"
+                                                    onChange={this.onInputChange.bind(
+                                                        this,
+                                                        'remarks',
+                                                    )}
+                                                    value={this.state.report.remarks}>
+                                                    {this.state.report.remarks}
+                                                </TextArea>
+                                            </div>
+                                        </div>
                                     </div>
                                 ) : (
                                     <div>
-                                        {errors &&
-                                        errors
-                                            .obstacles ? (
-                                            <FieldError
-                                                message={
-                                                    errors.obstacles
-                                                }
-                                            />
-                                        ) : null}
+                                        {/* {this.isPMReport() &&
+                                        <div>
+                                            {errors &&
+                                            errors
+                                                .obstacles ? (
+                                                <FieldError
+                                                    message={
+                                                        errors.obstacles
+                                                    }
+                                                />
+                                            ) : null}
 
-                                        <div className="form-group">
-                                            <label className="control-label">
-                                                What obstacles are impeding your
-                                                progress? *
-                                            </label>
-                                            <TextArea placeholder="What obstacles are impeding your progress?"
-                                                className="form-control"
-                                                onChange={this.onInputChange.bind(
-                                                    this,
-                                                    'obstacles',
-                                                )}
-                                                required>
-                                                {this.state.report.obstacles}
-                                            </TextArea>
-                                        </div>
-
+                                            <div className="form-group">
+                                                <label className="control-label">
+                                                    What obstacles are impeding your
+                                                    progress?
+                                                </label>
+                                                <TextArea placeholder="What obstacles are impeding your progress?"
+                                                    className="form-control"
+                                                    onChange={this.onInputChange.bind(
+                                                        this,
+                                                        'obstacles',
+                                                    )}
+                                                    required>
+                                                    {this.state.report.obstacles}
+                                                </TextArea>
+                                            </div>
+                                        </div> */}
                                         {this.state.report.obstacles && !'no|none|non|nope|n/a|nah|false|.|..|...'.split('|').includes((this.state.report.obstacles || '').toLowerCase())? (
                                             <div className="form-group">
                                                 <label className="control-label">
@@ -600,7 +688,7 @@ export default class ProgressReportForm extends React.Component {
                                 )}
                             </div>
                         </div>
-                    ) : null}
+                    }
 
                     {this.isPMReport() ? (
                         <div>
@@ -618,10 +706,14 @@ export default class ProgressReportForm extends React.Component {
                                     the developers on this project, please give
                                     details? *
                                 </label>
-                                <SurveyIcon
-                                    onRating={(rating) => {
-                                        this.onChangeValue('team_appraisal', rating);
-                                    }}/>
+                                {developersOnProject.map(dev => <div>
+                                        How do you rate {dev}
+                                        <SurveyIcon
+                                            onRating={(rating) => {
+                                                this.onChangeValue(dev, rating);
+                                            }}/>
+                                    </div>) 
+                                }
                             </div>
                         </div>
                     ) : null}
@@ -693,7 +785,7 @@ export default class ProgressReportForm extends React.Component {
                         </div>
                     ):null}
 
-                    <div>
+                    {/* <div>
                         {errors &&
                         errors.remarks ? (
                             <FieldError
@@ -717,7 +809,7 @@ export default class ProgressReportForm extends React.Component {
                                 {this.state.report.remarks}
                             </TextArea>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div>
                         <Button
