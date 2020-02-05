@@ -359,6 +359,7 @@ export default class ProgressReportForm extends React.Component {
                   <label className="control-label">How do you rate your latest deliverable?</label>
                   <div>
                     <SurveyIcon
+                      rating={this.state.report.rate_deliverables && this.state.report.rate_deliverables}
                       onRating={rating => {
                         this.onChangeValue('rate_deliverables', rating);
                       }}
