@@ -39,7 +39,6 @@ export default class WorkForm extends React.Component {
 
   onSave = e => {
     e.preventDefault();
-
     const { proceed } = this.props;
     if (proceed) {
       proceed(this.state.work);
@@ -109,6 +108,18 @@ export default class WorkForm extends React.Component {
               <FormGroup>
                 <label className="control-label">Experience</label>
                 <TextArea onChange={this.onInputChange.bind(this, 'details')} value={this.state.work.details} required />
+              </FormGroup>
+            </div>
+            <div className="col-sm-6">
+              <FormGroup>
+                <label className="control-label">Project Link</label>
+                <Input onChange={this.onInputChange.bind(this, 'project_link')} value={this.state.work.project_link} required />
+              </FormGroup>
+            </div>
+            <div className="col-sm-6">
+              <FormGroup>
+                <label className="control-label">Repository Link</label>
+                <Input onChange={this.onInputChange.bind(this, 'repository_link')} value={this.state.work.repository_link} required />
               </FormGroup>
             </div>
           </div>
