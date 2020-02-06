@@ -94,9 +94,11 @@ export const ENDPOINT_BLOG = getEndpointUrl('blog/');
 export const USER_TYPE_DEVELOPER = 1;
 export const USER_TYPE_PROJECT_OWNER = 2;
 export const USER_TYPE_PROJECT_MANAGER = 3;
+export const USER_TYPE_DESIGNER = 4;
 
 export const USER_TYPE_CHOICES = [
     {id: USER_TYPE_DEVELOPER, name: 'Developer'},
+    {id: USER_TYPE_DESIGNER, name: 'Designer'},
     {id: USER_TYPE_PROJECT_OWNER, name: 'Project Owner'},
     {id: USER_TYPE_PROJECT_MANAGER, name: 'Project Manager'},
 ];
