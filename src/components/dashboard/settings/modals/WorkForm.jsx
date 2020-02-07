@@ -113,13 +113,13 @@ export default class WorkForm extends React.Component {
             <div className="col-sm-6">
               <FormGroup>
                 <label className="control-label">Project Link</label>
-                <Input onChange={this.onInputChange.bind(this, 'project_link')} value={this.state.work.project_link} required />
+                <Input onChange={this.onInputChange.bind(this, 'project_link')} value={this.state.work.project_link} />
               </FormGroup>
             </div>
             <div className="col-sm-6">
               <FormGroup>
                 <label className="control-label">Repository Link</label>
-                <Input onChange={this.onInputChange.bind(this, 'repository_link')} value={this.state.work.repository_link} required />
+                <Input onChange={this.onInputChange.bind(this, 'repository_link')} value={this.state.work.repository_link} />
               </FormGroup>
             </div>
           </div>
