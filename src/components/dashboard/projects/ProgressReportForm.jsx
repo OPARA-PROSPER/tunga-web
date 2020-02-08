@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
 import _ from 'lodash';
+import { connect } from 'react-redux';
 
+import { submitDeveloperRating } from '../../../actions/ProjectActions';
 import FieldError from '../../core/FieldError';
 import DateTimePicker from '../../core/DateTimePicker';
 import Success from '../../core/Success';
@@ -27,7 +29,7 @@ import { getUser, isClient, isDev, isPM } from '../../utils/auth';
 import { openConfirm } from '../../core/utils/modals';
 import SurveyIcon from './common/SurveyIcon';
 
-export default class ProgressReportForm extends React.Component {
+class ProgressReportForm extends React.Component {
   static propTypes = {
     project: PropTypes.object,
     progress_event: PropTypes.object,
@@ -47,7 +49,7 @@ export default class ProgressReportForm extends React.Component {
         }
       });
     }
-    this.state = { report: cleanedReport };
+    this.state = { report: cleanedReport, ratings: [] };
   }
 
   componentDidMount() {
@@ -110,6 +112,21 @@ export default class ProgressReportForm extends React.Component {
     this.setState({ report: { ...this.state.report, ...newState } });
   }
 
+  onChangePMDeveloperRating(dev, rating) {
+    let devRating = {
+      rating: rating,
+      user: dev.id,
+      event: {}
+    };
+    this.setState(prevSate => {
+      const ratings = prevSate.ratings.concat(devRating);
+      return {
+        ...prevSate,
+        ratings
+      };
+    });
+  }
+
   getRatingsMap(to) {
     return _.range(1, to);
   }
@@ -128,6 +145,21 @@ export default class ProgressReportForm extends React.Component {
       ProgressReportActions.updateProgressReport(progress_report.id, reqData);
     } else {
       ProgressReportActions.createProgressReport(reqData);
+      this.handleDeveloperRating(reqData.event);
+    }
+  };
+
+  handleDeveloperRating = event => {
+    const { ratings } = this.state;
+    const { submitDeveloperRating } = this.props;
+    if (ratings.length === 0) {
+      return;
+    }
+    for (let i in ratings) {
+      ratings[i].event = { ...event };
+      submitDeveloperRating({
+        ...ratings[i]
+      });
     }
   };
 
@@ -137,8 +169,8 @@ export default class ProgressReportForm extends React.Component {
     } = this.props;
     let projectDevs = [];
     for (var i in participation) {
-      if (participation[i].user.is_developer === true) {
-        projectDevs.push(participation[i].user.display_name);
+      if (participation[i].user) {
+        projectDevs.push(participation[i].user);
       }
     }
     return projectDevs;
@@ -537,12 +569,12 @@ export default class ProgressReportForm extends React.Component {
                 <label className="control-label">
                   Are you satisfied with the performance of the developers on this project, please give details? *
                 </label>
-                {developersOnProject.map(dev => (
-                  <div>
-                    How do you rate {dev}
+                {developersOnProject.map((dev, index) => (
+                  <div key={index}>
+                    How do you rate {dev.display_name}
                     <SurveyIcon
                       onRating={rating => {
-                        this.onChangeValue(dev, rating);
+                        this.onChangePMDeveloperRating(dev, rating);
                       }}
                     />
                   </div>
@@ -631,3 +663,14 @@ export default class ProgressReportForm extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    submitDeveloperRating: event => dispatch(submitDeveloperRating(event))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ProgressReportForm);
