@@ -43,6 +43,16 @@ class UserForm extends React.Component {
         newState[key] = value;
         this.setState({user: {...this.state.user, ...newState}});
     }
+    onChangeUserType(key, value){
+        let newState = {};
+        for(let i in USER_TYPE_CHOICES){
+            if(USER_TYPE_CHOICES[i].id  === parseInt(value, 10) ){
+               newState.category = (USER_TYPE_CHOICES[i].name).toLowerCase()
+            }
+        }
+        newState[key] = value;
+        this.setState({user: {...this.state.user, ...newState}});
+    }
 
     onChangeField(key, e) {
         this.onChangeValue(key, e.target.value);
@@ -69,7 +79,12 @@ class UserForm extends React.Component {
             }
             UserActions.createUser(user);
         } else {
-            UserActions.invite(this.state.user);
+            const { user } = this.state
+            let newState = { ...user};
+            if(user.type === "4" ){
+                newState.type = "1";
+            }
+            UserActions.invite(newState);
         }
     };
 
@@ -141,7 +156,7 @@ class UserForm extends React.Component {
                                     <FieldError message={errors.invite.type} />
                                 ) : null}
                                 <Select options={USER_TYPE_CHOICES.map(item => {return [item.id, item.name]})}
-                                        onChange={value => this.onChangeValue('type', value)}
+                                        onChange={value => this.onChangeUserType('type', value)}
                                         selected={this.state.user.type}
                                         required/>
                             </FormGroup>
