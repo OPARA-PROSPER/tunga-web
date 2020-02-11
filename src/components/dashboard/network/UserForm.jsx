@@ -84,6 +84,9 @@ class UserForm extends React.Component {
             if(user.type === "4" ){
                 newState.type = "1";
             }
+            if(user.type === "2" || user.type === "3" ){
+                delete newState.category;
+            }
             UserActions.invite(newState);
         }
     };
