@@ -114,8 +114,9 @@ class ProgressReportForm extends React.Component {
 
   onChangePMDeveloperRating(dev, rating) {
     let devRating = {
+      id: dev.rating && dev.rating.id,
       rating: rating,
-      user: dev.id,
+      user: dev.user.id,
       event: {}
     };
     this.setState(prevSate => {
@@ -143,6 +144,7 @@ class ProgressReportForm extends React.Component {
 
     if (progress_report.id) {
       ProgressReportActions.updateProgressReport(progress_report.id, reqData);
+      this.handleDeveloperRating(reqData.event);
     } else {
       ProgressReportActions.createProgressReport(reqData);
       this.handleDeveloperRating(reqData.event);
@@ -165,21 +167,42 @@ class ProgressReportForm extends React.Component {
 
   getDevelopers() {
     const {
-      project: { participation }
+      project: { participation },
+      progress_event: { developer_ratings }
     } = this.props;
     let projectDevs = [];
+    let latestRatings = developer_ratings || [];
     for (var i in participation) {
+      let item = {};
       if (participation[i].user) {
-        projectDevs.push(participation[i].user);
+        item.user = participation[i].user;
+        projectDevs.push(item);
       }
     }
+
+    // Get the latest developer ratings
+    latestRatings = latestRatings.slice(latestRatings.length - projectDevs.length);
+    let userIDs = {};
+    for (let i = 0; i < projectDevs.length; i++) {
+      let dev = projectDevs[i];
+      userIDs[dev.user.id] = i;
+    }
+
+    for (let i = 0; i < latestRatings.length; i++) {
+      let dev = latestRatings[i];
+      const availableIDs = Object.keys(userIDs);
+      if (availableIDs.indexOf(dev.user.id.toString()) > -1) {
+        const matchIndex = userIDs[dev.user.id];
+        projectDevs[matchIndex].rating = latestRatings[i];
+      }
+    }
+
     return projectDevs;
   }
 
   render() {
     const { progress_report, isSaved, isSaving, errors } = this.props;
     const developersOnProject = this.getDevelopers();
-
     if (isSaved) {
       return (
         <Success
@@ -571,8 +594,9 @@ class ProgressReportForm extends React.Component {
                 </label>
                 {developersOnProject.map((dev, index) => (
                   <div key={index}>
-                    How do you rate {dev.display_name}
+                    How do you rate {dev.user.display_name}
                     <SurveyIcon
+                      rating={dev.rating && dev.rating.rating}
                       onRating={rating => {
                         this.onChangePMDeveloperRating(dev, rating);
                       }}
