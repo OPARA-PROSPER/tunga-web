@@ -206,6 +206,7 @@ export const DOCUMENT_TYPES_CLIENTS = [
     return [docType, DOCUMENT_TYPES_MAP[docType]];
 });
 
+export const REPORT_STATUS_AHEAD_OF_SCHEDULE = 'ahead'
 export const REPORT_STATUS_ON_SCHEDULE = 'on_schedule';
 export const REPORT_STATUS_BEHIND = 'behind';
 export const REPORT_STATUS_STUCK = 'stuck';
@@ -213,9 +214,10 @@ export const REPORT_STATUS_BEHIND_BUT_PROGRESSING = 'behind_progressing';
 export const REPORT_STATUS_BEHIND_AND_STUCK = 'behind_stuck';
 
 export const REPORT_STATUSES = [
+    [REPORT_STATUS_AHEAD_OF_SCHEDULE, 'Ahead of schedule'],
     [REPORT_STATUS_ON_SCHEDULE, 'On schedule'],
-    [REPORT_STATUS_BEHIND_AND_STUCK, 'Behind and Stuck'],
     [REPORT_STATUS_BEHIND_BUT_PROGRESSING, 'Behind but Progressing'],
+    [REPORT_STATUS_BEHIND_AND_STUCK, 'Behind and Stuck']
 ];
 
 export const REPORT_STUCK_RESOLVING_ERROR = 'resolving_error';

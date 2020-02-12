@@ -4078,7 +4078,6 @@ textarea {
 
     &__list {
         list-style: none;
-        margin-bottom: 40px;
     }
 
     &__item {
@@ -4099,6 +4098,13 @@ textarea {
         &--active {
             svg g {
                 fill: $brand-color;
+            }
+        }
+        &--disable {
+            cursor: default !important;
+            svg {
+                -ms-filter: none !important;
+                filter: none !important;
             }
         }
     }
