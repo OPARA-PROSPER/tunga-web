@@ -9,15 +9,12 @@ import Success from '../../../core/Success';
 import DateTimePicker from '../../../core/DateTimePicker';
 import Button from '../../../core/Button';
 import Input from '../../../core/Input';
-import { validURL } from '../../../utils/validation';
 
 export default class WorkForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      work: props.work || {},
-      projectLinkError: false,
-      repoLinkError: false
+      work: props.work || {}
     };
   }
 
@@ -42,17 +39,6 @@ export default class WorkForm extends React.Component {
 
   onSave = e => {
     e.preventDefault();
-    const {
-      work: { repository_link, project_link }
-    } = this.state;
-    if (project_link) {
-      let result = validURL(project_link);
-      return this.setState({ projectLinkError: !result });
-    }
-    if (repository_link) {
-      let result = validURL(repository_link);
-      return this.setState({ repoLinkError: !result });
-    }
     const { proceed } = this.props;
     if (proceed) {
       proceed(this.state.work);
@@ -64,7 +50,6 @@ export default class WorkForm extends React.Component {
     const { errors } = this.props,
       start_date = `${this.state.work.start_year}-${this.state.work.start_month}`,
       end_date = `${this.state.work.end_year}-${this.state.work.end_month}`;
-    const { projectLinkError, repoLinkError } = this.state;
 
     return (
       <div>
@@ -126,14 +111,12 @@ export default class WorkForm extends React.Component {
               </FormGroup>
             </div>
             <div className="col-sm-6">
-              {projectLinkError && <FieldError message="Please enter valid Url" />}
               <FormGroup>
                 <label className="control-label">Project Link</label>
                 <Input onChange={this.onInputChange.bind(this, 'project_link')} value={this.state.work.project_link} />
               </FormGroup>
             </div>
             <div className="col-sm-6">
-              {repoLinkError && <FieldError message="Please enter valid Url" />}
               <FormGroup>
                 <label className="control-label">Repository Link</label>
                 <Input onChange={this.onInputChange.bind(this, 'repository_link')} value={this.state.work.repository_link} />
