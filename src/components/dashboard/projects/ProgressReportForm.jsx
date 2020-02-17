@@ -109,6 +109,9 @@ class ProgressReportForm extends React.Component {
   onChangeValue(key, value) {
     let newState = {};
     newState[key] = value;
+    if (key === 'stuck_details') {
+      newState['stuck_reason'] = 'other';
+    }
     this.setState({ report: { ...this.state.report, ...newState } });
   }
 
