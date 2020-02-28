@@ -10,7 +10,6 @@ import {
     ENDPOINT_EMAIL_VISITOR,
     ENDPOINT_INVITE,
 } from './utils/api';
-import {resetLandingPageCSS} from '../legacy/utils/ui';
 
 import {
     sendGAEvent,
@@ -244,8 +243,6 @@ export function logoutStart() {
 }
 
 export function logoutSuccess() {
-    resetLandingPageCSS();
-
     sendGAEvent(
         GA_EVENT_CATEGORIES.AUTH,
         GA_EVENT_ACTIONS.LOG_OUT,

@@ -58,7 +58,3 @@ export function resizeSideBar() {
         running.addClass('bottom');
     }
 }
-
-export function resetLandingPageCSS() {
-    $('body').removeClass('is-dashboard');
-}
