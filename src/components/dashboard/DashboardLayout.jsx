@@ -59,6 +59,10 @@ export default class DashboardLayout extends React.Component {
         }
     }
 
+    componentWillUnmount () {
+        $('body').removeClass('is-dashboard');
+    }
+
     render() {
         const {user, logout, match, isLargeDevice} = this.props,
             isProjectsRoute = match.url === '/projects';
