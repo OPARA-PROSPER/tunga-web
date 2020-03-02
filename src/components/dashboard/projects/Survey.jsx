@@ -34,6 +34,7 @@ class Survey extends React.Component {
         this.state = {
             ratings: ratingsMap,
             incompleteRatings: false,
+            ratingsNeedUpdate: Object.keys(ratingsMap).length > 0
         };
     }
 
@@ -200,7 +201,8 @@ class Survey extends React.Component {
                         &&
                         <div className="survey__btn-wrapper">
                             <Button disabled={isSaving} onClick={this.onSave}>
-                                {isSaving ? 'Submitting ratings' : 'Submit Ratings'}
+                                {isSaving ? 'Submitting ratings' : 
+                                this.state.ratingsNeedUpdate ? 'Update Ratings' : 'Submit Ratings'}
                             </Button>
                         </div>
                     }
