@@ -96,7 +96,7 @@ export function isAuthenticating(state = defaultAuthenticating, action) {
     case AuthActions.LOGOUT_SUCCESS:
     case AuthActions.EMAIL_VISITOR_AUTH_SUCCESS:
     case AuthActions.LOGIN_FAILED:
-        return {...state, loginError: action.error, isLoginFail: action.error ? true : false };
+        return {...state, loginError: action.error, isLoginFail: action.error ? true : false, isLoginStart: false };
     case AuthActions.LOGOUT_FAILED:
     case AuthActions.EMAIL_VISITOR_AUTH_FAILED:
         return false;
