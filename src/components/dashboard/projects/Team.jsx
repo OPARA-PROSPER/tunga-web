@@ -108,7 +108,7 @@ export default class Team extends React.Component {
                                     verified={isDev() && participation.status === 'accepted'}/>
                         )
                     })}
-                    {isAdminOrPMOrClient() && !project.archived ? (
+                    {isAdminOrPM() && !project.archived ? (
                         <IconButton name="add"
                                     size="main"
                                     onClick={this.onAddUsers.bind(this, 'dev', 'Add team members', 0)}/>
