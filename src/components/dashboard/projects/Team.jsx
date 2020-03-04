@@ -7,7 +7,7 @@ import ProjectMemberForm from './modals/ProjectMemberForm';
 import Avatar from '../../core/Avatar';
 import { Link } from 'react-router-dom';
 
-import { isAdminOrClient, isAdminOrPM, isAdminOrPMOrClient, isDev } from '../../utils/auth';
+import { isAdminOrClient, isAdminOrPM, isDev } from '../../utils/auth';
 
 
 export default class Team extends React.Component {
@@ -104,11 +104,11 @@ export default class Team extends React.Component {
                                     image={participation.user.avatar_url}
                                     title={participation.user.display_name}
                                     onRemove={this.onDeleteUser.bind(this, participation.user, 'dev', participation)}
-                                    remove={isAdminOrPMOrClient() && !project.archived}
+                                    remove={isAdminOrPM() && !project.archived}
                                     verified={isDev() && participation.status === 'accepted'}/>
                         )
                     })}
-                    {isAdminOrPMOrClient() && !project.archived ? (
+                    {isAdminOrPM() && !project.archived ? (
                         <IconButton name="add"
                                     size="main"
                                     onClick={this.onAddUsers.bind(this, 'dev', 'Add team members', 0)}/>
