@@ -201,8 +201,8 @@ class Survey extends React.Component {
                         &&
                         <div className="survey__btn-wrapper">
                             <Button disabled={isSaving} onClick={this.onSave}>
-                                {isSaving ? 'Submitting ratings' : 
-                                this.state.ratingsNeedUpdate ? 'Update Ratings' : 'Submit Ratings'}
+                                {isSaving ? 'Submitting rating' : 
+                                this.state.ratingsNeedUpdate ? 'Update Rating' : 'Submit Rating'}
                             </Button>
                         </div>
                     }
