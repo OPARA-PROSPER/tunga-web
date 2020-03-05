@@ -7,7 +7,7 @@ import ProjectMemberForm from './modals/ProjectMemberForm';
 import Avatar from '../../core/Avatar';
 import { Link } from 'react-router-dom';
 
-import { isAdminOrClient, isAdminOrPM, isDev } from '../../utils/auth';
+import { isAdmin, isAdminOrPM, isDev } from '../../utils/auth';
 
 
 export default class Team extends React.Component {
@@ -88,9 +88,9 @@ export default class Team extends React.Component {
                         <Avatar image={project.pm.avatar_url}
                                 title={project.pm.display_name}
                                 onRemove={this.onDeleteUser.bind(this, project.pm, 'pm')}
-                                remove={isAdminOrClient() && !project.archived}/>
+                                remove={isAdmin() && !project.archived}/>
                     ) : null}
-                    {isAdminOrClient() && !project.archived ? (
+                    {isAdmin() && !project.archived ? (
                         <IconButton name="add"
                                     size="main"
                                     onClick={this.onAddUsers.bind(this, 'pm', 'Add project Manager', 1)}/>
