@@ -42,7 +42,7 @@ class Profile extends Component {
                                     !!(talent.ratings && talent.ratings.details.length)
                                     &&
                                     <Col md="7" sm="12">
-                                        <Ratings talent={talent}/>
+                                        {/* <Ratings talent={talent}/> */}
                                     </Col>
                                 }
                             </Row>

@@ -10,6 +10,8 @@ npm install
 ```
 2. Install [ImageMagick](https://www.imagemagick.org/script/download.php)
 
+3. Install [graphicsmagick](http://www.graphicsmagick.org/README.html)
+
 # Development
 1. run this command from project root
 
