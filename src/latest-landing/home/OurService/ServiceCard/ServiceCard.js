@@ -61,7 +61,7 @@ class ServiceCard extends Component {
                                     />
                                 </video>
                                 :
-                                <div className="ServiceCard__img"
+                                <div className="ServiceCard__img lazyload"
                                      style={{ backgroundImage: `url('${service.imgUrl}')` }}></div>
                         }
                         {
