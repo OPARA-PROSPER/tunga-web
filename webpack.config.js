@@ -1,5 +1,7 @@
 'use strict';
 
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
+
 var webpack = require('webpack'),
     path = require('path'),
     srcPath = path.join(__dirname, 'src'),
@@ -51,7 +53,8 @@ module.exports = {
         common_config.plugins.noErrorsPlugin,
         new OpenBrowserPlugin({}),
         common_config.plugins.magicGlobalsPlugin,
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new PreloadWebpackPlugin()
     ],
     debug: true,
     devtool: 'source-map',
