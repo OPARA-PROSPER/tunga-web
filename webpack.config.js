@@ -160,7 +160,7 @@ module.exports = {
         }),
 
         // remove this and leave it only in production build
-        new ResourceHintWebpackPlugin(),
+        /* new ResourceHintWebpackPlugin(),
         new ScriptExtHtmlWebpackPlugin({
             defaultAttribute: 'defer',
             async: 'app'
@@ -169,12 +169,12 @@ module.exports = {
             env: 'production',
             exclude: 'babel-polyfill'
         }),
-        new ImageminWebpWebpackPlugin(),
+        new ImageminWebpWebpackPlugin(), */
         // remove this and leave it only in production build
         //new BundleAnalyzerPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
-    optimization: {
+    /* optimization: {
         minimize: true,
         usedExports: true,
         minimizer: [new TerserPlugin()],
@@ -187,7 +187,7 @@ module.exports = {
                 },
             },
         }
-    },
+    }, */
     resolve: {
         modules: ["node_modules", path.resolve(__dirname, "src")],
         extensions: [

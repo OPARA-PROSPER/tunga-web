@@ -1,13 +1,13 @@
 "use strict";
 
-var config = require("./webpack.config"),
-    common_config = require("./webpack.common.config"),
-    MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-    TerserPlugin = require('terser-webpack-plugin'),
-    DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin'),
-    ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
-    ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin'),
-    HtmlCriticalPlugin = require("html-critical-webpack-plugin");
+const config = require("./webpack.config");
+const common_config = require("./webpack.common.config");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
+const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin');
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
 
 config.devtool = "source-map";
 config.plugins = [
@@ -28,19 +28,7 @@ config.plugins = [
         env: 'production',
         exclude: 'babel-polyfill'
     }),
-    new HtmlCriticalPlugin({
-        base: 'build/',
-        src: 'index.html',
-        dest: 'index.html',
-        inline: true,
-        minify: true,
-        extract: true,
-        width: 375,
-        height: 565,
-        penthouse: {
-            blockJSRequests: false,
-        }
-    }),
+    new ImageminWebpWebpackPlugin()
 ];
 config.optimization = {
     minimize: true,
