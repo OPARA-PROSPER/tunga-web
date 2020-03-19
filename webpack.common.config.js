@@ -6,17 +6,26 @@ let webpack = require('webpack'),
     unixTimestamp = Date.now();
 
 let siteSettings = {
+    prefetch: ['**/*.*'],
+    preload: ['**/*.*'],
     inject: true,
     chunks: ['vendor', 'app'],
     template: 'src/templates/index.ejs',
     env: process.env.NODE_ENV || 'development',
     hash: true,
+    xhtml: true,
+    showErrors: !process.env.NODE_ENV || true,
+    minify: process.env.NODE_ENV || false,
+    meta: {
+        charset: { charset: 'utf-8' },
+        viewport: 'width=device-width, initial-scale=1'
+    },
     timestamp: unixTimestamp,
     site: {
         title: "Tunga | Unleashing Africa's Tech Talent",
         description: "Small and large businesses from all over the world use Tunga for hiring African software engineers to address their most pressing software development needs.",
         images: {
-            hero: 'https://tunga.io/icons/tunga_hero_devs_working.jpg'
+            hero: 'https://tunga.io/icons/tunga_hero_devs_working.jpg' // todo: this is a dead link
         },
         colors: {
             primary: '#f41152'
@@ -31,35 +40,14 @@ let siteSettings = {
 
 module.exports = {
     plugins: {
-        chunkVendorPlugin: new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js?v='+ unixTimestamp),
         HTMLInjectPlugin: new HtmlWebpackPlugin(siteSettings),
-        /*
-        LegacyHTMLInjectPlugin: new HtmlWebpackPlugin({
-            ...siteSettings,
-            inject: false,
-            chunks: ['vendor', 'legacy'],
-            template: 'src/legacy/index.ejs',
-            filename: 'welcome/index.html'
-        }),
-        */
-        StyleGuideInjectPlugin: new HtmlWebpackPlugin({
-            ...siteSettings,
-            chunks: ['vendor', 'guide'],
-            template: 'src/guide/index.ejs',
-            filename: 'guide.html',
-            site: {
-                ...siteSettings.site,
-                title: 'Tunga | Style & Component Guide',
-                description: 'Style & Component Guide for Tunga',
-            }
-        }),
-        noErrorsPlugin: new webpack.NoErrorsPlugin(),
+        noErrorsPlugin: new webpack.NoEmitOnErrorsPlugin(),
         magicGlobalsPlugin: new webpack.DefinePlugin({
             __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true') && process.env.NODE_ENV !== 'production'),
             __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false')),
             __PRODUCTION__: JSON.stringify(process.env.NODE_ENV === 'production'),
             __BACKEND_ROOT_URL__: JSON.stringify(process.env.BACKEND_ROOT),
-            __STRIPE_KEY__: JSON.stringify(process.env.NODE_ENV === 'production' && process.env.STRIPE_ENV !== 'development'?'pk_live_2AjNhLWO1Cg4nby71Vh01a2T':'pk_test_lUZpYKnVWZ5RbdPcmnBqqE8l'),
+            __STRIPE_KEY__: JSON.stringify(process.env.NODE_ENV === 'production' && process.env.STRIPE_ENV !== 'development'?'pk_live_2AjNhLWO1Cg4nby71Vh01a2T':'pk_test_lUZpYKnVWZ5RbdPcmnBqqE8l'), //todo: add keys to an environment file
             __MAINTENANCE__: false
         }),
         CleanWebpackPlugin: new CleanWebpackPlugin(['build'], {

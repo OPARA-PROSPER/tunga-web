@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LazyLoad from "react-lazy-load";
 import "./CaseStudyCard.scss";
 import {
     Card,
@@ -7,7 +8,8 @@ import {
     CardTitle,
     Col,
     Media,
-    Row
+    Row,
+    Spinner
 } from "reactstrap";
 
 class CaseStudyCard extends Component {
@@ -21,7 +23,17 @@ class CaseStudyCard extends Component {
             <div className="CaseStudyCard w-100">
                 <Card className="border-0 pt-0 w-100">
                     <CardBody className="pt-0 p-0">
-                        <img src={caseStudy.icon} alt={caseStudy.title} className="rounded"/>
+                        <LazyLoad
+                            debounce={false}
+                            offsetVertical={500}
+                            placeholder={<Spinner />}
+                        >
+                            <img
+                                src={caseStudy.icon}
+                                alt={caseStudy.title}
+                                className="rounded"
+                            />
+                        </LazyLoad>
                         <CardTitle className="text-blue size-18 mt-3 font-weight-bold">
                             {caseStudy.title}
                         </CardTitle>
@@ -65,13 +77,16 @@ class CaseStudyCard extends Component {
                                 />
                             </Media>
                             <Media body className="pl-2 size-16">
-                                <Media heading className="size-16 text-blue mb-0">
+                                <Media
+                                    heading
+                                    className="size-16 text-blue mb-0"
+                                >
                                     {caseStudy.user.name}
                                 </Media>
                                 <Media className="size-14">
                                     {caseStudy.user.position +
-                                    ", " +
-                                    caseStudy.user.company}
+                                        ", " +
+                                        caseStudy.user.company}
                                 </Media>
                             </Media>
                         </Media>

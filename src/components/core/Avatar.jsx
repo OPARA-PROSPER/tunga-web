@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import randomstring from 'randomstring';
+import randomstring from '../utils/generateRandomString'; 
 
 import Icon from './Icon';
 import IconButton from "./IconButton";

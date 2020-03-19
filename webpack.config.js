@@ -1,68 +1,213 @@
-'use strict';
+"use strict";
 
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
-
-var webpack = require('webpack'),
-    path = require('path'),
-    srcPath = path.join(__dirname, 'src'),
-    OpenBrowserPlugin = require('open-browser-webpack-plugin'),
-    common_config = require('./webpack.common.config');
+const webpack = require("webpack");
+const path = require("path");
+const common_config = require("./webpack.common.config");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
+//const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
-    target: 'web',
-    cache: true,
     entry: {
-        vendor: ['babel-polyfill', 'react', 'react-dom', 'react-router', 'redux', 'react-redux'],
-        app: path.join(srcPath, 'app.js'),
-        legacy: path.join(srcPath, 'legacy/app.js'),
-        guide: path.join(srcPath, 'guide/app.js')
+        vendor: [
+            "babel-polyfill",
+            "react",
+            "react-dom",
+            "react-router",
+            "redux",
+            "react-redux"
+        ],
+        app: "app.js"
     },
     output: {
-        path: path.join(__dirname, 'build'),
-        publicPath: '/',
-        filename: '[name].js?v='+ common_config.hash,
-        library: ['[name]'],
-        pathInfo: true
+        path: path.resolve(__dirname, "build"),
+        filename: "[name].[hash].bundle.js",
+        library: ["[name]"],
+        publicPath: "/",
+        chunkFilename: "[id].chunk.js"
     },
+    target: "web",
+    cache: true,
     module: {
-        loaders: [
-            { test: /\.coffee$/, loader: 'coffee-loader' },
-            { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel?cacheDirectory'},
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
-            { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
-            { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.(png|jpg|gif)(\?.*)?$/, loader: 'url-loader?limit=8192&name=images/[hash].[ext]?v='+ common_config.hash+'!image-maxsize?max-width=1600'},
-            { test: /\.woff(2)?(\?v=[0-9].[0-9].[0-9])?$/, loader: "url-loader?mimetype=application/font-woff&name=fonts/[hash].[ext]" },
-            { test: /\.(otf|ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/, loader: "file-loader?name=fonts/[hash].[ext]" },
-            { test: /\.ejs$/, loader: 'ejs-compiled?htmlmin' },
-            { test: /\.mp4$/, loader: 'file-loader?name=videos/[hash].[ext]?v='+ common_config.hash},
-            { test: /\.(mp3|wav)$/, loader: 'file-loader?name=audio/[hash].[ext]?v='+ common_config.hash},
-            { test: /\.json$/, loader: 'json-loader' }
+        rules: [
+            {
+                test: /\.(jsx|js)?$/,
+                include: [path.resolve(__dirname, "src")],
+                exclude: /node_modules/,
+                loader: "babel-loader",
+                options: {
+                    cacheDirectory: true,
+                    cacheCompression: true
+                }
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: "html-loader"
+                    }
+                ]
+            },
+            { test: /\.coffee$/, use: "coffee-loader" },
+            {
+                test: /\.less$/,
+                use: ["style-loader", "css-loader", "less-loader"]
+            },
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: true,
+                            hmr: process.env.NODE_ENV === "development"
+                        }
+                    },
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader"
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif)(\?.*)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "images/[hash].[ext]",
+                            limit: 800,
+                        },
+                    },  
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                          // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                          // the webp option will enable WEBP
+                            webp: {
+                                quality: 75
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.woff(2)?(\?v=[0-9].[0-9].[0-9])?$/,
+                use:
+                    "url-loader?mimetype=application/font-woff&name=fonts/[hash].[ext]"
+            },
+            {
+                test: /\.(otf|ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "fonts/[hash].[ext]"
+                    }
+                }
+            },
+            {
+                test: /\.ejs$/,
+                use: "@testerum/ejs-compiled-loader-webpack4-nodeps"
+            },
+            {
+                test: /\.mp4$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "videos/[hash].[ext]?v=" + common_config.hash
+                    }
+                }
+            },
+            {
+                test: /\.(mp3|wav)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "audio/[hash].[ext]?v=" + common_config.hash
+                    }
+                }
+            },
+            { test: /\.json$/, use: "file-loader", type: "javascript/auto" }
         ]
     },
-    resolve: {
-        root: srcPath,
-        extensions: ['', '.js', '.jsx', '.json', '.coffee', '.less', '.css', '.png', '.jpg', '.gif'],
-        modulesDirectories: ['node_modules', 'src']
-    },
     plugins: [
-        common_config.plugins.chunkVendorPlugin,
         common_config.plugins.HTMLInjectPlugin,
-        //common_config.plugins.LegacyHTMLInjectPlugin,
-        common_config.plugins.StyleGuideInjectPlugin,
-        common_config.plugins.noErrorsPlugin,
-        new OpenBrowserPlugin({}),
         common_config.plugins.magicGlobalsPlugin,
-        new webpack.HotModuleReplacementPlugin(),
-        new PreloadWebpackPlugin()
+        new MiniCssExtractPlugin({
+            filename: "[name].[hash].css",
+            chunkFilename: "[id].[hash].css"
+        }),
+
+        // remove this and leave it only in production build
+        new ResourceHintWebpackPlugin(),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: 'defer',
+            async: 'app'
+        }),
+        new DynamicCdnWebpackPlugin({
+            env: 'production',
+            exclude: 'babel-polyfill'
+        }),
+        new ImageminWebpWebpackPlugin(),
+        // remove this and leave it only in production build
+        //new BundleAnalyzerPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
-    debug: true,
-    devtool: 'source-map',
+    optimization: {
+        minimize: true,
+        usedExports: true,
+        minimizer: [new TerserPlugin()],
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
+        }
+    },
+    resolve: {
+        modules: ["node_modules", path.resolve(__dirname, "src")],
+        extensions: [
+            ".js",
+            ".jsx",
+            ".json",
+            ".coffee",
+            ".less",
+            ".css",
+            ".png",
+            ".jpg",
+            ".gif"
+        ]
+    },
+    devtool: "source-map",
     devServer: {
-        contentBase: './build',
+        open: true,
+        compress: true,
         historyApiFallback: true,
         hot: true,
         inline: true,
-        progress: true
+        progress: true,
+        headers: {
+            'Cache-Control': 'max-age=31536000', // help Remo understand that he has to set this in nginx
+        }
     }
 };

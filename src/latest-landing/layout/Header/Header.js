@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Col, Row } from "reactstrap";
+import { Col, Row, Spinner } from "reactstrap";
 import { openCalendlyWidget } from "../../../components/utils/calendly";
 import "./Header.scss";
 import Nav from "../Nav/Nav";
 import Button from "../../shared/core/Button";
 import BgVideo from "../../assets/videos/home/section-1.mp4";
 import BgVideoMobile from "../../assets/videos/home/section-1-mobile.mp4";
+import LazyLoad from 'react-lazy-load';
 
 class Header extends Component {
     constructor(props) {
@@ -22,21 +23,27 @@ class Header extends Component {
                     {
                         !isMobile
                         &&
-                        <video
-                            className="Header__video"
-                            autoPlay
-                            loop
-                            muted>
-                            <source
-                                src={BgVideo}
-                                type="video/mp4"
-                            />
-                            <source
-                                src={BgVideoMobile}
-                                type="video/mp4"
-                                media="all and (max-width: 768px)"
-                            />
-                        </video>
+
+                        <LazyLoad 
+                            debounce={false}
+                            placeholder={<Spinner />}
+                            >
+                            <video
+                                className="Header__video"
+                                autoPlay
+                                loop
+                                muted>
+                                <source
+                                    src={BgVideo}
+                                    type="video/mp4"
+                                />
+                                <source
+                                    src={BgVideoMobile}
+                                    type="video/mp4"
+                                    media="all and (max-width: 768px)"
+                                />
+                            </video>
+                        </LazyLoad> 
                     }
                 </div>
                 <Nav/>

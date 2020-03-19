@@ -27,7 +27,7 @@ class Footer extends React.Component {
                         <div>
                             <div className="tunga-logo-btm">
                                 <img
-                                    src={require('../../../assets/images/logo_round.png')}
+                                    src={require('../../../assets/images/logo_round.png').default}
                                 />
                             </div>
                             <p>

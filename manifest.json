@@ -1,0 +1,10 @@
+{
+    "react.js": "https://unpkg.com/react@16/umd/react.production.min.js",
+    "react-router.js": "https://unpkg.com/react-router-dom@4.1.1/umd/react-router-dom.min.js",
+    "polyfill.js": "https://cdn.jsdelivr.net/npm/babel-polyfill@6.26.0/lib/index.min.js",
+    "react-dom": "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js",
+    "react-dom.development.js": "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
+    "react.development.js": "https://unpkg.com/react@16/umd/react.development.js",
+    "redux.js": "https://cdn.jsdelivr.net/npm/redux@4.0.5/lib/redux.min.js",
+    "react-redux.js": "https://cdn.jsdelivr.net/npm/react-redux@7.2.0/lib/index.min.js"
+}

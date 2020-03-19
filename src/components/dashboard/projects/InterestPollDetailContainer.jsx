@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import randomstring from 'randomstring';
+import randomstring from '../../utils/generateRandomString';
 
 import {addPropsToChildren} from "../../core/utils/children";
 import connect from "../../../connectors/ProjectConnector";

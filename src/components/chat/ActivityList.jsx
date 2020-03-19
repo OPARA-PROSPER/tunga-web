@@ -6,7 +6,7 @@ import TimeAgo from 'react-timeago';
 import {ProgressBar} from 'react-bootstrap';
 
 import Linkify from '../core/Linkify';
-import randomstring from 'randomstring';
+import randomstring from '../utils/generateRandomString';  
 
 import Avatar from '../core/Avatar';
 import Attachments from './Attachments';

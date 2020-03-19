@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import randomstring from "randomstring";
+import randomstring from "../utils/generateRandomString";
 import moment from "moment";
 
 import connect from "../../connectors/ActivityConnector";
@@ -495,11 +495,11 @@ class ChatWidget extends React.Component {
                                     this.audio = audio;
                                 }}>
                                 <source
-                                    src={require('../../assets/audio/chat.mp3')}
+                                    src={require('../../assets/audio/chat.mp3').default}
                                     type="audio/mpeg"
                                 />
                                 <source
-                                    src={require('../../assets/audio/chat.wav')}
+                                    src={require('../../assets/audio/chat.wav').default}
                                     type="audio/wav"
                                 />
                             </audio>

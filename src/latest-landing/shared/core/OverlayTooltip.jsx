@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Tooltip } from "reactstrap";
-import randomstring from "randomstring";
+import randomstring from "../../../components/utils/generateRandomString";
 
 export default class OverlayTooltip extends React.Component {
     static defaultProps = {

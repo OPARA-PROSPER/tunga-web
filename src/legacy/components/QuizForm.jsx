@@ -6,7 +6,7 @@ import {Button, OverlayTrigger, Tooltip} from 'react-bootstrap';
 import momentLocalizer from 'react-widgets/lib/localizers/moment';
 import {DateTimePicker, Calendar} from 'react-widgets';
 import Dropzone from 'react-dropzone';
-import randomstring from 'randomstring';
+import randomstring from '../../components/utils/generateRandomString';
 
 import Progress from './status/Progress';
 import FormStatus from './status/FormStatus';
@@ -382,7 +382,7 @@ const Footer = props => (
                                     href="http://www.bbc.co.uk/news/world-africa-38294998"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/bbc.png')}
+                                        src={require('../images/press/bbc.png').default}
                                     />
                                 </a>
                             </li>
@@ -391,7 +391,7 @@ const Footer = props => (
                                     href="https://www.youtube.com/watch?v=v9uRtYpZDQs"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/campus-party.png')}
+                                        src={require('../images/press/campus-party.png').default}
                                     />
                                 </a>
                             </li>
@@ -400,7 +400,7 @@ const Footer = props => (
                                     href="https://www.oneworld.nl/startup-tunga-lanceert-pilot-programma-voor-nieuw-soort-freelance-platform"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/OWlogo.png')}
+                                        src={require('../images/press/OWlogo.png').default}
                                     />
                                 </a>
                             </li>
@@ -409,7 +409,7 @@ const Footer = props => (
                                     href="http://trendwatching.com/blog/featured-innovator-tunga/"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/trend-watching.png')}
+                                        src={require('../images/press/trend-watching.png').default}
                                     />
                                 </a>
                             </li>
@@ -418,7 +418,7 @@ const Footer = props => (
                                     href="https://soundcloud.com/african-tech-round-up/a-chat-with-ernesto-spruyt-of-tungaio?in=african-tech-round-up/sets/quick-chats"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/African-Tech-Round-Up.png')}
+                                        src={require('../images/press/African-Tech-Round-Up.png').default}
                                     />
                                 </a>
                             </li>
@@ -427,7 +427,7 @@ const Footer = props => (
                                     href="http://spendmatters.com/2016/04/01/tunga-wip-of-the-week/"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/Spend-Matters.png')}
+                                        src={require('../images/press/Spend-Matters.png').default}
                                     />
                                 </a>
                             </li>
@@ -436,7 +436,7 @@ const Footer = props => (
                                     href="https://www.nabc.nl/africa-business-news/5/technology/377/tunga-founder-ernesto-spruyt-we-create-21st-century-jobs-in-africa"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/netherlands-african-business-council.png')}
+                                        src={require('../images/press/netherlands-african-business-council.png').default}
                                     />
                                 </a>
                             </li>

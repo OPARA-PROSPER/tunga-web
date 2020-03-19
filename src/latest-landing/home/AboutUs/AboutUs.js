@@ -4,6 +4,7 @@ import { Col, ListGroup, ListGroupItem, Row } from "reactstrap";
 import About from "../../assets/img/about/about.jpg";
 import AboutMobile from "../../assets/img/about/about-mobile.jpg";
 import Icon from "../../shared/core/Icon";
+import LazyBackground from "../../shared/LazyBackground/LazyBackground";
 
 class AboutUs extends Component {
     constructor(props) {
@@ -13,10 +14,11 @@ class AboutUs extends Component {
     render() {
         return (
             <section className="AboutUs" id="AboutUs">
-                <div
+                <LazyBackground className="AboutUs__bg" src={About}/>
+                {/* <div
                     className="AboutUs__bg"
                     style={{ backgroundImage: `url(${About})` }}>
-                </div>
+                </div> */}
                 <div className="AboutUs__content">
                     <Row>
                         <Col sm="12" lg="7" md="7">

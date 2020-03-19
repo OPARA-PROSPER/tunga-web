@@ -439,17 +439,17 @@ export default class Home extends React.Component {
                                     <Row>
                                         <Col md={4} className="skill">
                                             <img
-                                                src={require('../../assets/images/showcase/TungaMobileSkills.png')}
+                                                src={require('../../assets/images/showcase/TungaMobileSkills.png').default}
                                             />
                                         </Col>
                                         <Col md={4} className="skill">
                                             <img
-                                                src={require('../../assets/images/showcase/TungaWebSkills.png')}
+                                                src={require('../../assets/images/showcase/TungaWebSkills.png').default}
                                             />
                                         </Col>
                                         <Col md={4} className="skill">
                                             <img
-                                                src={require('../../assets/images/showcase/TungaOtherSkills.png')}
+                                                src={require('../../assets/images/showcase/TungaOtherSkills.png').default}
                                             />
                                         </Col>
                                     </Row>

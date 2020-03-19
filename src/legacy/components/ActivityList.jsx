@@ -5,7 +5,7 @@ import TimeAgo from 'react-timeago';
 import {ProgressBar} from 'react-bootstrap';
 import Linkify from './Linkify';
 import PropTypes from 'prop-types';
-import randomstring from 'randomstring';
+import randomstring from '../../components/utils/generateRandomString';
 
 import Progress from './status/Progress';
 import LoadMore from './status/LoadMore';

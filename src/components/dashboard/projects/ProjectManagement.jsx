@@ -128,7 +128,7 @@ export default class ProjectManagement extends React.Component {
                                 <React.Fragment>
                                 {this.state.collapsed ? (
                                     <button className="float-right btn-no-outline" onClick={() => this.collapseProjectDetails(false)}>
-                                    <img src={require('../../../assets/images/icons/Menu.svg')} />
+                                    <img src={require('../../../assets/images/icons/Menu.svg').default} />
                                 </button>
                                 ) : (
                                     <div className="project-details">
@@ -136,7 +136,7 @@ export default class ProjectManagement extends React.Component {
                                         <div className="font-weight-normal">
                                             Name
                                             <button className="float-right btn-no-outline" onClick={() => this.collapseProjectDetails(true)}>
-                                                <img src={require('../../../assets/images/icons/Collapse.svg')} />
+                                                <img src={require('../../../assets/images/icons/Collapse.svg').default} />
                                             </button>
                                         </div>
                                         <div>{project.title}</div>

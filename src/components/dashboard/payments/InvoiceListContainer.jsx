@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import randomstring from 'randomstring';
+import randomstring from '../../utils/generateRandomString';
 import _ from 'lodash';
 
 import Progress from "../../core/Progress";

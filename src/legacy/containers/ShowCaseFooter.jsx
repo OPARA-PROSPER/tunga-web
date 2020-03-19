@@ -174,7 +174,7 @@ class ShowCaseFooter extends React.Component {
                             <div>
                                 <div className="tunga-logo-btm">
                                     <img
-                                        src={require('../images/logo_round.png')}
+                                        src={require('../images/logo_round.png').default}
                                     />
                                 </div>
                                 <p>

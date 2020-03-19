@@ -111,7 +111,7 @@ class Home extends React.Component {
 
                 <div className="bg-wrapper">
                     <img
-                        src={require(`../images/home/Image-${imageNumber}.jpg`)}
+                        src={require(`../images/home/Image-${imageNumber}.jpg`).default}
                     />
                 </div>
 
