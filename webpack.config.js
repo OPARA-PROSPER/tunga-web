@@ -109,6 +109,10 @@ module.exports = {
                 ]
             },
             {
+                test: /\.webp$/,
+                use: 'file-loader?name=images/[hash].[ext]'
+            },
+            {
                 test: /\.woff(2)?(\?v=[0-9].[0-9].[0-9])?$/,
                 use:
                     "url-loader?mimetype=application/font-woff&name=fonts/[hash].[ext]"

@@ -11,17 +11,17 @@ import Case3ImgPreloader from "../../assets/img/case-study/Casestudy3-preloader.
 import Case4ImgPreloader from "../../assets/img/case-study/Casestudy4-preloader.jpg";
 
 import Icon1 from "../../assets/img/case-study/impulse.png";
-import Icon2 from "../../assets/img/case-study/tree.png";
+import Icon2 from "../../assets/img/case-study/tree-150x40.png";
 import Icon3 from "../../assets/img/case-study/cuurios-logo.png";
 import Icon4 from "../../assets/img/case-study/Provolve.png";
 import Icon5 from "../../assets/img/case-study/CZW.png";
 import Icon6 from "../../assets/img/case-study/Logo_niluk.png";
 import User1 from "../../assets/img/user/user1.png";
-import User2 from "../../assets/img/case-study/Ineke.png";
-import User3 from "../../assets/img/case-study/Leen.png";
-import User4 from "../../assets/img/case-study/Dereck.png";
-import User5 from "../../assets/img/case-study/Kasper.png";
-import User6 from "../../assets/img/case-study/Elena.png";
+import User2 from "../../assets/img/case-study/Ineke-40x40.png";
+import User3 from "../../assets/img/case-study/Leen-40x40.png";
+import User4 from "../../assets/img/case-study/Dereck-40x40.png";
+import User5 from "../../assets/img/case-study/Kasper-40x40.png";
+import User6 from "../../assets/img/case-study/Elena-40x40.png";
 import { paging } from "../../Utils/Utils";
 import { Col, Row } from "reactstrap";
 import CaseStudyCard from "./CaseStudyCard/CaseStudyCard";
