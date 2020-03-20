@@ -2,18 +2,21 @@
     font-family: 'HK Grotesk';
     font-style: normal;
     src: url('./hk-grotesk/HKGrotesk-Regular.otf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'HK Grotesk';
     font-weight: 300;
     src: url('./hk-grotesk/HKGrotesk-Light.otf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'HK Grotesk';
     font-weight: bold;
     src: url('./hk-grotesk/HKGrotesk-Bold.otf');
+    font-display: swap;
 }
 
 
@@ -21,4 +24,5 @@
     font-family: 'HK Grotesk';
     font-style: italic;
     src: url('./hk-grotesk/HKGrotesk-Italic.otf');
+    font-display: swap;
 }

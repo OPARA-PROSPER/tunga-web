@@ -27,7 +27,7 @@ export default class StepThree extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.isSaved.profile) {
             this.nextSection();
         }

@@ -27,7 +27,7 @@ export default class StepOne extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.isSaved.profile || nextProps.isSaved.company) {
             this.props.history.push('/onboard/step-two');
         }

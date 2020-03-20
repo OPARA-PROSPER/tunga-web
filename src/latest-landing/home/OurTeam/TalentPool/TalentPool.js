@@ -36,7 +36,7 @@ class TalentPool extends Component {
     }
 
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const { auth } = this.props;
         if (auth.isEmailVisitor || auth.isAuthenticated) {
             return this.getPeople();
