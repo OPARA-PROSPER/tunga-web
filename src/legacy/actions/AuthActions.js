@@ -270,7 +270,6 @@ export function logoutSuccess() {
 }
 
 export function logoutFailed(error) {
-    console.log('logoutFailed: ', error);
     return {
         type: LOGOUT_FAILED,
         error,

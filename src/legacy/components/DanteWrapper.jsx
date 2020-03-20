@@ -26,7 +26,6 @@ export default class DanteWrapper extends React.Component {
         super(props);
         let config = Map(fromJS(this.defaultOptions(props.config)));
         this.options = config.mergeDeep(props.config).toJS();
-        console.log('options: ', this.options);
     }
 
     defaultOptions(options) {

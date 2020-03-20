@@ -46,7 +46,6 @@ class CheckoutForm extends Component {
     };
 
     onSubmit = (e) => {
-        console.log('onSubmit => ', e);
         const {stripe, invoice, email, InvoiceActions, selectionKey, proceed} = this.props,
             {intent} = this.state,
             self = this;
@@ -64,9 +63,7 @@ class CheckoutForm extends Component {
             } else {
                 // The payment has succeeded. Display a success message.
                 const paymentIntent = result.paymentIntent;
-                console.log('paymentIntent => ', paymentIntent);
                 if(paymentIntent.status === 'succeeded') {
-                    console.log('data => ', {...paymentIntent, email});
                     InvoiceActions.payInvoice(invoice.id, {...paymentIntent, email}, selectionKey);
                     if(proceed) {
                         proceed({invoice, paymentIntent});

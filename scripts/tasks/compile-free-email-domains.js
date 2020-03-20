@@ -6,5 +6,3 @@ function freeEmailDomains() {
 }
 
 fs.writeFile(path.join(__dirname, '..', '..', 'src', 'utils', 'free-email-domains.json'), JSON.stringify(freeEmailDomains(), null, 4), () => {});
-
-console.log(freeEmailDomains());

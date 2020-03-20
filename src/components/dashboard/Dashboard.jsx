@@ -45,7 +45,6 @@ class Dashboard extends React.Component {
     }
 
     onCloseNotification(readLog) {
-        console.log('readLog: ', readLog);
         const {ProfileActions} = this.props;
         ProfileActions.createNotificationLog(readLog);
         this.setState({cleared: [...this.state.cleared, `${readLog.type}_${readLog.notification_id}`]});

@@ -244,7 +244,6 @@ export function retrieveTask(id, editToken) {
                 dispatch(retrieveTaskSuccess(response.data));
             })
             .catch(function(error) {
-                console.log('retrieveTask: ', error);
                 /*dispatch(
           retrieveTaskFailed(error.response ? error.response.data : null),
         );*/

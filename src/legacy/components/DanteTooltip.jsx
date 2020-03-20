@@ -141,7 +141,6 @@ class DanteTooltip extends React.Component {
         //contentState.createEntity('LINK', 'MUTABLE', opts)
 
         if (selection.isCollapsed()) {
-            console.log('COLLAPSED SKIPPING LINK');
             return;
         }
 
@@ -261,11 +260,6 @@ class DanteTooltip extends React.Component {
             return;
         }
 
-        console.log('dante offset:', danteOffset);
-
-        console.log('tooltip top: ', top, el);
-
-        // console.log "SET SHOW FOR TOOLTIP INSERT MENU"
         return this.setState({
             show: true,
             position: {
@@ -349,7 +343,6 @@ class DanteTooltipItem extends React.Component {
     };
 
     activeClassBlock = () => {
-        //console.log "EDITOR STATE", @props.editorState
         if (!this.props.editorState) {
             return;
         }
@@ -365,7 +358,6 @@ class DanteTooltipItem extends React.Component {
         if (!this.props.editorState) {
             return;
         }
-        //console.log @props.item
         return this.props.editorState
             .getCurrentInlineStyle()
             .has(this.props.item.style);

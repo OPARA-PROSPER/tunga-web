@@ -119,14 +119,14 @@ export function sendGAEvent(category, action, label) {
             label || null,
         );
     } else {
-        console.log(
+        /* console.log(
             'GA Page View',
             GA_COMMANDS.SEND,
             GA_HIT.EVENT,
             category || null,
             action || null,
             label || null,
-        );
+        ); */
     }
 }
 
@@ -134,7 +134,7 @@ export function sendGAPageView(url) {
     if (window.ga) {
         window.ga('send', 'pageview', url);
     } else {
-        console.log('GA Page View', url);
+        //console.log('GA Page View', url);
     }
 }
 
