@@ -10,10 +10,12 @@
 
     <%- include browser-themes.ejs %>
 
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,300,300i,400,400i,500,500i,700,700i">
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://resources.tunga.io/tunga-assets/icons/latest/style.css?v=<%= htmlWebpackPlugin.options.timestamp %>&display=swap">
+    <%- include preconnect-dns-prefect.ejs %>
 
-    <link rel="prefect" as="font" href="https://resources.tunga.io/tunga-assets/icons/latestfonts/Tunga-Icons.ttf?t4eeo2&display=swap">
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,300,300i,400,400i,500,500i,700,700i">
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://resources.tunga.io/tunga-assets/icons/latest/style.css?v=<%= htmlWebpackPlugin.options.timestamp %>">
+
+    <link rel="prefect" as="font" onload="this.rel = 'stylesheet'" href="https://resources.tunga.io/tunga-assets/icons/latestfonts/Tunga-Icons.ttf?t4eeo2&display=swap">
 
     <noscript>
     <link
@@ -23,7 +25,7 @@
     <noscript>
     <link
         rel="stylesheet"
-        href="https://resources.tunga.io/tunga-assets/icons/latest/style.css?v=<%= htmlWebpackPlugin.options.timestamp %>&display=swap">
+        href="https://resources.tunga.io/tunga-assets/icons/latest/style.css?v=<%= htmlWebpackPlugin.options.timestamp %>">
     </noscript>
 
     <link rel="preload" as="style" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />

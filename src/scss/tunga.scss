@@ -3080,7 +3080,7 @@ textarea {
 
                 .slick-prev:before,
                 .slick-next:before {
-                    font-family: 'Tunga-Icons';
+                    font-family: 'Tunga-Icons', sans-serif;
                     font-size: px-to-rem(48);
                     color: get-color('darker-grey');
                 }
