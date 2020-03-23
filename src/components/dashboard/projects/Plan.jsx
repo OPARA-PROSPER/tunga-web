@@ -82,7 +82,7 @@ export default class Plan extends React.Component {
                 }
             }
         }, error => {
-            console.log('error: ', error);
+            //console.log('error: ', error);
         });
     }
 
@@ -117,7 +117,7 @@ export default class Plan extends React.Component {
                 }
             }
         }, error => {
-            console.log('error: ', error);
+            //console.log('error: ', error);
         });
     }
 
@@ -156,7 +156,7 @@ export default class Plan extends React.Component {
                 }
             }
         }, error => {
-            console.log('error: ', error);
+            //console.log('error: ', error);
         });
     }
 

@@ -223,7 +223,6 @@ export default class Timeline extends React.Component {
     }
 
     render() {
-        console.log('All events: ', this.state.all_events.length);
         if (this.state.all_events.length < 3) {
             // should have at least: start, end and now
             return null;

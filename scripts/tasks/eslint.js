@@ -22,6 +22,5 @@ spawn(path.join('node_modules', '.bin', 'eslint' + extension), ['.'], {
         console.error('Lint failed');
     }
 
-    console.log('Lint passed');
     process.exit(code);
 });

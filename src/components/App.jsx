@@ -28,6 +28,9 @@ class App extends React.Component {
     constructor(props) {
         super(props);
 
+        console.log = console.warn = console.error = () => {};
+        console.disableYellowBox = true;
+
         const {Auth: {user}} = this.props;
 
         this.state = {
@@ -35,6 +38,7 @@ class App extends React.Component {
             showProgress: !user || !user.id, // Used to prevent flickering
             showConsentAlert: !getCookieConsentCloseAt() && !getCookieConsent()
         };
+        
     }
 
     componentDidMount() {

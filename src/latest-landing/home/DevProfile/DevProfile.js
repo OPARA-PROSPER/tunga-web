@@ -49,7 +49,7 @@ class DevProfile extends Component {
     this.state = {};
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.loadData(this.props.match.params.id);
   }
 

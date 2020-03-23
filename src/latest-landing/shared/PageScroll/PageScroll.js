@@ -35,7 +35,7 @@ class PageScroll extends Component {
     }
 
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.isWheeling = false;
         this.updateWindowDimensions();
     }
@@ -324,7 +324,7 @@ class PageScroll extends Component {
         }
 
         const sections = React.Children.map(self.props.children, child =>
-            React.cloneElement(child, { onUrlNav: this.onUrlNav, onPageLoad: this.onPageLoad })
+            React.cloneElement(child)
         );
 
         return (

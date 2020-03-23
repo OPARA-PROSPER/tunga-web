@@ -35,7 +35,7 @@ export default class StepTwo extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.isSaved.profile || nextProps.isSaved.company) {
             this.props.history.push('/onboard/step-three');
         }

@@ -26,7 +26,7 @@ class WhitePaper extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_(nextProps) {
         if (nextProps.Profile && nextProps.Profile.isSaved.visitors) {
             const downloadLink = nextProps.Profile.isSaved.visitors.download_url;
 

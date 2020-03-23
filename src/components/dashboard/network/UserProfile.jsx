@@ -64,7 +64,7 @@ export default class UserProfile extends React.Component {
                                 clearTimeout(mapTimer);
                             }
                         } else {
-                            console.log('Geocode error: ', status);
+                            //console.log('Geocode error: ', status);
                         }
                     });
                 } else {
