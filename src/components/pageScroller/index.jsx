@@ -34,7 +34,6 @@ class PageScroller extends React.Component {
 
     render() {
         const screen = this.state.screenWidth;
-        console.log(screen);
         const { goToPage, onPageScrolled } = this.props;
 
         if (typeof goToPage !== 'undefined' && goToPage !== false) {

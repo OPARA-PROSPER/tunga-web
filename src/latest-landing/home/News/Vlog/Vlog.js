@@ -34,7 +34,7 @@ class Vlog extends Component {
     }
 
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.loadData();
     }
 

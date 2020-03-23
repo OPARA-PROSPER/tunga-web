@@ -60,6 +60,9 @@ module.exports = {
         historyApiFallback: true,
         hot: true,
         inline: true,
-        progress: true
+        progress: true,
+        headers: {
+            "Set-Cookie": "SameSite=None;Secure"
+        }
     }
 };

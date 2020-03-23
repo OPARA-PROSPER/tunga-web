@@ -348,7 +348,6 @@ function error(state = {}, action) {
         case TaskActions.MAKE_TASK_PAYMENT_SUCCESS:
             return {...state, pay: null};
         case TaskActions.CREATE_TASK_DOCUMENT_FAILED:
-            console.log('CREATE_TASK_DOCUMENT_FAILED:', action);
             return {...state, document: action.error};
         case TaskActions.CREATE_TASK_DOCUMENT_START:
         case TaskActions.CREATE_TASK_DOCUMENT_SUCCESS:

@@ -142,7 +142,6 @@ export default class ProgressReportForm extends FormComponent {
 
     onDrop(attachments) {
         var current = this.state.attachments;
-        console.log('attachments: ', attachments);
         this.setState({attachments: current.concat(attachments)});
     }
 

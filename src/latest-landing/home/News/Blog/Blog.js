@@ -32,7 +32,7 @@ class Blog extends Component {
     }
 
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.loadData(this.props.query);
     }
 
