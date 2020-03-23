@@ -311,14 +311,14 @@ class Footer extends Component {
                     <Col md="3" sm="6">
                         <div className="latest-from-our-blog">
                             <h4>LATEST FROM OUR BLOG</h4>
-                            {/* {firstBlogs.map(
+                            {firstBlogs.map(
                                 (blog, i) => (
                                     <li key={i}>
                                         <a href={blog.url} target="_blank">
                                             {blog.title}
                                         </a>{" "}
                                     </li>
-                                ))} */}
+                                ))}
                         </div>
                     </Col>
                 </Row>
