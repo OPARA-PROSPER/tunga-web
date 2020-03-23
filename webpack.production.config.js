@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin');
 const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
 
 config.devtool = "source-map";
@@ -19,7 +18,6 @@ config.plugins = [
         filename: "[name].[contenthash].css",
         chunkFilename: "[id].[contenthash].css"
     }),
-    new ResourceHintWebpackPlugin(),
     new ScriptExtHtmlWebpackPlugin({
         defaultAttribute: 'defer',
         async: 'app'

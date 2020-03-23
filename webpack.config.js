@@ -6,7 +6,6 @@ const common_config = require("./webpack.common.config");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
 //const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
@@ -120,7 +119,7 @@ module.exports = {
             {
                 test: /\.(otf|ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/,
                 use: {
-                    loader: "file-loader",
+                    loader: "url-loader",
                     options: {
                         name: "fonts/[hash].[ext]"
                     }
@@ -160,8 +159,7 @@ module.exports = {
         }),
 
         // remove this and leave it only in production build
-        /* new ResourceHintWebpackPlugin(),
-        new ScriptExtHtmlWebpackPlugin({
+        /* new ScriptExtHtmlWebpackPlugin({
             defaultAttribute: 'defer',
             async: 'app'
         }),

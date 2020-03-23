@@ -95,8 +95,7 @@
         "slate": "^0.47.8",
         "slate-react": "^0.22.8",
         "slick-carousel": "^1.8.1",
-        "striptags": "^2.2.1",
-        "webpack-manifest-plugin": "^2.2.0"
+        "striptags": "^2.2.1"
     },
     "devDependencies": {
         "@babel/core": "^7.8.7",
@@ -121,7 +120,7 @@
         "eslint-plugin-react": "^6.0.0",
         "expose-loader": "^0.7.5",
         "extract-text-webpack-plugin": "^1.0.1",
-        "file-loader": "^5.1.0",
+        "file-loader": "^6.0.0",
         "globals-loader": "0.0.3",
         "html-critical-webpack-plugin": "^2.1.0",
         "html-loader": "^0.5.5",
@@ -142,13 +141,12 @@
         "npm-run-all": "^4.1.5",
         "prettier": "^1.19.1",
         "redux-logger": "^2.6.1",
-        "resource-hints-webpack-plugin": "0.0.2",
         "responsive-loader": "^1.2.0",
         "sass-loader": "^6.0.7",
         "script-loader": "^0.7.0",
         "style-loader": "^0.13.2",
         "terser-webpack-plugin": "^2.3.5",
-        "url-loader": "^0.5.6",
+        "url-loader": "^4.0.0",
         "webp-loader": "^0.6.0",
         "webpack": "^4.42.0",
         "webpack-bundle-analyzer": "^3.6.1",
