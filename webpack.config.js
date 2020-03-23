@@ -212,6 +212,7 @@ module.exports = {
         progress: true,
         headers: {
             'Cache-Control': 'max-age=31536000', // help Remo understand that he has to set this in nginx
+            "Set-Cookie": "SameSite=None;Secure"
         }
     }
 };

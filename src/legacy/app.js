@@ -27,7 +27,6 @@ history.listen(location => {
         }
     }
 
-    console.log('Page View sent', full_path);
 
     if (window.optimizely) {
         window.optimizely = window.optimizely || [];

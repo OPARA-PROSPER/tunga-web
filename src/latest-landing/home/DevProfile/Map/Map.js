@@ -47,7 +47,7 @@ class Map extends Component {
                                 clearTimeout(mapTimer);
                             }
                         } else {
-                            console.log('Geocode error: ', status);
+                            //console.log('Geocode error: ', status);
                         }
                     });
                 } else {

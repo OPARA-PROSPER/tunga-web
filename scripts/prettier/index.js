@@ -53,7 +53,6 @@ const config = {
 };
 
 function exec(command, args) {
-    console.log('> ' + [command].concat(args).join(' '));
     var options = {};
     return execFileSync(command, args, options).toString();
 }
@@ -95,7 +94,7 @@ Object.keys(config).forEach(key => {
         exec(prettierCmd, [...args, ...files]);
     } catch (e) {
         if (!shouldWrite) {
-            console.log(
+            /* console.log(
                 '\n' +
                     chalk.red(
                         `  This project uses prettier to format all JavaScript code.\n`
@@ -106,7 +105,7 @@ Object.keys(config).forEach(key => {
                         ` and add changes to files listed above to your commit.`
                     ) +
                     `\n`
-            );
+            ); */
             process.exit(1);
         }
         throw e;

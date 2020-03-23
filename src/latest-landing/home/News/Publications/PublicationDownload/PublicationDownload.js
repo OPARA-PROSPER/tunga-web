@@ -33,7 +33,7 @@ class PublicationDownload extends React.Component {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.Profile && nextProps.Profile.isSaved.visitors) {
             const downloadLink = nextProps.Profile.isSaved.visitors.download_url;
 

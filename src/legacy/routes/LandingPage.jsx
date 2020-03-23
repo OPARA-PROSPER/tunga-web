@@ -137,7 +137,6 @@ export default class LandingPage extends ComponentWithModal {
                     if (_opened === true) {
                         var logoPos = roundTungaLogoTop.offset().top;
                         var currentLogoPos = logoPos - $(document).scrollTop();
-                        // console.log('position 2 is '+ currentLogoPos);
                         menuItemToggled = false;
                         if (currentLogoPos >= 50) {
                             $('.navbar').removeClass('navbarbg');
@@ -145,13 +144,11 @@ export default class LandingPage extends ComponentWithModal {
                         } else {
                             $('.navbar-brand').addClass('medium-showcase');
                         }
-                        // console.log('closed');
                     } else {
                         $('.navbar').addClass('navbarbg');
                         $('.navbar').removeClass('navbar-brand');
                         $('.navbar-brand').addClass('medium-showcase');
                         menuItemToggled = true;
-                        // console.log('open');
                     }
                 }
             });

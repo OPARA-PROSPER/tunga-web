@@ -62,7 +62,6 @@ export default class BlogForm extends ComponentWithModal {
     }
 
     onContentChange(editorContext, content) {
-        console.log('onContentChange: ', editorContext, content);
         this.setState({body: JSON.stringify(content)});
     }
 

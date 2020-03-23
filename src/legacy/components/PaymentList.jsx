@@ -108,7 +108,6 @@ export default class PaymentList extends GenericListContainer {
     }
 
     onSearch(filters) {
-        console.log('search filters: ', filters);
         this.setState({
             ...filters /*, selection_key: this.composeSearchKey(filters.search)*/,
         });

@@ -55,11 +55,7 @@ export default class InvoiceForm extends React.Component {
         e.preventDefault();
 
         if (this.props.proceed) {
-            console.log(this.props.invoice.type);
             if (this.props.invoice.type === INVOICE_TYPE_PURCHASE) {
-                console.log(this.state.invoice);
-                console.log(this.state.payouts);
-
                 this.props.proceed({invoice: this.state.invoice, payouts: this.state.payouts});
             } else {
                 this.props.proceed(this.state.invoice);

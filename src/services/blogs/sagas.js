@@ -5,7 +5,6 @@ import * as actions from './actions';
 import * as types from './constants';
 
 function* fetchBlogs(action) {
-    console.log(action);
     try {
         const response = yield call(api, {
             method: 'get',
@@ -32,7 +31,6 @@ function* viewBlog(action) {
             method: 'get',
             url: `/blogs/${action.id}/`,
         });
-        console.log(response.data);
         yield put(actions.viewBlogSuccess(response.data));
     } catch (error) {
         if (has(error, 'response.data.message')) {
