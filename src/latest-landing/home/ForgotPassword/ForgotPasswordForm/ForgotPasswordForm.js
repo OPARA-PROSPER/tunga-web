@@ -60,7 +60,7 @@ class AuthForm extends Component {
                     {auth.isResetting ? <Progress/> : null}
 
                     {auth.isReset ? (
-                        <Success message="Instructions for resetting your password have been sent to your email."/>
+                        <Success message="Instructions for resetting your password have been sent to your email if we find an account assosiated with it."/>
                     ) : null}
                     <Group>
                         <Label>
