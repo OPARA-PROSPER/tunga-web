@@ -117,13 +117,8 @@ module.exports = {
                     "url-loader?mimetype=application/font-woff&name=fonts/[hash].[ext]"
             },
             {
-                test: /\.(otf|ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/,
-                use: {
-                    loader: "url-loader",
-                    options: {
-                        name: "fonts/[hash].[ext]"
-                    }
-                }
+                test: /\.(otf|ttf|eot|svg)(\?v=[0-9]+\.[0-9]+\.[0-9]+)?$/,
+                loader: 'url-loader?name=fonts/[name].[ext]'
             },
             {
                 test: /\.ejs$/,
