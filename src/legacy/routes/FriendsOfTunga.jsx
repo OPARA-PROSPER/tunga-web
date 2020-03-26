@@ -110,12 +110,12 @@ class FriendOfTungaPage extends ComponentWithModal {
                 <div className="flags">
                     <img
                         className="en"
-                        src={require('../images/showcase/English.png').default}
+                        src={require('../images/showcase/English.png')}
                         onClick={this.onSelectLanguage.bind(this, 'en')}
                     />
                     <img
                         className="nl"
-                        src={require('../images/showcase/Dutch.png').default}
+                        src={require('../images/showcase/Dutch.png')}
                         onClick={this.onSelectLanguage.bind(this, 'nl')}
                     />
                 </div>

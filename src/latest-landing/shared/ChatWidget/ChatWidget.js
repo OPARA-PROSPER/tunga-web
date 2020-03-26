@@ -476,11 +476,11 @@ class ChatWidget extends React.Component {
                                     this.audio = audio;
                                 }}>
                                 <source
-                                    src={require('../../../assets/audio/chat.mp3').default}
+                                    src={require('../../../assets/audio/chat.mp3')}
                                     type="audio/mpeg"
                                 />
                                 <source
-                                    src={require('../../../assets/audio/chat.wav').default}
+                                    src={require('../../../assets/audio/chat.wav')}
                                     type="audio/wav"
                                 />
                             </audio>

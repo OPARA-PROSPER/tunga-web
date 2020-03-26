@@ -15,7 +15,7 @@ export default ({title}) => {
                                     target="_blank"
                                     title="Butterfly Works">
                                     <img
-                                        src={require('../../../assets/images/partners/butterfly-works-logo.png').default}
+                                        src={require('../../../assets/images/partners/butterfly-works-logo.png')}
                                     />
                                 </a>
                             </li>
@@ -25,7 +25,7 @@ export default ({title}) => {
                                     target="_blank"
                                     title="Dioraphte">
                                     <img
-                                        src={require('../../../assets/images/partners/dioraphte.jpg').default}
+                                        src={require('../../../assets/images/partners/dioraphte.jpg')}
                                     />
                                 </a>
                             </li>
@@ -35,7 +35,7 @@ export default ({title}) => {
                                     target="_blank"
                                     title="Oxfam">
                                     <img
-                                        src={require('../../../assets/images/partners/oxfam.png').default}
+                                        src={require('../../../assets/images/partners/oxfam.png')}
                                     />
                                 </a>
                             </li>
@@ -45,7 +45,7 @@ export default ({title}) => {
                                     target="_blank"
                                     title="the DOEN Foundation">
                                     <img
-                                        src={require('../../../assets/images/partners/DOEN.gif').default}
+                                        src={require('../../../assets/images/partners/DOEN.gif')}
                                     />
                                 </a>
                             </li>
@@ -55,7 +55,7 @@ export default ({title}) => {
                                     target="_blank"
                                     title="Edukans">
                                     <img
-                                        src={require('../../../assets/images/partners/edukans.jpg').default}
+                                        src={require('../../../assets/images/partners/edukans.jpg')}
                                     />
                                 </a>
                             </li>
@@ -65,7 +65,7 @@ export default ({title}) => {
                                     target="_blank"
                                     title="Triodos Bank">
                                     <img
-                                        src={require('../../../assets/images/partners/triodos-bank.png').default}
+                                        src={require('../../../assets/images/partners/triodos-bank.png')}
                                     />
                                 </a>
                             </li>

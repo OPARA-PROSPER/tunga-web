@@ -172,7 +172,7 @@ export default class TaskWizard extends React.Component {
                                             href="http://www.bbc.co.uk/news/world-africa-38294998"
                                             target="_blank">
                                             <img
-                                                src={require('../images/press/bbc.png').default}
+                                                src={require('../images/press/bbc.png')}
                                             />
                                         </a>
                                     </li>
@@ -181,7 +181,7 @@ export default class TaskWizard extends React.Component {
                                             href="http://trendwatching.com/blog/featured-innovator-tunga/"
                                             target="_blank">
                                             <img
-                                                src={require('../images/press/trend-watching.png').default}
+                                                src={require('../images/press/trend-watching.png')}
                                             />
                                         </a>
                                     </li>
@@ -190,7 +190,7 @@ export default class TaskWizard extends React.Component {
                                             href="https://soundcloud.com/african-tech-round-up/a-chat-with-ernesto-spruyt-of-tungaio?in=african-tech-round-up/sets/quick-chats"
                                             target="_blank">
                                             <img
-                                                src={require('../images/press/African-Tech-Round-Up.png').default}
+                                                src={require('../images/press/African-Tech-Round-Up.png')}
                                             />
                                         </a>
                                     </li>

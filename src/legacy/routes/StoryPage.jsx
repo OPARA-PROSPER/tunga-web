@@ -119,13 +119,13 @@ export default class StoryPage extends React.Component {
                                     target="_blank"
                                     title="Butterfly Works">
                                     <img
-                                        src={require('../images/partners/butterfly-works-logo.png').default}
+                                        src={require('../images/partners/butterfly-works-logo.png')}
                                     />
                                 </a>
                             </div>
                             <div className="image-wrapper">
                                 <img
-                                    src={require('../images/story/uprise.jpg').default}
+                                    src={require('../images/story/uprise.jpg')}
                                 />
                             </div>
                         </div>
@@ -156,7 +156,7 @@ export default class StoryPage extends React.Component {
                             </p>
                             <div className="image-wrapper">
                                 <img
-                                    src={require('../images/story/Section2.jpg').default}
+                                    src={require('../images/story/Section2.jpg')}
                                 />
                             </div>
                         </div>
@@ -189,7 +189,7 @@ export default class StoryPage extends React.Component {
                                                 target="_blank"
                                                 title="Dioraphte">
                                                 <img
-                                                    src={require('../images/partners/dioraphte.jpg').default}
+                                                    src={require('../images/partners/dioraphte.jpg')}
                                                 />
                                             </a>
                                         </li>
@@ -199,7 +199,7 @@ export default class StoryPage extends React.Component {
                                                 target="_blank"
                                                 title="Oxfam">
                                                 <img
-                                                    src={require('../images/partners/oxfam.png').default}
+                                                    src={require('../images/partners/oxfam.png')}
                                                 />
                                             </a>
                                         </li>
@@ -209,7 +209,7 @@ export default class StoryPage extends React.Component {
                                                 target="_blank"
                                                 title="the DOEN Foundation">
                                                 <img
-                                                    src={require('../images/partners/DOEN.gif').default}
+                                                    src={require('../images/partners/DOEN.gif')}
                                                 />
                                             </a>
                                         </li>
@@ -219,7 +219,7 @@ export default class StoryPage extends React.Component {
                                                 target="_blank"
                                                 title="Edukans">
                                                 <img
-                                                    src={require('../images/partners/edukans.jpg').default}
+                                                    src={require('../images/partners/edukans.jpg')}
                                                 />
                                             </a>
                                         </li>
@@ -229,7 +229,7 @@ export default class StoryPage extends React.Component {
                                                 target="_blank"
                                                 title="Triodos Bank">
                                                 <img
-                                                    src={require('../images/partners/triodos-bank.png').default}
+                                                    src={require('../images/partners/triodos-bank.png')}
                                                 />
                                             </a>
                                         </li>
@@ -299,7 +299,7 @@ export default class StoryPage extends React.Component {
                                     href="https://blog.tunga.io/tech-for-good-will-impact-sourcing-be-the-new-fair-trade-61e8c8d3dcce"
                                     target="_blank">
                                     <img
-                                        src={require('../images/story/impact-sourcing.png').default}
+                                        src={require('../images/story/impact-sourcing.png')}
                                     />
                                 </a>
                             </div>
@@ -332,7 +332,7 @@ export default class StoryPage extends React.Component {
                             </p>
                             <div className="image-wrapper">
                                 <img
-                                    src={require('../images/story/tunga-workshop.jpg').default}
+                                    src={require('../images/story/tunga-workshop.jpg')}
                                 />
                             </div>
                         </div>

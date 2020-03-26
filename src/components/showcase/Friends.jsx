@@ -108,12 +108,12 @@ export default class Friends extends React.Component {
                 <div className="flags">
                     <img
                         className="en"
-                        src={require('../../assets/images/flags/English.png').default}
+                        src={require('../../assets/images/flags/English.png')}
                         onClick={this.onSelectLanguage.bind(this, 'en')}
                     />
                     <img
                         className="nl"
-                        src={require('../../assets/images/flags/Dutch.png').default}
+                        src={require('../../assets/images/flags/Dutch.png')}
                         onClick={this.onSelectLanguage.bind(this, 'nl')}
                     />
                 </div>

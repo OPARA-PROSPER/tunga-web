@@ -6,6 +6,13 @@ import Button from "../../core/Button";
 import {openCalendlyWidget} from "../../utils/calendly";
 
 export default ({title, description, className, showCTA=true, ctaText='Schedule a call', ctaSize='xxl', ctaCallback, children, addMeta=true, videoBg=false}) => {
+    
+    
+    console.log(className);
+
+
+
+
     return (
         <React.Fragment>
             {addMeta?(
@@ -18,7 +25,7 @@ export default ({title, description, className, showCTA=true, ctaText='Schedule 
                         loop
                         muted>
                         <source
-                            src={require('../../../assets/videos/BG.mp4').default}
+                            src={require('../../../assets/videos/BG.mp4')}
                             type="video/mp4"
                         />
                     </video>

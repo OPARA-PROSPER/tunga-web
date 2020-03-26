@@ -13,7 +13,7 @@ export default () => {
                                     href="http://www.bbc.co.uk/news/world-africa-38294998"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/bbc.png').default}
+                                        src={require('../../../assets/images/press/bbc.png')}
                                     />
                                 </a>
                             </li>
@@ -22,7 +22,7 @@ export default () => {
                                     href="https://www.youtube.com/watch?v=v9uRtYpZDQs"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/campus-party.png').default}
+                                        src={require('../../../assets/images/press/campus-party.png')}
                                     />
                                 </a>
                             </li>
@@ -31,7 +31,7 @@ export default () => {
                                     href="https://www.oneworld.nl/startup-tunga-lanceert-pilot-programma-voor-nieuw-soort-freelance-platform"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/OWlogo.png').default}
+                                        src={require('../../../assets/images/press/OWlogo.png')}
                                     />
                                 </a>
                             </li>
@@ -40,7 +40,7 @@ export default () => {
                                     href="http://trendwatching.com/blog/featured-innovator-tunga/"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/trend-watching.png').default}
+                                        src={require('../../../assets/images/press/trend-watching.png')}
                                     />
                                 </a>
                             </li>
@@ -49,7 +49,7 @@ export default () => {
                                     href="https://soundcloud.com/african-tech-round-up/a-chat-with-ernesto-spruyt-of-tungaio?in=african-tech-round-up/sets/quick-chats"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/African-Tech-Round-Up.png').default}
+                                        src={require('../../../assets/images/press/African-Tech-Round-Up.png')}
                                     />
                                 </a>
                             </li>
@@ -58,7 +58,7 @@ export default () => {
                                     href="https://www.nabc.nl/africa-business-news/5/technology/377/tunga-founder-ernesto-spruyt-we-create-21st-century-jobs-in-africa"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/NABC_New_LOGO.png').default}
+                                        src={require('../../../assets/images/press/NABC_New_LOGO.png')}
                                     />
                                 </a>
                             </li>
@@ -67,7 +67,7 @@ export default () => {
                                     href="https://blog.tunga.io/our-developers-dont-want-aid-they-want-to-be-productive-4aba9173211e"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/bnr.jpg').default}
+                                        src={require('../../../assets/images/press/bnr.jpg')}
                                     />
                                 </a>
                             </li>
@@ -76,7 +76,7 @@ export default () => {
                                     href="https://www.telegraaf.nl/nieuws/1876342/podium-voor-afrikaans-it-talent"
                                     target="_blank">
                                     <img style={{height: '25px',}}
-                                         src={require('../../../assets/images/press/Telegraaf.png').default}
+                                         src={require('../../../assets/images/press/Telegraaf.png')}
                                     />
                                 </a>
                             </li>
@@ -85,7 +85,7 @@ export default () => {
                                     href="https://www.sprout.nl/artikel/startup-van-de-week/deze-nederlandse-startup-laat-websites-en-apps-bouwen-door-afrikaanse"
                                     target="_blank">
                                     <img style={{height: '25px',}}
-                                         src={require('../../../assets/images/press/sprout.png').default}
+                                         src={require('../../../assets/images/press/sprout.png')}
                                     />
                                 </a>
                             </li>
@@ -94,7 +94,7 @@ export default () => {
                                     href="https://www.gsma.com/mobilefordevelopment/programme/ecosystem-accelerator/three-takeaways-africa-technology-business-forum/"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/Gsma.png').default}
+                                        src={require('../../../assets/images/press/Gsma.png')}
                                     />
                                 </a>
                             </li>
@@ -103,7 +103,7 @@ export default () => {
                                     href="https://www.social-enterprise.nl/wie-doen-het/tunga/"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/social-enterprise.png').default}
+                                        src={require('../../../assets/images/press/social-enterprise.png')}
                                     />
                                 </a>
                             </li>
@@ -112,7 +112,7 @@ export default () => {
                                     href="https://soundcloud.com/boostznl/10-van-idee-tot-app-hoe-doe-je-dat-zonder-it-kennis-en-groot-budget"
                                     target="_blank">
                                     <img
-                                        src={require('../../../assets/images/press/Boostz-logo.png').default}
+                                        src={require('../../../assets/images/press/Boostz-logo.png')}
                                     />
                                 </a>
                             </li>
@@ -121,7 +121,7 @@ export default () => {
                                     href="https://socreatie.nl/ernesto-spruyt-afrikaanse-programmeurs-inhuren-via-tunga/"
                                     target="_blank">
                                     <img style={{height: '40px',}}
-                                         src={require('../../../assets/images/press/socreatie.png').default}
+                                         src={require('../../../assets/images/press/socreatie.png')}
                                     />
                                 </a>
                             </li>
@@ -129,7 +129,7 @@ export default () => {
                                 <a
                                     href="https://www.rabobank.nl/bedrijven/groei/personeel/afrikaanse-programmeurs/"
                                     target="_blank">
-                                    <img src={require('../../../assets/images/press/rabobank.png').default}/>
+                                    <img src={require('../../../assets/images/press/rabobank.png')}/>
                                 </a>
                             </li>
                         </ul>

@@ -152,15 +152,15 @@ export default class Channel extends React.Component {
                             <div className="avatars">
                                 <Avatar
                                     size="medium"
-                                    src={require('../images/chat/bart.jpg').default}
+                                    src={require('../images/chat/bart.jpg')}
                                 />
                                 <Avatar
                                     size="medium"
-                                    src={require('../images/chat/domieck.jpg').default}
+                                    src={require('../images/chat/domieck.jpg')}
                                 />
                                 <Avatar
                                     size="medium"
-                                    src={require('../images/chat/elijah.jpg').default}
+                                    src={require('../images/chat/elijah.jpg')}
                                 />
                             </div>
                         </div>

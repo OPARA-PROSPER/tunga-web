@@ -198,7 +198,7 @@ class App extends React.Component {
                     <div className="app-loading">
                         <div>
                             <img
-                                src={require('../images/logo.png').default}
+                                src={require('../images/logo.png')}
                                 height="50px"
                             />
                         </div>

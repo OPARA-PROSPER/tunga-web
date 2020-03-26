@@ -253,11 +253,11 @@ class ChatWindow extends React.Component {
                         this.audio = audio;
                     }}>
                     <source
-                        src={require('../audio/chat.mp3').default}
+                        src={require('../audio/chat.mp3')}
                         type="audio/mpeg"
                     />
                     <source
-                        src={require('../audio/chat.wav').default}
+                        src={require('../audio/chat.wav')}
                         type="audio/wav"
                     />
                 </audio>

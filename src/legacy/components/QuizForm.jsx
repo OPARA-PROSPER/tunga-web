@@ -382,7 +382,7 @@ const Footer = props => (
                                     href="http://www.bbc.co.uk/news/world-africa-38294998"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/bbc.png').default}
+                                        src={require('../images/press/bbc.png')}
                                     />
                                 </a>
                             </li>
@@ -391,7 +391,7 @@ const Footer = props => (
                                     href="https://www.youtube.com/watch?v=v9uRtYpZDQs"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/campus-party.png').default}
+                                        src={require('../images/press/campus-party.png')}
                                     />
                                 </a>
                             </li>
@@ -400,7 +400,7 @@ const Footer = props => (
                                     href="https://www.oneworld.nl/startup-tunga-lanceert-pilot-programma-voor-nieuw-soort-freelance-platform"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/OWlogo.png').default}
+                                        src={require('../images/press/OWlogo.png')}
                                     />
                                 </a>
                             </li>
@@ -409,7 +409,7 @@ const Footer = props => (
                                     href="http://trendwatching.com/blog/featured-innovator-tunga/"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/trend-watching.png').default}
+                                        src={require('../images/press/trend-watching.png')}
                                     />
                                 </a>
                             </li>
@@ -418,7 +418,7 @@ const Footer = props => (
                                     href="https://soundcloud.com/african-tech-round-up/a-chat-with-ernesto-spruyt-of-tungaio?in=african-tech-round-up/sets/quick-chats"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/African-Tech-Round-Up.png').default}
+                                        src={require('../images/press/African-Tech-Round-Up.png')}
                                     />
                                 </a>
                             </li>
@@ -427,7 +427,7 @@ const Footer = props => (
                                     href="http://spendmatters.com/2016/04/01/tunga-wip-of-the-week/"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/Spend-Matters.png').default}
+                                        src={require('../images/press/Spend-Matters.png')}
                                     />
                                 </a>
                             </li>
@@ -436,7 +436,7 @@ const Footer = props => (
                                     href="https://www.nabc.nl/africa-business-news/5/technology/377/tunga-founder-ernesto-spruyt-we-create-21st-century-jobs-in-africa"
                                     target="_blank">
                                     <img
-                                        src={require('../images/press/netherlands-african-business-council.png').default}
+                                        src={require('../images/press/netherlands-african-business-council.png')}
                                     />
                                 </a>
                             </li>

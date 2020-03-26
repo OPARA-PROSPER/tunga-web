@@ -51,13 +51,13 @@ export default () => {
                             target="_blank"
                             title="Butterfly Works">
                             <img
-                                src={require('../../assets/images/partners/butterfly-works-logo.png').default}
+                                src={require('../../assets/images/partners/butterfly-works-logo.png')}
                             />
                         </a>
                     </div>
                     <div className="image-wrapper">
                         <img
-                            src={require('../../assets/images/story/uprise.jpg').default}
+                            src={require('../../assets/images/story/uprise.jpg')}
                         />
                     </div>
                 </div>
@@ -88,7 +88,7 @@ export default () => {
                     </p>
                     <div className="image-wrapper">
                         <img
-                            src={require('../../assets/images/story/Section2.jpg').default}
+                            src={require('../../assets/images/story/Section2.jpg')}
                         />
                     </div>
                 </div>
@@ -169,7 +169,7 @@ export default () => {
                             href="https://blog.tunga.io/tech-for-good-will-impact-sourcing-be-the-new-fair-trade-61e8c8d3dcce"
                             target="_blank">
                             <img
-                                src={require('../../assets/images/story/impact-sourcing.png').default}
+                                src={require('../../assets/images/story/impact-sourcing.png')}
                             />
                         </a>
                     </div>
@@ -202,7 +202,7 @@ export default () => {
                     </p>
                     <div className="image-wrapper">
                         <img
-                            src={require('../../assets/images/story/tunga-workshop.jpg').default}
+                            src={require('../../assets/images/story/tunga-workshop.jpg')}
                         />
                     </div>
                 </div>

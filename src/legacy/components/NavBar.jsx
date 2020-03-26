@@ -63,7 +63,7 @@ class NavBar extends React.Component {
                             <i className="fa fa-ellipsis-v fa-lg" />
                         </button>
                         <Link to="/" className="navbar-brand">
-                            <img src={require('../images/logo.png').default} />
+                            <img src={require('../images/logo.png')} />
                         </Link>
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">

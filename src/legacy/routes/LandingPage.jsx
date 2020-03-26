@@ -259,7 +259,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="http://www.bbc.co.uk/news/world-africa-38294998"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/bbc.png').default}
+                                            src={require('../images/press/bbc.png')}
                                         />
                                     </a>
                                 </li>
@@ -268,7 +268,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://www.youtube.com/watch?v=v9uRtYpZDQs"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/campus-party.png').default}
+                                            src={require('../images/press/campus-party.png')}
                                         />
                                     </a>
                                 </li>
@@ -277,7 +277,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://www.oneworld.nl/startup-tunga-lanceert-pilot-programma-voor-nieuw-soort-freelance-platform"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/OWlogo.png').default}
+                                            src={require('../images/press/OWlogo.png')}
                                         />
                                     </a>
                                 </li>
@@ -286,7 +286,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="http://trendwatching.com/blog/featured-innovator-tunga/"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/trend-watching.png').default}
+                                            src={require('../images/press/trend-watching.png')}
                                         />
                                     </a>
                                 </li>
@@ -295,7 +295,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://soundcloud.com/african-tech-round-up/a-chat-with-ernesto-spruyt-of-tungaio?in=african-tech-round-up/sets/quick-chats"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/African-Tech-Round-Up.png').default}
+                                            src={require('../images/press/African-Tech-Round-Up.png')}
                                         />
                                     </a>
                                 </li>
@@ -304,7 +304,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://www.nabc.nl/africa-business-news/5/technology/377/tunga-founder-ernesto-spruyt-we-create-21st-century-jobs-in-africa"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/netherlands-african-business-council.png').default}
+                                            src={require('../images/press/netherlands-african-business-council.png')}
                                         />
                                     </a>
                                 </li>
@@ -313,7 +313,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://blog.tunga.io/our-developers-dont-want-aid-they-want-to-be-productive-4aba9173211e"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/bnr.jpg').default}
+                                            src={require('../images/press/bnr.jpg')}
                                         />
                                     </a>
                                 </li>
@@ -322,7 +322,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://www.telegraaf.nl/nieuws/1876342/podium-voor-afrikaans-it-talent"
                                         target="_blank">
                                         <img style={{height: '25px',}}
-                                             src={require('../images/press/Telegraaf.png').default}
+                                             src={require('../images/press/Telegraaf.png')}
                                         />
                                     </a>
                                 </li>
@@ -331,7 +331,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://www.sprout.nl/artikel/startup-van-de-week/deze-nederlandse-startup-laat-websites-en-apps-bouwen-door-afrikaanse"
                                         target="_blank">
                                         <img style={{height: '25px',}}
-                                             src={require('../images/press/sprout.png').default}
+                                             src={require('../images/press/sprout.png')}
                                         />
                                     </a>
                                 </li>
@@ -340,7 +340,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://www.gsma.com/mobilefordevelopment/programme/ecosystem-accelerator/three-takeaways-africa-technology-business-forum/"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/Gsma.png').default}
+                                            src={require('../images/press/Gsma.png')}
                                         />
                                     </a>
                                 </li>
@@ -349,7 +349,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://www.social-enterprise.nl/wie-doen-het/tunga/"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/social-enterprise.png').default}
+                                            src={require('../images/press/social-enterprise.png')}
                                         />
                                     </a>
                                 </li>
@@ -358,7 +358,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://soundcloud.com/boostznl/10-van-idee-tot-app-hoe-doe-je-dat-zonder-it-kennis-en-groot-budget"
                                         target="_blank">
                                         <img
-                                            src={require('../images/press/Boostz-logo.png').default}
+                                            src={require('../images/press/Boostz-logo.png')}
                                         />
                                     </a>
                                 </li>
@@ -367,7 +367,7 @@ export default class LandingPage extends ComponentWithModal {
                                         href="https://socreatie.nl/ernesto-spruyt-afrikaanse-programmeurs-inhuren-via-tunga/"
                                         target="_blank">
                                         <img style={{height: '40px',}}
-                                            src={require('../images/press/socreatie.png').default}
+                                            src={require('../images/press/socreatie.png')}
                                         />
                                     </a>
                                 </li>
@@ -375,7 +375,7 @@ export default class LandingPage extends ComponentWithModal {
                                     <a
                                         href="https://www.rabobank.nl/bedrijven/groei/personeel/afrikaanse-programmeurs/"
                                         target="_blank">
-                                        <img src={require('../images/press/rabobank.png').default}/>
+                                        <img src={require('../images/press/rabobank.png')}/>
                                     </a>
                                 </li>
                             </ul>
@@ -607,7 +607,7 @@ export default class LandingPage extends ComponentWithModal {
                                             target="_blank"
                                             title="Butterfly Works">
                                             <img
-                                                src={require('../images/partners/butterfly-works-logo.png').default}
+                                                src={require('../images/partners/butterfly-works-logo.png')}
                                             />
                                         </a>
                                     </li>
@@ -617,7 +617,7 @@ export default class LandingPage extends ComponentWithModal {
                                             target="_blank"
                                             title="Dioraphte">
                                             <img
-                                                src={require('../images/partners/dioraphte.jpg').default}
+                                                src={require('../images/partners/dioraphte.jpg')}
                                             />
                                         </a>
                                     </li>
@@ -627,7 +627,7 @@ export default class LandingPage extends ComponentWithModal {
                                             target="_blank"
                                             title="Oxfam">
                                             <img
-                                                src={require('../images/partners/oxfam.png').default}
+                                                src={require('../images/partners/oxfam.png')}
                                             />
                                         </a>
                                     </li>
@@ -637,7 +637,7 @@ export default class LandingPage extends ComponentWithModal {
                                             target="_blank"
                                             title="the DOEN Foundation">
                                             <img
-                                                src={require('../images/partners/DOEN.gif').default}
+                                                src={require('../images/partners/DOEN.gif')}
                                             />
                                         </a>
                                     </li>
@@ -647,7 +647,7 @@ export default class LandingPage extends ComponentWithModal {
                                             target="_blank"
                                             title="Edukans">
                                             <img
-                                                src={require('../images/partners/edukans.jpg').default}
+                                                src={require('../images/partners/edukans.jpg')}
                                             />
                                         </a>
                                     </li>
@@ -657,7 +657,7 @@ export default class LandingPage extends ComponentWithModal {
                                             target="_blank"
                                             title="Triodos Bank">
                                             <img
-                                                src={require('../images/partners/triodos-bank.png').default}
+                                                src={require('../images/partners/triodos-bank.png')}
                                             />
                                         </a>
                                     </li>
@@ -673,17 +673,17 @@ export default class LandingPage extends ComponentWithModal {
                             <div className="row">
                                 <div className="col-md-4 skill">
                                     <img
-                                        src={require('../images/showcase/TungaMobileSkills.png').default}
+                                        src={require('../images/showcase/TungaMobileSkills.png')}
                                     />
                                 </div>
                                 <div className="col-md-4 skill">
                                     <img
-                                        src={require('../images/showcase/TungaWebSkills.png').default}
+                                        src={require('../images/showcase/TungaWebSkills.png')}
                                     />
                                 </div>
                                 <div className="col-md-4 skill">
                                     <img
-                                        src={require('../images/showcase/TungaOtherSkills.png').default}
+                                        src={require('../images/showcase/TungaOtherSkills.png')}
                                     />
                                 </div>
                             </div>

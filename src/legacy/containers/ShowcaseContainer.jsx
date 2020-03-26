@@ -62,7 +62,7 @@ class ShowcaseContainer extends React.Component {
                             }}
                             muted>
                             <source
-                                src={require('../video/homepagetunga.mp4').default}
+                                src={require('../video/homepagetunga.mp4')}
                                 type="video/mp4"
                             />
                         </video>
@@ -101,7 +101,7 @@ class ShowcaseContainer extends React.Component {
                                     <i className="fa tunga-icon-bars"/>
                                 </button>
                                 <Link className="navbar-brand" to="/">
-                                    <img src={require('../images/logo.png').default}/>
+                                    <img src={require('../images/logo.png')}/>
                                 </Link>
                             </div>
 
