@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import randomstring from 'randomstring';
+import randomstring from '../../components/utils/generateRandomString';
 import _ from 'lodash';
 
 import GenericContainer from './GenericContainer';

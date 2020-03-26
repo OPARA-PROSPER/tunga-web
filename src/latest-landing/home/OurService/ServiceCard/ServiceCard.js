@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./ServiceCard.scss";
 import { Card, CardBody, CardText, CardTitle, CardImg } from "reactstrap";
 import arrow from "../../../assets/img/service/Vector-1.png";
-
+import LazyBackground from "../../../shared/LazyBackground/LazyBackground";
 
 class ServiceCard extends Component {
     constructor(props) {
@@ -61,8 +61,7 @@ class ServiceCard extends Component {
                                     />
                                 </video>
                                 :
-                                <div className="ServiceCard__img"
-                                     style={{ backgroundImage: `url('${service.imgUrl}')` }}></div>
+                                <LazyBackground className="ServiceCard__img" src={service.imgUrl}/>
                         }
                         {
                             this.state.showVideo && !videoLoaded
@@ -90,7 +89,7 @@ class ServiceCard extends Component {
                            }}
                         >
                             <span className="ServiceCard__cta-text">Learn more</span>
-                            <img src={arrow}/>
+                            <img src={arrow} alt="service image"/>
                         </a>
                     </CardBody>
                 </Card>

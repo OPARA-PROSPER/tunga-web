@@ -6,7 +6,7 @@ import {Button, OverlayTrigger, Tooltip} from 'react-bootstrap';
 import momentLocalizer from 'react-widgets/lib/localizers/moment';
 import {DateTimePicker, Calendar} from 'react-widgets';
 import Dropzone from 'react-dropzone';
-import randomstring from 'randomstring';
+import randomstring from '../../components/utils/generateRandomString';
 
 import Progress from './status/Progress';
 import FormStatus from './status/FormStatus';

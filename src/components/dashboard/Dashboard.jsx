@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {Link} from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
-import randomstring from 'randomstring';
+import randomstring from '../utils/generateRandomString';
 import humanizeDuration from 'humanize-duration';
 import moment from 'moment';
 import Media from "react-media";

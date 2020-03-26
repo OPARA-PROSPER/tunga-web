@@ -1,4 +1,4 @@
-import 'babel-polyfill'; // Add Promises polyfill to global environment
+import 'idempotent-babel-polyfill';
 
 //Import local css
 import 'react-widgets/lib/less/react-widgets.less';

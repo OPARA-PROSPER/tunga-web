@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "./OurService.scss";
-import { CardBody, Col, Media, Row } from "reactstrap";
 import ServiceCard from "./ServiceCard/ServiceCard";
-import Service1 from "../../assets/img/service/dedicated-developers.jpg";
-import Service2 from "../../assets/img/service/project-outsourcing.jpg";
-import Service3 from "../../assets/img/service/design-and-scoping.jpg";
-import Service4 from "../../assets/img/service/developer-on-demand.jpg";
-import Service5 from "../../assets/img/service/recruitement.jpg";
-import Service6 from "../../assets/img/service/software-maintenance.jpg";
+import Service1 from "../../assets/img/service/dedicated-developers.webp";
+import Service2 from "../../assets/img/service/project-outsourcing.webp";
+import Service3 from "../../assets/img/service/design-and-scoping.webp";
+import Service4 from "../../assets/img/service/developer-on-demand.webp";
+import Service6 from "../../assets/img/service/software-maintenance.webp";
 
 import DedicatedDevelopers from "../../assets/videos/home/our-services/Dedicated developers - vid.mp4";
 import DedicatedDevelopersDetail from "../../assets/videos/home/our-services/Dedicated developers - big page.mp4";
@@ -17,17 +15,13 @@ import DeveloperDemand from "../../assets/videos/home/our-services/Developer on 
 import DeveloperDemandDetail from "../../assets/videos/home/our-services/Developer on demand detail page.mp4";
 import ProjectOutsourcing from "../../assets/videos/home/our-services/Project outsourcing.mp4";
 import ProjectOutsourcingDetail from "../../assets/videos/home/our-services/Project outsourcing - detail page.mp4";
-import Recruitment from "../../assets/videos/home/our-services/Recruitment .mp4";
-import RecruitmentDetail from "../../assets/videos/home/our-services/Recruitment - detail page.mp4";
 import SoftwareMaintenance from "../../assets/videos/home/our-services/Software maintenance.mp4";
 import SoftwareMaintenanceDetail from "../../assets/videos/home/our-services/Software maintenace detail page.mp4";
 
 
 import case1 from "../../assets/img/service/service1.png";
 import case2 from "../../assets/img/service/service2.png";
-import Icon from "../../shared/core/Icon";
 import { paging } from "../../Utils/Utils";
-import PaginateArrow from "../../shared/PaginateArrow/PaginateArrow";
 import ServiceDetail from "./ServiceDetail/ServiceDetail";
 import Carousel from "../../shared/Carousel/Carousel";
 
@@ -123,16 +117,6 @@ class OurService extends Component {
                     leadTime: "< 1 week",
                     price: "26 - 29 EUR per hour"
                 },
-                /*{
-                    title: "Recruitment",
-                    description:
-                        "Quick access to a developer for incidental needs - Product improvements, additional functions",
-                    imgUrl: Service5,
-                    videoMain: Recruitment,
-                    videoDetails: RecruitmentDetail,
-                    leadTime: "< 1 week",
-                    price: "26 - 29 EUR per hour"
-                },*/
                 {
                     title: "Software Maintenance",
                     description:

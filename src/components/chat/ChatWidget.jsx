@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import randomstring from "randomstring";
+import randomstring from "../utils/generateRandomString";
 import moment from "moment";
 
 import connect from "../../connectors/ActivityConnector";

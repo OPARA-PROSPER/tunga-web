@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import axios from 'axios';
-import randomstring from 'randomstring';
+import randomstring from '../../components/utils/generateRandomString';
 import querystring from 'querystring';
 
 import UserList from "../dashboard/network/UserList";

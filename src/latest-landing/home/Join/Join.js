@@ -3,29 +3,8 @@ import "./Join.scss";
 
 import Nav from "../../layout/Nav/Nav";
 import Footer from "../../layout/Footer/Footer";
-import PageScroll from "../../shared/PageScroll/PageScroll";
 import JoinContent from "../../../components/showcase/Join";
 
-const pages = [
-    {
-        hash: "Content",
-        title: "Content",
-        isActive: false,
-        isActiveBar: false,
-        color: "#fff",
-        bgColor: "#fff",
-        theme: "light",
-    },
-    {
-        hash: "Contact",
-        title: "Contact",
-        isActive: false,
-        isActiveBar: false,
-        color: "#fff",
-        bgColor: "#fff",
-        theme: "dark",
-    },
-];
 
 class Join extends Component {
     constructor(props) {

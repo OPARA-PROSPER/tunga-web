@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import randomstring from 'randomstring';
+import randomstring from '../utils/generateRandomString';
 import _ from 'lodash';
 
 import InputGroup from './InputGroup';

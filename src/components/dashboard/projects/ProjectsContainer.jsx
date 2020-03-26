@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import randomstring from 'randomstring';
+import randomstring from '../../utils/generateRandomString';
 
 import ProjectListContainer from './ProjectListContainer';
 import ProjectDetailContainer from './ProjectDetailContainer';

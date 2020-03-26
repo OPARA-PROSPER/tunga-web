@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 
 import Button from "../Header/Header";
-import Logo from "../../assets/img/common/logo.png";
+import Logo from "../../assets/img/common/logo-50x50.png";
 import { openCalendlyWidget } from "../../../components/utils/calendly";
 import { authenticate } from "../../../actions/AuthActions";
 import { connect } from "react-redux";

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import querystring from "querystring";
-import randomstring from "randomstring";
+import randomstring from "../../../components/utils/generateRandomString";
 import _ from "lodash";
 
 import CustomInputGroup from "./CustomInputGroup";

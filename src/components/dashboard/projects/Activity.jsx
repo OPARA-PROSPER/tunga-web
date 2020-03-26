@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import randomstring from "randomstring";
+import randomstring from "../../utils/generateRandomString";
 
 import connect from "../../../connectors/ActivityConnector";
 

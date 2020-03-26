@@ -1,4 +1,20 @@
 {
-  "presets": ["react", "es2015", "stage-0"],
-  "plugins": ["transform-remove-console", "transform-es3-member-expression-literals", "transform-es3-property-literals", "transform-decorators-legacy"]
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "modules": false,
+                "useBuiltIns": "usage", // or "entry"
+                "corejs": 3
+            }
+        ],
+        "@babel/preset-react"
+    ],
+    "plugins": [
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-class-properties",
+        "transform-es3-member-expression-literals",
+        "transform-es3-property-literals",
+        ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ]
 }

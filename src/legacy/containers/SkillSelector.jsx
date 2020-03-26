@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import randomstring from 'randomstring';
+import randomstring from '../../components/utils/generateRandomString';
 
 import connect from '../utils/connectors/SkillSelectionConnector';
 

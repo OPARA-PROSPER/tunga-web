@@ -170,7 +170,6 @@ class OurStory extends Component {
                         <Approach/>
                     </div>
                     <Footer/>
-                    {/* </PageScroller> */}
                 </PageScroll>
             </section>
         );
