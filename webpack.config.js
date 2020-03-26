@@ -75,13 +75,9 @@ module.exports = {
                 test: /\.(png|jpg|gif)(\?.*)?$/,
                 use: [
                     {
-                        /* loader: 'url-loader',
-                        options: {
-                            name: "images/[hash].[ext]",
-                            limit: 5000
-                        }, */
                         loader: 'file-loader',
                         options: {
+                            name: "images/[hash].[ext]",
                             esModule: false,
                         },
                     }
