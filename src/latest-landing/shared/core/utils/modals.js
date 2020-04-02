@@ -4,17 +4,17 @@ import GenericModal from "../GenericModal";
 const confirm = createConfirmation(GenericModal);
 
 export function openGenericModal(modalContent, options = {}) {
-  return confirm({ modalContent, options: { ...options } });
+    return confirm({ modalContent, options: { ...options } });
 }
 
 function safeClassNameOptions(className, options) {
-  let safeOptions = options || {};
-  if (safeOptions.className) {
-    safeOptions.className = `${className} ${safeOptions.className}`;
-  } else {
-    safeOptions.className = className;
-  }
-  return safeOptions;
+    let safeOptions = options || {};
+    if (safeOptions.className) {
+        safeOptions.className = `${className} ${safeOptions.className}`;
+    } else {
+        safeOptions.className = className;
+    }
+    return safeOptions;
 }
 
 export function openAlert(
@@ -23,11 +23,11 @@ export function openAlert(
     canClose = false,
     options = null
 ) {
-  return openGenericModal(body, {
-    hideCancel: true,
-    mustRespond: !canClose,
-    ...safeClassNameOptions("modal-alert", options)
-  });
+    return openGenericModal(body, {
+        hideCancel: true,
+        mustRespond: !canClose,
+        ...safeClassNameOptions("modal-alert", options)
+    });
 }
 
 export function openConfirm(
@@ -36,11 +36,11 @@ export function openConfirm(
     canClose = false,
     options = null
 ) {
-  return openGenericModal(body, {
-    mustRespond: !canClose,
-    title,
-    ...safeClassNameOptions("modal-confirm", options)
-  });
+    return openGenericModal(body, {
+        mustRespond: !canClose,
+        title,
+        ...safeClassNameOptions("modal-confirm", options)
+    });
 }
 
 export function openPrompt(
@@ -49,19 +49,19 @@ export function openPrompt(
     canClose = false,
     options = null
 ) {
-  return openGenericModal(body, {
-    isPrompt: true,
-    mustRespond: !canClose,
-    title,
-    ...safeClassNameOptions("modal-prompt", options)
-  });
+    return openGenericModal(body, {
+        isPrompt: true,
+        mustRespond: !canClose,
+        title,
+        ...safeClassNameOptions("modal-prompt", options)
+    });
 }
 
 export function openModal(body, title = null, canClose = true, options = null) {
-  return openGenericModal(body, {
-    hideActions: true,
-    mustRespond: !canClose,
-    title,
-    ...(options || {})
-  });
+    return openGenericModal(body, {
+        hideActions: true,
+        mustRespond: !canClose,
+        title,
+        ...(options || {})
+    });
 }

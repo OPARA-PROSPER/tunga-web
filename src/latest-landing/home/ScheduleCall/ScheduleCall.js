@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import "./ScheduleCall.scss";
 import { Col, Row } from "reactstrap";
 import Button from "../../shared/core/Button";
-import Icon from "../../shared/core/Icon";
 import BgVideo from "../../assets/videos/home/section-4.mp4";
 import ArrowDownIcon from "../../assets/img/common/icons/icon-arrow-down.png";
 import { openCalendlyWidget } from "../../../components/utils/calendly";
@@ -82,6 +81,9 @@ class ScheduleCall extends Component {
     }
 }
 
-ScheduleCall.propTypes = {};
+ScheduleCall.propTypes = {
+    isMobile: PropTypes.bool,
+    showCaseStudies: PropTypes.bool
+};
 
 export default ScheduleCall;

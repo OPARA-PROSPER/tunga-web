@@ -20,7 +20,7 @@ export function getSkills(filter, selection, prev_selection) {
                         error.response ? error.response.data : null,
                         selection,
                         prev_selection
-                    ),
+                    )
                 );
             });
     };

@@ -58,19 +58,21 @@ function ids(state = {}, action) {
 function progress_events(state = {}, action) {
     switch (action.type) {
         case ProgressEventActions.LIST_PROGRESS_EVENTS_SUCCESS:
-        case ProgressEventActions.LIST_MORE_PROGRESS_EVENTS_SUCCESS:
+        case ProgressEventActions.LIST_MORE_PROGRESS_EVENTS_SUCCESS: {
             let all_progress_events = {};
             action.items.forEach(progress_event => {
                 all_progress_events[progress_event.id] = progress_event;
             });
             return {...state, ...all_progress_events};
+        }
         case ProgressEventActions.RETRIEVE_PROGRESS_EVENT_SUCCESS:
-        case ProgressEventActions.UPDATE_PROGRESS_EVENT_SUCCESS:
+        case ProgressEventActions.UPDATE_PROGRESS_EVENT_SUCCESS: {
             let new_progress_event = {};
             new_progress_event[action.progress_event.id] = action.progress_event;
             return {...state, ...new_progress_event};
+        }
         case ProgressReportActions.CREATE_PROGRESS_REPORT_SUCCESS:
-        case ProgressReportActions.UPDATE_PROGRESS_REPORT_SUCCESS:
+        case ProgressReportActions.UPDATE_PROGRESS_REPORT_SUCCESS: {
             let progressReport = action.progress_report;
 
             if(progressReport && progressReport.event && progressReport.event.id) {
@@ -94,7 +96,8 @@ function progress_events(state = {}, action) {
                 return {...state, ...newState};
             }
             return state;
-        case ProgressReportActions.DELETE_PROGRESS_REPORT_SUCCESS:
+        }
+        case ProgressReportActions.DELETE_PROGRESS_REPORT_SUCCESS: {
             let newState = {};
             Object.keys(state).forEach(id => {
                 let progressEvent = state[id],
@@ -108,6 +111,7 @@ function progress_events(state = {}, action) {
                 newState[progressEvent.id] = {...progressEvent, progress_reports: newProgressReports};
             });
             return newState;
+        }
         default:
             return state;
     }

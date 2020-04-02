@@ -35,7 +35,7 @@ export function createProgressEvent(progress_event, target) {
                 dispatch(
                     createProgressEventFailed(
                         (error.response ? error.response.data : null), progress_event, target
-                    ),
+                    )
                 );
             });
     };
@@ -77,8 +77,8 @@ export function listProgressEvents(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listProgressEventsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -125,7 +125,7 @@ export function retrieveProgressEvent(id) {
                 dispatch(
                     retrieveProgressEventFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };
@@ -171,7 +171,7 @@ export function updateProgressEvent(id, progress_event) {
                 dispatch(
                     updateProgressEventFailed(
                         (error.response ? error.response.data : null), progress_event, id
-                    ),
+                    )
                 );
             });
     };
@@ -215,8 +215,8 @@ export function listMoreProgressEvents(url, selection) {
                 dispatch(
                     listMoreProgressEventsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -255,23 +255,23 @@ export function deleteProgressEvent(id) {
             .then(function () {
                 dispatch(deleteProgressEventSuccess(id));
             }).catch(function (response) {
-            dispatch(deleteProgressEventFailed(response.data, id));
-        });
-    }
+                dispatch(deleteProgressEventFailed(response.data, id));
+            });
+    };
 }
 
 export function deleteProgressEventStart(id) {
     return {
         type: DELETE_PROGRESS_EVENT_START,
         id
-    }
+    };
 }
 
 export function deleteProgressEventSuccess(id) {
     return {
         type: DELETE_PROGRESS_EVENT_SUCCESS,
         id
-    }
+    };
 }
 
 export function deleteProgressEventFailed(error, id) {
@@ -279,5 +279,5 @@ export function deleteProgressEventFailed(error, id) {
         type: DELETE_PROGRESS_EVENT_FAILED,
         error,
         id
-    }
+    };
 }

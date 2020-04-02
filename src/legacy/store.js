@@ -16,13 +16,13 @@ if (!__PRODUCTION__) {
     });
     enabled_middleware.push(logger);
     compose_args.push(
-        window.devToolsExtension ? window.devToolsExtension() : f => f,
+        window.devToolsExtension ? window.devToolsExtension() : f => f
     );
 }
 
 let store = createStore(
     TungaApp,
-    compose(applyMiddleware(...enabled_middleware), ...compose_args),
+    compose(applyMiddleware(...enabled_middleware), ...compose_args)
 );
 
 export default store;

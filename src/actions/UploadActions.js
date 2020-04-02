@@ -41,7 +41,7 @@ export function createUpload(upload, target) {
                 dispatch(
                     createUploadFailed(
                         (error.response ? error.response.data : null), upload, target
-                    ),
+                    )
                 );
             });
     };
@@ -83,8 +83,8 @@ export function listUploads(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listUploadsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -130,8 +130,8 @@ export function retrieveUpload(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveUploadFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -180,7 +180,7 @@ export function updateUpload(id, upload) {
                 dispatch(
                     updateUploadFailed(
                         (error.response ? error.response.data : null), upload, id
-                    ),
+                    )
                 );
             });
     };
@@ -224,8 +224,8 @@ export function listMoreUploads(url, selection) {
                 dispatch(
                     listMoreUploadsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -264,23 +264,23 @@ export function deleteUpload(id) {
             .then(function () {
                 dispatch(deleteUploadSuccess(id));
             }).catch(function (response) {
-            dispatch(deleteUploadFailed(response.data, id));
-        });
-    }
+                dispatch(deleteUploadFailed(response.data, id));
+            });
+    };
 }
 
 export function deleteUploadStart(id) {
     return {
         type: DELETE_UPLOAD_START,
         id
-    }
+    };
 }
 
 export function deleteUploadSuccess(id) {
     return {
         type: DELETE_UPLOAD_SUCCESS,
         id
-    }
+    };
 }
 
 export function deleteUploadFailed(error, id) {
@@ -288,5 +288,5 @@ export function deleteUploadFailed(error, id) {
         type: DELETE_UPLOAD_FAILED,
         error,
         id
-    }
+    };
 }

@@ -50,6 +50,8 @@ class Ratings extends Component {
     }
 }
 
-Ratings.propTypes = {};
+Ratings.propTypes = {
+    talent: PropTypes.object
+};
 
 export default Ratings;

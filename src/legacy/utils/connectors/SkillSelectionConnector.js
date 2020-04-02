@@ -11,8 +11,8 @@ function mapDispatchToProps(dispatch) {
     return {
         SkillSelectionActions: bindActionCreators(
             SkillSelectionActions,
-            dispatch,
-        ),
+            dispatch
+        )
     };
 }
 

@@ -116,7 +116,7 @@ export function sendGAEvent(category, action, label) {
             GA_HIT.EVENT,
             category || null,
             action || null,
-            label || null,
+            label || null
         );
     } else {
         /* console.log(

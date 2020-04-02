@@ -26,5 +26,5 @@ ReactDOM.render(
             <Guide/>
         </BrowserRouter>
     </Provider>,
-    document.getElementById('guide-root'),
+    document.getElementById('guide-root')
 );

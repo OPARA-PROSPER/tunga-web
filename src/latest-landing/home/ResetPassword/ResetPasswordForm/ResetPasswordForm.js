@@ -6,7 +6,7 @@ import Error from "../../../../components/core/Error";
 import { resetPasswordConfirm } from "../../../../actions/AuthActions";
 import Progress from "../../../../components/core/Progress";
 import Success from "../../../../components/core/Success";
-
+import PropTypes from "prop-types";
 
 class AuthForm extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class AuthForm extends Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (this.props.auth.isReset && !prevProps.auth.isReset) {
             window.location.href = this.props.query.next || '/dashboard';
         }
@@ -169,7 +169,12 @@ class AuthForm extends Component {
     }
 }
 
-AuthForm.propTypes = {};
+AuthForm.propTypes = {
+    auth: PropTypes.object,
+    isAuthenticated: PropTypes.func,
+    resetPasswordConfirm: PropTypes.func,
+    query: PropTypes.object
+};
 
 const mapStateToProps = store => ({
     auth: store.app.Auth

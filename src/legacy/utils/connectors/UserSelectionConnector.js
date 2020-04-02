@@ -11,7 +11,7 @@ function mapDispatchToProps(dispatch) {
     return {
         UserSelectionActions: bindActionCreators(
             UserSelectionActions,
-            dispatch,
+            dispatch
         ),
     };
 }

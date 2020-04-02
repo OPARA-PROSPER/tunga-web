@@ -17,8 +17,8 @@
 
 $(function() {
     $('.carousel').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
+        slidesToShow: 1,
+        slidesToScroll: 1,
         mobileFirst: true,
         arrows: false,
         dots: true,
@@ -35,7 +35,7 @@ $(function() {
     });
 });
 /* global window, document, define, jQuery, setInterval, clearInterval */
-;(function(factory) {
+(function(factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
@@ -1038,19 +1038,19 @@ $(function() {
             .off('focus.slick blur.slick')
             .on('focus.slick blur.slick', '*', function(event) {
 
-            event.stopImmediatePropagation();
-            var $sf = $(this);
+                event.stopImmediatePropagation();
+                var $sf = $(this);
 
-            setTimeout(function() {
+                setTimeout(function() {
 
-                if( _.options.pauseOnFocus ) {
-                    _.focussed = $sf.is(':focus');
-                    _.autoPlay();
-                }
+                    if( _.options.pauseOnFocus ) {
+                        _.focussed = $sf.is(':focus');
+                        _.autoPlay();
+                    }
 
-            }, 0);
+                }, 0);
 
-        });
+            });
     };
 
     Slick.prototype.getCurrent = Slick.prototype.slickCurrentSlide = function() {
@@ -1070,7 +1070,7 @@ $(function() {
 
         if (_.options.infinite === true) {
             if (_.slideCount <= _.options.slidesToShow) {
-                 ++pagerQty;
+                ++pagerQty;
             } else {
                 while (breakPoint < _.slideCount) {
                     ++pagerQty;
@@ -1109,13 +1109,13 @@ $(function() {
         if (_.options.infinite === true) {
             if (_.slideCount > _.options.slidesToShow) {
                 _.slideOffset = (_.slideWidth * _.options.slidesToShow) * -1;
-                coef = -1
+                coef = -1;
 
                 if (_.options.vertical === true && _.options.centerMode === true) {
                     if (_.options.slidesToShow === 2) {
                         coef = -1.5;
                     } else if (_.options.slidesToShow === 1) {
-                        coef = -2
+                        coef = -2;
                     }
                 }
                 verticalOffset = (verticalHeight * _.options.slidesToShow) * coef;
@@ -1319,10 +1319,10 @@ $(function() {
 
     Slick.prototype.initADA = function() {
         var _ = this,
-                numDotGroups = Math.ceil(_.slideCount / _.options.slidesToShow),
-                tabControlIndexes = _.getNavigableIndexes().filter(function(val) {
-                    return (val >= 0) && (val < _.slideCount);
-                });
+            numDotGroups = Math.ceil(_.slideCount / _.options.slidesToShow),
+            tabControlIndexes = _.getNavigableIndexes().filter(function(val) {
+                return (val >= 0) && (val < _.slideCount);
+            });
 
         _.$slides.add(_.$slideTrack.find('.slick-cloned')).attr({
             'aria-hidden': 'true',
@@ -1342,12 +1342,12 @@ $(function() {
                 });
 
                 if (slideControlIndex !== -1) {
-                   var ariaButtonControl = 'slick-slide-control' + _.instanceUid + slideControlIndex
-                   if ($('#' + ariaButtonControl).length) {
-                     $(this).attr({
-                         'aria-describedby': ariaButtonControl
-                     });
-                   }
+                    var ariaButtonControl = 'slick-slide-control' + _.instanceUid + slideControlIndex;
+                    if ($('#' + ariaButtonControl).length) {
+                        $(this).attr({
+                            'aria-describedby': ariaButtonControl
+                        });
+                    }
                 }
             });
 
@@ -1374,11 +1374,11 @@ $(function() {
         }
 
         for (var i=_.currentSlide, max=i+_.options.slidesToShow; i < max; i++) {
-          if (_.options.focusOnChange) {
-            _.$slides.eq(i).attr({'tabindex': '0'});
-          } else {
-            _.$slides.eq(i).removeAttr('tabindex');
-          }
+            if (_.options.focusOnChange) {
+                _.$slides.eq(i).attr({'tabindex': '0'});
+            } else {
+                _.$slides.eq(i).removeAttr('tabindex');
+            }
         }
 
         _.activateADA();
@@ -1393,12 +1393,12 @@ $(function() {
             _.$prevArrow
                .off('click.slick')
                .on('click.slick', {
-                    message: 'previous'
+                   message: 'previous'
                }, _.changeSlide);
             _.$nextArrow
                .off('click.slick')
                .on('click.slick', {
-                    message: 'next'
+                   message: 'next'
                }, _.changeSlide);
 
             if (_.options.accessibility === true) {

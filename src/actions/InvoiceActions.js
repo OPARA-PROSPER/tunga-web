@@ -47,7 +47,7 @@ export function createInvoice(invoice, target) {
                 dispatch(
                     createInvoiceFailed(
                         (error.response ? error.response.data : null), invoice, target
-                    ),
+                    )
                 );
             });
     };
@@ -93,7 +93,7 @@ export function createInvoiceBatch(invoices, target) {
                 dispatch(
                     createInvoiceBatchFailed(
                         (error.response ? error.response.data : null), invoices, target
-                    ),
+                    )
                 );
             });
     };
@@ -135,8 +135,8 @@ export function listInvoices(filter, selection, prev_selection) {
             .catch(function (error) {
                 dispatch(
                     listInvoicesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -183,7 +183,7 @@ export function retrieveInvoice(id) {
                 dispatch(
                     retrieveInvoiceFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };
@@ -229,7 +229,7 @@ export function updateInvoice(id, invoice, target) {
                 dispatch(
                     updateInvoiceFailed(
                         (error.response ? error.response.data : null), id, invoice, target
-                    ),
+                    )
                 );
             });
     };
@@ -275,8 +275,8 @@ export function listMoreInvoices(url, selection) {
                 dispatch(
                     listMoreInvoicesFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -315,8 +315,8 @@ export function deleteInvoice(id, target) {
             .then(function () {
                 dispatch(deleteInvoiceSuccess(id, target));
             }).catch(function (response) {
-            dispatch(deleteInvoiceFailed(response.data, id, target));
-        });
+                dispatch(deleteInvoiceFailed(response.data, id, target));
+            });
     };
 }
 
@@ -349,12 +349,12 @@ export function archiveInvoice(id, target) {
     return dispatch => {
         dispatch(archiveInvoiceStart(id));
 
-        axios.post(`${ENDPOINT_INVOICES}${id}/archive/`,)
+        axios.post(`${ENDPOINT_INVOICES}${id}/archive/`)
             .then(function () {
                 dispatch(archiveInvoiceSuccess(id, target));
             }).catch(function (response) {
-            dispatch(archiveInvoiceFailed(response.data, id, target));
-        });
+                dispatch(archiveInvoiceFailed(response.data, id, target));
+            });
     };
 }
 
@@ -387,12 +387,12 @@ export function generateInvoice(id, target) {
     return dispatch => {
         dispatch(generateInvoiceStart(id));
 
-        axios.post(`${ENDPOINT_INVOICES}${id}/generate/`,)
+        axios.post(`${ENDPOINT_INVOICES}${id}/generate/`)
             .then(function (response) {
                 dispatch(generateInvoiceSuccess(response.data, id, target));
             }).catch(function (response) {
-            dispatch(generateInvoiceFailed(response.data, id, target));
-        });
+                dispatch(generateInvoiceFailed(response.data, id, target));
+            });
     };
 }
 
@@ -437,7 +437,7 @@ export function payInvoice(id, payment, target) {
                 dispatch(
                     payInvoiceFailed(
                         (error.response ? error.response.data : null), id, payment, target
-                    ),
+                    )
                 );
             });
     };

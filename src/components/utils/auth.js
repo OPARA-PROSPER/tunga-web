@@ -83,7 +83,7 @@ export function isPendingProjectParticipant(project) {
     if(isDev()) {
         let myParticipation = getMyParticipation(project);
         if(myParticipation) {
-            return myParticipation.status === 'initial'
+            return myParticipation.status === 'initial';
         }
     }
     return isPending;

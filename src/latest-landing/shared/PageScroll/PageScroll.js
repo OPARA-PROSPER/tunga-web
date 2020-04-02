@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { kebabCase } from 'lodash';
 import SideNav from "../../../components/sidenav";
 import JumpToTop from "./JumpToTop/JumpToTop";
+import PropTypes from "prop-types";
 
 
 class PageScroll extends Component {
@@ -140,7 +141,6 @@ class PageScroll extends Component {
 
 
     computeSteps({ yOffset } = { yOffset: 0 }) {
-        const offsetY = this.steps.length ? this.steps[0].y : 0;
         this.steps = [];
         this.pages = [];
 
@@ -340,6 +340,15 @@ class PageScroll extends Component {
         );
     }
 }
+
+PageScroll.propTypes = {
+    goToPage: PropTypes.number,
+    onPageScrolled: PropTypes.func,
+    forceJumpToTop: PropTypes.number,
+    pages: PropTypes.array,
+    history: PropTypes.object,
+    location: PropTypes.object
+};
 
 const PageScrollWithRouter = withRouter(PageScroll);
 

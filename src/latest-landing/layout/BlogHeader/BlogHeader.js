@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./BlogHeader.scss";
 import Nav from "../Nav/Nav";
 import User1 from "../../assets/img/user/user1.png";
-import { Col, Media, Row } from "reactstrap";
 
 class BlogHeader extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div className="BlogHeader text-white position-relative">
         <Nav/>
         <div className="text-center BlogHeader-Text  font-weight-bold">
@@ -29,10 +27,8 @@ class BlogHeader extends Component {
             </div>
       </div>
       </div>
-    );
-  }
+        );
+    }
 }
-
-BlogHeader.propTypes = {};
 
 export default BlogHeader;

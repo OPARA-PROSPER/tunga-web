@@ -1,4 +1,3 @@
-import React from "react";
 import OurStory from "../home/OurStory/OurStory";
 import OurTeam from "../home/OurTeam/OurTeam";
 import Home from "../home/Home";

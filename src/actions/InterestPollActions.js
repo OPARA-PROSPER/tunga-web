@@ -32,7 +32,7 @@ export function createInterest(interest_poll, target) {
                 dispatch(
                     createInterestFailure(
                         (error.response ? error.response.data : null), interest_poll, target
-                    ),
+                    )
                 );
             });
     };
@@ -76,7 +76,7 @@ export function updateInterest(id, data) {
                 dispatch(
                     updateInterestFailure(
                         (error.response ? error.response.data : null), data, id
-                    ),
+                    )
                 );
             });
     };
@@ -120,8 +120,8 @@ export function listInterest(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listInterestFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -168,7 +168,7 @@ export function retrieveInterest(id) {
                 dispatch(
                     retrieveInterestFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };
@@ -209,8 +209,8 @@ export function listMoreInterest(url, selection) {
                 dispatch(
                     listMoreInterestFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };

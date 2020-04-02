@@ -74,8 +74,8 @@ export function updateAccountInfo(user) {
             .catch(function(error) {
                 dispatch(
                     updateAccountInfoFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -112,8 +112,8 @@ export function deactivateAccount() {
             .catch(function(error) {
                 dispatch(
                     deactivateAccountFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -162,8 +162,8 @@ export function updateAuthUser(user) {
             .catch(function(error) {
                 dispatch(
                     updateAuthUserFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -200,8 +200,8 @@ export function retrieveProfile() {
             .catch(function(error) {
                 dispatch(
                     retrieveProfileFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -256,7 +256,7 @@ export function updateProfile(id, profile) {
                 dispatch(
                     updateProfileFailed(
                         error.response ? error.response.data : null, profile, id
-                    ),
+                    )
                 );
             });
     };
@@ -292,14 +292,14 @@ export function updatePassword(credentials) {
         dispatch(updatePasswordStart());
         axios
             .post(ENDPOINT_CHANGE_PASSWORD, credentials)
-            .then(function(response) {
+            .then(function() {
                 dispatch(updatePasswordSuccess());
             })
             .catch(function(error) {
                 dispatch(
                     updatePasswordFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -335,8 +335,8 @@ export function createWork(work) {
             .catch(function(error) {
                 dispatch(
                     createWorkFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -374,8 +374,8 @@ export function updateWork(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateWorkFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -413,8 +413,8 @@ export function createEducation(education) {
             .catch(function(error) {
                 dispatch(
                     createEducationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -452,8 +452,8 @@ export function updateEducation(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateEducationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -491,8 +491,8 @@ export function getCountries() {
             .catch(function(error) {
                 dispatch(
                     getCountriesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -545,7 +545,7 @@ export function updateCompany(id, company) {
                     updateCompanyFailed(
                         error.response ? error.response.data : null,
                         id
-                    ),
+                    )
                 );
             });
     };
@@ -620,8 +620,8 @@ export function createNotificationLog(notification_log) {
             .catch(function(error) {
                 dispatch(
                     createNotificationLogFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -659,8 +659,8 @@ export function createVisitor(data) {
             .catch(function(error) {
                 dispatch(
                     createVisitorFailure(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

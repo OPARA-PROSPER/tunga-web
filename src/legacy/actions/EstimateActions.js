@@ -42,8 +42,8 @@ export function createEstimate(estimate, errors = null) {
             .catch(function(error) {
                 dispatch(
                     createEstimateFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -60,7 +60,7 @@ export function createEstimateSuccess(estimate) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.TASK,
         GA_EVENT_ACTIONS.APPLY,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: CREATE_ESTIMATE_SUCCESS,
@@ -87,8 +87,8 @@ export function listEstimates(filter, selection, prev_selection) {
                 dispatch(
                     listEstimatesFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -133,8 +133,8 @@ export function retrieveEstimate(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveEstimateFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -172,8 +172,8 @@ export function updateEstimate(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateEstimateFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -211,8 +211,8 @@ export function deleteEstimate(id) {
             .catch(function(error) {
                 dispatch(
                     deleteEstimateFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

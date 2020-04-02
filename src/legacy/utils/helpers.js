@@ -1,5 +1,4 @@
 import numeral from 'numeral';
-import tunga_cookie_consent from 'moment';
 import * as Cookies from 'js-cookie';
 
 export function isInt(n) {

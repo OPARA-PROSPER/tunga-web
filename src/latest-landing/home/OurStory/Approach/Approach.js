@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./Approach.scss";
 import ApproachLeft from "../../../assets/img/our-story/approach-left.png";
 import ApproachRight from "../../../assets/img/our-story/approach-right.png";
@@ -51,5 +50,4 @@ class Approach extends Component {
     }
 }
 
-Approach.propTypes = {};
 export default Approach;

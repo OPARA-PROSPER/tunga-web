@@ -5,12 +5,12 @@ import { Container } from "reactstrap";
 import Blog1 from "../../assets/img/blog/blog1.png";
 
 class BlogPage extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div className="BlogPage">
         <BlogHeader/>
         <Container className="text-justify">
@@ -50,8 +50,8 @@ class BlogPage extends Component {
           </div>
         </Container>
       </div>
-    );
-  }
+        );
+    }
 }
 
 BlogPage.propTypes = {};

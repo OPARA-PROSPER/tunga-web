@@ -4,11 +4,6 @@ const webpack = require("webpack");
 const path = require("path");
 const common_config = require("./webpack.common.config");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
-//const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
     entry: {
@@ -128,35 +123,8 @@ module.exports = {
             filename: "[name].[hash].css",
             chunkFilename: "[id].[hash].css"
         }),
-
-        // remove this and leave it only in production build
-        /* new ScriptExtHtmlWebpackPlugin({
-            defaultAttribute: 'defer',
-            async: 'app'
-        }),
-        new DynamicCdnWebpackPlugin({
-            env: 'production',
-            exclude: 'babel-polyfill'
-        }),
-        new ImageminWebpWebpackPlugin(), */
-        // remove this and leave it only in production build
-        //new BundleAnalyzerPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
-    /* optimization: {
-        minimize: true,
-        usedExports: true,
-        minimizer: [new TerserPlugin()],
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
-                },
-            },
-        }
-    }, */
     resolve: {
         modules: ["node_modules", path.resolve(__dirname, "src")],
         extensions: [

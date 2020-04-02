@@ -13,68 +13,69 @@ import PageScroll from '../../shared/PageScroll/PageScroll';
 import Experience from './Experience/Experience';
 import Footer from '../../layout/Footer/Footer';
 
+import PropTypes from "prop-types";
+
 const pages = [
-  {
-    hash: 'Profile',
-    title: 'Profile',
-    isActive: false,
-    isActiveBar: false,
-    color: '#fff',
-    bgColor: '#fff',
-    theme: 'dark'
-  },
-  {
-    hash: 'Experience',
-    title: 'Experience',
-    isActive: false,
-    isActiveBar: false,
-    color: '#062E64',
-    bgColor: '#062E64',
-    theme: 'light'
-  },
-  {
-    hash: 'Contact',
-    title: 'Contact',
-    isActive: false,
-    isActiveBar: false,
-    color: '#062E64',
-    bgColor: '#062E64',
-    theme: 'dark'
-  }
+    {
+        hash: 'Profile',
+        title: 'Profile',
+        isActive: false,
+        isActiveBar: false,
+        color: '#fff',
+        bgColor: '#fff',
+        theme: 'dark'
+    },
+    {
+        hash: 'Experience',
+        title: 'Experience',
+        isActive: false,
+        isActiveBar: false,
+        color: '#062E64',
+        bgColor: '#062E64',
+        theme: 'light'
+    },
+    {
+        hash: 'Contact',
+        title: 'Contact',
+        isActive: false,
+        isActiveBar: false,
+        color: '#062E64',
+        bgColor: '#062E64',
+        theme: 'dark'
+    }
 ];
 
 class DevProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  UNSAFE_componentWillMount() {
-    this.loadData(this.props.match.params.id);
-  }
-
-  componentDidMount() {
-    const queryKey = '?query=';
-    let talentPoolUrl = '/our-team#talent-pool';
-
-    if (this.props.location.search.includes(queryKey)) {
-      const query = this.props.location.search.replace(queryKey, '');
-      talentPoolUrl = `${talentPoolUrl}${queryKey}${query}`;
+    constructor(props) {
+        super(props);
+        this.state = {};
     }
 
-    this.setState({ talentPoolUrl });
-  }
+    UNSAFE_componentWillMount() {
+        this.loadData(this.props.match.params.id);
+    }
 
-  loadData(id) {
-    this.props.viewTalentRequest(id);
-  }
+    componentDidMount() {
+        const queryKey = '?query=';
+        let talentPoolUrl = '/our-team#talent-pool';
 
-  render() {
-    const { talent } = this.props;
-    const talentPoolUrl = this.state.talentPoolUrl;
-    talent.profile = talent.profile || { skills: [], skills_details: {} };
+        if (this.props.location.search.includes(queryKey)) {
+            const query = this.props.location.search.replace(queryKey, '');
+            talentPoolUrl = `${talentPoolUrl}${queryKey}${query}`;
+        }
 
-    return (
+        this.setState({ talentPoolUrl });
+    }
+
+    loadData(id) {
+        this.props.viewTalentRequest(id);
+    }
+
+    render() {
+        const { talent } = this.props;
+        talent.profile = talent.profile || { skills: [], skills_details: {} };
+
+        return (
       <section className="DevProfile">
         <PageScroll pages={pages}>
           <div id="Profile" className="DevProfile__profile">
@@ -93,15 +94,20 @@ class DevProfile extends Component {
           <Footer />
         </PageScroll>
       </section>
-    );
-  }
+        );
+    }
 }
 
-DevProfile.propTypes = {};
+DevProfile.propTypes = {
+    viewTalentRequest: PropTypes.func,
+    talent: PropTypes.object,
+    match: PropTypes.object,
+    location: PropTypes.object
+};
 
 const mapStateToProps = state => ({
-  is: state.app.talents.talents.is,
-  talent: state.app.talents.talents.talent
+    is: state.app.talents.talents.is,
+    talent: state.app.talents.talents.talent
 });
 
 export default connect(

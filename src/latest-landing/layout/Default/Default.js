@@ -6,10 +6,9 @@ import ScheduleCall from "../../home/ScheduleCall/ScheduleCall";
 import CaseStudies from "../../home/CaseStudies/CaseStudies";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import PageScroller from "../../../components/pageScroller";
 import PageScroll from "../../shared/PageScroll/PageScroll";
 import { withRouter } from "react-router";
-import { kebabCase } from "lodash";
+import PropTypes from 'prop-types';
 
 const pages = [
     {
@@ -128,7 +127,10 @@ class Default extends Component {
     }
 }
 
-Default.propTypes = {};
+Default.propTypes = {
+    isMobile: PropTypes.bool,
+    history: PropTypes.object
+};
 const DefaultWithRouter = withRouter(Default);
 
 export default DefaultWithRouter;

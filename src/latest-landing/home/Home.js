@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./Home.scss";
 import { Route } from "react-router-dom";
-//import ChatWidget from "../shared/ChatWidget/ChatWidget";
+import PropTypes from "prop-types";
+//import ChatWidget from "../shared/ChatWidget/ChatWidget"; FIXME find out why this was removed
 
 class Home extends Component {
     constructor(props) {
@@ -69,6 +70,8 @@ class Home extends Component {
     }
 }
 
-Home.propTypes = {};
+Home.propTypes = {
+    childRoutes: PropTypes.object
+};
 
 export default Home;

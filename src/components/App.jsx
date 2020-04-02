@@ -2,16 +2,13 @@ import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {LOCATION_CHANGE} from 'react-router-redux';
 import Media from "react-media";
+import PropTypes from 'prop-types';
 
 import connect from '../connectors/AuthConnector';
-
 import store from '../store';
 
 import DashboardLayout from './dashboard/DashboardLayout';
-//import ChatWidget from "./chat/ChatWidget";
-//import LegacyRedirect from './showcase/LegacyRedirect';
 import BootLogo from "./core/BootLogo";
-//import ShowcaseLayout from "./showcase/ShowcaseLayout";
 import NewShowcaseLayout from "../latest-landing/App";
 import Button from "./core/Button";
 
@@ -22,14 +19,10 @@ import {
     setCookieConsentCloseAt
 } from "./utils/consent";
 
-
 class App extends React.Component {
 
     constructor(props) {
         super(props);
-
-        console.log = console.warn = console.error = () => {};
-        console.disableYellowBox = true;
 
         const {Auth: {user}} = this.props;
 
@@ -82,13 +75,13 @@ class App extends React.Component {
 
     onCookieSettings() {
         let self = this;
-        openCookieConsentPopUp(consents => {
+        openCookieConsentPopUp(() => {
             self.setState({showConsentAlert: !getCookieConsentCloseAt() && !getCookieConsent()});
         });
     }
 
     render() {
-        const {Auth: {user}, AuthActions, match} = this.props,
+        const {Auth: {user}, AuthActions} = this.props,
             {logout} = AuthActions,
             isAuthAwarePage = /^\/(login|signin|signup|reset-password|start|start-welcome|start-outsource|quiz|customer|join|dashboard|home|projects|task|estimate|network|people|member|payments|profile|settings|onboard|work|proposal)([/?#].*)*/i.test(window.location.pathname),
             isStillLoading = !this.state.hasVerified || this.state.showProgress;
@@ -203,5 +196,11 @@ class App extends React.Component {
         );
     }
 }
+
+App.propTypes = {
+    Auth: PropTypes.any,
+    AuthActions: PropTypes.object,
+    location: PropTypes.object
+};
 
 export default connect(App);

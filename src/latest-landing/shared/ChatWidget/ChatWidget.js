@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import randomstring from "../../../components/utils/generateRandomString";
 import moment from "moment";
 
+import _ from "lodash";
+
 import "./ChatWidget.scss";
 import connect from "../../../connectors/ActivityConnector";
 
@@ -26,18 +28,10 @@ const CHAT_SCREEN_CHOOSE = 'choose',
     CHAT_SCREEN_CHAT = 'chat';
 
 class ChatWidget extends React.Component {
-    static propTypes = {
-        channelId: PropTypes.number,
-        autoOpen: PropTypes.bool,
-        Activity: PropTypes.object,
-        ProjectActions: PropTypes.object,
-        ActivityActions: PropTypes.object,
-    };
-
-    updateTimer = null;
 
     constructor(props) {
         super(props);
+        this.updateTimer = null;
         this.state = {
             selectionKey: props.selectionKey || randomstring.generate(),
             prevKey: null,
@@ -116,7 +110,7 @@ class ChatWidget extends React.Component {
         this.updateTimer = setInterval(this.getNewActivity.bind(this), 5000);
     }
 
-    componentDidUpdate(prevProps, prevState, snapShot) {
+    componentDidUpdate(prevProps, prevState) {
         if (!_.isEqual(prevProps.filters, this.props.filters) || (!_.isEqual(this.state.channel, prevState.channel) && !this.state.hasFetched)) {
             this.getList();
         }
@@ -133,7 +127,7 @@ class ChatWidget extends React.Component {
                 !isAuthenticated() &&
                 !_.isEqual(
                     this.props.Activity.ids[selectionKey],
-                    prevProps.Activity.ids[selectionKey],
+                    prevProps.Activity.ids[selectionKey]
                 )
             ) {
                 this.evaluateOfflineOptions();
@@ -201,7 +195,7 @@ class ChatWidget extends React.Component {
     }
 
     evaluateOfflineOptions() {
-        const { Activity, ActivityActions } = this.props,
+        const { Activity } = this.props,
             selectionKey = this.state.selectionKey,
             { channel } = this.state;
         let activities = (Activity.ids[selectionKey] || []).map(id => {
@@ -329,7 +323,7 @@ class ChatWidget extends React.Component {
         };
     }
 
-    onSendMessage = (message) => {
+    onSendMessage(message){
         const { ActivityActions } = this.props,
             { channel } = this.state;
         if (channel && channel.id) {
@@ -338,19 +332,19 @@ class ChatWidget extends React.Component {
                 body: message
             }, this.state.selectionKey);
         }
-    };
+    }
 
-    closeChat = () => {
+    closeChat(){
         this.setState({ open: false });
-    };
+    }
 
-    startChat = () => {
+    startChat(){
         const { ActivityActions } = this.props;
         if (isAuthenticated() && !this.state.channel) {
             ActivityActions.createChannel();
         }
         this.setState({ open: true });
-    };
+    }
 
     saveChannel(channel) {
         if (
@@ -497,5 +491,16 @@ class ChatWidget extends React.Component {
         );
     }
 }
+
+ChatWidget.propTypes = {
+    channelId: PropTypes.number,
+    autoOpen: PropTypes.bool,
+    Activity: PropTypes.object,
+    ProjectActions: PropTypes.object,
+    ActivityActions: PropTypes.object,
+    selectionKey: PropTypes.any, // TODO give it appropriate type
+    filters: PropTypes.any,
+    closeChat: PropTypes.any
+};
 
 export default connect(ChatWidget);

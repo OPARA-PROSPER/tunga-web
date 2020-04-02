@@ -3,8 +3,8 @@ export function getIds(items) {
         new Set(
             items.map(item => {
                 return item.id;
-            }),
-        ),
+            })
+        )
     );
 }
 

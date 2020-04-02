@@ -22,10 +22,10 @@ import User3 from "../../assets/img/case-study/Leen-40x40.png";
 import User4 from "../../assets/img/case-study/Dereck-40x40.png";
 import User5 from "../../assets/img/case-study/Kasper-40x40.png";
 import User6 from "../../assets/img/case-study/Elena-40x40.png";
-import { paging } from "../../Utils/Utils";
-import { Col, Row } from "reactstrap";
 import CaseStudyCard from "./CaseStudyCard/CaseStudyCard";
 import Carousel from "../../shared/Carousel/Carousel";
+
+import PropTypes from "prop-types";
 
 class CaseStudies extends Component {
     constructor(props) {
@@ -138,10 +138,11 @@ class CaseStudies extends Component {
             currentIndex: 0
         };
 
+        // FIXME use hooks
+        // eslint-disable-next-line react/no-direct-mutation-state 
         this.state.currentStudy = this.state.data[0];
         this.onPageChange = this.onPageChange.bind(this);
     }
-
 
     componentDidMount() {
         this.state.data.forEach(({ preloader }) => {
@@ -149,7 +150,6 @@ class CaseStudies extends Component {
             img.src = preloader;
         });
     }
-
 
     getDataPerPage() {
         return [
@@ -226,6 +226,8 @@ class CaseStudies extends Component {
     }
 }
 
-CaseStudies.propTypes = {};
+CaseStudies.propTypes = {
+    activeUseCase: PropTypes.number
+};
 
 export default CaseStudies;

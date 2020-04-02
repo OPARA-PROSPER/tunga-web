@@ -23,7 +23,7 @@ export const LIST_MORE_PROJECTS_START = 'LIST_MORE_PROJECTS_START';
 export const LIST_MORE_PROJECTS_SUCCESS = 'LIST_MORE_PROJECTS_SUCCESS';
 export const LIST_MORE_PROJECTS_FAILED = 'LIST_MORE_PROJECTS_FAILED';
 
-export function createProject(project, attachments) {
+export function createProject(project) {
     return dispatch => {
         dispatch(createProjectStart(project));
 
@@ -35,8 +35,8 @@ export function createProject(project, attachments) {
             .catch(function(error) {
                 dispatch(
                     createProjectFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -74,8 +74,8 @@ export function listProjects(filter) {
             .catch(function(error) {
                 dispatch(
                     listProjectsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -116,8 +116,8 @@ export function retrieveProject(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveProjectFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -155,8 +155,8 @@ export function updateProject(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateProjectFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -194,8 +194,8 @@ export function deleteProject(id) {
             .catch(function(error) {
                 dispatch(
                     deleteProjectFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -234,8 +234,8 @@ export function listRunningProjects() {
             .catch(function(error) {
                 dispatch(
                     listRunningProjectsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -276,8 +276,8 @@ export function listMoreProjects(url) {
             .catch(function(error) {
                 dispatch(
                     listMoreProjectsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

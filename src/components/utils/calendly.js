@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import {GA_EVENT_ACTIONS, GA_EVENT_CATEGORIES, sendGAEvent} from "../../actions/utils/tracking";
 
 export const CALENDLY_CALL_URL = 'https://calendly.com/tunga/welcome/';

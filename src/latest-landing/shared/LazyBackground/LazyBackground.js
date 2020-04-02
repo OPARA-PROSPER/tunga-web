@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 export default class LazyBackground extends React.Component {
 
@@ -31,3 +32,8 @@ export default class LazyBackground extends React.Component {
         );
     }
 }
+
+LazyBackground.propTypes = {
+    placeholder: PropTypes.string,
+    src: PropTypes.string
+};

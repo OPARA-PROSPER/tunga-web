@@ -48,7 +48,7 @@ export const MAKE_PAYMENT_START = 'MAKE_PAYMENT_START';
 export const MAKE_PAYMENT_SUCCESS = 'MAKE_PAYMENT_SUCCESS';
 export const MAKE_PAYMENT_FAILED = 'MAKE_PAYMENT_FAILED';
 
-export function createMultiTaskPayment(multi_task_payment, attachments) {
+export function createMultiTaskPayment(multi_task_payment) {
     return dispatch => {
         dispatch(createMultiTaskPaymentStart(multi_task_payment));
 
@@ -60,8 +60,8 @@ export function createMultiTaskPayment(multi_task_payment, attachments) {
             .catch(function(error) {
                 dispatch(
                     createMultiTaskPaymentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -78,7 +78,7 @@ export function createMultiTaskPaymentSuccess(multi_task_payment) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.MULTI_TASK_PAYMENT,
         GA_EVENT_ACTIONS.CREATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     setEditToken(multi_task_payment.edit_token);
@@ -106,16 +106,16 @@ export function listMultiTaskPayments(filter, selection, prev_selection) {
                     listMultiTaskPaymentsSuccess(
                         response.data,
                         filter,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             })
             .catch(function(error) {
                 dispatch(
                     listMultiTaskPaymentsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -157,15 +157,15 @@ export function listMoreMultiTaskPayments(url, selection) {
             .get(url)
             .then(function(response) {
                 dispatch(
-                    listMoreMultiTaskPaymentsSuccess(response.data, selection),
+                    listMoreMultiTaskPaymentsSuccess(response.data, selection)
                 );
             })
             .catch(function(error) {
                 dispatch(
                     listMoreMultiTaskPaymentsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -211,8 +211,8 @@ export function retrieveMultiTaskPayment(id, editToken) {
             .catch(function(error) {
                 dispatch(
                     retrieveMultiTaskPaymentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -239,7 +239,7 @@ export function retrieveMultiTaskPaymentFailed(error) {
     };
 }
 
-export function updateMultiTaskPayment(id, data, uploads) {
+export function updateMultiTaskPayment(id, data) {
     return dispatch => {
         dispatch(updateMultiTaskPaymentStart(id));
 
@@ -251,8 +251,8 @@ export function updateMultiTaskPayment(id, data, uploads) {
             .catch(function(error) {
                 dispatch(
                     updateMultiTaskPaymentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -269,13 +269,13 @@ export function updateMultiTaskPaymentSuccess(multi_task_payment, data) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.MULTI_TASK_PAYMENT,
         GA_EVENT_ACTIONS.UPDATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     if (data && data.ratings) {
         sendGAEvent(
             GA_EVENT_CATEGORIES.MULTI_TASK_PAYMENT,
             GA_EVENT_ACTIONS.RATE,
-            getGAUserType(getUser()),
+            getGAUserType(getUser())
         );
     }
 
@@ -303,8 +303,8 @@ export function deleteMultiTaskPayment(id) {
             .catch(function(error) {
                 dispatch(
                     deleteMultiTaskPaymentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -337,7 +337,7 @@ export function makePayment(id, provider, data) {
         axios
             .post(
                 ENDPOINT_MULTI_TASK_PAYMENT + id + '/pay/' + provider + '/',
-                data,
+                data
             )
             .then(function(response) {
                 dispatch(makePaymentSuccess(response.data, provider));
@@ -346,8 +346,8 @@ export function makePayment(id, provider, data) {
                 dispatch(
                     makePaymentFailed(
                         error.response ? error.response.data : null,
-                        provider,
-                    ),
+                        provider
+                    )
                 );
             });
     };

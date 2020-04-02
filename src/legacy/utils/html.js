@@ -27,7 +27,7 @@ export function objectToQueryString(obj) {
                 ? (result += key + '=' + value + '&')
                 : result;
         },
-        '',
+        ''
     ).slice(0, -1);
     return qs;
 }

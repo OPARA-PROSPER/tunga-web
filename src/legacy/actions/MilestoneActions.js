@@ -30,7 +30,7 @@ export function createMilestone(milestone, attachments) {
             headers['Content-Type'] = 'multipart/form-data';
 
             data = new FormData();
-            Object.keys(milestone).map((key, idx) => {
+            Object.keys(milestone).map((key) => {
                 if (
                     (Array.isArray(milestone[key]) && milestone[key].length) ||
                     (!Array.isArray(milestone[key]) && milestone[key] != null)
@@ -52,8 +52,8 @@ export function createMilestone(milestone, attachments) {
             .catch(function(error) {
                 dispatch(
                     createMilestoneFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -91,8 +91,8 @@ export function listMilestones(filter) {
             .catch(function(error) {
                 dispatch(
                     listMilestonesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -133,8 +133,8 @@ export function retrieveMilestone(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveMilestoneFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -172,8 +172,8 @@ export function updateMilestone(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateMilestoneFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -211,8 +211,8 @@ export function deleteMilestone(id) {
             .catch(function(error) {
                 dispatch(
                     deleteMilestoneFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -250,8 +250,8 @@ export function listMoreMilestones(url) {
             .catch(function(error) {
                 dispatch(
                     listMoreMilestonesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

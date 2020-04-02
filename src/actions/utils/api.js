@@ -53,7 +53,7 @@ export const ENDPOINT_INVITE = getEndpointUrl('invite/');
 export const ENDPOINT_CHANGE_PASSWORD = getEndpointUrl('auth/password/change/');
 export const ENDPOINT_RESET_PASSWORD = getEndpointUrl('auth/password/reset/');
 export const ENDPOINT_RESET_PASSWORD_CONFIRM = getEndpointUrl(
-    'auth/password/reset/confirm/',
+    'auth/password/reset/confirm/'
 );
 
 // Account
@@ -208,7 +208,7 @@ export const DOCUMENT_TYPES_CLIENTS = [
     return [docType, DOCUMENT_TYPES_MAP[docType]];
 });
 
-export const REPORT_STATUS_AHEAD_OF_SCHEDULE = 'ahead'
+export const REPORT_STATUS_AHEAD_OF_SCHEDULE = 'ahead';
 export const REPORT_STATUS_ON_SCHEDULE = 'on_schedule';
 export const REPORT_STATUS_BEHIND = 'behind';
 export const REPORT_STATUS_STUCK = 'stuck';
@@ -309,7 +309,7 @@ export function objectToQueryString(obj) {
                 ? (result += key + '=' + value + '&')
                 : result;
         },
-        '',
+        ''
     ).slice(0, -1);
     return qs;
 }

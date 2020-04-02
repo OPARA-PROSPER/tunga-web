@@ -1,6 +1,6 @@
-import React, { Component, Suspense } from "react";
+import React, { Component } from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
-import Routes, {childRoutes} from "./configs/Routes.conf";
+import {childRoutes} from "./configs/Routes.conf";
 import ShowcaseLayout from "../components/showcase/ShowcaseLayout";
 
 class App extends Component {
@@ -27,7 +27,6 @@ class App extends Component {
                 })}
                 <Redirect from="/signin" to='/login'/>
                 <Redirect exact from="/signup" to='/login'/>
-                {/*<Redirect from="/reset-password*" to="/password*"/>*/}
                 <Route path="*" render={props => <ShowcaseLayout {...rootProps} {...props}/>} />
             </Switch>
         );

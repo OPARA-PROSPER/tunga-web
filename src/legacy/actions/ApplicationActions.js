@@ -39,8 +39,8 @@ export function createApplication(application, errors = null) {
             .catch(function(error) {
                 dispatch(
                     createApplicationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -57,7 +57,7 @@ export function createApplicationSuccess(application) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.TASK,
         GA_EVENT_ACTIONS.APPLY,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: CREATE_APPLICATION_SUCCESS,
@@ -83,8 +83,8 @@ export function listApplications(filter) {
             .catch(function(error) {
                 dispatch(
                     listApplicationsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -125,8 +125,8 @@ export function retrieveApplication(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveApplicationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -164,8 +164,8 @@ export function updateApplication(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateApplicationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -203,8 +203,8 @@ export function deleteApplication(id) {
             .catch(function(error) {
                 dispatch(
                     deleteApplicationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

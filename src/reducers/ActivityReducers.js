@@ -38,7 +38,7 @@ function ids(state = {}, action) {
     let targetKey = action.target || action.id || 'default';
     let newState = {};
     switch (action.type) {
-        case ActivityActions.LIST_ACTIVITIES_SUCCESS:
+        case ActivityActions.LIST_ACTIVITIES_SUCCESS: {
             let newIds = getIds(action.items);
             if(action.filter && action.filter.since) {
                 let cleanedIds = [];
@@ -54,6 +54,7 @@ function ids(state = {}, action) {
                 newState[selectionKey] = newIds;
             }
             return {...state, ...newState};
+        }
         case ActivityActions.LIST_MORE_ACTIVITIES_SUCCESS:
             newState[selectionKey] = [
                 ...state[selectionKey],
@@ -95,34 +96,39 @@ function activities(state = {}, action) {
     let newActivity = {};
     switch (action.type) {
         case ActivityActions.LIST_ACTIVITIES_SUCCESS:
-        case ActivityActions.LIST_MORE_ACTIVITIES_SUCCESS:
+        case ActivityActions.LIST_MORE_ACTIVITIES_SUCCESS: {
             let all_activities = {};
             action.items.forEach(activity => {
                 all_activities[activity.id] = activity;
             });
             return {...state, ...all_activities};
-        case ActivityActions.RETRIEVE_ACTIVITY_SUCCESS:
+        }
+        case ActivityActions.RETRIEVE_ACTIVITY_SUCCESS: {
             let new_activity = {};
             new_activity[action.activity.id] = action.activity;
             return {...state, ...new_activity};
-        case MessageActions.CREATE_MESSAGE_SUCCESS:
+        }
+        case MessageActions.CREATE_MESSAGE_SUCCESS: {
             let activityId = `message_${action.message.id}`;
             newActivity[activityId] = {
                 id: activityId, action: 'send', activity_type: 'message', activity: action.message
             };
             return {...state, ...newActivity};
-        case CommentActions.CREATE_COMMENT_SUCCESS:
-            activityId = `comment_${action.comment.id}`;
+        }
+        case CommentActions.CREATE_COMMENT_SUCCESS: {
+            let activityId = `comment_${action.comment.id}`;
             newActivity[activityId] = {
                 id: activityId, action: 'create', activity_type: 'comment', activity: action.comment
             };
             return {...state, ...newActivity};
-        case UploadActions.CREATE_UPLOAD_SUCCESS:
-            activityId = `upload_${action.upload.id}`;
+        }
+        case UploadActions.CREATE_UPLOAD_SUCCESS: {
+            let activityId = `upload_${action.upload.id}`;
             newActivity[activityId] = {
                 id: activityId, action: 'upload', activity_type: 'upload', activity: action.upload
             };
             return {...state, ...newActivity};
+        }
         default:
             return state;
     }

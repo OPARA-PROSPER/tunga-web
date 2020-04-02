@@ -54,8 +54,8 @@ export function createBlog(blog, errors = null) {
             .catch(function(error) {
                 dispatch(
                     createBlogFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -72,7 +72,7 @@ export function createBlogSuccess(blog) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.BLOG,
         GA_EVENT_ACTIONS.APPLY,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: CREATE_BLOG_SUCCESS,
@@ -99,8 +99,8 @@ export function listBlogs(filter, selection, prev_selection) {
                 dispatch(
                     listBlogsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -146,8 +146,8 @@ export function listMoreBlogs(url, selection) {
                 dispatch(
                     listMoreBlogsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -191,8 +191,8 @@ export function retrieveBlog(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveBlogFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -241,8 +241,8 @@ export function updateBlog(id, blog) {
             .catch(function(error) {
                 dispatch(
                     updateBlogFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -280,8 +280,8 @@ export function deleteBlog(id) {
             .catch(function(error) {
                 dispatch(
                     deleteBlogFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

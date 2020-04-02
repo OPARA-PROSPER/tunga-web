@@ -1,6 +1,7 @@
 import React from 'react';
 import './Loader.scss';
 import loaderImg from '../../assets/img/common/rolling.gif';
+import PropTypes from "prop-types";
 
 const Loader = ({ message }) => {
     return (
@@ -13,6 +14,10 @@ const Loader = ({ message }) => {
             </div>
         </div>
     );
+};
+
+Loader.propTypes = {
+    message: PropTypes.string
 };
 
 export default Loader;

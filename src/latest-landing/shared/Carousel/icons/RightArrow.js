@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
 const RightArrow = ({ width = 16, height = 16, stroke = '#DA3451' }) => (
     <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none"
@@ -8,5 +9,9 @@ const RightArrow = ({ width = 16, height = 16, stroke = '#DA3451' }) => (
     </svg>
 );
 
-RightArrow.propTypes = {};
+RightArrow.propTypes = {
+    width: PropTypes.number,
+    height: PropTypes.number,
+    stroke: PropTypes.string
+};
 export default RightArrow;
