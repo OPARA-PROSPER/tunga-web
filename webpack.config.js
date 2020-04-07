@@ -22,7 +22,7 @@ module.exports = {
         filename: "[name].[hash].bundle.js",
         library: ["[name]"],
         publicPath: "/",
-        chunkFilename: "[id].chunk.js"
+        //chunkFilename: "[id].chunk.js" // TODO find fix for when using lazyloading
     },
     target: "web",
     cache: true,

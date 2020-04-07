@@ -92,7 +92,7 @@ class App extends React.Component {
             ) : (
                 <Media query="(min-width: 992px)">
                     {isLargeDevice => (
-                        <div>
+                        <div> 
                             <Switch>
                                 {'dashboard|projects|network|payments|settings|onboard|work|proposal'.split('|').map(path => {
                                     return user && user.id ? (
@@ -129,7 +129,6 @@ class App extends React.Component {
                                                                isLargeDevice={isLargeDevice}/>}/>
                                     );
                                 })}
-                                {/*<Route path="/legacy" component={LegacyRedirect} />*/}
                                 {['/tunga', '*'].map(path => {
                                     return (
                                         <Route key={`app-path--${path}`}
