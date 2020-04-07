@@ -36,8 +36,8 @@ export function createUser(data) {
             .catch(function(error) {
                 dispatch(
                     createUserFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -74,7 +74,7 @@ export function invite(details) {
             })
             .catch(function(error) {
                 dispatch(
-                    inviteFailed(error.response ? error.response.data : null),
+                    inviteFailed(error.response ? error.response.data : null)
                 );
             });
     };
@@ -91,7 +91,7 @@ export function inviteSuccess(invite) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.AUTH,
         GA_EVENT_ACTIONS.DEV_INVITE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: INVITE_SUCCESS,
@@ -117,8 +117,8 @@ export function listUsers(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listUsersFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -164,8 +164,8 @@ export function retrieveUser(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveUserFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -203,8 +203,8 @@ export function updateUser(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateUserFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -243,8 +243,8 @@ export function listMoreUsers(url, selection) {
                 dispatch(
                     listMoreUsersFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -289,7 +289,7 @@ export function requestUser(id) {
                 dispatch(
                     requestUserFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };

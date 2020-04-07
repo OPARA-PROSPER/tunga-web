@@ -25,6 +25,10 @@ class ImageBox extends Component {
     }
 }
 
-ImageBox.propTypes = {};
+ImageBox.propTypes = {
+    img: PropTypes.string,
+    position: PropTypes.string,
+    children: PropTypes.object
+};
 
 export default ImageBox;

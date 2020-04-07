@@ -96,6 +96,8 @@ class SkillSet extends Component {
     }
 }
 
-SkillSet.propTypes = {};
+SkillSet.propTypes = {
+    talent: PropTypes.object
+};
 
 export default SkillSet;

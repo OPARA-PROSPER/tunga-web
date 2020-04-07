@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./JumpToTop.scss";
 
 import Icon from '../../../assets/img/common/icons/icon-jump-to-top.png';

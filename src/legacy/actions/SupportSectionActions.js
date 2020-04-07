@@ -25,7 +25,7 @@ export const LIST_MORE_SUPPORT_SECTIONS_SUCCESS =
 export const LIST_MORE_SUPPORT_SECTIONS_FAILED =
     'LIST_MORE_SUPPORT_SECTIONS_FAILED';
 
-export function createSupportSection(section, attachments) {
+export function createSupportSection(section) {
     return dispatch => {
         dispatch(createSupportSectionStart(section));
 
@@ -37,8 +37,8 @@ export function createSupportSection(section, attachments) {
             .catch(function(error) {
                 dispatch(
                     createSupportSectionFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -76,8 +76,8 @@ export function listSupportSections(filter) {
             .catch(function(error) {
                 dispatch(
                     listSupportSectionsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -118,8 +118,8 @@ export function retrieveSupportSection(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveSupportSectionFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -157,8 +157,8 @@ export function updateSupportSection(id, section) {
             .catch(function(error) {
                 dispatch(
                     updateSupportSectionFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -196,8 +196,8 @@ export function deleteSupportSection(id) {
             .catch(function(error) {
                 dispatch(
                     deleteSupportSectionFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -235,8 +235,8 @@ export function listMoreSupportSections(url) {
             .catch(function(error) {
                 dispatch(
                     listMoreSupportSectionsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

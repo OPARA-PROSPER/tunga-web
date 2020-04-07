@@ -25,6 +25,8 @@ import { paging } from "../../Utils/Utils";
 import ServiceDetail from "./ServiceDetail/ServiceDetail";
 import Carousel from "../../shared/Carousel/Carousel";
 
+import PropTypes from "prop-types";
+
 
 class OurService extends Component {
     constructor(props) {
@@ -267,6 +269,9 @@ class OurService extends Component {
     }
 }
 
-OurService.propTypes = {};
+OurService.propTypes = {
+    onUseCaseClick: PropTypes.func,
+    isMobile: PropTypes.bool
+};
 
 export default OurService;

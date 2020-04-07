@@ -31,7 +31,7 @@ export const MAKE_PAYMENT_START = 'MAKE_PAYMENT_START';
 export const MAKE_PAYMENT_SUCCESS = 'MAKE_PAYMENT_SUCCESS';
 export const MAKE_PAYMENT_FAILED = 'MAKE_PAYMENT_FAILED';
 
-export function createSkillPage(skill_page, attachments) {
+export function createSkillPage(skill_page) {
     return dispatch => {
         dispatch(createSkillPageStart(skill_page));
 
@@ -43,8 +43,8 @@ export function createSkillPage(skill_page, attachments) {
             .catch(function(error) {
                 dispatch(
                     createSkillPageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -61,7 +61,7 @@ export function createSkillPageSuccess(skill_page) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.SKILL_PAGE,
         GA_EVENT_ACTIONS.CREATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     setEditToken(skill_page.edit_token);
@@ -86,15 +86,15 @@ export function listSkillPages(filter, selection, prev_selection) {
             .get(ENDPOINT_SKILL_PAGE, {params: filter})
             .then(function(response) {
                 dispatch(
-                    listSkillPagesSuccess(response.data, filter, selection),
+                    listSkillPagesSuccess(response.data, filter, selection)
                 );
             })
             .catch(function(error) {
                 dispatch(
                     listSkillPagesFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -141,8 +141,8 @@ export function listMoreSkillPages(url, selection) {
                 dispatch(
                     listMoreSkillPagesFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -188,8 +188,8 @@ export function retrieveSkillPage(id, editToken) {
             .catch(function(error) {
                 dispatch(
                     retrieveSkillPageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -216,7 +216,7 @@ export function retrieveSkillPageFailed(error) {
     };
 }
 
-export function updateSkillPage(id, data, uploads, editToken) {
+export function updateSkillPage(id, data) {
     return dispatch => {
         dispatch(updateSkillPageStart(id));
 
@@ -228,8 +228,8 @@ export function updateSkillPage(id, data, uploads, editToken) {
             .catch(function(error) {
                 dispatch(
                     updateSkillPageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -246,13 +246,13 @@ export function updateSkillPageSuccess(skill_page, data) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.SKILL_PAGE,
         GA_EVENT_ACTIONS.UPDATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     if (data && data.ratings) {
         sendGAEvent(
             GA_EVENT_CATEGORIES.SKILL_PAGE,
             GA_EVENT_ACTIONS.RATE,
-            getGAUserType(getUser()),
+            getGAUserType(getUser())
         );
     }
 
@@ -280,8 +280,8 @@ export function deleteSkillPage(id) {
             .catch(function(error) {
                 dispatch(
                     deleteSkillPageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -320,8 +320,8 @@ export function makePayment(id, provider, data) {
                 dispatch(
                     makePaymentFailed(
                         error.response ? error.response.data : null,
-                        provider,
-                    ),
+                        provider
+                    )
                 );
             });
     };

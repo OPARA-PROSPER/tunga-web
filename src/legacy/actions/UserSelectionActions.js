@@ -21,8 +21,8 @@ export function getUserSuggestions(filter, selection) {
                 dispatch(
                     getUserSuggestionsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };

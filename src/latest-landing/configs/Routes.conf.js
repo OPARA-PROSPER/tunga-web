@@ -1,27 +1,29 @@
 import React from "react";
-import OurStory from "../home/OurStory/OurStory";
-import OurTeam from "../home/OurTeam/OurTeam";
-import Home from "../home/Home";
-import DefaultBody from "../layout/Default/Default";
-import News from "../home/News/News";
-import Login from "../home/Login/Login";
 import Routing from "../constants/Routing";
-import BlogPage from "../home/BlogPage/BlogPage";
-import DevProfile from "../home/DevProfile/DevProfile";
-import Dashboard from '../../components/App';
-import ForgotPassword from "../home/ForgotPassword/ForgotPassword";
-import ResetPassword from "../home/ResetPassword/ResetPassword";
-import Privacy from "../home/Privacy/Privacy";
-import UserAgreement from "../home/UserAgreement/UserAgreement";
-import CodeOfConduct from "../home/CodeOfConduct/CodeOfConduct";
-import Join from "../home/Join/Join";
+
+import DevProfile from "../home/DevProfile/DevProfile"; // FIXME change to lazyload
+
+const DefaultBody = React.lazy(() => import("../layout/Default/Default"));
+const OurTeam = React.lazy(() => import("../home/OurTeam/OurTeam"));
+const OurStory = React.lazy(() => import("../home/OurStory/OurStory"));
+const Login = React.lazy(() => import("../home/Login/Login"));
+const News = React.lazy(() => import("../home/News/News"));
+const UserAgreement = React.lazy(() => import("../home/UserAgreement/UserAgreement"));
+const CodeOfConduct = React.lazy(() => import("../home/CodeOfConduct/CodeOfConduct"));
+const Privacy = React.lazy(() => import("../home/Privacy/Privacy"));
+const BlogPage = React.lazy(() => import("../home/BlogPage/BlogPage"));
+const ResetPassword = React.lazy(() => import("../home/ResetPassword/ResetPassword"));
+const ForgotPassword = React.lazy(() => import("../home/ForgotPassword/ForgotPassword"));
+const Dashboard = React.lazy(() => import("../../components/App"));
+const Home = React.lazy(() => import("../home/Home"));
+const Join = React.lazy(() => import("../home/Join/Join"));
 
 export const childRoutes = [
     {
         path: Routing.home.path,
-        component: DefaultBody,
+        name: Routing.home.name,
         exact: true,
-        name: Routing.home.name
+        component: DefaultBody,
     },
     {
         path: Routing.ourStory.path,

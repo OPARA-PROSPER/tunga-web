@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./NewsArticle.scss";
 import Carousel from "../../../shared/Carousel/Carousel";
 import Button from "../../../shared/core/Button";
+import PropTypes from "prop-types";
 
 class NewsArticle extends Component {
     constructor(props) {
@@ -93,6 +94,8 @@ class NewsArticle extends Component {
     }
 }
 
-NewsArticle.propTypes = {};
+NewsArticle.propTypes = {
+    articles: PropTypes.array
+};
 
 export default NewsArticle;

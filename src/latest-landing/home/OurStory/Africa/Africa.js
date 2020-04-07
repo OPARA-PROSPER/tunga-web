@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./Africa.scss";
-import Button from "../../../shared/core/Button";
 import AfricaBg from "../../../assets/img/our-story/africa.png";
 
 
@@ -47,5 +45,4 @@ class Africa extends Component {
     }
 }
 
-Africa.propTypes = {};
 export default Africa;

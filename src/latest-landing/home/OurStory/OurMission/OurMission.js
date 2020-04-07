@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./OurMission.scss";
 import ButteryflyWorks from "../../../assets/img/our-story/butterfly_works.png";
 import TridonBank from "../../../assets/img/our-story/triodos.png";
@@ -70,5 +69,4 @@ class OurMission extends Component {
     }
 }
 
-OurMission.propTypes = {};
 export default OurMission;

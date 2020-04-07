@@ -41,7 +41,7 @@ export function createMessage(message, target) {
                 dispatch(
                     createMessageFailed(
                         (error.response ? error.response.data : null), message, target
-                    ),
+                    )
                 );
             });
     };
@@ -83,8 +83,8 @@ export function listMessages(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listMessagesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -130,8 +130,8 @@ export function retrieveMessage(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveMessageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -182,7 +182,7 @@ export function updateMessage(id, message) {
                 dispatch(
                     updateMessageFailed(
                         (error.response ? error.response.data : null), message, id
-                    ),
+                    )
                 );
             });
     };
@@ -226,8 +226,8 @@ export function listMoreMessages(url, selection) {
                 dispatch(
                     listMoreMessagesFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -266,23 +266,23 @@ export function deleteMessage(id) {
             .then(function () {
                 dispatch(deleteMessageSuccess(id));
             }).catch(function (response) {
-            dispatch(deleteMessageFailed(response.data, id));
-        });
-    }
+                dispatch(deleteMessageFailed(response.data, id));
+            });
+    };
 }
 
 export function deleteMessageStart(id) {
     return {
         type: DELETE_MESSAGE_START,
         id
-    }
+    };
 }
 
 export function deleteMessageSuccess(id) {
     return {
         type: DELETE_MESSAGE_SUCCESS,
         id
-    }
+    };
 }
 
 export function deleteMessageFailed(error, id) {
@@ -290,5 +290,5 @@ export function deleteMessageFailed(error, id) {
         type: DELETE_MESSAGE_FAILED,
         error,
         id
-    }
+    };
 }

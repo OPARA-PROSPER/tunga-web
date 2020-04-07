@@ -12,6 +12,7 @@ import _ from "lodash";
 import axios from "axios";
 import { ENDPOINT_LOG_SEARCH } from "../../../../actions/utils/api";
 import { getNumSearches } from "../../../../components/utils/search";
+import PropTypes from "prop-types";
 
 class TalentPool extends Component {
     constructor(props) {
@@ -93,8 +94,8 @@ class TalentPool extends Component {
         const { auth: { isAuthenticated, isEmailVisitor } } = this.props;
         const { search } = this.state;
         if (search && (isAuthenticated || isEmailVisitor)) {
-            axios.post(ENDPOINT_LOG_SEARCH, { search, page }).then(res => {
-            }).catch(err => {
+            axios.post(ENDPOINT_LOG_SEARCH, { search, page }).then(() => {
+            }).catch(() => {
                 console.error(`Failed to log search: ${search}`);
             });
         }
@@ -200,9 +201,9 @@ class TalentPool extends Component {
 
 
     render() {
-        const { results, total, isLoading, hasLoaded, currentPage, maxPages } = this.state;
+        const { results, hasLoaded } = this.state;
         const talents = results || [];
-        const { is, query } = this.props;
+        const { query } = this.props;
         const dataPerPage = this.getDataPerPage();
         const maxItemsNo = this.getMaxItemsNo({ dataPerPage });
 
@@ -279,7 +280,11 @@ class TalentPool extends Component {
     }
 }
 
-TalentPool.propTypes = {};
+TalentPool.propTypes = {
+    query: PropTypes.string,
+    auth: PropTypes.object,
+    fetchTalentsRequest: PropTypes.func
+};
 
 
 const mapStateToProps = state => ({

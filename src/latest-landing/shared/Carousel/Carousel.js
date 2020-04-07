@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Carousel.scss";
-import Icon from "../core/Icon";
 import LeftArrow from "./icons/LeftArrow";
 import RightArrow from "./icons/RightArrow";
+import PropTypes from "prop-types";
 
 class Carousel extends Component {
     constructor(props) {
@@ -121,6 +121,13 @@ class Carousel extends Component {
     }
 }
 
-Carousel.propTypes = {};
+Carousel.propTypes = {
+    pagination: PropTypes.object, 
+    children: PropTypes.object, 
+    float: PropTypes.string, 
+    transparent: PropTypes.bool,
+    onPageChange: PropTypes.func,
+    activePage: PropTypes.number
+};
 
 export default Carousel;

@@ -5,8 +5,6 @@ import Icon from "../../../shared/core/Icon";
 import { Form, Title, Button, Input, Group, Label, IconGroup, Cta } from "../../../shared/Form/Form";
 import Error from "../../../../components/core/Error";
 import { authenticate } from "../../../../actions/AuthActions";
-import { Redirect } from "react-router";
-import Routing from "../../../constants/Routing";
 import Progress from "../../../../components/core/Progress";
 import querystring from 'querystring';
 
@@ -58,7 +56,7 @@ class AuthForm extends Component {
                         null}
                     <Title className="AuthForm__title">
                         {queryParams && queryParams.deactivated?(
-                            <div class="alert alert-danger">Your account has been deactivated</div>
+                            <div className="alert alert-danger">Your account has been deactivated</div>
                         ):'Welcome back'}
                     </Title>
                     {auth.isAuthenticating.isLoginStart ? <Progress/> : ''}
@@ -109,7 +107,11 @@ class AuthForm extends Component {
     }
 }
 
-AuthForm.propTypes = {};
+AuthForm.propTypes = {
+    auth: PropTypes.object,
+    isAuthenticated: PropTypes.func,
+    authenticate: PropTypes.func
+};
 
 const mapStateToProps = store => ({
     auth: store.app.Auth

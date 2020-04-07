@@ -15,7 +15,6 @@ export const fetchTalentsFailure = message => ({
     message,
 });
 
-
 export const viewTalentRequest = id => ({
     type: types.VIEW_TALENT_REQUEST,
     id,

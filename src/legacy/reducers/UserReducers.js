@@ -46,17 +46,19 @@ function user(state = {}, action) {
 function users(state = {}, action) {
     switch (action.type) {
         case UserActions.LIST_USERS_SUCCESS:
-        case UserActions.LIST_MORE_USERS_SUCCESS:
+        case UserActions.LIST_MORE_USERS_SUCCESS: {
             let all_users = {};
             action.items.forEach(user => {
                 all_users[user.id] = user;
             });
             return {...state, ...all_users};
+        }
         case UserActions.RETRIEVE_USER_SUCCESS:
-        case UserActions.UPDATE_USER_SUCCESS:
+        case UserActions.UPDATE_USER_SUCCESS: {
             let new_user = {};
             new_user[action.user.id] = action.user;
             return {...state, ...new_user};
+        }
         case ConnectionActions.CREATE_CONNECTION_SUCCESS:
             var user = state[action.connection.to_user];
             if (user) {
@@ -218,17 +220,19 @@ const list = combineReducers({
 function usernameToId(state = {}, action) {
     switch (action.type) {
         case UserActions.LIST_USERS_SUCCESS:
-        case UserActions.LIST_MORE_USERS_SUCCESS:
+        case UserActions.LIST_MORE_USERS_SUCCESS: {
             let all_users = {};
             action.items.forEach(user => {
                 all_users[user.username] = user.id;
             });
             return {...state, ...all_users};
+        }
         case UserActions.RETRIEVE_USER_SUCCESS:
-        case UserActions.UPDATE_USER_SUCCESS:
+        case UserActions.UPDATE_USER_SUCCESS: {
             let new_user = {};
             new_user[action.user.username] = action.user.id;
             return {...state, ...new_user};
+        }
         default:
             return state;
     }

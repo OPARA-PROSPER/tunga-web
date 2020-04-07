@@ -6,6 +6,6 @@ export function addPropsToChildren(children, props) {
         children,
         function(child) {
             return React.cloneElement(child, props);
-        }.bind(this),
+        }.bind(this)
     );
 }

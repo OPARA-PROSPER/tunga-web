@@ -62,6 +62,6 @@ export function openProfileWizard(options = {}) {
         </div>,
         null,
         null,
-        {className: 'profile-form-dialog', bsStyle: 'lg'},
+        {className: 'profile-form-dialog', bsStyle: 'lg'}
     );
 }

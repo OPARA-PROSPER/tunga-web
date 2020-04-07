@@ -3,29 +3,8 @@ import "./UserAgreement.scss";
 
 import Nav from "../../layout/Nav/Nav";
 import Footer from "../../layout/Footer/Footer";
-import PageScroll from "../../shared/PageScroll/PageScroll";
 import UserAgreementContent from "../../../components/showcase/Agreement";
 
-const pages = [
-    {
-        hash: "Content",
-        title: "Content",
-        isActive: false,
-        isActiveBar: false,
-        color: "#fff",
-        bgColor: "#fff",
-        theme: "light",
-    },
-    {
-        hash: "Contact",
-        title: "Contact",
-        isActive: false,
-        isActiveBar: false,
-        color: "#fff",
-        bgColor: "#fff",
-        theme: "dark",
-    },
-];
 
 class UserAgreement extends Component {
     constructor(props) {
@@ -47,7 +26,5 @@ class UserAgreement extends Component {
         );
     }
 }
-
-UserAgreement.propTypes = {};
 
 export default UserAgreement;

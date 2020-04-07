@@ -33,7 +33,7 @@ class Talent extends Component {
                     </div>
                     <div className="Talent__skills">
                         {
-                            profile.skills.slice(0, 4).map((skill, i) => (
+                            profile.skills.slice(0, 4).map((skill) => (
                                 <div className="Talent__skill" key={skill.id}>
                                     {skill.name}
                                 </div>
@@ -51,6 +51,9 @@ class Talent extends Component {
     }
 }
 
-Talent.propTypes = {};
+Talent.propTypes = {
+    talent: PropTypes.object,
+    query: PropTypes.string
+};
 
 export default Talent;

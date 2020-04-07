@@ -19,8 +19,8 @@ export function retrieveSettings() {
             .catch(function(error) {
                 dispatch(
                     retrieveSettingsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -58,7 +58,7 @@ export function updateSettings(settings) {
                 dispatch(
                     updateSettingsFailed(
                         error.response ? error.response.data : null, settings
-                    ),
+                    )
                 );
             });
     };

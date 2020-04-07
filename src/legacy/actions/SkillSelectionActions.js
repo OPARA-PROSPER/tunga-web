@@ -9,7 +9,7 @@ export const ADD_SKILL_SELECTION = 'ADD_SKILL_SELECTION';
 export const REMOVE_SKILL_SELECTION = 'REMOVE_SKILL_SELECTION';
 export const CLEAR_SKILL_SELECTIONS = 'CLEAR_SKILL_SELECTIONS';
 
-export function getSkillSuggestions(filter, selection, prev_selection) {
+export function getSkillSuggestions(filter, selection) {
     return dispatch => {
         dispatch(getSkillSuggestionsStart(filter, selection));
         axios
@@ -21,8 +21,8 @@ export function getSkillSuggestions(filter, selection, prev_selection) {
                 dispatch(
                     getSkillSuggestionsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };

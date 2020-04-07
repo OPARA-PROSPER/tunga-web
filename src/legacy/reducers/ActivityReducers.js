@@ -9,7 +9,7 @@ import {getTaskKey, getChannelKey} from '../utils/reducers';
 const ITEM_TYPE_TASK = 'task';
 const ITEM_TYPE_CHANNEL = 'channel';
 
-export function getReversedActivity(items, state) {
+export function getReversedActivity(items) {
     return [...items].reverse();
 }
 
@@ -18,7 +18,7 @@ function getNextActivityState(
     action,
     type,
     old_activity = [],
-    new_activity = [],
+    new_activity = []
 ) {
     var item_key = null;
     switch (type) {
@@ -103,7 +103,7 @@ function activity(state = {}, action) {
                     action,
                     ITEM_TYPE_TASK,
                     [],
-                    state[getTaskKey(action.id)],
+                    state[getTaskKey(action.id)]
                 );
             }
             return state;
@@ -114,7 +114,7 @@ function activity(state = {}, action) {
                     action,
                     ITEM_TYPE_CHANNEL,
                     [],
-                    state[getChannelKey(action.id)],
+                    state[getChannelKey(action.id)]
                 );
             }
             return state;
@@ -123,14 +123,14 @@ function activity(state = {}, action) {
                 state,
                 action,
                 ITEM_TYPE_TASK,
-                getConcreteActivities(state, getTaskKey(action.id)),
+                getConcreteActivities(state, getTaskKey(action.id))
             );
         case ChannelActions.LIST_NEW_CHANNEL_ACTIVITY_SUCCESS:
             return getNextActivityState(
                 state,
                 action,
                 ITEM_TYPE_CHANNEL,
-                getConcreteActivities(state, getChannelKey(action.id)),
+                getConcreteActivities(state, getChannelKey(action.id))
             );
         case CREATE_COMMENT_SUCCESS:
             return getNextStateOptimistic(
@@ -143,7 +143,7 @@ function activity(state = {}, action) {
                     },
                 ],
                 action.comment.object_id,
-                ITEM_TYPE_TASK,
+                ITEM_TYPE_TASK
             );
         case CREATE_MESSAGE_SUCCESS:
             return getNextStateOptimistic(
@@ -156,21 +156,21 @@ function activity(state = {}, action) {
                     },
                 ],
                 action.message.channel,
-                ITEM_TYPE_CHANNEL,
+                ITEM_TYPE_CHANNEL
             );
         case ChannelActions.SHARE_CHANNEL_UPLOAD_SUCCESS:
             return getNextStateOptimistic(
                 state,
                 getOptimisticUploadActivities(action.uploads),
                 action.channel.id,
-                ITEM_TYPE_CHANNEL,
+                ITEM_TYPE_CHANNEL
             );
         case TaskActions.SHARE_TASK_UPLOAD_SUCCESS:
             return getNextStateOptimistic(
                 state,
                 getOptimisticUploadActivities(action.uploads),
                 action.task.id,
-                ITEM_TYPE_TASK,
+                ITEM_TYPE_TASK
             );
         case TaskActions.LIST_TASK_ACTIVITY_START:
         case TaskActions.LIST_TASK_ACTIVITY_FAILED:
@@ -203,14 +203,14 @@ function previous(state = {}, action) {
             return changeStateKey(
                 state,
                 getTaskKey(action.id),
-                action.previous,
+                action.previous
             );
         case ChannelActions.LIST_CHANNEL_ACTIVITY_SUCCESS:
         case ChannelActions.LIST_MORE_CHANNEL_ACTIVITY_SUCCESS:
             return changeStateKey(
                 state,
                 getChannelKey(action.id),
-                action.previous,
+                action.previous
             );
         default:
             return state;
@@ -227,7 +227,7 @@ function count(state = {}, action) {
             return changeStateKey(
                 state,
                 getChannelKey(action.id),
-                action.count,
+                action.count
             );
         case TaskActions.LIST_TASK_ACTIVITY_START:
         case TaskActions.LIST_TASK_ACTIVITY_FAILED:

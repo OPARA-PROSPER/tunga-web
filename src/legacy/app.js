@@ -3,8 +3,6 @@ import 'babel-polyfill'; // Add Promises polyfill to global environment
 //Import local css
 import 'react-widgets/lib/less/react-widgets.less';
 import './css/tour.scss';
-//import 'react-joyride/lib/react-joyride.scss';
-//import 'Dante2/dist/DanteStyles.css';
 import './css/style.less';
 
 import React from 'react';
@@ -490,5 +488,5 @@ ReactDOM.render(
             </Route>
         </Router>
     </Provider>,
-    document.getElementById('content'),
+    document.getElementById('content')
 );

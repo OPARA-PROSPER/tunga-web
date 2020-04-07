@@ -35,7 +35,7 @@ export function createParticipation(participation, target) {
                 dispatch(
                     createParticipationFailed(
                         (error.response ? error.response.data : null), participation, target
-                    ),
+                    )
                 );
             });
     };
@@ -77,8 +77,8 @@ export function listParticipation(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listParticipationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -125,7 +125,7 @@ export function retrieveParticipation(id) {
                 dispatch(
                     retrieveParticipationFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };
@@ -171,7 +171,7 @@ export function updateParticipation(id, participation) {
                 dispatch(
                     updateParticipationFailed(
                         (error.response ? error.response.data : null), participation, id
-                    ),
+                    )
                 );
             });
     };
@@ -215,8 +215,8 @@ export function listMoreParticipation(url, selection) {
                 dispatch(
                     listMoreParticipationFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -255,23 +255,23 @@ export function deleteParticipation(id) {
             .then(function () {
                 dispatch(deleteParticipationSuccess(id));
             }).catch(function (response) {
-            dispatch(deleteParticipationFailed(response.data, id));
-        });
-    }
+                dispatch(deleteParticipationFailed(response.data, id));
+            });
+    };
 }
 
 export function deleteParticipationStart(id) {
     return {
         type: DELETE_PARTICIPATION_START,
         id
-    }
+    };
 }
 
 export function deleteParticipationSuccess(id) {
     return {
         type: DELETE_PARTICIPATION_SUCCESS,
         id
-    }
+    };
 }
 
 export function deleteParticipationFailed(error, id) {
@@ -279,5 +279,5 @@ export function deleteParticipationFailed(error, id) {
         type: DELETE_PARTICIPATION_FAILED,
         error,
         id
-    }
+    };
 }

@@ -38,6 +38,8 @@ class Hero extends Component {
     }
 }
 
-Hero.propTypes = {};
+Hero.propTypes = {
+    onLearnMore: PropTypes.any // TODO give appropriate type
+};
 
 export default Hero;

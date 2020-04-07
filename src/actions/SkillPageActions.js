@@ -17,7 +17,7 @@ export function retrieveSkillPage(id) {
                 dispatch(
                     retrieveSkillPageFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };

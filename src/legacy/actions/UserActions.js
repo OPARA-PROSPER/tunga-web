@@ -25,8 +25,8 @@ export function listUsers(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listUsersFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -72,8 +72,8 @@ export function retrieveUser(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveUserFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -111,8 +111,8 @@ export function updateUser(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateUserFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -151,8 +151,8 @@ export function listMoreUsers(url, selection) {
                 dispatch(
                     listMoreUsersFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };

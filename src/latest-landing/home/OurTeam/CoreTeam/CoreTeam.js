@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./CoreTeam.scss";
 import Carousel from "../../../shared/Carousel/Carousel";
 import CoreMember from "./CoreMember/CoreMember";
+import PropTypes from "prop-types";
 
 class CoreTeam extends Component {
     constructor(props) {
@@ -86,6 +87,8 @@ class CoreTeam extends Component {
     }
 }
 
-CoreTeam.propTypes = {};
+CoreTeam.propTypes = {
+    team: PropTypes.array
+};
 
 export default CoreTeam;

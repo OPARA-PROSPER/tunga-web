@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
 import qs from "qs";
-import PageScroller from "../../../components/pageScroller";
 
 import "./OurTeam.scss";
 import CoreTeam from "./CoreTeam/CoreTeam";
@@ -25,6 +23,7 @@ import Joel from "../../assets/img/our-team/team/joel.jpg";
 
 import Footer from "../../layout/Footer/Footer";
 import PageScroll from "../../shared/PageScroll/PageScroll";
+import PropTypes from "prop-types";
 
 const pages = [
     {
@@ -330,6 +329,9 @@ class OurTeam extends Component {
     }
 }
 
-OurTeam.propTypes = {};
+OurTeam.propTypes = {
+    location: PropTypes.object,
+    isMobile: PropTypes.bool
+};
 
 export default OurTeam;

@@ -61,19 +61,21 @@ function ids(state = {}, action) {
 function projects(state = {}, action) {
     switch (action.type) {
         case ProjectActions.LIST_PROJECTS_SUCCESS:
-        case ProjectActions.LIST_MORE_PROJECTS_SUCCESS:
+        case ProjectActions.LIST_MORE_PROJECTS_SUCCESS: {
             let all_projects = {};
             action.items.forEach(project => {
                 all_projects[project.id] = project;
             });
             return {...state, ...all_projects};
+        }
         case ProjectActions.RETRIEVE_PROJECT_SUCCESS:
-        case ProjectActions.UPDATE_PROJECT_SUCCESS:
+        case ProjectActions.UPDATE_PROJECT_SUCCESS: {
             let new_project = {};
             new_project[action.project.id] = action.project;
             return {...state, ...new_project};
+        }
         case ParticipationActions.CREATE_PARTICIPATION_SUCCESS:
-        case ParticipationActions.UPDATE_PARTICIPATION_SUCCESS:
+        case ParticipationActions.UPDATE_PARTICIPATION_SUCCESS: {
             let participation = {...action.participation};
             if(participation && participation.project && participation.project.id) {
                 let projectId = participation.project.id,
@@ -97,8 +99,9 @@ function projects(state = {}, action) {
                 return {...state, ...newState};
             }
             return state;
+        }
         case DocumentActions.CREATE_DOCUMENT_SUCCESS:
-        case DocumentActions.UPDATE_DOCUMENT_SUCCESS:
+        case DocumentActions.UPDATE_DOCUMENT_SUCCESS: {
             let document = {...action.document};
 
             if(document && document.project && document.project.id) {
@@ -122,8 +125,9 @@ function projects(state = {}, action) {
                 return {...state, ...newState};
             }
             return state;
+        }
         case ProgressEventActions.CREATE_PROGRESS_EVENT_SUCCESS:
-        case ProgressEventActions.UPDATE_PROGRESS_EVENT_SUCCESS:
+        case ProgressEventActions.UPDATE_PROGRESS_EVENT_SUCCESS: {
             let progress_event = {...action.progress_event};
 
             if(progress_event && progress_event.project && progress_event.project.id) {
@@ -147,8 +151,9 @@ function projects(state = {}, action) {
                 return {...state, ...newState};
             }
             return state;
+        }
         case InterestActions.CREATE_INTEREST_POLL_SUCCESS:
-        case InterestActions.UPDATE_INTEREST_POLL_SUCCESS:
+        case InterestActions.UPDATE_INTEREST_POLL_SUCCESS: {
             let interest_poll = {...action.interest_poll};
 
             if(interest_poll && interest_poll.project && interest_poll.project.id) {
@@ -172,7 +177,8 @@ function projects(state = {}, action) {
                 return {...state, ...newState};
             }
             return state;
-        case ParticipationActions.DELETE_PARTICIPATION_SUCCESS:
+        }
+        case ParticipationActions.DELETE_PARTICIPATION_SUCCESS: {
             let newState = {};
             Object.keys(state).forEach(id => {
                 let project = state[id],
@@ -186,8 +192,9 @@ function projects(state = {}, action) {
                 newState[project.id] = {...project, participation: newParticipation};
             });
             return newState;
-        case DocumentActions.DELETE_DOCUMENT_SUCCESS:
-            newState = {};
+        }
+        case DocumentActions.DELETE_DOCUMENT_SUCCESS: {
+            let newState = {};
             Object.keys(state).forEach(id => {
                 let project = state[id],
                     newDocs = [];
@@ -200,8 +207,9 @@ function projects(state = {}, action) {
                 newState[project.id] = {...project, documents: newDocs};
             });
             return newState;
-        case ProgressEventActions.DELETE_PROGRESS_EVENT_SUCCESS:
-            newState = {};
+        }
+        case ProgressEventActions.DELETE_PROGRESS_EVENT_SUCCESS: {
+            let newState = {};
             Object.keys(state).forEach(id => {
                 let project = state[id],
                     newProgressEvents = [];
@@ -214,6 +222,7 @@ function projects(state = {}, action) {
                 newState[project.id] = {...project, progress_events: newProgressEvents};
             });
             return newState;
+        }
         default:
             return state;
     }
@@ -222,18 +231,20 @@ function projects(state = {}, action) {
 function interest_polls(state = {}, action) {
     switch (action.type) {
         case InterestActions.LIST_INTEREST_POLL_SUCCESS:
-        case InterestActions.LIST_MORE_INTEREST_POLL_SUCCESS:
+        case InterestActions.LIST_MORE_INTEREST_POLL_SUCCESS: {
             let all_interest_polls = {};
             action.items.forEach(interest_poll => {
                 all_interest_polls[interest_poll.id] = interest_poll;
             });
             return {...state, ...all_interest_polls};
+        }
         case InterestActions.CREATE_INTEREST_POLL_SUCCESS:
         case InterestActions.RETRIEVE_INTEREST_POLL_SUCCESS:
-        case InterestActions.UPDATE_INTEREST_POLL_SUCCESS:
+        case InterestActions.UPDATE_INTEREST_POLL_SUCCESS: {
             let new_interest_poll = {};
             new_interest_poll[action.interest_poll.id] = action.interest_poll;
             return {...state, ...new_interest_poll};
+        }
         default:
             return state;
     }

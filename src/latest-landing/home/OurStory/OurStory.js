@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./OurStory.scss";
 
 import Nav from "../../layout/Nav/Nav";
@@ -10,13 +11,10 @@ import OurSolution from "./OurSolution/OurSolution";
 import ImpactSourcing from "./ImpactSourcing/ImpactSourcing";
 import Africa from "./Africa/Africa";
 import Approach from "./Approach/Approach";
-import PageScroller from "../../../components/pageScroller";
 import Footer from "../../layout/Footer/Footer";
 import PageScroll from "../../shared/PageScroll/PageScroll";
 
-import HeroBg from "../../assets/img/our-story/hero-bg.png";
 import BgVideo from "../../assets/videos/our-story/bg-video.mp4";
-import ScheduleCall from "../ScheduleCall/ScheduleCall";
 
 const pages = [
     {
@@ -176,6 +174,9 @@ class OurStory extends Component {
     }
 }
 
-OurStory.propTypes = {};
+OurStory.propTypes = {
+    isMobile: PropTypes.bool,
+    history: PropTypes.object
+};
 
 export default OurStory;

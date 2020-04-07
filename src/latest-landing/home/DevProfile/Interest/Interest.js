@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./Interest.scss";
 
 class Interest extends Component {
@@ -21,7 +20,5 @@ class Interest extends Component {
         );
     }
 }
-
-Interest.propTypes = {};
 
 export default Interest;

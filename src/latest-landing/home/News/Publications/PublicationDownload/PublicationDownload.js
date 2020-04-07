@@ -1,22 +1,18 @@
-import React, {Component} from "react";
+import React from "react";
 import "./PublicationDownload.scss";
-import {Col, FormGroup, Row} from "reactstrap";
+import {Col, Row} from "reactstrap";
 import SideImg from "../../../../assets/img/blog/white-paper-download.png";
 import {
     Form,
-    Title,
     Button,
     Input,
-    Group,
-    Select,
-    IconGroup,
-    Cta
-} from "../../../../shared/Form/Form";
+    Group} from "../../../../shared/Form/Form";
 import Icon from "../../../../shared/core/Icon";
 import {isBusinessEmail} from "../../../../../components/utils/search";
 import CountrySelector from "../../../../../components/core/CountrySelector";
 import FieldError from "../../../../../components/core/FieldError";
 import connect from '../../../../../connectors/ProfileConnector';
+import PropTypes from "prop-types";
 
 class PublicationDownload extends React.Component {
     constructor(props) {
@@ -56,7 +52,7 @@ class PublicationDownload extends React.Component {
 
     }
 
-    handleSubmit = (e) => {
+    handleSubmit(e){
         e.preventDefault();
         const {first_name, last_name, email, phone_number, country, company, paper} = this.state;
         if (isBusinessEmail(email)) {
@@ -72,7 +68,7 @@ class PublicationDownload extends React.Component {
         } else {
             this.setState({error: true});
         }
-    };
+    }
 
     onChangeField(key, e) {
         let newState = {};
@@ -203,7 +199,13 @@ class PublicationDownload extends React.Component {
     }
 }
 
-PublicationDownload.propTypes = {};
+PublicationDownload.propTypes = {
+    onDownloadClose: PropTypes.bool,
+    Profile: PropTypes.object,
+    downloadTitle: PropTypes.string,
+    ProfileActions: PropTypes.object,
+    location: PropTypes.object
+};
 
 export default connect(PublicationDownload);
 

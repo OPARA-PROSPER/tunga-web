@@ -45,7 +45,7 @@ export function createMessage(message, attachments) {
             headers['Content-Type'] = 'multipart/form-data';
 
             data = new FormData();
-            Object.keys(message).map((key, idx) => {
+            Object.keys(message).map((key) => {
                 if (!Array.isArray(message[key]) || message[key].length) {
                     data.append(key, message[key]);
                 }
@@ -64,8 +64,8 @@ export function createMessage(message, attachments) {
             .catch(function(error) {
                 dispatch(
                     createMessageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -82,7 +82,7 @@ export function createMessageSuccess(message) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.MESSAGE,
         GA_EVENT_ACTIONS.SEND,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     return {
@@ -114,7 +114,7 @@ export function listMessages(filter) {
                     dispatch(
                         updateChannelRead(filter.channel, {
                             last_read: response.data.results[0].id,
-                        }),
+                        })
                     );
                 }
                 dispatch(listMessagesSuccess(response.data, filter, get_new));
@@ -124,8 +124,8 @@ export function listMessages(filter) {
                     listMessagesFailed(
                         error.response ? error.response.data : null,
                         filter,
-                        get_new,
-                    ),
+                        get_new
+                    )
                 );
             });
     };
@@ -168,8 +168,8 @@ export function retrieveMessage(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveMessageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -207,8 +207,8 @@ export function updateMessage(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateMessageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -246,8 +246,8 @@ export function deleteMessage(id) {
             .catch(function(error) {
                 dispatch(
                     deleteMessageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -285,8 +285,8 @@ export function updateMessageRead(id) {
             .catch(function(error) {
                 dispatch(
                     updateMessageReadFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -324,8 +324,8 @@ export function listMoreMessages(url) {
             .catch(function(error) {
                 dispatch(
                     listMoreMessagesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

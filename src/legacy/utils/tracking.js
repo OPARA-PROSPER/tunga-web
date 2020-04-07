@@ -123,7 +123,7 @@ export function sendGAEvent(category, action, label) {
             GA_HIT.EVENT,
             category || null,
             action || null,
-            label || null,
+            label || null
         );
     } else {
         /* console.log(
@@ -240,7 +240,7 @@ export function parseDefaultConsents() {
             if(idx !== 0 && !moment.utc(category).isValid()) {
                 currentConsents.push(category);
             }
-        })
+        });
     } else {
         COOKIE_OPTIONS.forEach(category => {
             if(category[3] && !category[4]) {
@@ -261,7 +261,7 @@ export function openCookieConsentPopUp(onSave, onCancel) {
     confirm(
         <CookieSettings onChange={onConsentChange}/>,
         false,
-        {ok: 'Save Settings', mustRespond: false, heading: (<h3>Cookie Settings</h3>)},
+        {ok: 'Save Settings', mustRespond: false, heading: (<h3>Cookie Settings</h3>)}
     ).then(
         function() {
             setCookieConsent(cookieConsents);
@@ -275,6 +275,6 @@ export function openCookieConsentPopUp(onSave, onCancel) {
             if(onCancel) {
                 onCancel();
             }
-        },
+        }
     );
 }

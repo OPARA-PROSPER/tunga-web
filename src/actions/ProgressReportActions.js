@@ -41,7 +41,7 @@ export function createProgressReport(progress_report, target) {
                 dispatch(
                     createProgressReportFailed(
                         (error.response ? error.response.data : null), progress_report, target
-                    ),
+                    )
                 );
             });
     };
@@ -83,8 +83,8 @@ export function listProgressReports(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listProgressReportsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -131,7 +131,7 @@ export function retrieveProgressReport(id) {
                 dispatch(
                     retrieveProgressReportFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };
@@ -183,7 +183,7 @@ export function updateProgressReport(id, progress_report) {
                 dispatch(
                     updateProgressReportFailed(
                         (error.response ? error.response.data : null), progress_report, id
-                    ),
+                    )
                 );
             });
     };
@@ -227,8 +227,8 @@ export function listMoreProgressReports(url, selection) {
                 dispatch(
                     listMoreProgressReportsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -267,23 +267,23 @@ export function deleteProgressReport(id) {
             .then(function () {
                 dispatch(deleteProgressReportSuccess(id));
             }).catch(function (response) {
-            dispatch(deleteProgressReportFailed(response.data, id));
-        });
-    }
+                dispatch(deleteProgressReportFailed(response.data, id));
+            });
+    };
 }
 
 export function deleteProgressReportStart(id) {
     return {
         type: DELETE_PROGRESS_REPORT_START,
         id
-    }
+    };
 }
 
 export function deleteProgressReportSuccess(id) {
     return {
         type: DELETE_PROGRESS_REPORT_SUCCESS,
         id
-    }
+    };
 }
 
 export function deleteProgressReportFailed(error, id) {
@@ -291,5 +291,5 @@ export function deleteProgressReportFailed(error, id) {
         type: DELETE_PROGRESS_REPORT_FAILED,
         error,
         id
-    }
+    };
 }

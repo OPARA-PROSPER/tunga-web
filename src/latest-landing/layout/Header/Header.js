@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Col, Row, Spinner } from "reactstrap";
 import { openCalendlyWidget } from "../../../components/utils/calendly";
 import "./Header.scss";
@@ -8,6 +7,7 @@ import Button from "../../shared/core/Button";
 import BgVideo from "../../assets/videos/home/section-1.mp4";
 import BgVideoMobile from "../../assets/videos/home/section-1-mobile.mp4";
 import LazyLoad from 'react-lazy-load';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
     constructor(props) {
@@ -82,6 +82,9 @@ class Header extends Component {
     }
 }
 
-Header.propTypes = {};
+Header.propTypes = {
+    onTalentPoolRequest: PropTypes.func,
+    isMobile: PropTypes.bool,
+};
 
 export default Header;

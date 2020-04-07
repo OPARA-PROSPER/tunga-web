@@ -6,8 +6,7 @@ import WhitePaperImg from "../../../assets/img/news/publications/white-paper.jpg
 import { Button } from "../../../shared/Form/Form";
 import PublicationDownload from "./PublicationDownload/PublicationDownload";
 import Carousel from "../../../shared/Carousel/Carousel";
-import { isEqual, kebabCase } from "lodash";
-import qs from "qs";
+import PropTypes from "prop-types";
 
 class Publications extends Component {
     constructor(props) {
@@ -212,6 +211,11 @@ class Publications extends Component {
     }
 }
 
-Publications.propTypes = {};
+Publications.propTypes = {
+    publicationQuery: PropTypes.any, // TODO fix the property type
+    hash: PropTypes.any,
+    pathname: PropTypes.any,
+    history: PropTypes.any
+};
 
 export default Publications;

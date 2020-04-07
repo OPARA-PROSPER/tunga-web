@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./Nav.scss";
 import Routing from "../../constants/Routing";
 import { NavLink } from "react-router-dom";
 import {
     Navbar,
-    NavbarBrand,
     NavbarToggler,
     Collapse,
     Nav as RNav,
@@ -13,11 +11,10 @@ import {
     NavLink as RNavLink
 } from "reactstrap";
 
-import Button from "../Header/Header";
 import Logo from "../../assets/img/common/logo-50x50.png";
 import { openCalendlyWidget } from "../../../components/utils/calendly";
-import { authenticate } from "../../../actions/AuthActions";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 
 class Nav extends Component {
@@ -28,7 +25,7 @@ class Nav extends Component {
         };
     }
 
-    toggle = () => {
+    toggle(){
         if (this.props.onNavToggle) {
             this.props.onNavToggle(!this.state.isOpen);
         }
@@ -36,7 +33,7 @@ class Nav extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
-    };
+    }
 
     render() {
         const { auth } = this.props;
@@ -112,7 +109,10 @@ class Nav extends Component {
     }
 }
 
-Nav.propTypes = {};
+Nav.propTypes = {
+    auth: PropTypes.object,
+    onNavToggle: PropTypes.func,
+};
 
 
 const mapStateToProps = store => ({

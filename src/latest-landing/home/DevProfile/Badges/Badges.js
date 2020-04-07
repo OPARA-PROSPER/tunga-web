@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Badges.scss";
-import Icon from "../../../shared/core/Icon";
 import ProfileImg from "../../../assets/img/our-story/hero-bg.png";
-import Button from "../../../shared/core/Button";
 
 
 const Badge = ({ imgUrl, title }) => {
@@ -15,6 +13,11 @@ const Badge = ({ imgUrl, title }) => {
             </div>
         </div>
     );
+};
+
+Badge.propTypes = {
+    imgUrl: PropTypes.string,
+    title: PropTypes.string
 };
 
 

@@ -35,7 +35,7 @@ export function createProgressReport(progress_report, attachments) {
             headers['Content-Type'] = 'multipart/form-data';
 
             data = new FormData();
-            Object.keys(progress_report).map((key, idx) => {
+            Object.keys(progress_report).map((key) => {
                 if (
                     (Array.isArray(progress_report[key]) &&
                         progress_report[key].length) ||
@@ -59,8 +59,8 @@ export function createProgressReport(progress_report, attachments) {
             .catch(function(error) {
                 dispatch(
                     createProgressReportFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -98,8 +98,8 @@ export function listProgressReports(filter) {
             .catch(function(error) {
                 dispatch(
                     listProgressReportsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -140,8 +140,8 @@ export function retrieveProgressReport(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveProgressReportFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -178,7 +178,7 @@ export function updateProgressReport(id, progress_report, attachments) {
             headers['Content-Type'] = 'multipart/form-data';
 
             data = new FormData();
-            Object.keys(progress_report).map((key, idx) => {
+            Object.keys(progress_report).map((key) => {
                 if (
                     (Array.isArray(progress_report[key]) &&
                         progress_report[key].length) ||
@@ -202,8 +202,8 @@ export function updateProgressReport(id, progress_report, attachments) {
             .catch(function(error) {
                 dispatch(
                     updateProgressReportFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -241,8 +241,8 @@ export function deleteProgressReport(id) {
             .catch(function(error) {
                 dispatch(
                     deleteProgressReportFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -280,8 +280,8 @@ export function listMoreProgressReports(url) {
             .catch(function(error) {
                 dispatch(
                     listMoreProgressReportsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./OurDream.scss";
-import Button from "../../../shared/core/Button";
-import Icon from "../../../shared/core/Icon";
 import ImageBox from "../ImageBox/ImageBox";
 import DreamImg from "../../../assets/img/our-story/our-dream.png";
 import ButterflyWorksLogo from "../../../assets/img/our-story/butterfly-works-logo.png";
@@ -52,5 +49,4 @@ class OurDream extends Component {
     }
 }
 
-OurDream.propTypes = {};
 export default OurDream;

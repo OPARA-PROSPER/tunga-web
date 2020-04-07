@@ -20,7 +20,7 @@ export function updateDevViews() {
 }
 
 export function isBusinessEmail(email) {
-    const [match, domain] = (email || '').match(/[A-Z0-9._%+-]+@([A-Z0-9.-]+\.[A-Z]{2,})/i) || [];
+    const [, domain] = (email || '').match(/[A-Z0-9._%+-]+@([A-Z0-9.-]+\.[A-Z]{2,})/i) || [];
     if(!domain) {
         return false;
     }

@@ -28,8 +28,8 @@ export function createConnection(connection) {
             .catch(function(error) {
                 dispatch(
                     createConnectionFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -67,8 +67,8 @@ export function listConnections(filter) {
             .catch(function(error) {
                 dispatch(
                     listConnectionsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -109,8 +109,8 @@ export function retrieveConnection(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveConnectionFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -148,8 +148,8 @@ export function updateConnection(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateConnectionFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -187,8 +187,8 @@ export function deleteConnection(id, user, hide = false) {
             .catch(function(error) {
                 dispatch(
                     deleteConnectionFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

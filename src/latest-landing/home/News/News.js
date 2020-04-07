@@ -19,7 +19,6 @@ import CioLogo from "../../assets/img/news/cio-logo.png";
 
 import blogArticles from './content/blogs';
 
-import TeamImg from "../../assets/img/our-team/user.png";
 import VlogImg from "../../assets/img/blog/vlog.png";
 import VlogVideo from "../../assets/videos/home/section-1.mp4";
 import NewsArticle from "./NewsArticle/NewsArticle";
@@ -30,6 +29,8 @@ import Footer from "../../layout/Footer/Footer";
 import PageScroll from "../../shared/PageScroll/PageScroll";
 import { withRouter } from "react-router";
 import qs from "qs";
+
+import PropTypes from "prop-types";
 
 const pages = [
     {
@@ -227,7 +228,9 @@ class News extends Component {
     }
 }
 
-News.propTypes = {};
+News.propTypes = {
+    history: PropTypes.object
+};
 
 const NewsWithRouter = withRouter(News);
 

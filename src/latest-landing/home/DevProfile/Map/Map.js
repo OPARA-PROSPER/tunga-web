@@ -12,7 +12,7 @@ class Map extends Component {
         this.initMap();
     }
 
-    componentDidUpdate(prevProps, prevState,) {
+    componentDidUpdate(prevProps) {
         if (isEqual(prevProps.user, this.props.user)) {
             this.initMap();
         }
@@ -38,6 +38,8 @@ class Map extends Component {
                                     zoom: 12,
                                     center: latLng
                                 }),
+                                //FIXME need to let eslint know about this
+                                // eslint-disable-next-line no-unused-vars 
                                 marker = new google.maps.Marker({
                                     position: latLng,
                                     map: map
@@ -75,6 +77,8 @@ class Map extends Component {
     }
 }
 
-Map.propTypes = {};
+Map.propTypes = {
+    user: PropTypes.object
+};
 
 export default Map;

@@ -28,6 +28,14 @@ export default class DashboardLayout extends React.Component {
     componentDidMount() {
         $('body').addClass('is-dashboard');
 
+        const script = document.createElement("script");
+
+        script.src = "https://js.stripe.com/v3/";
+        script.id = "stripeRef";
+        script.async = true;
+
+        document.body.appendChild(script);
+
         const {user, AuthActions} = this.props;
 
         if (user && user.id && parseFloat(user.agree_version || 0) < AGREEMENT_VERSION && !window.isAgreementOpen) {
@@ -61,6 +69,9 @@ export default class DashboardLayout extends React.Component {
 
     componentWillUnmount () {
         $('body').removeClass('is-dashboard');
+
+        const script = document.getElementById("stripeRef");
+        document.body.removeChild(script);
     }
 
     render() {

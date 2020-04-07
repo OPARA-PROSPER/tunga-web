@@ -28,8 +28,8 @@ export function createSavedTask(saved_task) {
             .catch(function(error) {
                 dispatch(
                     createSavedTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -67,8 +67,8 @@ export function listSavedTasks(filter) {
             .catch(function(error) {
                 dispatch(
                     listSavedTasksFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -109,8 +109,8 @@ export function retrieveSavedTask(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveSavedTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -148,8 +148,8 @@ export function updateSavedTask(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateSavedTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -187,8 +187,8 @@ export function deleteSavedTask(id) {
             .catch(function(error) {
                 dispatch(
                     deleteSavedTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

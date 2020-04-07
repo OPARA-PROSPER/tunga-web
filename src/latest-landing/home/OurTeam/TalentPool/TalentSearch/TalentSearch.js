@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import Button from "../../../../shared/core/Button";
 import Icon from "../../../../shared/core/Icon";
-import { Group, Input, IconGroup, Button } from "../../../../shared/Form/Form";
+import { Input, IconGroup, Button } from "../../../../shared/Form/Form";
 import "./TalentSearch.scss";
 import { connect } from "react-redux";
 import { isBusinessEmail } from "../../../../../components/utils/search";
 import { authenticateEmailVisitor } from "../../../../../actions/AuthActions";
-import _ from "lodash";
 import Progress from "../../../../../components/core/Progress";
 
 
@@ -141,7 +139,12 @@ class TalentSearch extends Component {
     }
 }
 
-TalentSearch.propTypes = {};
+TalentSearch.propTypes = {
+    auth: PropTypes.object,
+    query: PropTypes.string,
+    onSearchQuery: PropTypes.func,
+    authenticateEmailVisitor: PropTypes.func
+};
 
 const mapStateToProps = state => ({
     auth: state.app.Auth,

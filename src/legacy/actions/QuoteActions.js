@@ -42,8 +42,8 @@ export function createQuote(quote, errors = null) {
             .catch(function(error) {
                 dispatch(
                     createQuoteFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -60,7 +60,7 @@ export function createQuoteSuccess(quote) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.TASK,
         GA_EVENT_ACTIONS.APPLY,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: CREATE_QUOTE_SUCCESS,
@@ -86,8 +86,8 @@ export function listQuotes(filter) {
             .catch(function(error) {
                 dispatch(
                     listQuotesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -128,8 +128,8 @@ export function retrieveQuote(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveQuoteFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -167,8 +167,8 @@ export function updateQuote(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateQuoteFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -206,8 +206,8 @@ export function deleteQuote(id) {
             .catch(function(error) {
                 dispatch(
                     deleteQuoteFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

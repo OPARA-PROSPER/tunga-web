@@ -90,7 +90,7 @@ export function authenticate(credentials) {
             })
             .catch(function(error) {
                 dispatch(
-                    authFailed(error.response ? error.response.data : null),
+                    authFailed(error.response ? error.response.data : null)
                 );
             });
     };
@@ -108,7 +108,7 @@ export function authSuccess(data) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.AUTH,
         GA_EVENT_ACTIONS.SIGN_IN,
-        getGAUserType(user),
+        getGAUserType(user)
     );
     return {
         type: LOGIN_SUCCESS,
@@ -134,8 +134,8 @@ export function authenticateEmailVisitor(credentials) {
             .catch(function(error) {
                 dispatch(
                     authEmailVisitorFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -171,7 +171,7 @@ export function verify() {
             .then(function(response) {
                 dispatch(verifySuccess(response.data));
             })
-            .catch(function(error) {
+            .catch(function() {
                 //dispatch(verifyFailed(error.response?error.response.data:null));
                 dispatch(verifyEmailVisitor());
             });
@@ -209,8 +209,8 @@ export function verifyEmailVisitor() {
             .catch(function(error) {
                 dispatch(
                     verifyEmailVisitorFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -246,7 +246,7 @@ export function logout() {
             })
             .catch(function(error) {
                 dispatch(
-                    logoutFailed(error.response ? error.response.data : null),
+                    logoutFailed(error.response ? error.response.data : null)
                 );
             });
     };
@@ -262,7 +262,7 @@ export function logoutSuccess() {
     sendGAEvent(
         GA_EVENT_CATEGORIES.AUTH,
         GA_EVENT_ACTIONS.LOG_OUT,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: LOGOUT_SUCCESS,
@@ -290,7 +290,7 @@ export function register(details) {
             })
             .catch(function(error) {
                 dispatch(
-                    registerFailed(error.response ? error.response.data : null),
+                    registerFailed(error.response ? error.response.data : null)
                 );
             });
     };
@@ -308,7 +308,7 @@ export function registerSuccess(data) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.REGISTRATION,
         GA_EVENT_ACTIONS.SIGN_UP,
-        getGAUserType(user),
+        getGAUserType(user)
     );
 
     return {
@@ -334,7 +334,7 @@ export function apply(details) {
             })
             .catch(function(error) {
                 dispatch(
-                    applyFailed(error.response ? error.response.data : null),
+                    applyFailed(error.response ? error.response.data : null)
                 );
             });
     };
@@ -351,7 +351,7 @@ export function applySuccess(application) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.AUTH,
         GA_EVENT_ACTIONS.DEV_APPLY,
-        GA_EVENT_LABELS.DEVELOPER,
+        GA_EVENT_LABELS.DEVELOPER
     );
     return {
         type: APPLY_SUCCESS,
@@ -377,8 +377,8 @@ export function retrieveApplication(key) {
             .catch(function(error) {
                 dispatch(
                     retrieveApplicationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -416,8 +416,8 @@ export function resetPassword(email) {
             .catch(function(error) {
                 dispatch(
                     resetPasswordFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -456,8 +456,8 @@ export function resetPasswordConfirm(credentials) {
             .catch(function(error) {
                 dispatch(
                     resetPasswordConfirmFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -473,7 +473,7 @@ export function resetPasswordConfirmStart(credentials) {
 export function resetPasswordConfirmSuccess(response) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.AUTH,
-        GA_EVENT_ACTIONS.RECOVER_PASSWORD_CONFIRM,
+        GA_EVENT_ACTIONS.RECOVER_PASSWORD_CONFIRM
     );
 
     return {
@@ -508,8 +508,8 @@ export function listRunningTasks() {
             .catch(function(error) {
                 dispatch(
                     listRunningTasksFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -552,8 +552,8 @@ export function listRepos(provider, task = null) {
                     listReposFailed(
                         error.response ? error.response.data : null,
                         error.response ? error.response.status : null,
-                        provider,
-                    ),
+                        provider
+                    )
                 );
             });
     };
@@ -596,8 +596,8 @@ export function listIssues(provider, task = null) {
                     listIssuesFailed(
                         error.response ? error.response.data : null,
                         error.response ? error.response.status : null,
-                        provider,
-                    ),
+                        provider
+                    )
                 );
             });
     };
@@ -640,8 +640,8 @@ export function getSlackApp(task = null) {
             .catch(function(error) {
                 dispatch(
                     getSlackAppFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -673,9 +673,9 @@ export function listSlackChannels(task = null) {
         axios
             .get(
                 ENDPOINT_MY_APPS + `${SOCIAL_PROVIDERS.slack}` + '/channels/',
-                {
-                    params: {task},
-                },
+            {
+                params: {task},
+            }
             )
             .then(function(response) {
                 dispatch(listSlackChannelsSuccess(response.data));
@@ -684,8 +684,8 @@ export function listSlackChannels(task = null) {
                 dispatch(
                     listSlackChannelsFailed(
                         error.response ? error.response.data : null,
-                        error.response ? error.response.status : null,
-                    ),
+                        error.response ? error.response.status : null
+                    )
                 );
             });
     };
@@ -722,7 +722,7 @@ export function invite(details) {
             })
             .catch(function(error) {
                 dispatch(
-                    inviteFailed(error.response ? error.response.data : null),
+                    inviteFailed(error.response ? error.response.data : null)
                 );
             });
     };
@@ -739,7 +739,7 @@ export function inviteSuccess(invite) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.AUTH,
         GA_EVENT_ACTIONS.DEV_INVITE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: INVITE_SUCCESS,
@@ -765,8 +765,8 @@ export function retrieveInvite(key) {
             .catch(function(error) {
                 dispatch(
                     retrieveInviteFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

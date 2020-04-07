@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Profile.scss";
-import Icon from "../../../shared/core/Icon";
 import Info from "../Info/Info";
-import { CardBody, Col, Media, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import Badges from "../Badges/Badges";
-import Ratings from "../Ratings/Ratings";
 import Map from "../Map/Map";
 import SkillSet from "../SkillSet/SkillSet";
-import Experience from "../Experience/Experience";
-import Interest from "../Interest/Interest";
 
 
 class Profile extends Component {
@@ -62,6 +58,8 @@ class Profile extends Component {
     }
 }
 
-Profile.propTypes = {};
+Profile.propTypes = {
+    talent: PropTypes.object
+};
 
 export default Profile;

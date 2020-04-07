@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./OurSolution.scss";
-import solVideo from "../../../assets/videos/our-story/BG-ourstory.mp4";
-
-// import  solVideoMobile from "../../../assets/videos/our-story/BG-ourstory-mobile.mp4";
 
 class OurSolution extends Component {
     constructor(props) {
@@ -43,7 +39,8 @@ class OurSolution extends Component {
                     <div className="OurSolution__video">
                         <iframe allowFullScreen="allowFullScreen"
                                 src="https://www.youtube.com/embed/RVVtyapBmuo?ecver=1&amp;iv_load_policy=1&amp;yt:stretch=16:9&amp;autohide=1&amp;color=red&amp;width=100"
-                                width="100%" height="100%" allowTransparency="true" frameBorder="0">
+                                // eslint-disable-next-line react/no-unknown-property
+                                width="100%" height="100%" allowtransparency="true" frameBorder="0">
                         </iframe>
                     </div>
                 </div>
@@ -52,5 +49,4 @@ class OurSolution extends Component {
     }
 }
 
-OurSolution.propTypes = {};
 export default OurSolution;

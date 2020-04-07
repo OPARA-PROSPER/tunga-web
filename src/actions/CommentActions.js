@@ -41,7 +41,7 @@ export function createComment(comment, target) {
                 dispatch(
                     createCommentFailed(
                         (error.response ? error.response.data : null), comment, target
-                    ),
+                    )
                 );
             });
     };
@@ -83,8 +83,8 @@ export function listComments(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listCommentsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -130,8 +130,8 @@ export function retrieveComment(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveCommentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -182,7 +182,7 @@ export function updateComment(id, comment) {
                 dispatch(
                     updateCommentFailed(
                         (error.response ? error.response.data : null), comment, id
-                    ),
+                    )
                 );
             });
     };
@@ -226,8 +226,8 @@ export function listMoreComments(url, selection) {
                 dispatch(
                     listMoreCommentsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -266,23 +266,23 @@ export function deleteComment(id) {
             .then(function () {
                 dispatch(deleteCommentSuccess(id));
             }).catch(function (response) {
-            dispatch(deleteCommentFailed(response.data, id));
-        });
-    }
+                dispatch(deleteCommentFailed(response.data, id));
+            });
+    };
 }
 
 export function deleteCommentStart(id) {
     return {
         type: DELETE_COMMENT_START,
         id
-    }
+    };
 }
 
 export function deleteCommentSuccess(id) {
     return {
         type: DELETE_COMMENT_SUCCESS,
         id
-    }
+    };
 }
 
 export function deleteCommentFailed(error, id) {
@@ -290,5 +290,5 @@ export function deleteCommentFailed(error, id) {
         type: DELETE_COMMENT_FAILED,
         error,
         id
-    }
+    };
 }

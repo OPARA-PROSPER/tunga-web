@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./AuthForm.scss";
+import PropTypes from "prop-types";
 
 class AuthForm extends Component {
     constructor(props) {
@@ -18,6 +19,8 @@ class AuthForm extends Component {
     }
 }
 
-AuthForm.propTypes = {};
+AuthForm.propTypes = {
+    form: PropTypes.any // FIXME put right type
+};
 export default AuthForm;
 

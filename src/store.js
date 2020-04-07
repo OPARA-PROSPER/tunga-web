@@ -12,6 +12,8 @@ const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 
+console.log(__PRODUCTION__);
+
 if (!__PRODUCTION__) {
     const logger = createLogger({
         collapsed: true,
@@ -24,10 +26,10 @@ const configureStore = () => {
     const rootReducer = combineReducers({
         app: appReducer,
     });
-    middlewares.push(reduxThunk)
+    middlewares.push(reduxThunk);
     const store = createStore(
         rootReducer,
-        applyMiddleware(...middlewares),
+        applyMiddleware(...middlewares)
     );
 
     sagaMiddleware.run(rootSaga);
