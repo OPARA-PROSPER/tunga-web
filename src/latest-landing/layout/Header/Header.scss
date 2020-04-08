@@ -59,6 +59,10 @@
         position: absolute;
         top: 0;
         left: 0;
+
+        .LazyLoad{
+            height: 100%;
+        }
     }
 
     &__video {
