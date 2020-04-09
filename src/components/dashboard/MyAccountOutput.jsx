@@ -4,22 +4,19 @@ import { withRouter } from 'react-router-dom';
 
 import PropTypes from "prop-types";
 
-class MyAccountOutput extends React.Component {
+const MyAccountOutput = props => {
+    const {Auth: {user}, field} = props;
 
-    static propTypes = {
-        field: PropTypes.string,
-    };
+    return (
+        <React.Fragment>
+            {user[field] || null}
+        </React.Fragment>
+    )
+};
 
-    render() {
-        const {Auth: {user}, field} = this.props;
-
-        return (
-            <React.Fragment>
-                {user[field] || null}
-            </React.Fragment>
-        )
-    }
-}
+MyAccountOutput.propTypes = {
+    field: PropTypes.string,
+};
 
 function mapStateToProps(state) {
     return {

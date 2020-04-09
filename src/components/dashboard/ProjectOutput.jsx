@@ -4,23 +4,20 @@ import { withRouter } from 'react-router-dom';
 
 import PropTypes from "prop-types";
 
-class ProjectOutput extends React.Component {
+const ProjectOutput = props => {
+    const {Project: {projects}, id, field} = props;
 
-    static propTypes = {
-        id: PropTypes.string,
-        field: PropTypes.string,
-    };
+    return (
+        <React.Fragment>
+            {projects[id]?projects[id][field]:null}
+        </React.Fragment>
+    )
+};
 
-    render() {
-        const {Project: {projects}, id, field} = this.props;
-
-        return (
-            <React.Fragment>
-                {projects[id]?projects[id][field]:null}
-            </React.Fragment>
-        )
-    }
-}
+ProjectOutput.propTypes = {
+    id: PropTypes.string,
+    field: PropTypes.string,
+};
 
 function mapStateToProps(state) {
     return {
