@@ -9,21 +9,17 @@ class Vlog extends Component {
         this.state = {
             isPlaying: false
         };
-
-        this.onVideoPlay = this.onVideoPlay.bind(this);
-        this.closeVideo = this.closeVideo.bind(this);
     }
 
 
-    onVideoPlay() {
+    onVideoPlay = () => {
         this.setState({ isPlaying: true });
-    }
+    };
 
-
-    closeVideo() {
+    closeVideo = () => {
         this.props.onVideoClose();
         this.setState({ isPlaying: false });
-    }
+    };
 
 
     render() {

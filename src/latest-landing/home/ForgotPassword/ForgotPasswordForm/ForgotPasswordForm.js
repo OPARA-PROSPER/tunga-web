@@ -15,12 +15,9 @@ class AuthForm extends Component {
             email: '',
             formSubmitted: false,
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    onFormSubmit(e) {
+    onFormSubmit = e => {
         e.preventDefault();
         this.setState({ formSubmitted: true });
         const email = this.state.email.trim();
@@ -29,11 +26,11 @@ class AuthForm extends Component {
         }
 
         this.props.resetPassword({ email });
-    }
+    };
 
-    handleChange(event) {
+    handleChange = event => {
         this.setState({ [event.target.name]: event.target.value, formSubmitted: false });
-    }
+    };
 
     render() {
         const { auth } = this.props;

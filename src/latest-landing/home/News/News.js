@@ -190,13 +190,11 @@ class News extends Component {
             ],
             blogArticles,
         };
-
-        this.onNavToggle = this.onNavToggle.bind(this);
     }
 
-    onNavToggle(isNavOpen) {
+    onNavToggle = isNavOpen => {
         this.setState({ isNavOpen });
-    }
+    };
 
     render() {
         const splitHash = this.props.history.location.hash.split('?');

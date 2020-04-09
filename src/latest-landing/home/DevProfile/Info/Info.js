@@ -44,20 +44,16 @@ class Info extends Component {
             isBioOpen: false,
             isSkillBoxOpen: false
         };
-
-        this.onBioToggle = this.onBioToggle.bind(this);
-        this.onSkillBoxToggle = this.onSkillBoxToggle.bind(this);
     }
 
 
-    onBioToggle() {
+    onBioToggle = () => {
         this.setState({ isBioOpen: !this.state.isBioOpen });
-    }
+    };
 
-
-    onSkillBoxToggle() {
+    onSkillBoxToggle = () => {
         this.setState({ isSkillBoxOpen: !this.state.isSkillBoxOpen });
-    }
+    };
 
     render() {
         const { talent, query } = this.props;

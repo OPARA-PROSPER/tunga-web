@@ -13,9 +13,6 @@ class Home extends Component {
             windowHeight: 0,
             isMobile: false,
         };
-
-        this.isMobile = this.isMobile.bind(this);
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
 
@@ -30,18 +27,17 @@ class Home extends Component {
     }
 
 
-    updateWindowDimensions() {
+    updateWindowDimensions = () => {
         this.setState({
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight,
             isMobile: this.isMobile(window.innerWidth),
         });
-    }
+    };
 
-
-    isMobile(windowWidth) {
+    isMobile = windowWidth => {
         return typeof windowWidth !== 'undefined' && windowWidth <= 992;
-    }
+    };
 
 
     render() {

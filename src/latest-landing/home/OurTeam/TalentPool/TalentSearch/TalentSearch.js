@@ -18,11 +18,6 @@ class TalentSearch extends Component {
             email: '',
             searched: false
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.onEmailSubmit = this.onEmailSubmit.bind(this);
-        this.onSearchQuery = this.onSearchQuery.bind(this);
-        this.clearSearch = this.clearSearch.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -34,7 +29,7 @@ class TalentSearch extends Component {
     }
 
 
-    onEmailSubmit(e) {
+    onEmailSubmit = e => {
         e.preventDefault();
         const email = this.state.email;
         if (email) {
@@ -45,26 +40,23 @@ class TalentSearch extends Component {
                 this.setState({ emailError: true });
             }
         }
-    }
+    };
 
-
-    onSearchQuery(e) {
+    onSearchQuery = e => {
         e.preventDefault();
         this.setState({ searched: true });
         this.props.onSearchQuery(this.state.query);
-    }
+    };
 
-
-    handleChange(event) {
+    handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
-    }
+    };
 
-
-    clearSearch(e) {
+    clearSearch = e => {
         e.preventDefault();
         this.setState({ query: '', searched: false });
         this.props.onSearchQuery('');
-    }
+    };
 
 
     render() {
