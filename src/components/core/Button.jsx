@@ -13,7 +13,7 @@ const Button = props => {
             {props.children}
         </button>
     );
-}
+};
 
 Button.defaultProps = {
     type: 'button',
