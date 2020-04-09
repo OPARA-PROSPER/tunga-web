@@ -3,29 +3,29 @@ import React from "react";
 import { addEventListeners, INPUT_EVENTS } from "./utils/events";
 import { filterInputProps } from "./utils/forms";
 
-export default class Input extends React.Component {
-    static defaultProps = {
-        type: "text"
-    };
+const Input = props => {
+    return (
+        <input
+            type={props.type}
+            className={`form-control ${props.className || ""} ${
+                props.size ? `form-control-${props.size}` : ""
+            }`}
+            placeholder={props.placeholder}
+            {...filterInputProps(props)}
+            {...addEventListeners(INPUT_EVENTS, props)}
+        />
+    );
+};
 
-    static propTypes = {
-        type: PropTypes.string,
-        className: PropTypes.string,
-        placeholder: PropTypes.string,
-        size: PropTypes.string
-    };
+Input.defaultProps = {
+    type: "text"
+};
 
-    render() {
-        return (
-            <input
-                type={this.props.type}
-                className={`form-control ${this.props.className || ""} ${
-                    this.props.size ? `form-control-${this.props.size}` : ""
-                }`}
-                placeholder={this.props.placeholder}
-                {...filterInputProps(this.props)}
-                {...addEventListeners(INPUT_EVENTS, this.props)}
-            />
-        );
-    }
-}
+Input.propTypes = {
+    type: PropTypes.string,
+    className: PropTypes.string,
+    placeholder: PropTypes.string,
+    size: PropTypes.string
+};
+
+export default Input;

@@ -7,30 +7,30 @@ import Icon from './Icon';
 import {addEventListeners, BUTTON_EVENTS} from './utils/events';
 import {filterButtonProps} from "./utils/forms";
 
-export default class IconButton extends React.Component {
-    static defaultProps = {
-        variant: 'icon',
-        type: 'button',
-        size: 'md'
-    };
+const IconButton = props => {
+    return (
+        <Button type={props.type || 'button'}
+                className={props.className || ''}
+                variant={props.variant}
+                {...filterButtonProps(props)}
+                {...addEventListeners(BUTTON_EVENTS, props)}>
+            <Icon name={props.name} size={props.size}/>
+        </Button>
+    );
+};
 
-    static propTypes = {
-        variant: PropTypes.string,
-        type: PropTypes.string,
-        className: PropTypes.string,
-        name: PropTypes.string,
-        size: PropTypes.string,
-    };
+IconButton.defaultProps = {
+    variant: 'icon',
+    type: 'button',
+    size: 'md'
+};
 
-    render() {
-        return (
-            <Button type={this.props.type || 'button'}
-                    className={this.props.className || ''}
-                    variant={this.props.variant}
-                    {...filterButtonProps(this.props)}
-                    {...addEventListeners(BUTTON_EVENTS, this.props)}>
-                <Icon name={this.props.name} size={this.props.size}/>
-            </Button>
-        );
-    }
-}
+IconButton.propTypes = {
+    variant: PropTypes.string,
+    type: PropTypes.string,
+    className: PropTypes.string,
+    name: PropTypes.string,
+    size: PropTypes.string,
+};
+
+export default IconButton;

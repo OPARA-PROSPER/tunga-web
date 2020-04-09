@@ -8,30 +8,19 @@ import {isAdmin, isAdminOrPM, isAdminOrPMOrClient, isClient, isDev} from "../uti
 import PropTypes from "prop-types";
 import Icon from "../core/Icon";
 
-export default class TitleBar extends React.Component {
+const TitleBar = props => {
 
-    static defaultProps = {
-        isLargeDevice: true,
-        showBreadCrumbs: false
-    };
+    const {user, isLargeDevice, showBreadCrumbs} = props;
 
-    static propTypes = {
-        isLargeDevice: PropTypes.bool,
-        showBreadCrumbs: PropTypes.bool,
-    };
-
-    render() {
-        const {user, isLargeDevice, showBreadCrumbs} = this.props;
-
-        let projectsSections = [
+    let projectsSections = [
                 ['/projects', 'Active Projects'],
                 ['/projects/filter/archived', 'Archived Projects'],
                 ['/projects/filter/opportunity', 'Opportunities']
-            ],
-            projectCreateSections = [
+        ],
+        projectCreateSections = [
                 ['/projects/new', 'Create new project'],
-            ],
-            networkSections = [
+        ],
+        networkSections = [
             ['/network', 'Developers'],
             ['/network/filter/relevant', 'Relevant for me']
         ], paymentSections = [
@@ -59,68 +48,81 @@ export default class TitleBar extends React.Component {
             ['/settings/privacy', 'Privacy settings'], // All
         ];
 
-        let projectLists = [
-            'Projects',
-            isAdminOrPMOrClient()?'/projects/new':null,
-            projectsSections
-        ];
+    let projectLists = [
+        'Projects',
+        isAdminOrPMOrClient()?'/projects/new':null,
+        projectsSections
+    ];
+    
 
-        return (
-            <div className={`titlebar ${showBreadCrumbs?'has-breadcrumbs':''}`}>
-                {showBreadCrumbs?(
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item active">
-                                <Link to="/dashboard"><Icon name="meter" size="icon"/></Link>
-                            </li>
-                            <Switch>
-                                <Route path={`/projects/:projectId/activity`} component={() => {
-                                    return (
-                                        <li className="breadcrumb-item active">Meeting room</li>
-                                    );
-                                }}/>
-                                <Route path={`/projects/:projectId/events/:eventId`} component={({match}) => {
-                                    return (
-                                        <React.Fragment>
-                                            <li className="breadcrumb-item active">
-                                                <Link to={`/projects/${match.params.projectId}/activity`}>Meeting room</Link>
-                                            </li>
-                                            <li className="breadcrumb-item active">Survey</li>
-                                        </React.Fragment>
-                                    );
-                                }}/>
-                            </Switch>
-                        </ol>
-                    </nav>
-                ):(
-                    <Switch>
-                        {[
-                            ['/onboard', 'Welcome to Tunga!'],
-                            ...['/dashboard', '/work', '/proposal'].map(path => {
-                                return [path, <div>Hi {user.display_name}</div>, isLargeDevice && isAdminOrPMOrClient()?'/projects/new':null, null, {subTitle: moment().format('dddd, Do of MMMM')}]
-                            }),
-                            ...(isLargeDevice?
-                                [
-                                    ['/projects/new', 'Projects', null, [...projectsSections, ...projectCreateSections]],
-                                    ['/projects/filter/:filter', ...projectLists],
-                                    ['/projects/:projectId', 'Projects', isAdminOrPMOrClient()?'/projects/new':null, [[(match) => { return match.url }, (match) => { return match.params.projectId?<ProjectOutput id={match.params.projectId} field="title"/>:'Project title' }, {exact: false}]]],
-                                    ['/projects', ...projectLists],
-                                    ['/network/invite', 'Network', null, [...networkSections, ['/network/invite', 'Invite User']]],
-                                    ['/network', 'Network', isAdminOrPM()?'/network/invite':null, networkSections],
-                                    ['/payments', 'Payments', null, paymentSections],
-                                    ['/settings', 'Settings', null, settingsSections],
-                                ]:[])
+    return (
+        <div className={`titlebar ${showBreadCrumbs?'has-breadcrumbs':''}`}>
+            {showBreadCrumbs?(
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item active">
+                            <Link to="/dashboard"><Icon name="meter" size="icon"/></Link>
+                        </li>
+                        <Switch>
+                            <Route path={`/projects/:projectId/activity`} component={() => {
+                                return (
+                                    <li className="breadcrumb-item active">Meeting room</li>
+                                );
+                            }}/>
+                            <Route path={`/projects/:projectId/events/:eventId`} component={({match}) => {
+                                return (
+                                    <React.Fragment>
+                                        <li className="breadcrumb-item active">
+                                            <Link to={`/projects/${match.params.projectId}/activity`}>Meeting room</Link>
+                                        </li>
+                                        <li className="breadcrumb-item active">Survey</li>
+                                    </React.Fragment>
+                                );
+                            }}/>
+                        </Switch>
+                    </ol>
+                </nav>
+            ):(
+                <Switch>
+                    {[
+                        ['/onboard', 'Welcome to Tunga!'],
+                        ...['/dashboard', '/work', '/proposal'].map(path => {
+                            return [path, <div>Hi {user.display_name}</div>, isLargeDevice && isAdminOrPMOrClient()?'/projects/new':null, null, {subTitle: moment().format('dddd, Do of MMMM')}];
+                        }),
+                        ...(isLargeDevice?
+                        [
+                                ['/projects/new', 'Projects', null, [...projectsSections, ...projectCreateSections]],
+                                ['/projects/filter/:filter', ...projectLists],
+                                ['/projects/:projectId', 'Projects', isAdminOrPMOrClient()?'/projects/new':null, [[(match) => { return match.url; }, (match) => { return match.params.projectId?<ProjectOutput id={match.params.projectId} field="title"/>:'Project title'; }, {exact: false}]]],
+                                ['/projects', ...projectLists],
+                                ['/network/invite', 'Network', null, [...networkSections, ['/network/invite', 'Invite User']]],
+                                ['/network', 'Network', isAdminOrPM()?'/network/invite':null, networkSections],
+                                ['/payments', 'Payments', null, paymentSections],
+                                ['/settings', 'Settings', null, settingsSections],
+                        ]:[])
 
-                        ].map(path => {
-                            return (
-                                <Route key={`title-path--${path}`}
-                                       path={path[0]}
-                                       render={props => <TitleBarContent {...props} title={path[1]} actionLink={path[2]} sectionLinks={path[3]} {...(path[4] || {})}/>}/>
-                            );
-                        })}
-                    </Switch>
-                )}
-            </div>
-        )
-    }
-}
+                    ].map(path => {
+                        return (
+                            <Route key={`title-path--${path}`}
+                                    path={path[0]}
+                                    render={props => <TitleBarContent {...props} title={path[1]} actionLink={path[2]} sectionLinks={path[3]} {...(path[4] || {})}/>}/>
+                        );
+                    })}
+                </Switch>
+            )}
+        </div>
+    );
+};
+
+TitleBar.defaultProps = {
+    isLargeDevice: true,
+    showBreadCrumbs: false
+};
+
+TitleBar.propTypes = {
+    isLargeDevice: PropTypes.bool,
+    showBreadCrumbs: PropTypes.bool,
+    user: PropTypes.object
+};
+
+export default TitleBar;
