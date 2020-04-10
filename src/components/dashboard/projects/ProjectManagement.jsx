@@ -32,7 +32,7 @@ export default class ProjectManagement extends React.Component {
         super(props);
         this.state = {
             collapsed: false
-        }
+        };
     }
 
     componentDidMount() {
@@ -62,7 +62,7 @@ export default class ProjectManagement extends React.Component {
     }
 
     collapseProjectDetails(collapsed) {
-        this.setState({ collapsed })
+        this.setState({ collapsed });
     }
 
     render() {
@@ -88,7 +88,7 @@ export default class ProjectManagement extends React.Component {
                                             let url = link[0];
                                             return (
                                                 <NavLink key={`project-filters-link--${link[0]}`} exact to={`${match.url}/${url}`} activeClassName="active" {...link[2]}>{link[1]}</NavLink>
-                                            )
+                                            );
                                         })}
                                     </div>
                                 ):null}
@@ -125,7 +125,7 @@ export default class ProjectManagement extends React.Component {
                             </div>
 
                             {isLargeDevice?(
-                                <React.Fragment>
+                                <>
                                 {this.state.collapsed ? (
                                     <button className="float-right btn-no-outline" onClick={() => this.collapseProjectDetails(false)}>
                                     <img src={require('../../../assets/images/icons/Menu.svg')} />
@@ -171,14 +171,14 @@ export default class ProjectManagement extends React.Component {
                                         <div>{project.participation.map(participation => {
                                             return <Avatar key={`Team ${participation.user.id}`}
                                                            image={participation.user.avatar_url} title={participation.user.display_name}
-                                                           verified={participation.status === 'accepted'}/>
+                                                           verified={participation.status === 'accepted'}/>;
                                         })}
                                         </div>
                                     </div>
                                 </div>
                                 )}
 
-                            </React.Fragment>):null}
+                            </>):null}
                         </div>
                     }
                 </Media>

@@ -1,4 +1,3 @@
-import React from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -8,10 +7,10 @@ const MyAccountOutput = props => {
     const {Auth: {user}, field} = props;
 
     return (
-        <React.Fragment>
+        <>
             {user[field] || null}
-        </React.Fragment>
-    )
+        </>
+    );
 };
 
 MyAccountOutput.propTypes = {

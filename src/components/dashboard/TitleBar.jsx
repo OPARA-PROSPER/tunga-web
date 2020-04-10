@@ -71,12 +71,12 @@ const TitleBar = props => {
                             }}/>
                             <Route path={`/projects/:projectId/events/:eventId`} component={({match}) => {
                                 return (
-                                    <React.Fragment>
+                                    <>
                                         <li className="breadcrumb-item active">
                                             <Link to={`/projects/${match.params.projectId}/activity`}>Meeting room</Link>
                                         </li>
                                         <li className="breadcrumb-item active">Survey</li>
-                                    </React.Fragment>
+                                    </>
                                 );
                             }}/>
                         </Switch>

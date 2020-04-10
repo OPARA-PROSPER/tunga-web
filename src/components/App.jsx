@@ -142,7 +142,7 @@ class App extends React.Component {
                             </Switch>
 
                             {isStillLoading ? null : (
-                                <React.Fragment>
+                                <>
                                     {/*user && (user.is_admin || user.is_project_manager)?null:(
                                         <Switch>
                                             <Route exact path='/customer/help/:channelId' render={props =>
@@ -186,7 +186,7 @@ class App extends React.Component {
                                             </div>
                                         </div>
                                     ) : null}
-                                </React.Fragment>
+                                </>
                             )}
                         </div>
                     )}

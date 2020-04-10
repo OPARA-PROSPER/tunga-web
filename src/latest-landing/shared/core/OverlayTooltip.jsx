@@ -34,7 +34,7 @@ export default class OverlayTooltip extends React.Component {
             elementId = `tooltip-${this.state.id}`;
 
         return (
-            <React.Fragment>
+            <>
                 <div
                     id={elementId}
                     className={`d-inline-block ${className || ""}`}
@@ -50,7 +50,7 @@ export default class OverlayTooltip extends React.Component {
                 >
                     {overlay}
                 </Tooltip>
-            </React.Fragment>
+            </>
         );
     }
 }

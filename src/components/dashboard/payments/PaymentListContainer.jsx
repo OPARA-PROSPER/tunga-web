@@ -13,7 +13,7 @@ import {isDev} from "../../utils/auth";
 const PaymentListContainer = props => {
     const {project, match, Invoice, InvoiceActions} = props;
     return (
-        <React.Fragment>
+        <>
             <Switch>
                 <Route path={`${match.url}/filter/:filter`}
                        exact
@@ -29,7 +29,7 @@ const PaymentListContainer = props => {
                 />
                 <Redirect from="*" to={`${match.url}/filter/${isDev()?'pending-out':'pending-in'}`}/>
             </Switch>
-        </React.Fragment>
+        </>
     );
 };
 

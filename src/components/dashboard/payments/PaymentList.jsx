@@ -139,7 +139,7 @@ export default class PaymentList extends React.Component {
         }
 
         return (
-            <React.Fragment>
+            <>
                 <div className="content-card payments-list-card">
                     {invoiceList.length?(
                         <Table striped>
@@ -159,20 +159,20 @@ export default class PaymentList extends React.Component {
                                     <th>Payout</th>
                                 )}
                                 {filter === PENDING_IN?(
-                                    <React.Fragment>
+                                    <>
                                         <th>Invoice Date</th>
                                         <th>Due Date</th>
                                         <th>Status</th>
-                                    </React.Fragment>
+                                    </>
                                 ):null}
                                 {filter === PAID_IN?(
                                     <th>Payment Date</th>
                                 ):null}
                                 {filter === PENDING_OUT?(
-                                    <React.Fragment>
+                                    <>
                                         <th>Payout Date</th>
                                         <th></th>
-                                    </React.Fragment>
+                                    </>
                                 ):null}
                                 {filter === PAID_OUT?(
                                     <th>Payment Date</th>
@@ -260,7 +260,7 @@ export default class PaymentList extends React.Component {
                                             </td>
                                         )}
                                         {filter === PENDING_IN?(
-                                            <React.Fragment>
+                                            <>
                                                 <td>{moment.utc(invoice.issued_at).format('DD/MMM/YYYY')}</td>
                                                 <td className={invoice.is_overdue?'font-weight-medium':''}>
                                                     {invoice.is_overdue?(<Icon name="warning" size="icon"/>):null}
@@ -278,7 +278,7 @@ export default class PaymentList extends React.Component {
                                                             ):(
                                                                 <div>
                                                                     {(isProjectClient(invoice.project) || isPayAdmin()) && (invoice.finalized || invoice.last_sent_at)?(
-                                                                        <React.Fragment>
+                                                                        <>
                                                                             {/*
                                                                             <StripeButton size="sm"
                                                                                           amount={invoice.total_amount}
@@ -288,10 +288,10 @@ export default class PaymentList extends React.Component {
                                                                                           className={`pay_stripe_${invoice.id}`}/>
                                                                                           */}
                                                                             <Button size="sm" onClick={this.openPay.bind(this, invoice)}><Icon name="cash"/> Pay</Button>
-                                                                        </React.Fragment>
+                                                                        </>
                                                                     ):null}
                                                                     {isPayAdmin() && !invoice.paid?(
-                                                                        <React.Fragment>
+                                                                        <>
                                                                             {invoice.finalized || invoice.last_sent_at?(
                                                                                 <Button size="sm"
                                                                                         onClick={this.onMarkPaid.bind(this, invoice.id)}>
@@ -307,20 +307,20 @@ export default class PaymentList extends React.Component {
                                                                                     onClick={this.onMarkArchived.bind(this, invoice.id)}>
                                                                                 Mark as archived
                                                                             </Button>
-                                                                        </React.Fragment>
+                                                                        </>
                                                                     ):null}
                                                                 </div>
                                                             )}
                                                         </div>
                                                     ):null}
                                                 </td>
-                                            </React.Fragment>
+                                            </>
                                         ):null}
                                         {filter === PAID_IN?(
                                             <td>{moment.utc(invoice.paid_at).format('DD/MMM/YYYY')}</td>
                                         ):null}
                                         {filter === PENDING_OUT?(
-                                            <React.Fragment>
+                                            <>
                                                 <td>{invoice.invoices.map(item => {
                                                     return (
                                                         <div key={item.id}>{moment.utc(item.issued_at).format('DD/MMM/YYYY')}</div>
@@ -336,7 +336,7 @@ export default class PaymentList extends React.Component {
                                                         <div>Processing</div>
                                                     ):null}
                                                 </td>
-                                            </React.Fragment>
+                                            </>
                                         ):null}
                                         {filter === PAID_OUT?(
                                             <td>{invoice.invoices.map(item => {
@@ -356,7 +356,7 @@ export default class PaymentList extends React.Component {
                 </div>
 
                 <LoadMore hasMore={hasMore} isLoadingMore={isLoadingMore} onLoadMore={onLoadMore}/>
-            </React.Fragment>
+            </>
         );
     }
 }

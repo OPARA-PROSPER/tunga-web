@@ -81,7 +81,7 @@ export default class NavBar extends React.Component {
         let {user, variant, breakpoint, className, isLargeDevice} = this.props;
 
 
-        console.log(require('./../assets/images/logo_new_color.png'))
+        console.log(require('./../assets/images/logo_new_color.png'));
 
         return (
             <nav className={`navbar navbar-expand-${breakpoint || 'md'} fixed-top navbar-dark ${className || ''} ${variant?`navbar-${variant}`:''}`} >
@@ -123,7 +123,7 @@ export default class NavBar extends React.Component {
                     ):null}
                     <ul className="navbar-nav ml-auto">
                         {user && user.id?(
-                            <React.Fragment>
+                            <>
                                 {variant === 'showcase'?null:(
                                     <li>
                                         <SearchBox variant="search"/>
@@ -152,12 +152,12 @@ export default class NavBar extends React.Component {
                                         </li>
                                     </ul>
                                 </li>
-                            </React.Fragment>
+                            </>
                         ):(
-                            <React.Fragment>
+                            <>
                                 {isLargeDevice?(
                                     <li>
-                                        <Button className="btn-call" onClick={() => { openCalendlyWidget() }}>
+                                        <Button className="btn-call" onClick={() => { openCalendlyWidget(); }}>
                                             <Icon name="calendar"/>&nbsp;&nbsp;&nbsp;Schedule a call
                                         </Button>
                                         {/*
@@ -181,7 +181,7 @@ export default class NavBar extends React.Component {
                                         Login
                                     </Link>
                                 </li>
-                            </React.Fragment>
+                            </>
                         )}
                     </ul>
                 </div>

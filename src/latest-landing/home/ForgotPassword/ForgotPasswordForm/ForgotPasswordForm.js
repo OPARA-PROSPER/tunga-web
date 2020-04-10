@@ -40,7 +40,7 @@ class AuthForm extends Component {
 
         return (
             <Form onSubmit={this.onFormSubmit}>
-                <React.Fragment>
+                <>
                     {auth.errors && auth.errors.reset && auth.errors.reset.non_field_errors ?
                         <Error
                             message={
@@ -82,7 +82,7 @@ class AuthForm extends Component {
                             Reset password
                         </Button>
                     </div>
-                </React.Fragment>
+                </>
             </Form>
         );
     }

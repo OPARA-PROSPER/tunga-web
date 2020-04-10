@@ -12,7 +12,7 @@ const ProgressEventsContainer = props => {
     const {project, ProgressEvent, ProgressEventActions, match} = props;
 
     return (
-        <React.Fragment>
+        <>
             <Switch>
                 <Route path={`${match.url}/:eventId`}
                        render={props => <ProgressEventDetailContainer {...props}
@@ -23,7 +23,7 @@ const ProgressEventsContainer = props => {
                        </ProgressEventDetailContainer>}
                 />
             </Switch>
-        </React.Fragment>
+        </>
     );
 };
 

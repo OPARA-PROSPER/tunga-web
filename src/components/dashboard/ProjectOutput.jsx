@@ -1,4 +1,3 @@
-import React from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -8,10 +7,10 @@ const ProjectOutput = props => {
     const {Project: {projects}, id, field} = props;
 
     return (
-        <React.Fragment>
+        <>
             {projects[id]?projects[id][field]:null}
-        </React.Fragment>
-    )
+        </>
+    );
 };
 
 ProjectOutput.propTypes = {

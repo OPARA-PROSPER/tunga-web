@@ -56,9 +56,9 @@ export default class UserDetailContainer extends React.Component  {
         let user = User.users[User.usernameToId[username]];
 
         return user?(
-            <React.Fragment>
+            <>
                 {this.renderChildren()}
-            </React.Fragment>
+            </>
         ):null;
     }
 }

@@ -10,7 +10,7 @@ import connect from "../../../connectors/InvoiceConnector";
 const PayContainer = props => {
     const {project, match, Invoice, InvoiceActions} = props;
     return (
-        <React.Fragment>
+        <>
             <Switch>
                 <Route path={match.url}
                        exact
@@ -22,7 +22,7 @@ const PayContainer = props => {
                        </InvoiceListContainer>}
                 />
             </Switch>
-        </React.Fragment>
+        </>
     );
 };
 

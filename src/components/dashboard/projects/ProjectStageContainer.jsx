@@ -7,7 +7,7 @@ import OpportunityManagement from './OpportunityManagement';
 export default (props) => {
     const {project} = props;
     return (
-        <React.Fragment>
+        <>
             {project?(
                 project.stage === 'opportunity'?(
                     <OpportunityManagement {...props} />
@@ -15,6 +15,6 @@ export default (props) => {
                     <ProjectManagement {...props}/>
                 )
             ):null}
-        </React.Fragment>
+        </>
     );
 }

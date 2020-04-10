@@ -83,10 +83,10 @@ class CheckoutForm extends Component {
             <div className="checkout">
                 {error && <Error message={error}/>}
                 {intent && intent.client_secret?(
-                    <React.Fragment>
+                    <>
                         <CardElement onReady={this.onReady} onChange={this.onChange}/>
                         <Button onClick={this.onSubmit} disabled={!complete}>Send</Button>
-                    </React.Fragment>
+                    </>
                 ):(
                     <Progress/>
                 )}
