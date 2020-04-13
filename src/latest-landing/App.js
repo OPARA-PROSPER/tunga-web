@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {childRoutes} from "./configs/Routes.conf";
 import ShowcaseLayout from "../components/showcase/ShowcaseLayout";
@@ -7,7 +7,7 @@ import BootLogo from "../components/core/BootLogo";
 const App = props => {
     const rootProps = props;
     return (
-        <React.Suspense fallback={<BootLogo/>}>
+        <Suspense fallback={<BootLogo/>}>
             <Switch>
                 {childRoutes.map((route, i) => {
                     return (
@@ -30,7 +30,7 @@ const App = props => {
                 <Redirect exact from="/signup" to='/login'/>
                 <Route path="*" render={props => <ShowcaseLayout {...rootProps} {...props}/>} />
             </Switch>
-        </React.Suspense>
+        </Suspense>
     );
 };
 
