@@ -16,9 +16,6 @@ class AuthForm extends Component {
             confirmPassword: '',
             formSubmitted: false,
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -27,7 +24,7 @@ class AuthForm extends Component {
         }
     }
 
-    onFormSubmit(e) {
+    onFormSubmit = e => {
         e.preventDefault();
         this.setState({ formSubmitted: true });
         const { uid, token } = this.props.query;
@@ -45,7 +42,7 @@ class AuthForm extends Component {
             new_password2,
         });
 
-    }
+    };
 
 
     parseErrors(errors) {
@@ -71,9 +68,9 @@ class AuthForm extends Component {
         return allErrors.join(', ');
     }
 
-    handleChange(event) {
+    handleChange = event => {
         this.setState({ [event.target.name]: event.target.value, formSubmitted: false });
-    }
+    };
 
     render() {
         const { auth } = this.props;
@@ -83,7 +80,7 @@ class AuthForm extends Component {
 
         return (
             <Form onSubmit={this.onFormSubmit}>
-                <React.Fragment>
+                <>
                     <Title className="AuthForm__title">
                         Reset Password
                     </Title>
@@ -163,7 +160,7 @@ class AuthForm extends Component {
                             Reset password
                         </Button>
                     </div>
-                </React.Fragment>
+                </>
             </Form>
         );
     }

@@ -5,26 +5,26 @@ import {Breadcrumb} from 'react-bootstrap';
 
 import {render_summary} from '../utils/html';
 
-export default class BreadCrumb extends React.Component {
-    render() {
-        const {section, parents} = this.props;
+const BreadCrumb = props => {
+    const {section, parents} = props;
 
-        return section ? (
-            <Breadcrumb>
-                {parents.map(item => {
-                    return (
-                        <li key={item.name}>
-                            <Link to={item.link}>
-                                {render_summary(item.name, 30)}
-                            </Link>
-                        </li>
-                    );
-                })}
-                <Breadcrumb.Item active>{section}</Breadcrumb.Item>
-            </Breadcrumb>
-        ) : null;
-    }
-}
+    return section ? (
+        <Breadcrumb>
+            {parents.map(item => {
+                return (
+                    <li key={item.name}>
+                        <Link to={item.link}>
+                            {render_summary(item.name, 30)}
+                        </Link>
+                    </li>
+                );
+            })}
+            <Breadcrumb.Item active>{section}</Breadcrumb.Item>
+        </Breadcrumb>
+    ) : null;
+};
+
+export default BreadCrumb;
 
 BreadCrumb.propTypes = {
     parents: PropTypes.array,

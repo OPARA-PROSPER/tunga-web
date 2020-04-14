@@ -1,12 +1,16 @@
 import React from 'react';
 
-export default class SectionHeading extends React.Component {
-    render() {
-        return (
-            <div>
-                <div className="section-heading">{this.props.children}</div>
-                <div className="section-heading-hr" />
-            </div>
-        );
-    }
-}
+const SectionHeading = (
+    {
+        children,
+    },
+) => {
+    return (
+        <div>
+            <div className="section-heading">{children}</div>
+            <div className="section-heading-hr" />
+        </div>
+    );
+};
+
+export default SectionHeading;

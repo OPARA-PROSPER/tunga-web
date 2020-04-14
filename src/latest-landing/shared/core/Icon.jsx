@@ -4,22 +4,22 @@ import React from "react";
 import { addEventListeners, BUTTON_EVENTS } from "./utils/events";
 import { filterButtonProps } from "./utils/forms";
 
-export default class Icon extends React.Component {
-    static propTypes = {
-        name: PropTypes.string,
-        size: PropTypes.string,
-        className: PropTypes.string
-    };
+const Icon = props => {
+    return (
+        <i
+            className={`tg-ic-${props.name || ""} ${
+                props.size ? `tunga-ic-sz-${props.size}` : ""
+            } ${props.className || ""}`}
+            {...filterButtonProps(props)}
+            {...addEventListeners(BUTTON_EVENTS, props)}
+        />
+    );
+};
 
-    render() {
-        return (
-            <i
-                className={`tg-ic-${this.props.name || ""} ${
-                    this.props.size ? `tunga-ic-sz-${this.props.size}` : ""
-                } ${this.props.className || ""}`}
-                {...filterButtonProps(this.props)}
-                {...addEventListeners(BUTTON_EVENTS, this.props)}
-            />
-        );
-    }
-}
+Icon.propTypes = {
+    name: PropTypes.string,
+    size: PropTypes.string,
+    className: PropTypes.string
+};
+
+export default Icon;

@@ -3,28 +3,28 @@ import React from "react";
 
 import { addEventListeners, INPUT_EVENTS } from "./utils/events";
 import { filterInputProps } from "./utils/forms";
+const TextArea = props => {
+    return (
+        <textarea
+            className={`form-control ${props.className || ""}`}
+            placeholder={props.placeholder}
+            {...filterInputProps(props)}
+            {...addEventListeners(INPUT_EVENTS, props)}
+        >
+            {props.children}
+        </textarea>
+    );
+};
 
-export default class TextArea extends React.Component {
-    static defaultProps = {
-        type: "text"
-    };
+TextArea.defaultProps = {
+    type: "text"
+};
 
-    static propTypes = {
-        type: PropTypes.string,
-        className: PropTypes.string,
-        placeholder: PropTypes.string
-    };
+TextArea.propTypes = {
+    type: PropTypes.string,
+    className: PropTypes.string,
+    placeholder: PropTypes.string,
+    children: PropTypes.any
+};
 
-    render() {
-        return (
-            <textarea
-                className={`form-control ${this.props.className || ""}`}
-                placeholder={this.props.placeholder}
-                {...filterInputProps(this.props)}
-                {...addEventListeners(INPUT_EVENTS, this.props)}
-            >
-                {this.props.children}
-            </textarea>
-        );
-    }
-}
+export default TextArea;

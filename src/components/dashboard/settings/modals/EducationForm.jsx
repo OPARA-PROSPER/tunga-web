@@ -16,7 +16,6 @@ export default class EducationForm extends React.Component {
         this.state = {
             education: props.education || {}
         };
-        this.onSave = this.onSave.bind(this);
     }
 
     onInputChange(key, e) {
@@ -38,7 +37,7 @@ export default class EducationForm extends React.Component {
         this.setState({education: {...this.state.education, ...newState}});
     }
 
-    onSave(e) {
+    onSave = e => {
         e.preventDefault();
 
         const {proceed} = this.props;
@@ -46,7 +45,7 @@ export default class EducationForm extends React.Component {
             proceed(this.state.education);
         }
         return;
-    }
+    };
 
     render() {
         const {errors} = this.props;

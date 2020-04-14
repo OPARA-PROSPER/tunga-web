@@ -3,14 +3,14 @@ import React from 'react';
 
 import TaskForm from './TaskForm';
 
-export default class ProjectTaskForm extends React.Component {
-    render() {
-        const {task} = this.props;
-        var new_props = {...this.props};
-        new_props.task = null;
-        return <TaskForm project={task} {...new_props} />;
-    }
-}
+const ProjectTaskForm = props => {
+    const {task} = props;
+    var new_props = {...props};
+    new_props.task = null;
+    return <TaskForm project={task} {...new_props} />;
+};
+
+export default ProjectTaskForm;
 
 ProjectTaskForm.propTypes = {
     task: PropTypes.object.isRequired,

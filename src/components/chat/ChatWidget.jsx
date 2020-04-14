@@ -420,7 +420,7 @@ class ChatWidget extends React.Component {
         }
 
         return (
-            <React.Fragment>
+            <>
                 {this.state.open?(
                     <div className="chat-widget">
 
@@ -434,16 +434,16 @@ class ChatWidget extends React.Component {
                             {!isAuthenticated() && this.state.step !== CHAT_SCREEN_CHAT?(
                                 <div className="chat-options">
                                     {this.state.step === CHAT_SCREEN_DEVELOPER?(
-                                        <React.Fragment>
+                                        <>
                                             <Link to="/join" className="btn btn-primary btn-xl btn-block">
                                                 I want to join Tunga as a developer
                                             </Link>
                                             <a href="mailto:hello@tunga.io" className="btn btn-primary btn-xl btn-block">
                                                 I would like to email Tunga
                                             </a>
-                                        </React.Fragment>
+                                        </>
                                     ):(
-                                        <React.Fragment>
+                                        <>
                                             <Button size="xl"
                                                     block={true}
                                                     onClick={this.changeStep.bind(this, CHAT_SCREEN_CHAT)}>
@@ -454,11 +454,11 @@ class ChatWidget extends React.Component {
                                                     onClick={this.changeStep.bind(this, CHAT_SCREEN_DEVELOPER)}>
                                                 I am a developer
                                             </Button>
-                                        </React.Fragment>
+                                        </>
                                     )}
                                 </div>
                             ):(
-                                <React.Fragment>
+                                <>
                                     <ActivityList activities={activities}
                                                   onLoadMore={() => {
                                                       ActivityActions.listMoreActivities(Activity.next[selectionKey], selectionKey);
@@ -472,7 +472,7 @@ class ChatWidget extends React.Component {
                                     {channel && channel.id?(
                                         <MessageWidget onSendMessage={this.onSendMessage} canUpload={false}/>
                                     ):null}
-                                </React.Fragment>
+                                </>
                             )}
                         </div>
 
@@ -523,13 +523,13 @@ class ChatWidget extends React.Component {
 
                         <div className="option d-none d-sm-block">
                             <span>Schedule a call</span>
-                            <Button onClick={() => { openCalendlyWidget() }}>
+                            <Button onClick={() => { openCalendlyWidget(); }}>
                                 <Icon name="headphone-alt" size="md"/>
                             </Button>
                         </div>
                     </div>
                 )}
-            </React.Fragment>
+            </>
         );
     }
 }

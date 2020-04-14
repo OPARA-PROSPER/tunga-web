@@ -7,14 +7,13 @@ import PropTypes from "prop-types";
 class NewsArticle extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
-        this.onBtnClick = this.onBtnClick.bind(this);
+        this.state = {}; // TODO remove unused
     }
 
 
-    onBtnClick(url) {
+    onBtnClick = url => {
         window.open(url, '_blank');
-    }
+    };
 
 
     getDataPerPage() {

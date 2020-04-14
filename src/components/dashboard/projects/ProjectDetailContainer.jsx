@@ -62,13 +62,13 @@ export default class ProjectDetailContainer extends React.Component  {
         const project = Project.projects[projectId];
 
         return (
-            <React.Fragment>
+            <>
                 {Project.isRetrieving[projectId]?(
                     <Progress/>
                 ):project?(
                     this.renderChildren()
                 ):null}
-            </React.Fragment>
+            </>
         );
     }
 }

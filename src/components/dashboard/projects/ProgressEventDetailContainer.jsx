@@ -64,13 +64,13 @@ export default class ProgressEventDetailContainer extends React.Component  {
         let progress_event = ProgressEvent.progress_events[eventId];
 
         return (
-            <React.Fragment>
+            <>
                 {ProgressEvent.isRetrieving[eventId]?(
                     <Progress/>
                 ):progress_event?(
                     this.renderChildren()
                 ):null}
-            </React.Fragment>
+            </>
         );
     }
 }

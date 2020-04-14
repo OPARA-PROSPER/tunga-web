@@ -129,10 +129,6 @@ class OurService extends Component {
             selectedService: null,
             nextService: null,
         };
-
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        this.onServiceSelection = this.onServiceSelection.bind(this);
-        this.onCloseServiceDetail = this.onCloseServiceDetail.bind(this);
     }
 
 
@@ -161,12 +157,11 @@ class OurService extends Component {
     }
 
 
-    updateWindowDimensions() {
+    updateWindowDimensions = () => {
         this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
-    }
+    };
 
-
-    onServiceSelection(selectedService) {
+    onServiceSelection = selectedService => {
         const index = this.state.data.indexOf(selectedService);
         if (index !== -1 && index !== this.state.data.length - 1) {
             const nextService = this.state.data[index + 1];
@@ -175,12 +170,11 @@ class OurService extends Component {
         }
 
         this.setState({ selectedService, nextService: null });
-    }
+    };
 
-
-    onCloseServiceDetail() {
+    onCloseServiceDetail = () => {
         this.setState({ selectedService: null, nextService: null });
-    }
+    };
 
     getDataPerPage() {
         return [

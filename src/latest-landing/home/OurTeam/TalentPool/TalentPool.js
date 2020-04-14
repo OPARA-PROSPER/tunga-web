@@ -29,11 +29,6 @@ class TalentPool extends Component {
             shouldLoadMore: false,
             hasSearched: false
         };
-
-        this.loadData = this.loadData.bind(this);
-        this.onSearchQuery = this.onSearchQuery.bind(this);
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        this.getMaxItemsNo = this.getMaxItemsNo.bind(this);
     }
 
 
@@ -58,12 +53,11 @@ class TalentPool extends Component {
     }
 
 
-    updateWindowDimensions() {
+    updateWindowDimensions = () => {
         this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
-    }
+    };
 
-
-    onSearchQuery(query) {
+    onSearchQuery = query => {
         this.setState({
             lastQuery: query,
             search: query,
@@ -73,12 +67,11 @@ class TalentPool extends Component {
             ignoreEmptySearch: true
         });
         this.setState({ lastQuery: query });
-    }
+    };
 
-
-    loadData(search) {
+    loadData = search => {
         this.props.fetchTalentsRequest({ search, limit: 12 });
-    }
+    };
 
     isLockable() {
         const { auth: { isAuthenticated, isEmailVisitor } } = this.props;
@@ -185,7 +178,7 @@ class TalentPool extends Component {
     }
 
 
-    getMaxItemsNo({ dataPerPage }) {
+    getMaxItemsNo = ({ dataPerPage }) => {
         const windowWith = this.state.windowWidth;
         const perPage = dataPerPage.sort((a, b) => {
             return a.breakpoint - b.breakpoint;
@@ -197,7 +190,7 @@ class TalentPool extends Component {
             }
             return windowWith <= data.breakpoint ? data.perPage : 0;
         }, 0);
-    }
+    };
 
 
     render() {

@@ -12,9 +12,6 @@ class ServiceCard extends Component {
             showVideo: false,
             videos: {}
         };
-
-        this.onMouseEnter = this.onMouseEnter.bind(this);
-        this.onMouseLeave = this.onMouseLeave.bind(this);
     }
 
     onVideoLoad(url) {
@@ -25,16 +22,15 @@ class ServiceCard extends Component {
         }, 200);
     }
 
-    onMouseEnter() {
+    onMouseEnter = () => {
         this.setState({ showVideo: !this.props.isMobile });
-    }
+    };
 
-
-    onMouseLeave() {
+    onMouseLeave = () => {
         const videos = this.state.videos;
         videos[this.props.service.videoMain] = false;
         this.setState({ showVideo: false, videos });
-    }
+    };
 
 
     render() {

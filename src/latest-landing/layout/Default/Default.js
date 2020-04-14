@@ -71,28 +71,23 @@ class Default extends Component {
     constructor(props) {
         super(props);
         this.state = { activeUseCase: 1 };
-
-        this.onUseCaseClick = this.onUseCaseClick.bind(this);
-        this.onPageScrolled = this.onPageScrolled.bind(this);
-        this.onTalentPoolRequest = this.onTalentPoolRequest.bind(this);
-        this.goToServices = this.goToServices.bind(this);
     }
 
-    onUseCaseClick(activeUseCase) {
+    onUseCaseClick = activeUseCase => {
         this.setState({ gotToPage: 4, activeUseCase });
-    }
+    };
 
-    goToServices() {
+    goToServices = () => {
         this.setState({ gotToPage: 2 });
-    }
+    };
 
-    onPageScrolled() {
+    onPageScrolled = () => {
         this.setState({ gotToPage: false });
-    }
+    };
 
-    onTalentPoolRequest() {
+    onTalentPoolRequest = () => {
         this.props.history.push('/our-team#talent-pool');
-    }
+    };
 
 
     render() {
