@@ -19,20 +19,16 @@ class Vlog extends Component {
             leftPosition: 0,
             selectedVlog: null
         };
-
-        this.onVlogClick = this.onVlogClick.bind(this);
-        this.onVideoClose = this.onVideoClose.bind(this);
     }
 
 
-    onVlogClick(vlog) {
+    onVlogClick = vlog => {
         this.setState({ selectedVlog: vlog });
-    }
+    };
 
-
-    onVideoClose() {
+    onVideoClose = () => {
         this.setState({ selectedVlog: false });
-    }
+    };
 
 
     UNSAFE_componentWillMount() {

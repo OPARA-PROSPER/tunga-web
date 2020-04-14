@@ -16,12 +16,9 @@ class AuthForm extends Component {
             password: '',
             formSubmitted: false,
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    onFormSubmit(e) {
+    onFormSubmit = e => {
         e.preventDefault();
         this.setState({ formSubmitted: true });
         if (!this.state.username || !this.state.password) {
@@ -29,11 +26,11 @@ class AuthForm extends Component {
         }
 
         this.props.authenticate(this.state);
-    }
+    };
 
-    handleChange(event) {
+    handleChange = event => {
         this.setState({ [event.target.name]: event.target.value, formSubmitted: false });
-    }
+    };
 
     render() {
         const { auth } = this.props;
@@ -45,7 +42,7 @@ class AuthForm extends Component {
 
         return (
             <Form onSubmit={this.onFormSubmit}>
-                <React.Fragment>
+                <>
                     {auth.errors && auth.errors.auth && auth.errors.auth.non_field_errors ?
                         <Error
                             message={
@@ -101,7 +98,7 @@ class AuthForm extends Component {
                             Login
                         </Button>
                     </div>
-                </React.Fragment>
+                </>
             </Form>
         );
     }

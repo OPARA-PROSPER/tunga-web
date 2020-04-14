@@ -66,13 +66,13 @@ export default class UserListContainer extends React.Component  {
         const {User} = this.props,
             selectionKey = this.state.selectionKey;
         return (
-            <React.Fragment>
+            <>
                 {User.isFetching[selectionKey]?(
                     <Progress/>
                 ):(
                     this.renderChildren()
                 )}
-            </React.Fragment>
+            </>
         );
     }
 }

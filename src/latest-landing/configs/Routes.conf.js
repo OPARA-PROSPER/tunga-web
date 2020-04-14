@@ -1,22 +1,22 @@
-import React from "react";
+import { lazy } from "react";
 import Routing from "../constants/Routing";
 
 import DevProfile from "../home/DevProfile/DevProfile"; // FIXME change to lazyload
 
-const DefaultBody = React.lazy(() => import("../layout/Default/Default"));
-const OurTeam = React.lazy(() => import("../home/OurTeam/OurTeam"));
-const OurStory = React.lazy(() => import("../home/OurStory/OurStory"));
-const Login = React.lazy(() => import("../home/Login/Login"));
-const News = React.lazy(() => import("../home/News/News"));
-const UserAgreement = React.lazy(() => import("../home/UserAgreement/UserAgreement"));
-const CodeOfConduct = React.lazy(() => import("../home/CodeOfConduct/CodeOfConduct"));
-const Privacy = React.lazy(() => import("../home/Privacy/Privacy"));
-const BlogPage = React.lazy(() => import("../home/BlogPage/BlogPage"));
-const ResetPassword = React.lazy(() => import("../home/ResetPassword/ResetPassword"));
-const ForgotPassword = React.lazy(() => import("../home/ForgotPassword/ForgotPassword"));
-const Dashboard = React.lazy(() => import("../../components/App"));
-const Home = React.lazy(() => import("../home/Home"));
-const Join = React.lazy(() => import("../home/Join/Join"));
+const DefaultBody = lazy(() => import("../layout/Default/Default"));
+const OurTeam = lazy(() => import("../home/OurTeam/OurTeam"));
+const OurStory = lazy(() => import("../home/OurStory/OurStory"));
+const Login = lazy(() => import("../home/Login/Login"));
+const News = lazy(() => import("../home/News/News"));
+const UserAgreement = lazy(() => import("../home/UserAgreement/UserAgreement"));
+const CodeOfConduct = lazy(() => import("../home/CodeOfConduct/CodeOfConduct"));
+const Privacy = lazy(() => import("../home/Privacy/Privacy"));
+const BlogPage = lazy(() => import("../home/BlogPage/BlogPage"));
+const ResetPassword = lazy(() => import("../home/ResetPassword/ResetPassword"));
+const ForgotPassword = lazy(() => import("../home/ForgotPassword/ForgotPassword"));
+const Dashboard = lazy(() => import("../../components/App"));
+const Home = lazy(() => import("../home/Home"));
+const Join = lazy(() => import("../home/Join/Join"));
 
 export const childRoutes = [
     {

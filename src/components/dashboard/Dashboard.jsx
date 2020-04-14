@@ -212,7 +212,7 @@ class Dashboard extends React.Component {
                 ):(
                     <Media query="(max-width: 576px)">
                         {isSmallDevice => (
-                            <React.Fragment>
+                            <>
                                 <Row>
                                     <Col sm={8}>
                                         <div className="card notification-card">
@@ -271,7 +271,7 @@ class Dashboard extends React.Component {
                                 {isSmallDevice?(
                                     this.renderReportSection({sm: 12})
                                 ):null}
-                            </React.Fragment>
+                            </>
                         )}
                     </Media>
                 )}

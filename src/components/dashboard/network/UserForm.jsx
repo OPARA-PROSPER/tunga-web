@@ -152,7 +152,7 @@ class UserForm extends React.Component {
                                           required/>
                     </FormGroup>
                     {this.state.type === TYPE_INVITE?(
-                        <React.Fragment>
+                        <>
                             <FormGroup>
                                 <label>User Type: *</label>
                                 {errors && errors.invite && errors.invite.type ? (
@@ -182,9 +182,9 @@ class UserForm extends React.Component {
                             <FormGroup>
                                 <Button type="submit">Invite User</Button>
                             </FormGroup>
-                        </React.Fragment>
+                        </>
                     ):(
-                        <React.Fragment>
+                        <>
                             <FormGroup>
                                 <label>Company: *</label>
                                 {errors && errors.invite && errors.invite.company && errors.invite.company.name ? (
@@ -272,7 +272,7 @@ class UserForm extends React.Component {
                             <FormGroup>
                                 <Button type="submit">Create Client</Button>
                             </FormGroup>
-                        </React.Fragment>
+                        </>
                     )}
                 </form>
             </div>

@@ -428,7 +428,7 @@ export default class Pay extends React.Component {
                                                             ) : (
                                                                 <div className="clearfix">
                                                                     {(isProjectClient(invoice.project) && invoice.type !== INVOICE_TYPE_CREDIT_NOTA) && (invoice.finalized || invoice.last_sent_at) ? (
-                                                                        <React.Fragment>
+                                                                        <>
                                                                             {/*
                                                                             <StripeButton size="sm"
                                                                                           amount={invoice.total_amount}
@@ -440,7 +440,7 @@ export default class Pay extends React.Component {
                                                                             <Button size="sm"
                                                                                     onClick={this.openPay.bind(this, invoice)}><Icon
                                                                                 name="cash"/> Pay</Button>
-                                                                        </React.Fragment>
+                                                                        </>
                                                                     ) : null}
                                                                     {isPayAdminOrPM() && !project.archived ? (
                                                                         <div className="float-right">
@@ -462,7 +462,7 @@ export default class Pay extends React.Component {
                                                                                             </Button>
                                                                                         ) : null}
                                                                                         {isPayAdmin() && !invoice.paid ? (
-                                                                                            <React.Fragment>
+                                                                                            <>
                                                                                                 {invoice.finalized || invoice.last_sent_at?(
                                                                                                     <Button size="sm"
                                                                                                             onClick={this.onMarkPaid.bind(this, invoice.id)}>
@@ -479,7 +479,7 @@ export default class Pay extends React.Component {
                                                                                                         Delete payment
                                                                                                     </Button>
                                                                                                 ):null}
-                                                                                            </React.Fragment>
+                                                                                            </>
                                                                                         ) : null}
                                                                                     </div>
                                                                                 ) : null}

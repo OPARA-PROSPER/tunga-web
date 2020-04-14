@@ -2,15 +2,15 @@ import React from 'react';
 
 import TaskForm from './TaskForm';
 
-export default class EditTaskSectionForm extends React.Component {
-    render() {
-        var new_props = {...this.props};
+const EditTaskSectionForm = props => {
+    var new_props = {...props};
 
-        if (this.props.params && this.props.params.editSection) {
-            let editSection = this.props.params.editSection;
-            new_props.enabledWidgets = [this.props.params.editSection];
-        }
-
-        return <TaskForm {...new_props} />;
+    if (props.params && props.params.editSection) {
+        let editSection = props.params.editSection;
+        new_props.enabledWidgets = [props.params.editSection];
     }
-}
+
+    return <TaskForm {...new_props} />;
+};
+
+export default EditTaskSectionForm;

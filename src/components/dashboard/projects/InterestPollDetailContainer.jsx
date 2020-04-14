@@ -58,9 +58,9 @@ class InterestPollDetailContainer extends React.Component  {
 
     render() {
         return (
-            <React.Fragment>
+            <>
                 {this.renderChildren()}
-            </React.Fragment>
+            </>
         );
     }
 }

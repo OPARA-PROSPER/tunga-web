@@ -41,12 +41,6 @@ SectionLink.propTypes = {
 
 
 class Footer extends Component {
-    constructor(props) {
-        super(props);
-        this.goToServices = this.goToServices.bind(this);
-    }
-
-
     UNSAFE_componentWillMount() {
         this.loadData(this.props.query);
     }
@@ -56,9 +50,9 @@ class Footer extends Component {
         this.props.fetchBlogsRequest({ search, limit: 5 });
     }
 
-    goToServices() {
+    goToServices = () => {
         this.props.history.push('/#services');
-    }
+    };
 
 
     render() {

@@ -11,84 +11,89 @@ import {
     isProjectOwner,
 } from '../utils/auth';
 
-export default class ProfilePage extends React.Component {
-    render() {
-        return (
-            <div className="profile-form-wrapper form-wrapper">
-                {PROFILE_COMPLETE_PATH.test(
-                    this.props.location.pathname,
-                ) ? null : (
-                    <div>
-                        <h2 className="title">Profile</h2>
-                        <ul className="nav nav-pills nav-top-filter">
-                            <li role="presentation">
-                                <Link
-                                    to="/profile/personal"
-                                    activeClassName="active">
-                                    Personal
-                                </Link>
-                            </li>
-                            {isDeveloper() || isProjectManager() ? (
-                                [
-                                    <li role="presentation">
-                                        <Link
-                                            to="/profile/stack"
-                                            activeClassName="active">
-                                            Experience
-                                        </Link>
-                                    </li>,
-                                    <li role="presentation">
-                                        <Link
-                                            to="/profile/id-document"
-                                            activeClassName="active">
-                                            ID Document
-                                        </Link>
-                                    </li>,
-                                    <li role="presentation">
-                                        <Link
-                                            to="/profile/payment"
-                                            activeClassName="active">
-                                            Payment
-                                        </Link>
-                                    </li>,
-                                ]
-                            ) : (
+const ProfilePage = (
+    {
+        location,
+        children,
+    },
+) => {
+    return (
+        <div className="profile-form-wrapper form-wrapper">
+            {PROFILE_COMPLETE_PATH.test(
+                location.pathname,
+            ) ? null : (
+                <div>
+                    <h2 className="title">Profile</h2>
+                    <ul className="nav nav-pills nav-top-filter">
+                        <li role="presentation">
+                            <Link
+                                to="/profile/personal"
+                                activeClassName="active">
+                                Personal
+                            </Link>
+                        </li>
+                        {isDeveloper() || isProjectManager() ? (
+                            [
                                 <li role="presentation">
                                     <Link
-                                        to="/profile/company"
+                                        to="/profile/stack"
                                         activeClassName="active">
-                                        Company Profile
+                                        Experience
                                     </Link>
-                                </li>
-                            )}
+                                </li>,
+                                <li role="presentation">
+                                    <Link
+                                        to="/profile/id-document"
+                                        activeClassName="active">
+                                        ID Document
+                                    </Link>
+                                </li>,
+                                <li role="presentation">
+                                    <Link
+                                        to="/profile/payment"
+                                        activeClassName="active">
+                                        Payment
+                                    </Link>
+                                </li>,
+                            ]
+                        ) : (
                             <li role="presentation">
                                 <Link
-                                    to="/profile/photo"
+                                    to="/profile/company"
                                     activeClassName="active">
-                                    Photo
+                                    Company Profile
                                 </Link>
                             </li>
-                            <li role="presentation">
-                                <Link
-                                    to="/profile/account"
-                                    activeClassName="active">
-                                    Account
-                                </Link>
-                            </li>
-                            <li role="presentation">
-                                <Link
-                                    to="/profile/security"
-                                    activeClassName="active">
-                                    Security
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                )}
-                <div className="form-wrapper">
-                    <ProfileContainer>{this.props.children}</ProfileContainer>
+                        )}
+                        <li role="presentation">
+                            <Link
+                                to="/profile/photo"
+                                activeClassName="active">
+                                Photo
+                            </Link>
+                        </li>
+                        <li role="presentation">
+                            <Link
+                                to="/profile/account"
+                                activeClassName="active">
+                                Account
+                            </Link>
+                        </li>
+                        <li role="presentation">
+                            <Link
+                                to="/profile/security"
+                                activeClassName="active">
+                                Security
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
+            )}
+            <div className="form-wrapper">
+                <ProfileContainer>{children}</ProfileContainer>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
+
+export default ProfilePage;

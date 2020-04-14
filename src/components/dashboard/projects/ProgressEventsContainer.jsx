@@ -8,30 +8,27 @@ import ProgressEventDetails from './ProgressEventDetails';
 import connect from '../../../connectors/ProgressEventConnector';
 
 
-class ProgressEventsContainer extends React.Component {
+const ProgressEventsContainer = props => {
+    const {project, ProgressEvent, ProgressEventActions, match} = props;
 
-    static propTypes = {
-        project: PropTypes.object
-    };
+    return (
+        <>
+            <Switch>
+                <Route path={`${match.url}/:eventId`}
+                       render={props => <ProgressEventDetailContainer {...props}
+                                                                      eventId={props.match.params.eventId}
+                                                                      ProgressEvent={ProgressEvent}
+                                                                      ProgressEventActions={ProgressEventActions}>
+                           <ProgressEventDetails project={project} {...props}/>
+                       </ProgressEventDetailContainer>}
+                />
+            </Switch>
+        </>
+    );
+};
 
-    render() {
-        const {project, ProgressEvent, ProgressEventActions, match} = this.props;
-
-        return (
-            <React.Fragment>
-                <Switch>
-                    <Route path={`${match.url}/:eventId`}
-                           render={props => <ProgressEventDetailContainer {...props}
-                                                                          eventId={props.match.params.eventId}
-                                                                          ProgressEvent={ProgressEvent}
-                                                                          ProgressEventActions={ProgressEventActions}>
-                               <ProgressEventDetails project={project} {...props}/>
-                           </ProgressEventDetailContainer>}
-                    />
-                </Switch>
-            </React.Fragment>
-        );
-    }
-}
+ProgressEventsContainer.propTypes = {
+    project: PropTypes.object
+};
 
 export default connect(ProgressEventsContainer);

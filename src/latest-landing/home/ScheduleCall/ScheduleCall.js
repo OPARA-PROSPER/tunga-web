@@ -9,14 +9,8 @@ import { openCalendlyWidget } from "../../../components/utils/calendly";
 import { NavLink } from "react-router-dom";
 
 class ScheduleCall extends Component {
-    constructor(props) {
-        super(props);
-
-        this.onUseCaseClick = this.onUseCaseClick.bind(this);
-    }
-
-    onUseCaseClick() {
-    }
+    onUseCaseClick = () => { // TODO remove empty method
+    };
 
     render() {
         const { showCaseStudies, isMobile } = this.props;

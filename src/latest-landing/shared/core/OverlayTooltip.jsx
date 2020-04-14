@@ -17,25 +17,24 @@ export default class OverlayTooltip extends React.Component {
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
         this.state = {
             open: false,
             id: randomstring.generate()
         };
     }
 
-    toggle() {
+    toggle = () => {
         this.setState({
             open: !this.state.open
         });
-    }
+    };
 
     render() {
         const { overlay, children, className, placement } = this.props,
             elementId = `tooltip-${this.state.id}`;
 
         return (
-            <React.Fragment>
+            <>
                 <div
                     id={elementId}
                     className={`d-inline-block ${className || ""}`}
@@ -51,7 +50,7 @@ export default class OverlayTooltip extends React.Component {
                 >
                     {overlay}
                 </Tooltip>
-            </React.Fragment>
+            </>
         );
     }
 }

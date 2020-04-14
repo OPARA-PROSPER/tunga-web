@@ -106,13 +106,11 @@ class OurStory extends Component {
         this.state = {
             gotToPage: false,
         };
-
-        this.onLearnMore = this.onLearnMore.bind(this);
     }
 
-    onLearnMore() {
+    onLearnMore = () => {
         this.props.history.replace('#our-dream');
-    }
+    };
 
     render() {
         const { isMobile } = this.props;

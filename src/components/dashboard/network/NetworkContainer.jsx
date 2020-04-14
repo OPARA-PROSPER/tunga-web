@@ -12,7 +12,7 @@ import UserForm from "./UserForm";
 
 const NetworkContainer = ({User, UserActions}) => {
     return (
-        <React.Fragment>
+        <>
             <Switch>
                 <Route path='/network/invite' render={props =>
                     <UserForm User={User} UserActions={UserActions}/>}
@@ -34,7 +34,7 @@ const NetworkContainer = ({User, UserActions}) => {
                     );
                 })}
             </Switch>
-        </React.Fragment>
+        </>
     );
 };
 

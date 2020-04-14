@@ -132,14 +132,14 @@ export default class DocumentPicker extends React.Component {
                         {this.props.instruction || "Add documents"}
                     </Button>
                 ) : (
-                    <React.Fragment>
+                    <>
                         <IconButton
                             name="add"
                             size={this.props.size}
                             onClick={this.onSelectType}
                         />{" "}
                         {this.props.instruction}
-                    </React.Fragment>
+                    </>
                 )}
             </div>
         );

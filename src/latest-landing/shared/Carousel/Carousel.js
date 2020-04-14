@@ -14,7 +14,6 @@ class Carousel extends Component {
             leftPosition: 0,
             lastPropChange: props.activePage,
         };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
 
@@ -41,9 +40,9 @@ class Carousel extends Component {
     }
 
 
-    updateWindowDimensions() {
+    updateWindowDimensions = () => {
         this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
-    }
+    };
 
 
     updatePage(current) {

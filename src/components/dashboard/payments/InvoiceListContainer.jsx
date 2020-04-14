@@ -68,13 +68,13 @@ export default class InvoiceListContainer extends React.Component  {
             selectionKey = this.state.selectionKey;
 
         return (
-            <React.Fragment>
+            <>
                 {Invoice.isFetching[selectionKey]?(
                     <Progress/>
                 ):(
                     this.renderChildren()
                 )}
-            </React.Fragment>
+            </>
         );
     }
 }

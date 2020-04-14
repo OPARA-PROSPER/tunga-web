@@ -69,10 +69,6 @@ class Publications extends Component {
                 },
             ]
         };
-
-        this.onPageChange = this.onPageChange.bind(this);
-        this.onDownloadOpen = this.onDownloadOpen.bind(this);
-        this.onDownloadClose = this.onDownloadClose.bind(this);
     }
 
 
@@ -96,23 +92,21 @@ class Publications extends Component {
     }
 
 
-    onPageChange(page) {
+    onPageChange = page => {
         this.setState({ activePage: page });
         const slug = this.state.publications[page - 1].slug;
         const { hash, pathname } = this.props.history.location;
         const parsedHash = hash.split('?')[0];
         this.props.history.push(`${pathname}${parsedHash}?publication=${slug}`);
-    }
+    };
 
-
-    onDownloadOpen() {
+    onDownloadOpen = () => {
         this.setState({ isDownloadOpen: true });
-    }
+    };
 
-
-    onDownloadClose() {
+    onDownloadClose = () => {
         this.setState({ isDownloadOpen: false });
-    }
+    };
 
 
     render() {

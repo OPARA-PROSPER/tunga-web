@@ -82,9 +82,9 @@ export default class Guide extends React.Component {
 
     wrapCode(code) {
         return (
-            <React.Fragment>
+            <>
                 <code>{code}</code><br/>
-            </React.Fragment>
+            </>
         );
     }
 

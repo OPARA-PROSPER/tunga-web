@@ -7,11 +7,11 @@ import {CHANNEL_TYPES} from '../constants/Api';
 
 import {isAdmin, getUser} from '../utils/auth';
 
-export default class ChannelForm extends React.Component {
-    render() {
-        return <div className="new-channel" />;
-    }
-}
+const ChannelForm = () => {
+    return <div className="new-channel" />;
+};
+
+export default ChannelForm;
 
 ChannelForm.contextTypes = {
     router: PropTypes.object.isRequired,

@@ -11,13 +11,11 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-
-        this.isAuthenticated = this.isAuthenticated.bind(this);
     }
 
-    isAuthenticated() {
+    isAuthenticated = () => {
         this.props.history.push('/dashboard');
-    }
+    };
 
     render() {
         return (

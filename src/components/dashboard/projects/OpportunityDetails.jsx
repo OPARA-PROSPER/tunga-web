@@ -114,14 +114,14 @@ export default class OpportunityDetails extends Component {
                         </div>
                         )
                     :(
-                        <React.Fragment>
+                        <>
                             <Button onClick={() => this.onInterestUpdate(myInterest, STATUS_INTERESTED)}>
                                 I'm available and interested
                             </Button>
                             <Button variant='secondary' onClick={() => this.onInterestUpdate(myInterest, STATUS_UNINTERESTED)}>
                                 I'm not available for this project
                             </Button>
-                        </React.Fragment>
+                        </>
                     ) : null}
 
                     {isAdminOrPM()?(

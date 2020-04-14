@@ -102,7 +102,7 @@ class PublicationDownload extends React.Component {
                         md="6">
                         <div className="PublicationDownload__form-container">
                             <Form onSubmit={this.handleSubmit}>
-                                <React.Fragment>
+                                <>
                                     <div className="PublicationDownload__title">
                                         {downloadTitle}
                                     </div>
@@ -164,7 +164,7 @@ class PublicationDownload extends React.Component {
                                                 disabled={this.props.Profile.isSaving.visitors}>Download
                                         </Button>
                                     </div>
-                                </React.Fragment>
+                                </>
                             </Form>
                             <div className="PublicationDownload__disclaimer">
                                 By submitting this form, you agree that we may

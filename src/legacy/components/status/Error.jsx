@@ -1,11 +1,15 @@
 import React from 'react';
 
-export default class Error extends React.Component {
-    render() {
-        return (
-            <div className="alert alert-warning" role="alert">
-                {this.props.message || 'Unknown error'}
-            </div>
-        );
-    }
-}
+const Error = (
+    {
+        message,
+    },
+) => {
+    return (
+        <div className="alert alert-warning" role="alert">
+            {message || 'Unknown error'}
+        </div>
+    );
+};
+
+export default Error;

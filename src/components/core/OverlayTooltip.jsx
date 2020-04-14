@@ -4,7 +4,6 @@ import { Tooltip } from 'reactstrap';
 import randomstring from '../utils/generateRandomString';
 
 export default class OverlayTooltip extends React.Component {
-
     static defaultProps = {
         placement: 'auto'
     };
@@ -18,25 +17,24 @@ export default class OverlayTooltip extends React.Component {
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
         this.state = {
             open: false,
             id: randomstring.generate()
         };
     }
 
-    toggle() {
+    toggle = () => {
         this.setState({
             open: !this.state.open
         });
-    }
+    };
 
     render() {
         const {overlay, children, className, placement} = this.props,
             elementId = `tooltip-${this.state.id}`;
 
         return (
-            <React.Fragment>
+            <>
                 <div id={elementId} className={`d-inline-block ${className || ''}`}>
                     {children}
                 </div>
@@ -44,7 +42,7 @@ export default class OverlayTooltip extends React.Component {
                 <Tooltip isOpen={this.state.open} target={elementId} toggle={this.toggle} placement={placement}>
                     {overlay}
                 </Tooltip>
-            </React.Fragment>
+            </>
         );
     }
 }

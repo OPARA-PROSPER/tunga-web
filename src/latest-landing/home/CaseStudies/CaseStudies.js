@@ -141,7 +141,6 @@ class CaseStudies extends Component {
         // FIXME use hooks
         // eslint-disable-next-line react/no-direct-mutation-state 
         this.state.currentStudy = this.state.data[0];
-        this.onPageChange = this.onPageChange.bind(this);
     }
 
     componentDidMount() {
@@ -161,11 +160,11 @@ class CaseStudies extends Component {
     }
 
 
-    onPageChange(current) {
+    onPageChange = current => {
         const currentIndex = current - 1;
         const currentStudy = this.state.data[currentIndex];
         this.setState({ currentStudy, currentIndex });
-    }
+    };
 
 
     render() {
