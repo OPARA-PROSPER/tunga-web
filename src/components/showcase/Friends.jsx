@@ -8,7 +8,7 @@ import MetaTags from "../MetaTags";
 import Icon from "../core/Icon";
 import OverlayTooltip from "../core/OverlayTooltip";
 
-import {nl_to_br} from "../../legacy/utils/html";
+import {nl_to_br} from "../utils/html";
 
 const L10N_RESOURCES = {
     en: {
