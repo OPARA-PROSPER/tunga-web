@@ -7,30 +7,28 @@ import Pay from "./Pay";
 import InvoiceListContainer from "../../dashboard/payments/InvoiceListContainer";
 import connect from "../../../connectors/InvoiceConnector";
 
-class PayContainer extends React.Component {
-    static propTypes = {
-        project: PropTypes.object,
-        match: PropTypes.object,
-    };
+const PayContainer = props => {
+    const {project, match, Invoice, InvoiceActions} = props;
+    return (
+        <>
+            <Switch>
+                <Route path={match.url}
+                       exact
+                       render={props => <InvoiceListContainer {...props}
+                                                              filters={{project: project.id}}
+                                                              Invoice={Invoice}
+                                                              InvoiceActions={InvoiceActions}>
+                           <Pay project={project} {...props}/>
+                       </InvoiceListContainer>}
+                />
+            </Switch>
+        </>
+    );
+};
 
-    render() {
-        const {project, match, Invoice, InvoiceActions} = this.props;
-        return (
-            <React.Fragment>
-                <Switch>
-                    <Route path={match.url}
-                           exact
-                           render={props => <InvoiceListContainer {...props}
-                                                                  filters={{project: project.id}}
-                                                                  Invoice={Invoice}
-                                                                  InvoiceActions={InvoiceActions}>
-                               <Pay project={project} {...props}/>
-                           </InvoiceListContainer>}
-                    />
-                </Switch>
-            </React.Fragment>
-        );
-    }
-}
+PayContainer.propTypes = {
+    project: PropTypes.object,
+    match: PropTypes.object,
+};
 
 export default connect(PayContainer);

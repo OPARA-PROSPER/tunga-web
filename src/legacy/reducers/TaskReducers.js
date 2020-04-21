@@ -19,7 +19,6 @@ import Activity from './ActivityReducers';
 import Invoice from './InvoiceReducers';
 import MultiTaskPayment from './MultiTaskPaymentReducers';
 
-import {STATUS_ACCEPTED} from '../constants/Api';
 
 function task(state = {}, action) {
     switch (action.type) {

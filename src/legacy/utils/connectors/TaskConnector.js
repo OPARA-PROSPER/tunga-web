@@ -32,7 +32,7 @@ function mapDispatchToProps(dispatch) {
                     listSlackChannels: AuthActions.listSlackChannels,
                     clearValidations: clearValidations,
                 },
-                dispatch,
+                dispatch
             ),
             ...bindActionCreators(TaskActions, dispatch),
             ...bindActionCreators(ApplicationActions, dispatch),

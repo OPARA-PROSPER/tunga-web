@@ -78,8 +78,8 @@ export function createChannel(channel) {
             .catch(function(error) {
                 dispatch(
                     createChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -117,8 +117,8 @@ export function listChannels(filter) {
             .catch(function(error) {
                 dispatch(
                     listChannelsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -159,8 +159,8 @@ export function retrieveChannel(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -198,8 +198,8 @@ export function retrieveDirectChannel(user_id) {
             .catch(function(error) {
                 dispatch(
                     retrieveDirectChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -263,8 +263,8 @@ export function updateChannel(id, channel_data, uploads) {
             .catch(function(error) {
                 dispatch(
                     updateChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -311,8 +311,8 @@ export function deleteChannel(id) {
             .catch(function(error) {
                 dispatch(
                     deleteChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -350,8 +350,8 @@ export function createSupportChannel(data) {
             .catch(function(error) {
                 dispatch(
                     createSupportChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -388,8 +388,8 @@ export function createDeveloperChannel(data) {
             .catch(function(error) {
                 dispatch(
                     createDeveloperChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -426,8 +426,8 @@ export function createTaskChannel(task) {
             .catch(function(error) {
                 dispatch(
                     createTaskChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -464,8 +464,8 @@ export function updateChannelRead(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateChannelReadFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -503,8 +503,8 @@ export function listMoreChannels(url) {
             .catch(function(error) {
                 dispatch(
                     listMoreChannelsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -549,7 +549,7 @@ export function listChannelActivity(id, filter, update_read = true) {
                     dispatch(
                         updateChannelRead(id, {
                             last_read: response.data.results[0].id,
-                        }),
+                        })
                     );
                 }
                 dispatch(
@@ -558,8 +558,8 @@ export function listChannelActivity(id, filter, update_read = true) {
                         id,
                         filter,
                         get_new,
-                        !update_read,
-                    ),
+                        !update_read
+                    )
                 );
             })
             .catch(function(error) {
@@ -567,8 +567,8 @@ export function listChannelActivity(id, filter, update_read = true) {
                     listChannelActivityFailed(
                         error.response ? error.response.data : null,
                         id,
-                        get_new,
-                    ),
+                        get_new
+                    )
                 );
             });
     };
@@ -589,7 +589,7 @@ export function listChannelActivitySuccess(
     id,
     filter,
     new_only = false,
-    update_new = false,
+    update_new = false
 ) {
     return {
         type: new_only
@@ -630,8 +630,8 @@ export function listMoreChannelActivity(url) {
                 dispatch(
                     listMoreChannelActivityFailed(
                         error.response ? error.response.data : null,
-                        id,
-                    ),
+                        id
+                    )
                 );
             });
     };
@@ -677,7 +677,7 @@ export function recordChatStart() {
     sendGAEvent(
         GA_EVENT_CATEGORIES.CHAT,
         GA_EVENT_ACTIONS.START,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: CHAT_START,

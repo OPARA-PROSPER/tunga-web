@@ -49,7 +49,7 @@ export function createProject(project, target) {
                 dispatch(
                     createProjectFailed(
                         (error.response ? error.response.data : null), project, target
-                    ),
+                    )
                 );
             });
     };
@@ -91,8 +91,8 @@ export function listProjects(filter, selection, prev_selection) {
             .catch(function (error) {
                 dispatch(
                     listProjectsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -139,7 +139,7 @@ export function retrieveProject(id) {
                 dispatch(
                     retrieveProjectFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };
@@ -190,7 +190,7 @@ export function updateProject(id, project) {
                 dispatch(
                     updateProjectFailed(
                         (error.response ? error.response.data : null), project, id
-                    ),
+                    )
                 );
             });
     };
@@ -234,8 +234,8 @@ export function listMoreProjects(url, selection) {
                 dispatch(
                     listMoreProjectsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -274,23 +274,23 @@ export function deleteProject(id) {
             .then(function () {
                 dispatch(deleteProjectSuccess(id));
             }).catch(function (response) {
-            dispatch(deleteProjectFailed(response.data, id));
-        });
-    }
+                dispatch(deleteProjectFailed(response.data, id));
+            });
+    };
 }
 
 export function deleteProjectStart(id) {
     return {
         type: DELETE_PROJECT_START,
         id
-    }
+    };
 }
 
 export function deleteProjectSuccess(id) {
     return {
         type: DELETE_PROJECT_SUCCESS,
         id
-    }
+    };
 }
 
 export function deleteProjectFailed(error, id) {
@@ -298,7 +298,7 @@ export function deleteProjectFailed(error, id) {
         type: DELETE_PROJECT_FAILED,
         error,
         id
-    }
+    };
 }
 
 export function sendReminder(id, target) {
@@ -314,7 +314,7 @@ export function sendReminder(id, target) {
                 dispatch(
                     sendReminderFailed(
                         (error.response ? error.response.data : null), id, target
-                    ),
+                    )
                 );
             });
     };
@@ -360,7 +360,7 @@ export function submitDeveloperRating({id, ...event}, target) {
                 dispatch(
                     submitDeveloperRatingFailed(
                         (error.response ? error.response.data : null), event, target
-                    ),
+                    )
                 );
             });
     };

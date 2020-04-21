@@ -1,22 +1,21 @@
-import { combineReducers } from 'redux';
-import omit from 'lodash/omit';
-import * as types from './constants';
+import { combineReducers } from "redux";
+import omit from "lodash/omit";
+import * as types from "./constants";
 
 const initialState = {
     is: {
         fetching: false,
         ok: false,
-        error: false,
+        error: false
     },
     talentList: [],
     talent: {
         projects: [],
-        work: [],
+        work: []
     },
-    message: '',
-    messages: {},
+    message: "",
+    messages: {}
 };
-
 
 const talentsReducer = (state = initialState, action) => {
     let isProps;
@@ -26,7 +25,7 @@ const talentsReducer = (state = initialState, action) => {
             isProps = { fetching: true, ok: false, error: false };
             return {
                 ...state,
-                is: isProps,
+                is: isProps
             };
 
         case types.FETCH_TALENTS_SUCCESS:
@@ -34,7 +33,7 @@ const talentsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is: isProps,
-                talentList: action.data,
+                talentList: action.data
             };
 
         case types.FETCH_TALENTS_FAILURE:
@@ -42,16 +41,15 @@ const talentsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is: isProps,
-                message: action.message,
+                message: action.message
             };
-
 
         case types.VIEW_TALENT_REQUEST:
             isProps = { fetching: true, ok: false, error: true };
             return {
                 ...state,
                 is: isProps,
-                addTalentIs: { fetching: false, ok: false, error: false },
+                addTalentIs: { fetching: false, ok: false, error: false }
             };
 
         case types.VIEW_TALENT_SUCCESS:
@@ -59,7 +57,7 @@ const talentsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is: isProps,
-                talent: action.talent,
+                talent: action.talent
             };
 
         case types.VIEW_TALENT_FAILURE:
@@ -67,14 +65,14 @@ const talentsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is: isProps,
-                message: action.message,
+                message: action.message
             };
 
         case types.REMOVE_FIELD_ERROR: {
             const messages = { ...omit(state.messages, action.field) };
             return {
                 ...state,
-                messages,
+                messages
             };
         }
 
@@ -83,9 +81,8 @@ const talentsReducer = (state = initialState, action) => {
     }
 };
 
-
 const talentCombineReducer = combineReducers({
-    talents: talentsReducer,
+    talents: talentsReducer
 });
 
 export default talentCombineReducer;

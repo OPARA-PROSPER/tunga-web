@@ -5,8 +5,6 @@ import Icon from "../../../shared/core/Icon";
 import { Form, Title, Button, Input, Group, Label, IconGroup, Cta } from "../../../shared/Form/Form";
 import Error from "../../../../components/core/Error";
 import { authenticate } from "../../../../actions/AuthActions";
-import { Redirect } from "react-router";
-import Routing from "../../../constants/Routing";
 import Progress from "../../../../components/core/Progress";
 import querystring from 'querystring';
 
@@ -18,12 +16,9 @@ class AuthForm extends Component {
             password: '',
             formSubmitted: false,
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    onFormSubmit(e) {
+    onFormSubmit = e => {
         e.preventDefault();
         this.setState({ formSubmitted: true });
         if (!this.state.username || !this.state.password) {
@@ -31,11 +26,11 @@ class AuthForm extends Component {
         }
 
         this.props.authenticate(this.state);
-    }
+    };
 
-    handleChange(event) {
+    handleChange = event => {
         this.setState({ [event.target.name]: event.target.value, formSubmitted: false });
-    }
+    };
 
     render() {
         const { auth } = this.props;
@@ -47,7 +42,7 @@ class AuthForm extends Component {
 
         return (
             <Form onSubmit={this.onFormSubmit}>
-                <React.Fragment>
+                <>
                     {auth.errors && auth.errors.auth && auth.errors.auth.non_field_errors ?
                         <Error
                             message={
@@ -58,7 +53,7 @@ class AuthForm extends Component {
                         null}
                     <Title className="AuthForm__title">
                         {queryParams && queryParams.deactivated?(
-                            <div class="alert alert-danger">Your account has been deactivated</div>
+                            <div className="alert alert-danger">Your account has been deactivated</div>
                         ):'Welcome back'}
                     </Title>
                     {auth.isAuthenticating.isLoginStart ? <Progress/> : ''}
@@ -103,13 +98,17 @@ class AuthForm extends Component {
                             Login
                         </Button>
                     </div>
-                </React.Fragment>
+                </>
             </Form>
         );
     }
 }
 
-AuthForm.propTypes = {};
+AuthForm.propTypes = {
+    auth: PropTypes.object,
+    isAuthenticated: PropTypes.func,
+    authenticate: PropTypes.func
+};
 
 const mapStateToProps = store => ({
     auth: store.app.Auth

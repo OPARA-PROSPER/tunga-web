@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./TheProblem.scss";
-import Button from "../../../shared/core/Button";
-import Icon from "../../../shared/core/Icon";
 import ImageBox from "../ImageBox/ImageBox";
 import ProblemImg from "../../../assets/img/our-story/the-problem.png";
-
 
 class TheProblem extends Component {
     constructor(props) {
@@ -45,5 +41,4 @@ class TheProblem extends Component {
     }
 }
 
-TheProblem.propTypes = {};
 export default TheProblem;

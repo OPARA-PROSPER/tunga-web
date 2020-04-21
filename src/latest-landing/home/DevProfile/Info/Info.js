@@ -18,6 +18,11 @@ const ShortBio = (({ bio, onBioOpen }) => {
     );
 });
 
+ShortBio.propTypes = {
+    bio: PropTypes.object,
+    onBioOpen: PropTypes.func
+};
+
 const SkillBox = ({ talent, all }) => {
     const skills = all ? talent.profile.skills : talent.profile.skills.slice(0, 5);
 
@@ -39,20 +44,16 @@ class Info extends Component {
             isBioOpen: false,
             isSkillBoxOpen: false
         };
-
-        this.onBioToggle = this.onBioToggle.bind(this);
-        this.onSkillBoxToggle = this.onSkillBoxToggle.bind(this);
     }
 
 
-    onBioToggle() {
+    onBioToggle = () => {
         this.setState({ isBioOpen: !this.state.isBioOpen });
-    }
+    };
 
-
-    onSkillBoxToggle() {
+    onSkillBoxToggle = () => {
         this.setState({ isSkillBoxOpen: !this.state.isSkillBoxOpen });
-    }
+    };
 
     render() {
         const { talent, query } = this.props;
@@ -136,6 +137,9 @@ class Info extends Component {
     }
 }
 
-Info.propTypes = {};
+Info.propTypes = {
+    talent: PropTypes.object, 
+    query: PropTypes.string
+};
 
 export default Info;

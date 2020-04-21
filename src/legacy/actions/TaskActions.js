@@ -103,8 +103,8 @@ export function createTask(task, attachments) {
             .catch(function(error) {
                 dispatch(
                     createTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -121,7 +121,7 @@ export function createTaskSuccess(task) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.TASK,
         GA_EVENT_ACTIONS.CREATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     setEditToken(task.edit_token);
@@ -151,8 +151,8 @@ export function listTasks(filter, selection, prev_selection) {
                 dispatch(
                     listTasksFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -199,8 +199,8 @@ export function listMoreTasks(url, selection) {
                 dispatch(
                     listMoreTasksFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -243,10 +243,10 @@ export function retrieveTask(id, editToken) {
             .then(function(response) {
                 dispatch(retrieveTaskSuccess(response.data));
             })
-            .catch(function(error) {
+            .catch(function() {
                 /*dispatch(
-          retrieveTaskFailed(error.response ? error.response.data : null),
-        );*/
+                retrieveTaskFailed(error.response ? error.response.data : null),
+                );*/
             });
     };
 }
@@ -310,8 +310,8 @@ export function updateTask(id, task_data, uploads, editToken) {
             .catch(function(error) {
                 dispatch(
                     updateTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -328,13 +328,13 @@ export function updateTaskSuccess(task, data) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.TASK,
         GA_EVENT_ACTIONS.UPDATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     if (data && data.ratings) {
         sendGAEvent(
             GA_EVENT_CATEGORIES.TASK,
             GA_EVENT_ACTIONS.RATE,
-            getGAUserType(getUser()),
+            getGAUserType(getUser())
         );
     }
 
@@ -371,8 +371,8 @@ export function deleteTask(id) {
             .catch(function(error) {
                 dispatch(
                     deleteTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -410,11 +410,11 @@ export function listTaskActivity(id, filter) {
                     dispatch(
                         updateTaskRead(id, {
                             last_read: response.data.results[0].id,
-                        }),
+                        })
                     );
                 }
                 dispatch(
-                    listTaskActivitySuccess(response.data, id, filter, get_new),
+                    listTaskActivitySuccess(response.data, id, filter, get_new)
                 );
             })
             .catch(function(error) {
@@ -422,8 +422,8 @@ export function listTaskActivity(id, filter) {
                     listTaskActivityFailed(
                         error.response ? error.response.data : null,
                         id,
-                        get_new,
-                    ),
+                        get_new
+                    )
                 );
             });
     };
@@ -443,7 +443,7 @@ export function listTaskActivitySuccess(
     response,
     id,
     filter,
-    new_only = false,
+    new_only = false
 ) {
     return {
         type: new_only
@@ -483,8 +483,8 @@ export function listMoreTaskActivity(url) {
                 dispatch(
                     listMoreTaskActivityFailed(
                         error.response ? error.response.data : null,
-                        id,
-                    ),
+                        id
+                    )
                 );
             });
     };
@@ -529,8 +529,8 @@ export function createTaskIntegration(id, provider, data) {
                 dispatch(
                     createTaskIntegrationFailed(
                         error.response ? error.response.data : null,
-                        provider,
-                    ),
+                        provider
+                    )
                 );
             });
     };
@@ -574,8 +574,8 @@ export function updateTaskRead(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateTaskReadFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -609,15 +609,15 @@ export function retrieveTaskIntegration(id, provider) {
             .get(ENDPOINT_TASK + id + '/integration/' + provider + '/')
             .then(function(response) {
                 dispatch(
-                    retrieveTaskIntegrationSuccess(response.data, provider),
+                    retrieveTaskIntegrationSuccess(response.data, provider)
                 );
             })
             .catch(function(error) {
                 dispatch(
                     retrieveTaskIntegrationFailed(
                         error.response ? error.response.data : null,
-                        provider,
-                    ),
+                        provider
+                    )
                 );
             });
     };
@@ -659,8 +659,8 @@ export function createTaskInvoice(id, data) {
             .catch(function(error) {
                 dispatch(
                     createTaskInvoiceFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -677,7 +677,7 @@ export function createTaskInvoiceSuccess(response) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.TASK,
         GA_EVENT_ACTIONS.INVOICE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     return {
@@ -704,8 +704,8 @@ export function retrieveTaskInvoice(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveTaskInvoiceFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -743,8 +743,8 @@ export function claimTask(id, data) {
             .catch(function(error) {
                 dispatch(
                     claimTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -782,8 +782,8 @@ export function returnTask(id, data) {
             .catch(function(error) {
                 dispatch(
                     returnTaskFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -822,8 +822,8 @@ export function makeTaskPayment(id, provider, data) {
                 dispatch(
                     makeTaskPaymentFailed(
                         error.response ? error.response.data : null,
-                        provider,
-                    ),
+                        provider
+                    )
                 );
             });
     };
@@ -887,8 +887,8 @@ export function createTaskDocument(id, document_data, file) {
             .catch(function(error) {
                 dispatch(
                     createTaskDocumentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -905,7 +905,7 @@ export function createTaskDocumentSuccess(response) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.TASK,
         GA_EVENT_ACTIONS.UPLOAD_DOCUMENT,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     return {

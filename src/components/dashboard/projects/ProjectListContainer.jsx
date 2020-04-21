@@ -63,13 +63,13 @@ export default class ProjectListContainer extends React.Component  {
             selectionKey = this.state.selectionKey;
 
         return (
-            <React.Fragment>
+            <>
                 {Project.isFetching[selectionKey]?(
                     <Progress/>
                 ):(
                     this.renderChildren()
                 )}
-            </React.Fragment>
+            </>
         );
     }
 }

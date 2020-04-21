@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-const Smiley2 = ({ stroke = '#DA3451' }) => (
+const Smiley2 = () => (
     <svg width="49px" height="50px" viewBox="0 0 49 50">
         <defs></defs>
-        <g id="Page-1" stroke="none" stroke-width="1">
+        <g id="Page-1" stroke="none" strokeWidth="1">
             <g id="Progress-report-dedicated-developer-" transform="translate(-420.000000, -424.000000)" fill="#444444"
-               fill-rule="nonzero">
+               fillRule="nonzero">
                 <g id="noun_Smile_746240" transform="translate(420.000000, 424.000000)">
                     <g id="Group" transform="translate(0.000000, 0.346641)">
                         <path

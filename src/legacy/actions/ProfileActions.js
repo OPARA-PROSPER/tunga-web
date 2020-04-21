@@ -6,7 +6,6 @@ import {
     ENDPOINT_CHANGE_PASSWORD,
     ENDPOINT_USER_EDUCATION,
     ENDPOINT_USER_WORK,
-    ENDPOINT_NOTIFICATION,
     ENDPOINT_COUNTRIES,
     ENDPOINT_COMPANY,
 } from '../constants/Api';
@@ -63,7 +62,7 @@ export function updateAuthUser(user) {
             headers['Content-Type'] = 'multipart/form-data';
 
             data = new FormData();
-            Object.keys(user).map((key, idx) => {
+            Object.keys(user).map((key) => {
                 data.append(key, user[key]);
             });
         }
@@ -76,8 +75,8 @@ export function updateAuthUser(user) {
             .catch(function(error) {
                 dispatch(
                     updateAuthUserFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -96,7 +95,7 @@ export function updateAuthUserSuccess(user) {
         sendGAEvent(
             GA_EVENT_CATEGORIES.REGISTRATION,
             GA_EVENT_ACTIONS.SIGN_UP,
-            getGAUserType(user),
+            getGAUserType(user)
         );
     }
     return {
@@ -123,8 +122,8 @@ export function updateAccountInfo(user) {
             .catch(function(error) {
                 dispatch(
                     updateAccountInfoFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -140,7 +139,7 @@ export function updateAccountInfoSuccess(user) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.PROFILE,
         GA_EVENT_ACTIONS.UPDATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     return {
@@ -167,8 +166,8 @@ export function retrieveProfile() {
             .catch(function(error) {
                 dispatch(
                     retrieveProfileFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -226,8 +225,8 @@ export function updateProfile(id, profile) {
             .catch(function(error) {
                 dispatch(
                     updateProfileFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -244,7 +243,7 @@ export function updateProfileSuccess(profile) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.PROFILE,
         GA_EVENT_ACTIONS.UPDATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     return {
@@ -265,14 +264,14 @@ export function updatePassword(credentials) {
         dispatch(updatePasswordStart());
         axios
             .post(ENDPOINT_CHANGE_PASSWORD, credentials)
-            .then(function(response) {
+            .then(function() {
                 dispatch(updatePasswordSuccess());
             })
             .catch(function(error) {
                 dispatch(
                     updatePasswordFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -288,7 +287,7 @@ export function updatePasswordSuccess() {
     sendGAEvent(
         GA_EVENT_CATEGORIES.AUTH,
         GA_EVENT_ACTIONS.CHANGE_PASSWORD,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
     return {
         type: UPDATE_PASSWORD_SUCCESS,
@@ -313,8 +312,8 @@ export function createWork(work) {
             .catch(function(error) {
                 dispatch(
                     createWorkFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -352,8 +351,8 @@ export function updateWork(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateWorkFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -391,8 +390,8 @@ export function createEducation(education) {
             .catch(function(error) {
                 dispatch(
                     createEducationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -430,8 +429,8 @@ export function updateEducation(id, data) {
             .catch(function(error) {
                 dispatch(
                     updateEducationFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -469,8 +468,8 @@ export function getCountries() {
             .catch(function(error) {
                 dispatch(
                     getCountriesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -525,8 +524,8 @@ export function updateCompany(id, company) {
             .catch(function(error) {
                 dispatch(
                     updateCompanyFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -543,7 +542,7 @@ export function updateCompanySuccess(company) {
     sendGAEvent(
         GA_EVENT_CATEGORIES.COMPANY,
         GA_EVENT_ACTIONS.UPDATE,
-        getGAUserType(getUser()),
+        getGAUserType(getUser())
     );
 
     return {

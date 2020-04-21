@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./VlogVideo.scss";
 import Icon from "../../../../shared/core/Icon";
+import PropTypes from "prop-types";
 
 class Vlog extends Component {
     constructor(props) {
@@ -8,21 +9,17 @@ class Vlog extends Component {
         this.state = {
             isPlaying: false
         };
-
-        this.onVideoPlay = this.onVideoPlay.bind(this);
-        this.closeVideo = this.closeVideo.bind(this);
     }
 
 
-    onVideoPlay() {
+    onVideoPlay = () => {
         this.setState({ isPlaying: true });
-    }
+    };
 
-
-    closeVideo() {
+    closeVideo = () => {
         this.props.onVideoClose();
         this.setState({ isPlaying: false });
-    }
+    };
 
 
     render() {
@@ -53,6 +50,9 @@ class Vlog extends Component {
     }
 }
 
-Vlog.propTypes = {};
+Vlog.propTypes = {
+    onVideoClose: PropTypes.func,
+    vlog: PropTypes.object
+};
 
 export default Vlog;

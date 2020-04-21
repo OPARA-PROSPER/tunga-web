@@ -1,18 +1,16 @@
-import { combineReducers } from 'redux';
-import omit from 'lodash/omit';
-import * as types from './constants';
+import { combineReducers } from "redux";
+import * as types from "./constants";
 
 const initialState = {
     is: {
         fetching: false,
         ok: false,
-        error: false,
+        error: false
     },
     list: [],
-    message: '',
-    messages: {},
+    message: "",
+    messages: {}
 };
-
 
 const vlogsReducer = (state = initialState, action) => {
     let isProps;
@@ -22,7 +20,7 @@ const vlogsReducer = (state = initialState, action) => {
             isProps = { fetching: true, ok: false, error: false };
             return {
                 ...state,
-                is: isProps,
+                is: isProps
             };
 
         case types.FETCH_VLOGS_SUCCESS:
@@ -30,7 +28,7 @@ const vlogsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is: isProps,
-                list: action.data,
+                list: action.data
             };
 
         case types.FETCH_VLOGS_FAILURE:
@@ -38,7 +36,7 @@ const vlogsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is: isProps,
-                message: action.message,
+                message: action.message
             };
 
         default:
@@ -46,9 +44,8 @@ const vlogsReducer = (state = initialState, action) => {
     }
 };
 
-
 const vlogCombineReducer = combineReducers({
-    vlogs: vlogsReducer,
+    vlogs: vlogsReducer
 });
 
 export default vlogCombineReducer;

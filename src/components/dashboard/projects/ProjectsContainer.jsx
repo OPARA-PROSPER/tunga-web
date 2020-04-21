@@ -37,7 +37,7 @@ class ProjectsContainer extends React.Component {
     render() {
         const {Project, ProjectActions, InterestActions} = this.props, targetKey = this.state.targetKey;
         return (
-            <React.Fragment>
+            <>
                 <Switch>
                     <Route exact path="/projects/new"
                            render={props => <ProjectForm {...props}
@@ -75,7 +75,7 @@ class ProjectsContainer extends React.Component {
                            </ProjectDetailContainer>}
                     />
                 </Switch>
-            </React.Fragment>
+            </>
         );
     }
 }

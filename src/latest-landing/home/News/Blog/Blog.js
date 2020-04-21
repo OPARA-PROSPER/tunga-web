@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Blog.scss";
 import Carousel from "../../../shared/Carousel/Carousel";
-import Icon from "../../../shared/core/Icon";
 import { Button } from "../../../shared/Form/Form";
 import { fetchBlogsRequest } from "../../../../services/blogs/actions";
 import Loader from "../../../shared/Loader/Loader";
+
+import PropTypes from "prop-types";
 
 class Blog extends Component {
     constructor(props) {
@@ -128,7 +129,12 @@ class Blog extends Component {
     }
 }
 
-Blog.propTypes = {};
+Blog.propTypes = {
+    query: PropTypes.any, // TODO fix type
+    fetchBlogsRequest: PropTypes.func,
+    blogs: PropTypes.array,
+    is: PropTypes.object
+};
 
 
 const mapStateToProps = state => ({

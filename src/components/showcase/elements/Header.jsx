@@ -14,7 +14,7 @@ export default ({title, description, className, showCTA=true, ctaText='Schedule 
 
 
     return (
-        <React.Fragment>
+        <>
             {addMeta?(
                 <MetaTags title={title} description={description}/>
             ):null}
@@ -45,6 +45,6 @@ export default ({title, description, className, showCTA=true, ctaText='Schedule 
                     {children}
                 </div>
             </header>
-        </React.Fragment>
+        </>
     );
 }

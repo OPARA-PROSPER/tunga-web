@@ -22,8 +22,8 @@ export function listActivities(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listActivitiesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -69,8 +69,8 @@ export function retrieveActivity(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveActivityFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -111,8 +111,8 @@ export function listMoreActivities(url, selection) {
                 dispatch(
                     listMoreActivitiesFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };

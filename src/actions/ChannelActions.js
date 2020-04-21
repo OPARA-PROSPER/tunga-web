@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {composeFormData, ENDPOINT_CHANNELS} from './utils/api';
+import {ENDPOINT_CHANNELS} from './utils/api';
 
 export const CREATE_CHANNEL_START = 'CREATE_CHANNEL_START';
 export const CREATE_CHANNEL_SUCCESS = 'CREATE_CHANNEL_SUCCESS';
@@ -26,7 +26,7 @@ export function createChannel(data) {
                 dispatch(
                     createChannelFailed(
                         (error.response ? error.response.data : null)
-                    ),
+                    )
                 );
             });
     };
@@ -63,8 +63,8 @@ export function retrieveChannel(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveChannelFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -110,7 +110,7 @@ export function updateChannel(id, channel) {
                 dispatch(
                     updateChannelFailed(
                         (error.response ? error.response.data : null), channel, id
-                    ),
+                    )
                 );
             });
     };

@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default class FieldError extends React.Component {
-    render() {
-        return (
-            <div className="error">{this.props.message || 'Unknown error'}</div>
-        );
-    }
-}
+const FieldError = (
+    {
+        message,
+    },
+) => {
+    return <div className="error">{message || 'Unknown error'}</div>;
+};
+
+export default FieldError;

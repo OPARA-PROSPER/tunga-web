@@ -121,10 +121,11 @@ function invoices(state = {}, action) {
         case InvoiceActions.RETRIEVE_INVOICE_SUCCESS:
         case InvoiceActions.UPDATE_INVOICE_SUCCESS:
         case InvoiceActions.GENERATE_INVOICE_SUCCESS:
-        case InvoiceActions.PAY_INVOICE_SUCCESS:
+        case InvoiceActions.PAY_INVOICE_SUCCESS: {
             let new_invoice = {};
             new_invoice[action.invoice.id] = action.invoice;
             return {...state, ...new_invoice};
+        }
         case InvoiceActions.CREATE_INVOICE_BATCH_SUCCESS:
             action.invoices.forEach(invoice => {
                 all_invoices[invoice.id] = invoice;

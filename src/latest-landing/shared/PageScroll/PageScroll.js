@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { kebabCase } from 'lodash';
 import SideNav from "../../../components/sidenav";
 import JumpToTop from "./JumpToTop/JumpToTop";
+import PropTypes from "prop-types";
 
 
 class PageScroll extends Component {
@@ -22,16 +23,6 @@ class PageScroll extends Component {
             windowWidth: 0,
             windowHeight: 0,
         };
-
-        this.onWheel = this.onWheel.bind(this);
-        this.onKeydown = this.onKeydown.bind(this);
-        this.goToPage = this.goToPage.bind(this);
-        this.scroll = this.scroll.bind(this);
-        this.isMobile = this.isMobile.bind(this);
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        this.onWindowResize = this.onWindowResize.bind(this);
-        this.updatePageHash = this.updatePageHash.bind(this);
-        this.onPageLoad = this.onPageLoad.bind(this);
     }
 
 
@@ -85,7 +76,7 @@ class PageScroll extends Component {
     }
 
 
-    updatePageHash(page) {
+    updatePageHash = page => {
         if (!page) {
             return;
         }
@@ -93,15 +84,13 @@ class PageScroll extends Component {
         const slug = `#${kebabCase(page.title)}`;
         const search = this.props.location.search || '';
         this.props.history.push(`${slug}${search}`);
-    }
+    };
 
-
-    onPageLoad() {
+    onPageLoad = () => {
         this.onWindowResize();
-    }
+    };
 
-
-    onWindowResize() {
+    onWindowResize = () => {
         const date = new Date;
         const resizeTime = date.getTime();
         this.lastResizeTime = resizeTime;
@@ -126,21 +115,18 @@ class PageScroll extends Component {
                 this.goToPage(this.state.currentPage, true);
             }
         }, 400);
-    }
+    };
 
-
-    updateWindowDimensions() {
+    updateWindowDimensions = () => {
         this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
-    }
+    };
 
-
-    isMobile() {
+    isMobile = () => {
         return typeof this.state.windowWidth !== 'undefined' && this.state.windowWidth <= 992;
-    }
+    };
 
 
     computeSteps({ yOffset } = { yOffset: 0 }) {
-        const offsetY = this.steps.length ? this.steps[0].y : 0;
         this.steps = [];
         this.pages = [];
 
@@ -189,7 +175,7 @@ class PageScroll extends Component {
     }
 
 
-    goToPage(pageNumber, reload, newPage) {
+    goToPage = (pageNumber, reload, newPage) => {
         if (this.isMobile()) {
             if (this.containerRef.current.childNodes[pageNumber]) {
                 if (pageNumber && pageNumber === this.state.currentPage && !reload) {
@@ -224,10 +210,9 @@ class PageScroll extends Component {
         const stepsMap = this.steps.map(({ page }) => page === currentPage);
         this.currentStep = direction === 'down' ? stepsMap.lastIndexOf(true) : stepsMap.indexOf(true);
         this.scroll({ direction });
-    }
+    };
 
-
-    onWheel(e) {
+    onWheel = e => {
         if (this.isMobile()) {
             return;
         }
@@ -245,10 +230,9 @@ class PageScroll extends Component {
 
         this.scroll({ direction });
         return false;
-    }
+    };
 
-
-    onKeydown(event) {
+    onKeydown = event => {
         if (this.isMobile()) {
             return;
         }
@@ -267,10 +251,9 @@ class PageScroll extends Component {
         if (direction) {
             this.scroll({ direction });
         }
-    }
+    };
 
-
-    scroll({ direction }) {
+    scroll = ({ direction }) => {
         if ((direction === 'up' && this.currentStep === 0) || (direction === 'down' && this.currentStep === this.steps.length - 1)) {
             return;
         }
@@ -282,7 +265,7 @@ class PageScroll extends Component {
         this.containerRef.current.style.transform = `translate3d(0, -${y}px, 0)`;
 
         this.updatePageHash(this.props.pages[page]);
-    }
+    };
 
 
     findScrollDirection(event) {
@@ -340,6 +323,15 @@ class PageScroll extends Component {
         );
     }
 }
+
+PageScroll.propTypes = {
+    goToPage: PropTypes.number,
+    onPageScrolled: PropTypes.func,
+    forceJumpToTop: PropTypes.number,
+    pages: PropTypes.array,
+    history: PropTypes.object,
+    location: PropTypes.object
+};
 
 const PageScrollWithRouter = withRouter(PageScroll);
 

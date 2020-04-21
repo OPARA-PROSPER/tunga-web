@@ -5,8 +5,6 @@ import Icon from "../../../shared/core/Icon";
 import { Form, Title, Button, Input, Group, Label, IconGroup, Cta } from "../../../shared/Form/Form";
 import Error from "../../../../components/core/Error";
 import { resetPassword } from "../../../../actions/AuthActions";
-import { Redirect } from "react-router";
-import Routing from "../../../constants/Routing";
 import Progress from "../../../../components/core/Progress";
 import Success from "../../../../components/core/Success";
 
@@ -17,12 +15,9 @@ class AuthForm extends Component {
             email: '',
             formSubmitted: false,
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    onFormSubmit(e) {
+    onFormSubmit = e => {
         e.preventDefault();
         this.setState({ formSubmitted: true });
         const email = this.state.email.trim();
@@ -31,11 +26,11 @@ class AuthForm extends Component {
         }
 
         this.props.resetPassword({ email });
-    }
+    };
 
-    handleChange(event) {
+    handleChange = event => {
         this.setState({ [event.target.name]: event.target.value, formSubmitted: false });
-    }
+    };
 
     render() {
         const { auth } = this.props;
@@ -45,7 +40,7 @@ class AuthForm extends Component {
 
         return (
             <Form onSubmit={this.onFormSubmit}>
-                <React.Fragment>
+                <>
                     {auth.errors && auth.errors.reset && auth.errors.reset.non_field_errors ?
                         <Error
                             message={
@@ -87,13 +82,17 @@ class AuthForm extends Component {
                             Reset password
                         </Button>
                     </div>
-                </React.Fragment>
+                </>
             </Form>
         );
     }
 }
 
-AuthForm.propTypes = {};
+AuthForm.propTypes = {
+    resetPassword: PropTypes.func,
+    auth: PropTypes.object,
+    isAuthenticated: PropTypes.func
+};
 
 const mapStateToProps = store => ({
     auth: store.app.Auth

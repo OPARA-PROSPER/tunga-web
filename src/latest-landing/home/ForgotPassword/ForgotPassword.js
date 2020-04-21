@@ -4,18 +4,17 @@ import ForgotPasswordForm from "./ForgotPasswordForm/ForgotPasswordForm";
 
 import AuthPage from "../../shared/AuthPage/AuthForm";
 import "../../shared/AuthPage/AuthPage.scss";
+import PropTypes from "prop-types";
 
 class ForgotPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-
-        this.isAuthenticated = this.isAuthenticated.bind(this);
     }
 
-    isAuthenticated() {
+    isAuthenticated = () => {
         this.props.history.push('/dashboard');
-    }
+    };
 
     render() {
         return (
@@ -24,6 +23,8 @@ class ForgotPassword extends Component {
     }
 }
 
-ForgotPassword.propTypes = {};
+ForgotPassword.propTypes = {
+    history: PropTypes.object
+};
 
 export default ForgotPassword;

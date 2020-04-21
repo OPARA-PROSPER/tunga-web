@@ -41,7 +41,7 @@ export function createDocument(document, target) {
                 dispatch(
                     createDocumentFailed(
                         (error.response ? error.response.data : null), document, target
-                    ),
+                    )
                 );
             });
     };
@@ -83,8 +83,8 @@ export function listDocuments(filter, selection, prev_selection) {
             .catch(function(error) {
                 dispatch(
                     listDocumentsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -131,7 +131,7 @@ export function retrieveDocument(id) {
                 dispatch(
                     retrieveDocumentFailed(
                         error.response ? error.response.data : null, id
-                    ),
+                    )
                 );
             });
     };
@@ -182,7 +182,7 @@ export function updateDocument(id, document) {
                 dispatch(
                     updateDocumentFailed(
                         (error.response ? error.response.data : null), document, id
-                    ),
+                    )
                 );
             });
     };
@@ -226,8 +226,8 @@ export function listMoreDocuments(url, selection) {
                 dispatch(
                     listMoreDocumentsFailed(
                         error.response ? error.response.data : null,
-                        selection,
-                    ),
+                        selection
+                    )
                 );
             });
     };
@@ -266,23 +266,23 @@ export function deleteDocument(id) {
             .then(function () {
                 dispatch(deleteDocumentSuccess(id));
             }).catch(function (response) {
-            dispatch(deleteDocumentFailed(response.data, id));
-        });
-    }
+                dispatch(deleteDocumentFailed(response.data, id));
+            });
+    };
 }
 
 export function deleteDocumentStart(id) {
     return {
         type: DELETE_DOCUMENT_START,
         id
-    }
+    };
 }
 
 export function deleteDocumentSuccess(id) {
     return {
         type: DELETE_DOCUMENT_SUCCESS,
         id
-    }
+    };
 }
 
 export function deleteDocumentFailed(error, id) {
@@ -290,5 +290,5 @@ export function deleteDocumentFailed(error, id) {
         type: DELETE_DOCUMENT_FAILED,
         error,
         id
-    }
+    };
 }

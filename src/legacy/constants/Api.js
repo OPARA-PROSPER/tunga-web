@@ -51,7 +51,7 @@ export const ENDPOINT_INVITE = getEndpointUrl('invite/');
 export const ENDPOINT_CHANGE_PASSWORD = getEndpointUrl('auth/password/change/');
 export const ENDPOINT_RESET_PASSWORD = getEndpointUrl('auth/password/reset/');
 export const ENDPOINT_RESET_PASSWORD_CONFIRM = getEndpointUrl(
-    'auth/password/reset/confirm/',
+    'auth/password/reset/confirm/'
 );
 export const ENDPOINT_PROFILE = getEndpointUrl('me/profile/');
 export const ENDPOINT_COMPANY = getEndpointUrl('me/company/');
@@ -85,7 +85,7 @@ export const ENDPOINT_MEDIUM = getEndpointUrl('medium/');
 export const ENDPOINT_OEMBED = getEndpointUrl('oembed/');
 export const ENDPOINT_UPLOAD = getEndpointUrl('upload/');
 export const ENDPOINT_MULTI_TASK_PAYMENT = getEndpointUrl(
-    'multi-task-payment/',
+    'multi-task-payment/'
 );
 export const ENDPOINT_SKILL_PAGE = getEndpointUrl('skill-page/');
 export const ENDPOINT_PAYONEER_SIGNUP = getEndpointUrl('payoneer/');

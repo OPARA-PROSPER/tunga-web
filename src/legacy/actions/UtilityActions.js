@@ -9,7 +9,6 @@ import {
     sendGAEvent,
     GA_EVENT_CATEGORIES,
     GA_EVENT_ACTIONS,
-    GA_EVENT_LABELS,
 } from '../utils/tracking';
 
 export const CLEAR_VALIDATIONS = 'CLEAR_VALIDATIONS';
@@ -37,8 +36,8 @@ export function sendContactRequest(data) {
             .catch(function(error) {
                 dispatch(
                     sendContactRequestFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -56,7 +55,7 @@ export function sendContactRequestSuccess(data) {
         sendGAEvent(
             GA_EVENT_CATEGORIES.CONTACT,
             GA_EVENT_ACTIONS.REQUEST_OFFER,
-            OFFER_ITEM_NAMES[data.item],
+            OFFER_ITEM_NAMES[data.item]
         );
     }
 
@@ -84,8 +83,8 @@ export function getMediumPosts() {
             .catch(function(error) {
                 dispatch(
                     getMediumPostsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

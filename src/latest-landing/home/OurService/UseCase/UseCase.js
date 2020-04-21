@@ -45,6 +45,9 @@ class UseCase extends Component {
     }
 }
 
-UseCase.propTypes = {};
+UseCase.propTypes = {
+    useCases: PropTypes.instanceOf(Map),
+    onUseCaseClick: PropTypes.func
+};
 
 export default UseCase;

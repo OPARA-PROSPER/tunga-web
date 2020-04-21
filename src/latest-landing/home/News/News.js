@@ -19,7 +19,6 @@ import CioLogo from "../../assets/img/news/cio-logo.png";
 
 import blogArticles from './content/blogs';
 
-import TeamImg from "../../assets/img/our-team/user.png";
 import VlogImg from "../../assets/img/blog/vlog.png";
 import VlogVideo from "../../assets/videos/home/section-1.mp4";
 import NewsArticle from "./NewsArticle/NewsArticle";
@@ -30,6 +29,8 @@ import Footer from "../../layout/Footer/Footer";
 import PageScroll from "../../shared/PageScroll/PageScroll";
 import { withRouter } from "react-router";
 import qs from "qs";
+
+import PropTypes from "prop-types";
 
 const pages = [
     {
@@ -189,13 +190,11 @@ class News extends Component {
             ],
             blogArticles,
         };
-
-        this.onNavToggle = this.onNavToggle.bind(this);
     }
 
-    onNavToggle(isNavOpen) {
+    onNavToggle = isNavOpen => {
         this.setState({ isNavOpen });
-    }
+    };
 
     render() {
         const splitHash = this.props.history.location.hash.split('?');
@@ -227,7 +226,9 @@ class News extends Component {
     }
 }
 
-News.propTypes = {};
+News.propTypes = {
+    history: PropTypes.object
+};
 
 const NewsWithRouter = withRouter(News);
 

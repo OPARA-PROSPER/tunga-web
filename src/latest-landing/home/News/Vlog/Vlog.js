@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Vlog.scss";
 import Carousel from "../../../shared/Carousel/Carousel";
-import Icon from "../../../shared/core/Icon";
 import VlogVideo from './VlogVideo/VlogVideo';
 
 import { fetchVlogsRequest } from '../../../../services/vlogs/actions';
 import PlayIcon from "../../../assets/img/common/icons/icon-play.png";
+
+import PropTypes from "prop-types";
 
 
 class Vlog extends Component {
@@ -18,20 +19,16 @@ class Vlog extends Component {
             leftPosition: 0,
             selectedVlog: null
         };
-
-        this.onVlogClick = this.onVlogClick.bind(this);
-        this.onVideoClose = this.onVideoClose.bind(this);
     }
 
 
-    onVlogClick(vlog) {
+    onVlogClick = vlog => {
         this.setState({ selectedVlog: vlog });
-    }
+    };
 
-
-    onVideoClose() {
+    onVideoClose = () => {
         this.setState({ selectedVlog: false });
-    }
+    };
 
 
     UNSAFE_componentWillMount() {
@@ -130,7 +127,10 @@ class Vlog extends Component {
     }
 }
 
-Vlog.propTypes = {};
+Vlog.propTypes = {
+    fetchVlogsRequest: PropTypes.func,
+    vlogs: PropTypes.array
+};
 
 
 const mapStateToProps = state => ({

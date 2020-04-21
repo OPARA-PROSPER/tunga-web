@@ -16,7 +16,7 @@ export function toggleSlideIn(
     selector,
     action = 'toggle',
     onStart = null,
-    onComplete = null,
+    onComplete = null
 ) {
     var slideBox = $(selector);
     slideBox.animate(
@@ -25,8 +25,8 @@ export function toggleSlideIn(
             duration: 250,
             easing: 'swing',
             start: onStart,
-            complete: onComplete,
-        },
+            complete: onComplete
+        }
     );
 }
 
@@ -40,7 +40,7 @@ export function initSideBarToggle() {
                 var running = $('#running-tasks');
                 running.removeClass('bottom');
             },
-            resizeSideBar,
+            resizeSideBar
         );
     });
 

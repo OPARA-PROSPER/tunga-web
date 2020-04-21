@@ -219,7 +219,7 @@ export default class Home extends React.Component {
                 </section>
 
                 {isLoading || skill_page?null:(
-                    <React.Fragment>
+                    <>
                         <section id="development-style">
                             <div>
                                 <Title>
@@ -291,7 +291,7 @@ export default class Home extends React.Component {
                             </div>
                         </section>
                         */}
-                    </React.Fragment>
+                    </>
                 )}
 
                 <div id="video-slideshow">
@@ -311,7 +311,7 @@ export default class Home extends React.Component {
 
                 {isLoading || skill_page?(
                     skill_page?(
-                        <React.Fragment>
+                        <>
                             <section id="story">
                                 <div className="container">
                                     <Title>
@@ -374,10 +374,10 @@ export default class Home extends React.Component {
                                     </div>
                                 </section>
                             ):null}
-                        </React.Fragment>
+                        </>
                     ):null
                 ):(
-                    <React.Fragment>
+                    <>
                         <section id="case-studies">
                             <div className="container">
                                 <Title>Case Studies</Title>
@@ -461,7 +461,7 @@ export default class Home extends React.Component {
                                 </div>
                             </div>
                         </section>
-                    </React.Fragment>
+                    </>
                 )}
 
                 <ContactUs/>

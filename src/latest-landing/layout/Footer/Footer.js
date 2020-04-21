@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Slider from "react-slick";
 import Icon from "../../../components/core/Icon";
-import { Col, Container, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 
 import "../Footer/slick/slick/slick.css";
 import "../Footer/slick/slick/slick-theme.css";
@@ -21,7 +21,6 @@ import "../Footer/slick/slick/slick-theme.css";
 import "./Footer.scss";
 import { fetchBlogsRequest } from "../../../services/blogs/actions";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 import Routing from "../../constants/Routing";
 import { NavLink } from "react-router-dom";
 
@@ -34,14 +33,14 @@ const SectionLink = ({ title, onUrlNav, url }) => {
     );
 };
 
+SectionLink.propTypes = {
+    title: PropTypes.string,
+    onUrlNav: PropTypes.string,
+    url: PropTypes.string
+};
+
 
 class Footer extends Component {
-    constructor(props) {
-        super(props);
-        this.goToServices = this.goToServices.bind(this);
-    }
-
-
     UNSAFE_componentWillMount() {
         this.loadData(this.props.query);
     }
@@ -51,13 +50,13 @@ class Footer extends Component {
         this.props.fetchBlogsRequest({ search, limit: 5 });
     }
 
-    goToServices() {
+    goToServices = () => {
         this.props.history.push('/#services');
-    }
+    };
 
 
     render() {
-        const { blogs, onUrlNav } = this.props;
+        const { blogs } = this.props;
         const firstBlogs = blogs.slice(0, 5);
 
         var settings = ({
@@ -367,7 +366,12 @@ class Footer extends Component {
     }
 }
 
-Footer.propTypes = {};
+Footer.propTypes = {
+    query: PropTypes.object,
+    fetchBlogsRequest: PropTypes.func,
+    history: PropTypes.object,
+    blogs: PropTypes.array
+};
 
 
 const mapStateToProps = state => ({

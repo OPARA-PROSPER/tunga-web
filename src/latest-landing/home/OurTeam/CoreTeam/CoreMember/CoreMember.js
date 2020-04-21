@@ -39,6 +39,8 @@ class CoreMember extends Component {
     }
 }
 
-CoreMember.propTypes = {};
+CoreMember.propTypes = {
+    member: PropTypes.object
+};
 
 export default CoreMember;

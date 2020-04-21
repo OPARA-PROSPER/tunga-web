@@ -18,7 +18,7 @@ function mapDispatchToProps(dispatch) {
         MilestoneActions: bindActionCreators(MilestoneActions, dispatch),
         ProgressReportActions: bindActionCreators(
             ProgressReportActions,
-            dispatch,
+            dispatch
         ),
     };
 }

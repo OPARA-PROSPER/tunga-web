@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./ServiceCard.scss";
-import { Card, CardBody, CardText, CardTitle, CardImg } from "reactstrap";
+import { Card, CardBody, CardText, CardTitle } from "reactstrap";
 import arrow from "../../../assets/img/service/Vector-1.png";
 import LazyBackground from "../../../shared/LazyBackground/LazyBackground";
 
@@ -12,11 +12,7 @@ class ServiceCard extends Component {
             showVideo: false,
             videos: {}
         };
-
-        this.onMouseEnter = this.onMouseEnter.bind(this);
-        this.onMouseLeave = this.onMouseLeave.bind(this);
     }
-
 
     onVideoLoad(url) {
         const videos = this.state.videos;
@@ -26,16 +22,15 @@ class ServiceCard extends Component {
         }, 200);
     }
 
-    onMouseEnter() {
+    onMouseEnter = () => {
         this.setState({ showVideo: !this.props.isMobile });
-    }
+    };
 
-
-    onMouseLeave() {
+    onMouseLeave = () => {
         const videos = this.state.videos;
         videos[this.props.service.videoMain] = false;
         this.setState({ showVideo: false, videos });
-    }
+    };
 
 
     render() {
@@ -98,6 +93,10 @@ class ServiceCard extends Component {
     }
 }
 
-ServiceCard.propTypes = {};
+ServiceCard.propTypes = {
+    isMobile: PropTypes.bool,
+    service: PropTypes.object,
+    onServiceSelection: PropTypes.func
+};
 
 export default ServiceCard;

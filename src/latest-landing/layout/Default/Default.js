@@ -6,10 +6,9 @@ import ScheduleCall from "../../home/ScheduleCall/ScheduleCall";
 import CaseStudies from "../../home/CaseStudies/CaseStudies";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import PageScroller from "../../../components/pageScroller";
 import PageScroll from "../../shared/PageScroll/PageScroll";
 import { withRouter } from "react-router";
-import { kebabCase } from "lodash";
+import PropTypes from 'prop-types';
 
 const pages = [
     {
@@ -72,28 +71,23 @@ class Default extends Component {
     constructor(props) {
         super(props);
         this.state = { activeUseCase: 1 };
-
-        this.onUseCaseClick = this.onUseCaseClick.bind(this);
-        this.onPageScrolled = this.onPageScrolled.bind(this);
-        this.onTalentPoolRequest = this.onTalentPoolRequest.bind(this);
-        this.goToServices = this.goToServices.bind(this);
     }
 
-    onUseCaseClick(activeUseCase) {
+    onUseCaseClick = activeUseCase => {
         this.setState({ gotToPage: 4, activeUseCase });
-    }
+    };
 
-    goToServices() {
+    goToServices = () => {
         this.setState({ gotToPage: 2 });
-    }
+    };
 
-    onPageScrolled() {
+    onPageScrolled = () => {
         this.setState({ gotToPage: false });
-    }
+    };
 
-    onTalentPoolRequest() {
+    onTalentPoolRequest = () => {
         this.props.history.push('/our-team#talent-pool');
-    }
+    };
 
 
     render() {
@@ -128,7 +122,10 @@ class Default extends Component {
     }
 }
 
-Default.propTypes = {};
+Default.propTypes = {
+    isMobile: PropTypes.bool,
+    history: PropTypes.object
+};
 const DefaultWithRouter = withRouter(Default);
 
 export default DefaultWithRouter;

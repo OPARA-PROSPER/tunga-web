@@ -11,8 +11,8 @@ function mapDispatchToProps(dispatch) {
     return {
         MultiTaskPaymentActions: bindActionCreators(
             MultiTaskPaymentActions,
-            dispatch,
-        ),
+            dispatch
+        )
     };
 }
 

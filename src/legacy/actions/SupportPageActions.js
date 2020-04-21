@@ -21,7 +21,7 @@ export const LIST_MORE_SUPPORT_PAGES_SUCCESS =
     'LIST_MORE_SUPPORT_PAGES_SUCCESS';
 export const LIST_MORE_SUPPORT_PAGES_FAILED = 'LIST_MORE_SUPPORT_PAGES_FAILED';
 
-export function createSupportPage(page, attachments) {
+export function createSupportPage(page) {
     return dispatch => {
         dispatch(createSupportPageStart(page));
 
@@ -33,8 +33,8 @@ export function createSupportPage(page, attachments) {
             .catch(function(error) {
                 dispatch(
                     createSupportPageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -72,8 +72,8 @@ export function listSupportPages(filter) {
             .catch(function(error) {
                 dispatch(
                     listSupportPagesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -114,8 +114,8 @@ export function retrieveSupportPage(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveSupportPageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -153,8 +153,8 @@ export function updateSupportPage(id, page) {
             .catch(function(error) {
                 dispatch(
                     updateSupportPageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -192,8 +192,8 @@ export function deleteSupportPage(id) {
             .catch(function(error) {
                 dispatch(
                     deleteSupportPageFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -231,8 +231,8 @@ export function listMoreSupportPages(url) {
             .catch(function(error) {
                 dispatch(
                     listMoreSupportPagesFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };

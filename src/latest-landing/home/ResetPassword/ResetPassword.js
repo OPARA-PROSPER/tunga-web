@@ -1,22 +1,18 @@
 import React, { Component } from "react";
-
 import ResetPasswordForm from "./ResetPasswordForm/ResetPasswordForm";
-
 import AuthPage from "../../shared/AuthPage/AuthForm";
 import "../../shared/AuthPage/AuthPage.scss";
-import qs from "qs";
+import PropTypes from "prop-types";
 
 class ResetPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-
-        this.isAuthenticated = this.isAuthenticated.bind(this);
     }
 
-    isAuthenticated() {
+    isAuthenticated = () => {
         this.props.history.push('/dashboard');
-    }
+    };
 
     render() {
         const query = this.props.match.params;
@@ -26,6 +22,9 @@ class ResetPassword extends Component {
     }
 }
 
-ResetPassword.propTypes = {};
+ResetPassword.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.match
+};
 
 export default ResetPassword;

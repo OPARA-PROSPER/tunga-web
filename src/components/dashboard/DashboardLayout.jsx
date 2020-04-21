@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import { Redirect } from 'react-router-dom';
 import moment from "moment";
 
@@ -27,6 +27,14 @@ export default class DashboardLayout extends React.Component {
 
     componentDidMount() {
         $('body').addClass('is-dashboard');
+
+        const script = document.createElement("script");
+
+        script.src = "https://js.stripe.com/v3/";
+        script.id = "stripeRef";
+        script.async = true;
+
+        document.body.appendChild(script);
 
         const {user, AuthActions} = this.props;
 
@@ -61,6 +69,9 @@ export default class DashboardLayout extends React.Component {
 
     componentWillUnmount () {
         $('body').removeClass('is-dashboard');
+
+        const script = document.getElementById("stripeRef");
+        document.body.removeChild(script);
     }
 
     render() {
@@ -69,18 +80,18 @@ export default class DashboardLayout extends React.Component {
 
         return (
             user && user.id && !__MAINTENANCE__?(
-                <React.Fragment>
+                <>
                     <NavBar variant="dashboard" user={user} onSignOut={logout} isLargeDevice={isLargeDevice}/>
                     {isLargeDevice?(
                         <SideBar/>
                     ):null}
                     <TitleBar user={user} isLargeDevice={isLargeDevice} showBreadCrumbs={isProjectsRoute && !isLargeDevice}/>
                     <MainContent isLargeDevice={isLargeDevice} className={isProjectsRoute && !isLargeDevice?'has-breadcrumbs':''}/>
-                </React.Fragment>
+                </>
             ):(
                 <Redirect from="*" to={`/${__MAINTENANCE__?'maintenance':''}`}/>
             )
-        )
+        );
     }
 }
 

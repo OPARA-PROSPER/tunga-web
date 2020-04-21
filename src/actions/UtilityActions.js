@@ -38,8 +38,8 @@ export function sendContactRequest(data) {
             .catch(function(error) {
                 dispatch(
                     sendContactRequestFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -85,8 +85,8 @@ export function sendInviteRequest(data) {
             .catch(function(error) {
                 dispatch(
                     sendInviteRequestFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -124,8 +124,8 @@ export function getMediumPosts() {
             .catch(function(error) {
                 dispatch(
                     getMediumPostsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -163,7 +163,7 @@ export function findReplacement(model, id) {
                 dispatch(
                     findReplacementFailed(
                         error.response ? error.response.data : null, model, id
-                    ),
+                    )
                 );
             });
     };

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./ImpactSourcing.scss";
 import Button from "../../../shared/core/Button";
 import ImpactSourcingBg from "../../../assets/img/our-story/impact-sourcing.png";
@@ -67,5 +66,4 @@ class ImpactSourcing extends Component {
     }
 }
 
-ImpactSourcing.propTypes = {};
 export default ImpactSourcing;

@@ -66,7 +66,7 @@ export function parseDefaultConsents() {
             if(idx !== 0 && !moment.utc(category).isValid()) {
                 currentConsents.push(category);
             }
-        })
+        });
     } else {
         COOKIE_OPTIONS.forEach(category => {
             if(category[3] && !category[4]) {

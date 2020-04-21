@@ -21,7 +21,7 @@ export function requiresAuthOrEmail(routes) {
     return (
         getRouteParamValues(
             [AUTHED_ONLY, AUTHED_OR_EMAIL_ONLY],
-            routes,
+            routes
         ).indexOf(true) > -1
     );
 }
@@ -38,7 +38,7 @@ export function getRouteParamValues(keys, routes) {
             paramValues = paramValues.concat(
                 routes.map(function(route) {
                     return route[key];
-                }),
+                })
             );
         });
     }
@@ -88,6 +88,7 @@ export function showCallWidget(routes) {
 }
 
 export function openCalendlyWidget(url = CALENDLY_CALL_URL) {
+    // eslint-disable-next-line no-undef
     Calendly.showPopupWidget(url);
     sendGAEvent(GA_EVENT_CATEGORIES.CONTACT, GA_EVENT_ACTIONS.SCHEDULE_CALL);
 }

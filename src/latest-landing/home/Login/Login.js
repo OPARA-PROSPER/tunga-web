@@ -5,17 +5,17 @@ import LoginForm from "./LoginForm/LoginForm";
 import AuthPage from "../../shared/AuthPage/AuthForm";
 import "../../shared/AuthPage/AuthPage.scss";
 
+import PropTypes from "prop-types";
+
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-
-        this.isAuthenticated = this.isAuthenticated.bind(this);
     }
 
-    isAuthenticated() {
+    isAuthenticated = () => {
         this.props.history.push('/dashboard');
-    }
+    };
 
     render() {
         return (
@@ -24,6 +24,8 @@ class Login extends Component {
     }
 }
 
-Login.propTypes = {};
+Login.propTypes = {
+    history: PropTypes.object
+};
 
 export default Login;

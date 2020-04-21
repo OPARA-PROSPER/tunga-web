@@ -6,8 +6,7 @@ import WhitePaperImg from "../../../assets/img/news/publications/white-paper.jpg
 import { Button } from "../../../shared/Form/Form";
 import PublicationDownload from "./PublicationDownload/PublicationDownload";
 import Carousel from "../../../shared/Carousel/Carousel";
-import { isEqual, kebabCase } from "lodash";
-import qs from "qs";
+import PropTypes from "prop-types";
 
 class Publications extends Component {
     constructor(props) {
@@ -70,10 +69,6 @@ class Publications extends Component {
                 },
             ]
         };
-
-        this.onPageChange = this.onPageChange.bind(this);
-        this.onDownloadOpen = this.onDownloadOpen.bind(this);
-        this.onDownloadClose = this.onDownloadClose.bind(this);
     }
 
 
@@ -97,23 +92,21 @@ class Publications extends Component {
     }
 
 
-    onPageChange(page) {
+    onPageChange = page => {
         this.setState({ activePage: page });
         const slug = this.state.publications[page - 1].slug;
         const { hash, pathname } = this.props.history.location;
         const parsedHash = hash.split('?')[0];
         this.props.history.push(`${pathname}${parsedHash}?publication=${slug}`);
-    }
+    };
 
-
-    onDownloadOpen() {
+    onDownloadOpen = () => {
         this.setState({ isDownloadOpen: true });
-    }
+    };
 
-
-    onDownloadClose() {
+    onDownloadClose = () => {
         this.setState({ isDownloadOpen: false });
-    }
+    };
 
 
     render() {
@@ -212,6 +205,11 @@ class Publications extends Component {
     }
 }
 
-Publications.propTypes = {};
+Publications.propTypes = {
+    publicationQuery: PropTypes.any, // TODO fix the property type
+    hash: PropTypes.any,
+    pathname: PropTypes.any,
+    history: PropTypes.any
+};
 
 export default Publications;

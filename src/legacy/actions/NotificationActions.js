@@ -1,14 +1,14 @@
-import axios from 'axios';
-import {ENDPOINT_NOTIFICATION} from '../constants/Api';
+// import axios from 'axios';
+// import {ENDPOINT_NOTIFICATION} from '../constants/Api';
 
 export const GET_NOTIFICATIONS_START = 'GET_NOTIFICATIONS_START';
 export const GET_NOTIFICATIONS_SUCCESS = 'GET_NOTIFICATIONS_SUCCESS';
 export const GET_NOTIFICATIONS_FAILED = 'GET_NOTIFICATIONS_FAILED';
 
 export function getNotifications() {
-    return dispatch => {
+    return () => { // FIXME add back the notification logic
         return;
-        dispatch(getNotificationsStart());
+       /*  dispatch(getNotificationsStart());
         axios
             .get(ENDPOINT_NOTIFICATION)
             .then(function(response) {
@@ -17,10 +17,10 @@ export function getNotifications() {
             .catch(function(error) {
                 dispatch(
                     getNotificationsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
-            });
+            }); */
     };
 }
 

@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import "./PaginateArrow.scss";
 import Icon from "../core/Icon";
+import PropTypes from 'prop-types';
+
+PaginateArrow.propTypes = {
+    This: PropTypes.any,
+    color: PropTypes.string,
+    float: PropTypes.string 
+};
 
 class PaginateArrow extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    const { This, color, float } = this.props;
-    const { paginate, data } = This.state;
-    return (
+    render() {
+        const { This, color, float } = this.props;
+        const { paginate, data } = This.state;
+        return (
             <span className="PaginateArrow">
                 <span className={float}>
                     <Icon
@@ -36,8 +43,8 @@ class PaginateArrow extends Component {
                 </span>
                 <span className="clearfix" />
             </span>
-    );
-  }
+        );
+    }
 }
 
 PaginateArrow.propTypes = {};

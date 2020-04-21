@@ -6,11 +6,10 @@ import {
     CardBody,
     CardText,
     CardTitle,
-    Col,
     Media,
-    Row,
     Spinner
 } from "reactstrap";
+import PropTypes from "prop-types";
 
 class CaseStudyCard extends Component {
     constructor(props) {
@@ -97,6 +96,8 @@ class CaseStudyCard extends Component {
     }
 }
 
-CaseStudyCard.propTypes = {};
+CaseStudyCard.propTypes = {
+    caseStudy: PropTypes.object
+};
 
 export default CaseStudyCard;

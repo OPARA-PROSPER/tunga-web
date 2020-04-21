@@ -30,7 +30,7 @@ export function createComment(comment, attachments) {
             headers['Content-Type'] = 'multipart/form-data';
 
             data = new FormData();
-            Object.keys(comment).map((key, idx) => {
+            Object.keys(comment).map((key) => {
                 if (!Array.isArray(comment[key]) || comment[key].length) {
                     data.append(key, comment[key]);
                 }
@@ -49,8 +49,8 @@ export function createComment(comment, attachments) {
             .catch(function(error) {
                 dispatch(
                     createCommentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -88,8 +88,8 @@ export function listComments(filter) {
             .catch(function(error) {
                 dispatch(
                     listCommentsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -130,8 +130,8 @@ export function retrieveComment(id) {
             .catch(function(error) {
                 dispatch(
                     retrieveCommentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -169,8 +169,8 @@ export function updateComment(id, comment) {
             .catch(function(error) {
                 dispatch(
                     updateCommentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -208,8 +208,8 @@ export function deleteComment(id) {
             .catch(function(error) {
                 dispatch(
                     deleteCommentFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
@@ -247,8 +247,8 @@ export function listMoreComments(url) {
             .catch(function(error) {
                 dispatch(
                     listMoreCommentsFailed(
-                        error.response ? error.response.data : null,
-                    ),
+                        error.response ? error.response.data : null
+                    )
                 );
             });
     };
