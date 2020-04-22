@@ -76,8 +76,6 @@ class PublicationDownload extends React.Component {
             newState[key] = e.target.value;
         }
         this.setState(newState);
-
-        console.log(this.state);
     }
 
 
