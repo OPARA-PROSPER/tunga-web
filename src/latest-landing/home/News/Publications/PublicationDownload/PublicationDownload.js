@@ -34,9 +34,6 @@ class PublicationDownload extends React.Component {
             const downloadLink = nextProps.Profile.isSaved.visitors.download_url;
 
             window.open(downloadLink);
-
-
-
         }
     }
 
@@ -52,8 +49,9 @@ class PublicationDownload extends React.Component {
 
     }
 
-    handleSubmit(e){
+    handleSubmit = (e) => {
         e.preventDefault();
+
         const {first_name, last_name, email, phone_number, country, company, paper} = this.state;
         if (isBusinessEmail(email)) {
             this.props.ProfileActions.createVisitor({
@@ -78,6 +76,8 @@ class PublicationDownload extends React.Component {
             newState[key] = e.target.value;
         }
         this.setState(newState);
+
+        console.log(this.state);
     }
 
 
