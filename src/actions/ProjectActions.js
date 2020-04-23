@@ -84,36 +84,21 @@ export function listProjects(filter, selection, prev_selection) {
     return dispatch => {
         dispatch(listProjectsStart(filter, selection, prev_selection));
 
-        console.log(filter,selection, prev_selection);
-        //  FIXME: get right way to call api. 
-
-        if(filter.archived == 'True'){
-            axios
-                .get('https://sandbox.tunga.io/api/projects/archived/')
-                .then(function (response) {
-                    dispatch(listProjectsSuccess(response.data, filter, selection));
-                })
-                .catch(function (error) {
-                    dispatch(
-                        listProjectsFailed(
-                            error.response ? error.response.data : null
-                        )
-                    );
-                });
-        }else {
-            axios
-                .get(ENDPOINT_PROJECTS, { params: filter })
-                .then(function (response) {
-                    dispatch(listProjectsSuccess(response.data, filter, selection));
-                })
-                .catch(function (error) {
-                    dispatch(
-                        listProjectsFailed(
-                            error.response ? error.response.data : null
-                        )
-                    );
-                });
-        }
+        axios
+            .get(
+                filter.archived == 'True' ? ENDPOINT_PROJECTS + 'archived/' : ENDPOINT_PROJECTS, 
+                (filter.archived == 'True' ? null : { params: filter })
+            )
+            .then(function (response) {
+                dispatch(listProjectsSuccess(response.data, filter, selection));
+            })
+            .catch(function (error) {
+                dispatch(
+                    listProjectsFailed(
+                        error.response ? error.response.data : null
+                    )
+                );
+            });
     };
 }
 
