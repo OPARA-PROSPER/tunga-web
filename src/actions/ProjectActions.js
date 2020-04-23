@@ -83,18 +83,37 @@ export function createProjectFailed(error, project, target) {
 export function listProjects(filter, selection, prev_selection) {
     return dispatch => {
         dispatch(listProjectsStart(filter, selection, prev_selection));
-        axios
-            .get(ENDPOINT_PROJECTS, { params: filter })
-            .then(function (response) {
-                dispatch(listProjectsSuccess(response.data, filter, selection));
-            })
-            .catch(function (error) {
-                dispatch(
-                    listProjectsFailed(
-                        error.response ? error.response.data : null
-                    )
-                );
-            });
+
+        console.log(filter,selection, prev_selection);
+        //  FIXME: get right way to call api. 
+
+        if(filter.archived == 'True'){
+            axios
+                .get('https://sandbox.tunga.io/api/projects/archived/')
+                .then(function (response) {
+                    dispatch(listProjectsSuccess(response.data, filter, selection));
+                })
+                .catch(function (error) {
+                    dispatch(
+                        listProjectsFailed(
+                            error.response ? error.response.data : null
+                        )
+                    );
+                });
+        }else {
+            axios
+                .get(ENDPOINT_PROJECTS, { params: filter })
+                .then(function (response) {
+                    dispatch(listProjectsSuccess(response.data, filter, selection));
+                })
+                .catch(function (error) {
+                    dispatch(
+                        listProjectsFailed(
+                            error.response ? error.response.data : null
+                        )
+                    );
+                });
+        }
     };
 }
 
