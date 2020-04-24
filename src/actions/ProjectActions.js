@@ -83,8 +83,12 @@ export function createProjectFailed(error, project, target) {
 export function listProjects(filter, selection, prev_selection) {
     return dispatch => {
         dispatch(listProjectsStart(filter, selection, prev_selection));
+
         axios
-            .get(ENDPOINT_PROJECTS, { params: filter })
+            .get(
+                filter.archived == 'True' ? ENDPOINT_PROJECTS + 'archived/' : ENDPOINT_PROJECTS, 
+                (filter.archived == 'True' ? null : { params: filter })
+            )
             .then(function (response) {
                 dispatch(listProjectsSuccess(response.data, filter, selection));
             })
