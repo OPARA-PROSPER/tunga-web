@@ -68,7 +68,7 @@ export default class Profile extends React.Component {
         let profile = {...this.state.profile}, nestedUser = {};
 
         ['first_name', 'last_name', 'image'].forEach(key => {
-            if(profile[key]) {
+            if(profile[key] || profile[key] == "") {
                 nestedUser[key] = profile[key] || '';
             }
             delete profile[key];

@@ -49,7 +49,7 @@ class CountrySelector extends React.Component {
 
     getOptions() {
         let options = [];
-        options.push(['', this.props.placeholder || '-- Select a country --']);
+        options.push(['--', this.props.placeholder || '-- Select a country --']);
 
         const {countries} = this.props;
 

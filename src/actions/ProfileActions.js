@@ -242,7 +242,19 @@ export function updateProfile(id, profile) {
             data = composeFormData(profile);
         }
 
-        axios
+        var errors = Object.keys(profile.user).map(function(key) {
+            return [key, profile.user[key]];
+        });
+
+        let requiredFields = errors.reduce(function(accumulator, currentValue) {         
+            if(currentValue[1] == ""){
+                accumulator[currentValue[0]] = currentValue[0].replace("_", " ") + " is required";
+            }
+            return accumulator;
+        }, {});
+
+        if(requiredFields.length == 0){
+            axios
             .request({
                 url: ENDPOINT_PROFILE,
                 method: request_method,
@@ -259,6 +271,13 @@ export function updateProfile(id, profile) {
                     )
                 );
             });
+        }else{
+            dispatch(
+                updateProfileFailed(
+                    requiredFields, profile, id
+                )
+            );
+        }
     };
 }
 
