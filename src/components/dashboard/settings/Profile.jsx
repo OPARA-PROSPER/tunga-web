@@ -98,6 +98,7 @@ export default class Profile extends React.Component {
                             <FormGroup>
                                 <label className="control-label">First Name</label>
                                 <CustomInputGroup variant="personal"
+                                                  required="required"
                                                   onChange={this.onChangeField.bind(this, 'first_name')}
                                                   value={this.state.profile.first_name}
                                 />
@@ -115,6 +116,7 @@ export default class Profile extends React.Component {
                             <FormGroup>
                                 <label className="control-label">Last Name</label>
                                 <CustomInputGroup variant="personal"
+                                                  required="required"
                                                   onChange={this.onChangeField.bind(this, 'last_name')}
                                                   value={this.state.profile.last_name}
                                 />
@@ -132,6 +134,7 @@ export default class Profile extends React.Component {
                             <FormGroup>
                                 <label className="control-label">Phone Number</label>
                                 <CustomInputGroup variant="tel"
+                                                  required="required"
                                                   onChange={this.onChangeField.bind(this, 'phone_number')}
                                                   value={this.state.profile.phone_number}
                                 />
@@ -171,6 +174,7 @@ export default class Profile extends React.Component {
                                     <FormGroup>
                                         <label className="control-label">Street</label>
                                         <CustomInputGroup variant="address"
+                                                          required="required"
                                                           onChange={this.onChangeField.bind(this, 'street')}
                                                           value={this.state.profile.street}
                                         />
@@ -185,7 +189,9 @@ export default class Profile extends React.Component {
                                     ) : null}
                                     <FormGroup>
                                         <label className="control-label">Number/Plot</label>
-                                        <CustomInputGroup onChange={this.onChangeField.bind(this, 'plot_number')}
+                                        <CustomInputGroup variant="number"
+                                                          required="required"
+                                                          onChange={this.onChangeField.bind(this, 'plot_number')}
                                                           value={this.state.profile.plot_number}
                                         />
                                     </FormGroup>
@@ -202,6 +208,7 @@ export default class Profile extends React.Component {
                                     <FormGroup>
                                         <label className="control-label">City</label>
                                         <CustomInputGroup variant="address"
+                                                          required="required"
                                                           onChange={this.onChangeField.bind(this, 'city')}
                                                           value={this.state.profile.city}
                                         />
@@ -216,7 +223,8 @@ export default class Profile extends React.Component {
                                     ) : null}
                                     <FormGroup>
                                         <label className="control-label">Zip code</label>
-                                        <CustomInputGroup onChange={this.onChangeField.bind(this, 'postal_code')}
+                                        <CustomInputGroup required="required"
+                                                          onChange={this.onChangeField.bind(this, 'postal_code')}
                                                           value={this.state.profile.postal_code}/>
                                     </FormGroup>
                                 </div>

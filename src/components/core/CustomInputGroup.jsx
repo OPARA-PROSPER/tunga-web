@@ -27,6 +27,9 @@ const CUSTOM_INPUTS = {
             </button>
         )
     },
+    number: {
+        type: 'number'
+    },
     url: {
         placeholder: 'Paste URL here',
         prepend: <Icon name="link" />
@@ -68,15 +71,17 @@ export default class CustomInputGroup extends React.Component {
 
     getProperties() {
         let variantProps = CUSTOM_INPUTS[this.props.variant] || {},
-            overrideProps = this.cleanProps();
+            overrideProps = this.cleanProps(),
+            required = this.props.required;
 
         return {
             ...variantProps,
             ...overrideProps,
+            ...required,
             ...{
                 className: `${variantProps.className || ''} ${overrideProps.className || ''}`
             }
-        }
+        };
     }
 
     cleanProps() {
@@ -94,7 +99,8 @@ export default class CustomInputGroup extends React.Component {
         return (
             <InputGroup {...this.getProperties()}
                         {...filterInputProps(this.props)}
-                        {...filterEventProps(this.props)}/>
+                        {...filterEventProps(this.props)}
+                        />
         );
     }
 }
