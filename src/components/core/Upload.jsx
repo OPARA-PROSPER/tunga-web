@@ -56,7 +56,9 @@ export default class Upload extends React.Component {
     }
 
     onDrop(files) {
-        this.setState({files: this.props.multiple?[...this.state.files, ...files]:[files[0]]});
+        if(files.length > 0){
+            this.setState({files: this.props.multiple?[...this.state.files, ...files]:[files[0]]});
+        }
     }
 
     onRemoveFile(file) {
