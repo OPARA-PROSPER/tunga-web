@@ -13,77 +13,118 @@ import Input from '../../../core/Input';
 import { validURL } from '../../../utils/validation';
 
 export default class WorkForm extends React.Component {
-  constructor(props) {
-    super(props);
-    let initialWorkState = {
-      company: '',
-      position: '',
-      details: '',
-      project_link: '',
-      repository_link: ''
+    constructor(props) {
+        super(props);
+        let initialWorkState = {
+            company: '',
+            position: '',
+            details: '',
+            project_link: '',
+            repository_link: ''
+        };
+        this.state = {
+            work: _.isEmpty(props.work) ? { ...initialWorkState } : props.work,
+            userErrors: { project_link: false, repository_link: false },
+            errors: {}
+        };
+    }
+
+    validationHandler = (inputName, inputValue) => {
+        const { userErrors } = this.state;
+        if (inputValue.length >= 1 && !validURL(inputValue)) {
+            return this.setState({ userErrors: { ...userErrors, [inputName]: true } });
+        }
+        return this.setState({ userErrors: { ...userErrors, [inputName]: false } });
     };
-    this.state = {
-      work: _.isEmpty(props.work) ? { ...initialWorkState } : props.work,
-      userErrors: { project_link: false, repository_link: false }
+
+    onInputChange(key, e) {
+        let newState = {};
+        newState[key] = e.target.value;
+        this.setState({ work: { ...this.state.work, ...newState } });
+    }
+
+    handleLinksChange = event => {
+        const { work, touched } = this.state;
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({ work: { ...work, [event.target.name]: event.target.value } }, () => this.validationHandler(name, value));
     };
-  }
 
-  validationHandler = (inputName, inputValue) => {
-    const { userErrors } = this.state;
-    if (inputValue.length >= 1 && !validURL(inputValue)) {
-      return this.setState({ userErrors: { ...userErrors, [inputName]: true } });
+    onDateChange(from = true, dateSelected) {
+        const momentDate = moment(dateSelected);
+        const month = momentDate.month() + 1;
+        const year = momentDate.year();
+        let newState = {};
+        if (from) {
+            newState = { start_year: year, start_month: month };
+        } else {
+            newState = { end_year: year, end_month: month };
+        }
+        this.setState({ work: { ...this.state.work, ...newState } });
     }
-    return this.setState({ userErrors: { ...userErrors, [inputName]: false } });
-  };
 
-  onInputChange(key, e) {
-    let newState = {};
-    newState[key] = e.target.value;
-    this.setState({ work: { ...this.state.work, ...newState } });
-  }
+    onSave = e => {
+        e.preventDefault();
 
-  handleLinksChange = event => {
-    const { work, touched } = this.state;
-    const name = event.target.name;
-    const value = event.target.value;
-    this.setState({ work: { ...work, [event.target.name]: event.target.value } }, () => this.validationHandler(name, value));
-  };
+        let newState = {};
+        newState["errors"] = {};
+    
+        if(!this.state.work.start_year){
+            newState["errors"] = { ...newState["errors"], start_year: "This field is required"};
+        }
+        if(!this.state.work.start_month){
+            newState["errors"] = { ...newState["errors"], start_month: "This field is required"};
+        }
+        if(!this.state.work.end_year){
+            newState["errors"] = { ...newState["errors"], end_year: "This field is required"};
+        }
+        if(!this.state.work.end_month){
+            newState["errors"] = { ...newState["errors"], end_month: "This field is required"};
+        }
 
-  onDateChange(from = true, dateSelected) {
-    const momentDate = moment(dateSelected);
-    const month = momentDate.month() + 1;
-    const year = momentDate.year();
-    let newState = {};
-    if (from) {
-      newState = { start_year: year, start_month: month };
-    } else {
-      newState = { end_year: year, end_month: month };
-    }
-    this.setState({ work: { ...this.state.work, ...newState } });
-  }
+        if(this.state.work.start_year && this.state.work.start_month && this.state.work.end_year && this.state.work.end_month){
+            var startTime = new Date(`01/${this.state.work.start_month}/${this.state.work.start_year}`);
+            var endTime = new Date(`01/${this.state.work.end_month}/${this.state.work.end_year}`);
+        
+            if( startTime > endTime){
+                newState["errors"] = { ...newState["errors"], end_month: "End date is eailer than start date"};
+            }
+        }
 
-  onSave = e => {
-    e.preventDefault();
-    const {
-      userErrors: { project_link, repository_link }
-    } = this.state;
-    if (project_link || repository_link) return;
-    const { proceed } = this.props;
-    if (proceed) {
-      proceed(this.state.work);
-    }
-    return;
-  };
+        if(!Object.keys(newState.errors).length){
+            const {
+            userErrors: { project_link, repository_link }
+            } = this.state;
+            if (project_link || repository_link) return;
+            const { proceed } = this.props;
+            if (proceed) {
+                proceed(this.state.work);
+            }
+            return;
+        }else{
+            this.setState({...this.state, ...newState});
+        }
+    };
 
-  render() {
-    const { errors } = this.props,
-      start_date = `${this.state.work.start_year}-${this.state.work.start_month}`,
-      end_date = `${this.state.work.end_year}-${this.state.work.end_month}`;
-    const {
-      work: { project_link, repository_link },
-      userErrors
-    } = this.state;
-    return (
+    render() {
+        let { errors } = this.props;
+        const start_date = `${this.state.work.start_year}-${this.state.work.start_month}`,
+            end_date = `${this.state.work.end_year}-${this.state.work.end_month}`;
+        const {
+          work: { project_link, repository_link },
+          userErrors
+        } = this.state;
+
+        if(!errors.work && Object.keys(this.state.errors).length > 0){
+            errors = {"work" : {}};
+        }
+
+        for (const property in this.state.errors) {
+            errors.work[property] = this.state.errors[property];   
+        }
+
+
+        return (
       <div>
         {this.props.isSaved.work ? <Success message="Work Experience saved successfully" /> : null}
         <form onSubmit={this.onSave} name="work" role="form" ref="work_form">
@@ -171,6 +212,6 @@ export default class WorkForm extends React.Component {
           </div>
         </form>
       </div>
-    );
-  }
+        );
+    }
 }

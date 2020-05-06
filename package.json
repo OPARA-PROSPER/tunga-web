@@ -37,6 +37,7 @@
         "draft-js": "^0.10.5",
         "es6-promise": "^4.2.6",
         "gm": "^1.23.1",
+        "google-libphonenumber": "^3.2.9",
         "history": "^4.9.0",
         "humanize-duration": "^3.18.0",
         "idempotent-babel-polyfill": "^7.4.4",

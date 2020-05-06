@@ -14,7 +14,8 @@ export default class EducationForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            education: props.education || {}
+            education: props.education || {},
+            errors: {}
         };
     }
 
@@ -40,15 +41,54 @@ export default class EducationForm extends React.Component {
     onSave = e => {
         e.preventDefault();
 
-        const {proceed} = this.props;
-        if(proceed) {
-            proceed(this.state.education);
+        let newState = {};
+        newState["errors"] = {};
+        
+        if(!this.state.education.start_year){
+            newState["errors"] = { ...newState["errors"], start_year: "This field is required"};
         }
-        return;
+        if(!this.state.education.start_month){
+            newState["errors"] = { ...newState["errors"], start_month: "This field is required"};
+        }
+        if(!this.state.education.end_year){
+            newState["errors"] = { ...newState["errors"], end_year: "This field is required"};
+        }
+        if(!this.state.education.end_month){
+            newState["errors"] = { ...newState["errors"], end_month: "This field is required"};
+        }
+
+        if(this.state.education.start_year && this.state.education.start_month && this.state.education.end_year && this.state.education.end_month){
+            var startTime = new Date(`01/${this.state.education.start_month}/${this.state.education.start_year}`);
+            var endTime = new Date(`01/${this.state.education.end_month}/${this.state.education.end_year}`);
+            
+            if( startTime > endTime){
+                newState["errors"] = { ...newState["errors"], end_month: "End date is eailer than start date"};
+            }
+        }
+
+        if(!Object.keys(newState.errors).length){
+            const {proceed} = this.props;
+            if(proceed) {
+                proceed(this.state.education);
+            }
+            return;
+        }else{
+            this.setState({...this.state, ...newState});
+        }
+
     };
 
     render() {
-        const {errors} = this.props;
+        let {errors} = this.props;
+
+        if(!errors.education && Object.keys(this.state.errors).length > 0){
+            errors = {"education" : {}};
+        }
+
+        for (const property in this.state.errors) {
+            errors.education[property] = this.state.errors[property];   
+        }
+
         const start_date = `${this.state.education.start_year}-${this.state.education.start_month}`;
         const end_date = `${this.state.education.end_year}-${this.state.education.end_month}`;
         return (
@@ -96,7 +136,8 @@ export default class EducationForm extends React.Component {
                             {errors.education &&
                             (errors.education.start_year || errors.education.start_month) ? (
                                 <FieldError
-                                    message={(errors.education.start_year || errors.education.start_month)}
+                                    message={(errors.education.start_year || errors.education.start_month 
+                                    || this.state.errors.start_year || this.state.errors.start_month)}
                                 />
                             ) : null}
                             <FormGroup>
@@ -121,6 +162,7 @@ export default class EducationForm extends React.Component {
                                                 calendar={true} time={false}
                                                 value={this.state.education.end_year ? new Date(moment.utc(end_date).format()) : null}
                                                 format="MMM/YYYY"
+                                                required
                                 />
                             </FormGroup>
                         </div>

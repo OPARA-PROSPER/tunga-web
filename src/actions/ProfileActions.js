@@ -231,6 +231,9 @@ export function retrieveProfileFailed(error) {
 }
 
 export function updateProfile(id, profile) {
+    // Get an instance of `PhoneNumberUtil`.
+    const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
+
     return dispatch => {
         dispatch(updateProfileStart(id, profile));
         let request_method = id ? 'patch' : 'post';
@@ -242,23 +245,50 @@ export function updateProfile(id, profile) {
             data = composeFormData(profile);
         }
 
-        axios
-            .request({
-                url: ENDPOINT_PROFILE,
-                method: request_method,
-                data,
-                headers,
-            })
-            .then(function(response) {
-                dispatch(updateProfileSuccess(response.data, id));
-            })
-            .catch(function(error) {
-                dispatch(
-                    updateProfileFailed(
-                        error.response ? error.response.data : null, profile, id
-                    )
-                );
-            });
+        let requiredFields = {};
+        if(profile.phone_number){
+            try {
+                phoneUtil.parse(profile.phone_number);
+            }
+            catch(err) {
+                console.log(err.message);
+                requiredFields = {...requiredFields, "phone_number": err.message};
+            }
+        }
+
+        if (profile.postal_code && profile.postal_code.toString().length < 5){
+            requiredFields = {...requiredFields, "postal_code": "Zip code should not be less than 5 characters"};
+        }
+
+        if (profile.country && profile.country == "--") {
+            requiredFields = {...requiredFields, "country": "Country is required"};
+        }
+
+        if(!Object.keys(requiredFields).length){
+            axios
+                .request({
+                    url: ENDPOINT_PROFILE,
+                    method: request_method,
+                    data,
+                    headers,
+                })
+                .then(function(response) {
+                    dispatch(updateProfileSuccess(response.data, id));
+                })
+                .catch(function(error) {
+                    dispatch(
+                        updateProfileFailed(
+                            error.response ? error.response.data : null, profile, id
+                        )
+                    );
+                });
+        }else{
+            dispatch(
+                updateProfileFailed(
+                    requiredFields, profile, id
+                )
+            );
+        }
     };
 }
 
