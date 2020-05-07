@@ -62,36 +62,36 @@ export default class ShowcaseLayout extends React.Component {
                             );
                         })
                     ):(
-                        [
-                            <Route exact path='/signin' component={SignIn}/>,
-                            ['/invite/:invitationKey', '/developer/invite/:invitationKey', '/developer/:confirmationKey'].map(path => {
-                                return (
+                    [
+                        <Route exact path='/signin' component={SignIn}/>,
+                        ['/invite/:invitationKey', '/developer/invite/:invitationKey', '/developer/:confirmationKey'].map(path => {
+                            return (
                                     <Route key={`app-path--${path}`} exact path={`/signup${path}`} render={props =>
                                         <SignUp {...props}
                                                 confirmationKey={props.match.params.confirmationKey}
                                                 invitationKey={props.match.params.invitationKey}
                                         />}
                                     />
-                                );
-                            }),
-                            <Route exact path='/password/:uid/:token' render={props =>
+                            );
+                        }),
+                        <Route exact path='/password/:uid/:token' render={props =>
                                 <PasswordResetConfirm uid={props.match.params.uid}
                                                       token={props.match.params.token} newUser={true}/>}
                             />,
-                            <Route exact path='/reset-password/confirm/:uid/:token' render={props =>
+                        <Route exact path='/reset-password/confirm/:uid/:token' render={props =>
                                 <PasswordResetConfirm uid={props.match.params.uid}
                                                       token={props.match.params.token}/>}
                             />,
-                            <Route exact path='/reset-password' component={PasswordReset}/>,
-                            <Redirect from="/start*" to='/call'/>,
-                            <Route exact path='/start' component={Maintenance}/>,
-                            <Route exact path='/start-welcome' component={Maintenance}/>,
-                            <Route exact path='/start-outsource' component={Maintenance}/>,
-                            <Route exact path='/quiz' component={Maintenance}/>,
-                            <Route exact path='/customer/help/:chatId' component={Home}/>,
-                            <Redirect from="/signup" to='/signin'/>,
-                            <Route exact path='/join' component={Join}/>
-                        ]
+                        <Route exact path='/reset-password' component={PasswordReset}/>,
+                        <Redirect from="/start*" to='/call'/>,
+                        <Route exact path='/start' component={Maintenance}/>,
+                        <Route exact path='/start-welcome' component={Maintenance}/>,
+                        <Route exact path='/start-outsource' component={Maintenance}/>,
+                        <Route exact path='/quiz' component={Maintenance}/>,
+                        <Route exact path='/customer/help/:chatId' component={Home}/>,
+                        <Redirect from="/signup" to='/signin'/>,
+                        <Route exact path='/join' component={Join}/>
+                    ]
                     )}
                     <Route exact path='/developers'
                            render={props => <DeveloperSearch {...props}/>}/>
@@ -124,6 +124,6 @@ export default class ShowcaseLayout extends React.Component {
                     <Redirect from="*" to='/'/>
                 </Switch>
             </div>
-        )
+        );
     }
 }

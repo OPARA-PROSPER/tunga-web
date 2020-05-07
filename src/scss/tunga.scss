@@ -78,11 +78,51 @@ b, strong {
     }
 }
 
-// Consent
-#cookie-consent {
+//consent wrapper
+#consent-banner-wrapper{
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+//Notice Banner
+#friendly-notice{
+    text-align: center;
+    font-size: px-to-rem(14);
+    color: #062E64;
+    line-height: 17px;
+    background-color: get-color('white');
+    padding: 12px;
+}
+
+#friendly-notice-text{
+    margin: 0;
+    svg {
+        margin-left: 10px;
+    }
+}
+
+#friendly-notice-em{
+    font-weight: 500;
+}
+
+#friendly-notice-cta{
+    color: #DA3451;
+    font-weight: 500;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#friendly-notice-close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    bottom: 16px;
+    cursor: pointer;
+}
+
+// Consent
+#cookie-consent {
     font-size: px-to-rem(14);
     color: get-color('white');
     background-color: get-color('consent-bg');
