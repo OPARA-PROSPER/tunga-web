@@ -3,6 +3,7 @@ import React from 'react';
 import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
 
 import OpportunityDetails from './OpportunityDetails';
+import Settings from './Settings';
 import InterestList from './InterestList';
 import Warning from "../../core/Warning";
 import {hasProjectAccess, isDev} from "../../utils/auth";
@@ -37,12 +38,13 @@ export default class OpportunityManagement extends React.Component {
             ['network/interested', `Interested developers (${this.numberByStatus(STATUS_INTERESTED)})`, <InterestList {...projectProps} status={STATUS_INTERESTED} />],
             ['network/uninterested', `Uninterested developers (${this.numberByStatus(STATUS_UNINTERESTED)})`, <InterestList {...projectProps} status={STATUS_UNINTERESTED} />],
             ['network/pending', `Pending invitations (${this.numberByStatus(STATUS_INITIAL)})`, <InterestList {...projectProps} status={STATUS_INITIAL} />],
+            ['network/settings', 'Settings', <Settings {...projectProps} type="opportunity" section="details"/>]
         ];
 
         return (
             project?(
                 <div className="project-page clearfix">
-                    <div className="project-activity">
+                    <div className="opportunity-activity project-activity">
                         <div className="project-filters">
                             <NavLink to={match.url} exact
                                      activeClassName="active"

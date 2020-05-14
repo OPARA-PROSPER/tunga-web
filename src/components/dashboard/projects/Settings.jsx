@@ -170,63 +170,65 @@ export default class Settings extends React.Component {
     };
     
     render() {
-        const { project, section, isSaved, errors, ProjectActions } = this.props;
+        const { project, section, isSaved, errors, ProjectActions, type } = this.props;
         const projectProps = {project, ProjectActions};
 
         return (
             <div className="project-settings">
-                <div className="section">
-                    <div className="font-weight-normal">Integrations</div>
-                    <div className="text text-sm font-weight-thin">Add an integration by clicking on the icons</div>
+                {type !== 'opportunity'?(
+                    <div className="section">
+                        <div className="font-weight-normal">Integrations</div>
+                        <div className="text text-sm font-weight-thin">Add an integration by clicking on the icons</div>
 
-                    <div className="clearfix">
-                        <ul className="integration-options pull-right">
-                            <li>
-                                <NavLink
-                                    to={`/projects/${
-                                        project.id
-                                        }/settings/${
-                                        SOCIAL_PROVIDERS.slack
-                                        }`}
-                                    activeClassName="active"
-                                    title="Slack">
-                                    <Icon name="slack" />
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={`/projects/${
-                                        project.id
-                                        }/settings/${
-                                        SOCIAL_PROVIDERS.github
-                                        }`}
-                                    activeClassName="active"
-                                    title="GitHub">
-                                    <Icon name="github" />
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to={`/projects/${project.id}/settings/${
-                                        SOCIAL_PROVIDERS.trello
-                                        }`}
-                                    activeClassName="active"
-                                    title="Trello">
-                                    <Icon name="trello" />
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to={`/projects/${project.id}/settings/${
-                                        SOCIAL_PROVIDERS['google-drive']
-                                        }`}
-                                    activeClassName="active"
-                                    title="Google Drive">
-                                    <Icon name="g-drive" />
-                                </NavLink>
-                            </li>
-                        </ul>
+                        <div className="clearfix">
+                            <ul className="integration-options pull-right">
+                                <li>
+                                    <NavLink
+                                        to={`/projects/${
+                                            project.id
+                                            }/settings/${
+                                            SOCIAL_PROVIDERS.slack
+                                            }`}
+                                        activeClassName="active"
+                                        title="Slack">
+                                        <Icon name="slack" />
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to={`/projects/${
+                                            project.id
+                                            }/settings/${
+                                            SOCIAL_PROVIDERS.github
+                                            }`}
+                                        activeClassName="active"
+                                        title="GitHub">
+                                        <Icon name="github" />
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        to={`/projects/${project.id}/settings/${
+                                            SOCIAL_PROVIDERS.trello
+                                            }`}
+                                        activeClassName="active"
+                                        title="Trello">
+                                        <Icon name="trello" />
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        to={`/projects/${project.id}/settings/${
+                                            SOCIAL_PROVIDERS['google-drive']
+                                            }`}
+                                        activeClassName="active"
+                                        title="Google Drive">
+                                        <Icon name="g-drive" />
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                ) : null}
 
                 <div className="section">
                     {section === 'slack'?(
@@ -424,7 +426,8 @@ export default class Settings extends React.Component {
 
                 {isAdminOrPMOrClient()?(
                     <div>
-                        <div className="section section-project-details">
+                        <div className="section section-project-details" style={{
+                            marginTop: type === "opportunity" ? '0px' : '30px'}}>
                             <div className="font-weight-normal">Project details</div>
                             <p className="text text-sm font-weight-thin">Update project details</p>
                             {section === 'details'?(
@@ -470,51 +473,53 @@ export default class Settings extends React.Component {
                             )}
                         </div>
 
-                        <div className="section">
-                            <div className="font-weight-normal">Progress reports</div>
-                            <div className="text text-sm font-weight-thin">Turn progress reports on and off for specific developers</div>
-                        </div>
+                        { type !== 'opportunity'? (
+                            <>
+                                <div className="section">
+                                    <div className="font-weight-normal">Progress reports</div>
+                                    <div className="text text-sm font-weight-thin">Turn progress reports on and off for specific developers</div>
+                                </div>
+                                <div className="section developers-list">
+                                    {project.participation.map(participation => {
+                                        return (
+                                            <div key={participation.id} className="clearfix developer">
+                                                <div className="float-left">
+                                                    <Avatar key={participation.id}
+                                                            image={participation.user.avatar_url}
+                                                            title={participation.user.display_name}/>
 
-                        <div className="section developers-list">
-                            {project.participation.map(participation => {
-                                return (
-                                    <div key={participation.id} className="clearfix developer">
-                                        <div className="float-left">
-                                            <Avatar key={participation.id}
-                                                    image={participation.user.avatar_url}
-                                                    title={participation.user.display_name}/>
+                                                </div>
+                                                <div className="float-left dev-name">
+                                                    <div className="font-weight-normal">{participation.user.display_name}</div>
+                                                    <div className="text text-sm font-weight-light">@{participation.user.username}</div>
+                                                </div>
 
-                                        </div>
-                                        <div className="float-left dev-name">
-                                            <div className="font-weight-normal">{participation.user.display_name}</div>
-                                            <div className="text text-sm font-weight-light">@{participation.user.username}</div>
-                                        </div>
+                                                <ChoiceGroup choices={[[true, 'on'], [false, 'off']]} selected={participation.updates_enabled}
+                                                            onChange={this.onToggleUpdates.bind(this, participation)} disabled={!isAdminOrPMOrClient() || project.archived}/>
 
-                                        <ChoiceGroup choices={[[true, 'on'], [false, 'off']]} selected={participation.updates_enabled}
-                                                     onChange={this.onToggleUpdates.bind(this, participation)} disabled={!isAdminOrPMOrClient() || project.archived}/>
-
-                                        <SelectDaysModal {...projectProps} participation={participation}/>
+                                                <SelectDaysModal {...projectProps} participation={participation}/>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                <div className="section">
+                                    <div className="font-weight-normal">{project.archived?'Un-archive':'Archive'} project</div>
+                                    <div className="text text-sm">
+                                        {project.archived?(
+                                            <div>
+                                                Un-archive this project to re-enable project activity.
+                                            </div>
+                                        ):(
+                                            <div>
+                                                Mark this project as archived and readonly.<br/>
+                                                This will also remove this project from your project list and send it to the archived list.
+                                            </div>
+                                        )}
                                     </div>
-                                )
-                            })}
-                        </div>
-
-                        <div className="section">
-                            <div className="font-weight-normal">{project.archived?'Un-archive':'Archive'} project</div>
-                            <div className="text text-sm">
-                                {project.archived?(
-                                    <div>
-                                        Un-archive this project to re-enable project activity.
-                                    </div>
-                                ):(
-                                    <div>
-                                        Mark this project as archived and readonly.<br/>
-                                        This will also remove this project from your project list and send it to the archived list.
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <Button onClick={this.onToggleArchiveProject}>{project.archived?'Un-archive':'Archive'} project</Button>
+                                </div>
+                                <Button onClick={this.onToggleArchiveProject}>{project.archived?'Un-archive':'Archive'} project</Button>
+                            </>
+                        ) : null }
                     </div>
                 ):null}
             </div>
