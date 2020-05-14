@@ -1688,6 +1688,10 @@ table {
 
 // Project Page 1160
 .project-page {
+    .opportunity-activity{
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 
     .project-activity {
         background-color: get-color('white');
@@ -2009,7 +2013,7 @@ table {
 }
 
 .opportunity-nav-link {
-    width: 25% !important
+    width: 20% !important
 }
 
 // Reports
